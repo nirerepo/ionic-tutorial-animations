@@ -24,11 +24,72 @@
         </div>
       </div>
     </div>
-<swipe-cards>
-  <swipe-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-card-swipe="cardSwiped($index)">
-    Card content here
-  </swipe-card>
-</swipe-cards>
+<ks-swiper-container initial-slide="3" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="3" space-between="5" pagination-clickable="false" override-parameters="{effect: 'coverflow',coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}">
+    <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
+      <div class="item item-body">
+        <div>
+          You have <b>29</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </ks-swiper-slide>            
+</ks-swiper-container>
+    <div class="list card animated bounceInUp">
+      <div class="item item-divider">Upcoming</div>
+      <div class="item item-body">
+        <div>
+          You have <b>29</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </div>
+    <div class="list card animated bounceInUp">
+      <div class="item item-divider">Upcoming</div>
+      <div class="item item-body">
+        <div>
+          You have <b>29</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </div>
+    <div class="list card animated bounceInUp">
+      <div class="item item-divider">Upcoming</div>
+      <div class="item item-body">
+        <div>
+          You have <b>22</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </div>
+    <div class="list card animated bounceInUp">
+      <div class="item item-divider">Upcoming</div>
+      <div class="item item-body">
+        <div>
+          You have <b>17</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </div>
+    <div class="list card animated bounceInUp">
+      <div class="item item-divider">Upcoming</div>
+      <div class="item item-body">
+        <div>
+          You have <b>14</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </div>
+    <div class="list card animated bounceInUp">
+      <div class="item item-divider">Upcoming</div>
+      <div class="item item-body">
+        <div>
+          You have <b>12</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </div>
+<ks-swiper-container initial-slide="3" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="3" space-between="5" pagination-clickable="false" override-parameters="{effect: 'coverflow',coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}">
+    <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
+      <div class="item item-body">
+        <div>
+          Este es un slider diferente al de arriba...
+        </div>
+      </div>
+    </ks-swiper-slide>            
+</ks-swiper-container>
   </ion-content>
 </ion-view>
 
