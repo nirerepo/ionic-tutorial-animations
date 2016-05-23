@@ -8,7 +8,8 @@
 angular.module('starter', [
   'ionic',
   'starter.controllers',
-  'starter.services'
+  'starter.services',
+  'ksSwiper'
   ])
 
 .run(function($ionicPlatform) {
