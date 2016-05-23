@@ -1,6 +1,20 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope) {
+  $scope.cards = [
+    {  },
+    {  }
+  ];
+
+  $scope.cardDestroyed = function(index) {
+    $scope.cards.splice(index, 1);
+  };
+
+  $scope.cardSwiped = function(index) {
+    var newCard = // new card data
+    $scope.cards.push(newCard);
+  };
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -21,8 +35,24 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope, $state) {
   $scope.settings = {
-    enableFriends: true
+    enableFriends: true,
+    enableOtrascosas: true,
+    enableYotramastodavia: true
   };
-});
+  $scope.signOut = function() {
+    console.log("Sign-Out");
+    $state.go('signin');
+  };
+})
+
+.controller('SignInCtrl', function($scope, $state) {
+
+  $scope.signIn = function(user) {
+    console.log('Sign-In', user);
+    $state.go('tab.dash');
+  };
+
+})
+;

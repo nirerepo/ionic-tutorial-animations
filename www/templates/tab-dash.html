@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div class="list card animated tada">
+    <div class="list card animated bounceInUp">
       <div class="item item-divider">Upcoming</div>
       <div class="item item-body">
         <div>
@@ -24,6 +24,11 @@
         </div>
       </div>
     </div>
+<swipe-cards>
+  <swipe-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-card-swipe="cardSwiped($index)">
+    Card content here
+  </swipe-card>
+</swipe-cards>
   </ion-content>
 </ion-view>
 
