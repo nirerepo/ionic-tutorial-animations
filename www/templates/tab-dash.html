@@ -1,84 +1,54 @@
-<ion-view view-title="Dashboard">
+<ion-view view-title="Hoy">
   <ion-content class="padding">
-    <div class="list card animated bounceInLeft">
-      <div class="item item-divider">Recent Updates</div>
+      <ks-swiper-container initial-slide="3" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="3" space-between="5" pagination-clickable="false" override-parameters="{effect: 'coverflow',coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}">
+          <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
+            <div class="item item-body">
+              <div>
+                You have <b>29</b> meetings on your calendar $s tomorrow.
+              </div>
+            </div>
+          </ks-swiper-slide>            
+      </ks-swiper-container>
+    <div class="list card add animated fadeIn">
       <div class="item item-body">
-        <div>
-          There is a fire in <b>sector 3</b>
-        </div>
+          <h2>Añadir desayuno</h2>
+          <p>Mantén pulsado para repetir tu desayuno de ayer</p>
       </div>
     </div>
-    <div class="list card animated bounceInRight">
-      <div class="item item-divider">Health</div>
+    <div class="list card add animated fadeIn">
       <div class="item item-body">
-        <div>
-          You ate an apple today!
-        </div>
+          <h2>Añadir mediamañana</h2>
+          <p>No olvides tomar algo entre el desayuno y tu comida</p>
       </div>
     </div>
-    <div class="list card animated bounceInUp">
-      <div class="item item-divider">Upcoming</div>
+    <div class="list card animated fadeIn">
+      <div class="item item-divider header">Comida</div>
+      <div class="item item-body content">
+          <ul class="list">
+              <li class="item">Mi ensalada mixta con zanahoria</li>
+              <li class="item">Pechuga de pollo a la plancha</li>
+              <li class="item">Pan</li>
+              <li class="item">Yogurt natural</li>           
+          </ul>
+      </div>
+      <div class="item item-divider footer">Añadir más...</div>
+    </div>
+    <div class="list card add animated fadeIn">
       <div class="item item-body">
-        <div>
-          You have <b>29</b> meetings on your calendar tomorrow.
-        </div>
+          <h2>Añadir ejercicio físico</h2>
+          <p>Esta semana no has realizado ningún ejercicio físico, ¡Empieza hoy!</p>
       </div>
     </div>
-<ks-swiper-container initial-slide="3" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="3" space-between="5" pagination-clickable="false" override-parameters="{effect: 'coverflow',coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}">
-    <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
+    <div class="list card add animated fadeIn">
       <div class="item item-body">
-        <div>
-          You have <b>29</b> meetings on your calendar tomorrow.
-        </div>
-      </div>
-    </ks-swiper-slide>            
-</ks-swiper-container>
-    <div class="list card animated bounceInUp">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div>
-          You have <b>29</b> meetings on your calendar tomorrow.
-        </div>
+          <h2>Añadir merienda</h2>
+          <p>Repon tus fuerzas por la tarde</p>
       </div>
     </div>
-    <div class="list card animated bounceInUp">
-      <div class="item item-divider">Upcoming</div>
+    <div class="list card add animated fadeIn">
       <div class="item item-body">
-        <div>
-          You have <b>29</b> meetings on your calendar tomorrow.
-        </div>
-      </div>
-    </div>
-    <div class="list card animated bounceInUp">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div>
-          You have <b>22</b> meetings on your calendar tomorrow.
-        </div>
-      </div>
-    </div>
-    <div class="list card animated bounceInUp">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div>
-          You have <b>17</b> meetings on your calendar tomorrow.
-        </div>
-      </div>
-    </div>
-    <div class="list card animated bounceInUp">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div>
-          You have <b>14</b> meetings on your calendar tomorrow.
-        </div>
-      </div>
-    </div>
-    <div class="list card animated bounceInUp">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div>
-          You have <b>12</b> meetings on your calendar tomorrow.
-        </div>
+          <h2>Añadir cena</h2>
+          <p>Cenar limpio y ligero te ayudará a no tener una digestión lenta y pesada</p>
       </div>
     </div>
 <ks-swiper-container initial-slide="3" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="3" space-between="5" pagination-clickable="false" override-parameters="{effect: 'coverflow',coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}">
