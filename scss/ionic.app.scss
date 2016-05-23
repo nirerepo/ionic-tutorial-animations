@@ -21,3 +21,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+$movistargradient:                linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
+$verdemovistar:                   #7AB800 !default;
+$cardshadow:                      0px 1px 2px 0px rgba(0,0,0,0.20); 
+
+.pane{
+	background: $movistargradient;
+}
+
+.card {
+	box-shadow: $cardshadow;
+}
