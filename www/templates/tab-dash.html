@@ -1,13 +1,14 @@
 <ion-view view-title="Hoy">
   <ion-content class="padding">
-      <ks-swiper-container initial-slide="3" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="3" space-between="5" pagination-clickable="false" override-parameters="{effect: 'coverflow',coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}">
-          <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
-            <div class="item item-body">
-              <div>
-                You have <b>29</b> meetings on your calendar $s tomorrow.
-              </div>
-            </div>
-          </ks-swiper-slide>            
+      <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}">
+      <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
+        <div class="list card add animated fadeIn">
+          <div class="item item-body">
+              <h2>Consejo del día {{s}}</h2>
+              <p>Al que madruga, buen arbol le cobija</p>
+          </div>
+        </div>
+      </ks-swiper-slide>
       </ks-swiper-container>
     <div class="list card add animated fadeIn">
       <div class="item item-body">
