@@ -22,8 +22,21 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 $movistargradient:                linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
-$verdemovistar:                   #7AB800 !default;
+$movistargreen:                   #7AB800 !default;
 $cardshadow:                      0px 1px 2px 0px rgba(0,0,0,0.20); 
+$cardradius:                      4px;
+
+.bar.bar-stable .title {
+	color: #FFF;
+}
+
+.bar-stable .button.button-clear {
+	color: #FFF;
+}
+
+.custom-dark{
+    background-color: #01344F!important;
+ }
 
 .pane{
 	background: $movistargradient;
@@ -39,6 +52,7 @@ $cardshadow:                      0px 1px 2px 0px rgba(0,0,0,0.20);
 
 .card.add .item {
 	box-shadow: $cardshadow;
+	border-radius: $cardradius;
 	background: rgba(255,255,255,0.20);
 }
 
@@ -76,4 +90,14 @@ $cardshadow:                      0px 1px 2px 0px rgba(0,0,0,0.20);
 	color: $light;
 	padding-top: 15px;
 	padding-bottom: 15px;
+}
+
+.swiper-container {
+	padding: 10px 0;
+}
+
+.swiper-slide .item {
+	background-color: $light;
+	box-shadow: $cardshadow;
+	border-radius: $cardradius;
 }
