@@ -101,3 +101,36 @@ $cardradius:                      4px;
 	box-shadow: $cardshadow;
 	border-radius: $cardradius;
 }
+
+// CHAT
+.bubble {
+	box-shadow: $cardshadow;
+	border-radius: 8px;
+	padding: 15px;
+    max-width: 85%;
+    clear: both;
+   	font-size: 16px;
+   	line-height: 20px;
+}
+
+.bubble.system {
+	color: $light;
+	background-color: rgba(255,255,255,0.20);
+	float: left;
+	margin: 5px 0 5px 0;
+}
+
+.bubble.user {
+	color: $light;
+	background-color: rgba(0,52,79,0.50);
+	float: right;
+	margin: 5px 0 10px 0;
+}
+
+.bubble.option {
+	color: $light;
+	background-color: #FFF;
+	float: none;
+	margin: 5px 0 10px 0;
+	color: #01344F;
+}
