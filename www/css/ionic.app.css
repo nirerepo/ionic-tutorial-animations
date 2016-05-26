@@ -9942,3 +9942,53 @@ a.button {
   margin: 5px 5px 5px 5px;
   float: left;
   clear: none; }
+
+.box {
+  height: 100%; }
+
+ion-slides {
+  height: 100vh !important; }
+
+.bgColor_0 {
+  background-color: #cc2244; }
+
+.bgColor_1 {
+  background-color: #cc6622; }
+
+.bgColor_2 {
+  background-color: #cccc22; }
+
+.bgColor_3 {
+  background-color: #66cc22; }
+
+.bgColor_4 {
+  background-color: #22cc44; }
+
+.bgColor_5 {
+  background-color: #22ccaa; }
+
+.bgColor_6 {
+  background-color: #2288cc; }
+
+.bgColor_7 {
+  background-color: #2222cc; }
+
+.bgColor_8 {
+  background-color: #8822cc; }
+
+.bgColor_9 {
+  background-color: #cc22aa; }
+
+.swiper-pagination-bullet-active {
+  background: #fff !important; }
+
+.swiper-slide .item {
+  background-image: url("http://pngimg.com/upload/tree_PNG3498.png") !important;
+  background-size: 100px !important;
+  background-position: right !important;
+  background-color: #FFF !important;
+  background-repeat: no-repeat !important; }
+
+.swiper-slide .item h2,
+.swiper-slide .item p {
+  color: #01344F !important; }
