@@ -103,6 +103,11 @@ $cardradius:                      4px;
 }
 
 // CHAT
+.conversation {
+	display: block;
+	overflow: auto;
+}
+
 .bubble {
 	box-shadow: $cardshadow;
 	border-radius: 8px;
@@ -111,28 +116,70 @@ $cardradius:                      4px;
     clear: both;
    	font-size: 16px;
    	line-height: 20px;
+   	display: block;
+}
+
+.bubble.system,
+.bubble.user {
+	color: $light;
+	margin: 5px 0 10px 0;
 }
 
 .bubble.system {
 	color: $light;
 	background-color: rgba(255,255,255,0.20);
 	float: left;
-	margin: 5px 0 5px 0;
+}
+
+.bubble.system.ficha {
+	height: 170px;
+	width: 85%;
+	vertical-align: bottom;
+	position: relative;
+	overflow: auto;
+	background: -webkit-linear-gradient(90deg, rgba(0,0,0,0.75),rgba(0,0,0,0)), url('http://i.imgur.com/r4BW1gr.png') no-repeat;
+	background-size: cover;
+	background-position: center;
+	// background: linear-gradient(-180deg, rgba(0,0,0,0.00) 40%, #000000 92%);
+	// background-size: cover;
+}
+
+.bubble.system.ficha h2{
+	position: absolute;
+    bottom: 0;
+	color: $light;
+	font-size: 18px;
+}
+
+.bubble.system.loading {
+	background-image: url('http://i.imgur.com/vs8sKE9.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 70px!important;
 }
 
 .bubble.user {
-	color: $light;
 	background-color: rgba(0,52,79,0.50);
 	float: right;
-	margin: 5px 0 10px 0;
+}
+
+.options {
+	text-align: center;
+	width: 100%;
+	overflow: auto;
+	margin-top: 50px;
+	display:                 flex;
+	flex-wrap:               wrap;
+	justify-content:         center;
 }
 
 .bubble.option {
 	color: $light;
 	background-color: #FFF;
-	float: none;
-	margin: 5px 0 10px 0;
 	color: #01344F;
+	margin: 5px 5px 5px 5px;
+	float: left;
+	clear: none;
 }
 
 // Swipes example
@@ -151,4 +198,22 @@ $num-colors: 10;
       background-color: adjust-hue($base-color, 360deg / $num-colors * $i);
     }
 }
+
 //
+//SWIPER
+.swiper-pagination-bullet-active {
+	background: $light!important;
+}
+
+.swiper-slide .item {
+	background-image: url('http://pngimg.com/upload/tree_PNG3498.png')!important;
+    background-size: 100px!important;
+    background-position: right!important;
+    background-color: #FFF !important;
+    background-repeat: no-repeat!important;
+}
+
+.swiper-slide .item h2,
+.swiper-slide .item p {
+    color: #01344F!important;
+}
