@@ -181,37 +181,25 @@ $cardradius:                      4px;
 	clear: none;
 }
 
-.ficha-wrapper {
-	position: relative;
-	overflow: auto;
+// Swipes example
+.box{
+  height: 100%;
+}
+ion-slides{
+  height: 100vh !important;
 }
 
-.info {
-	position: absolute;
-	text-align: left;
-	top: 45%;
-	margin-left: 90%;
-	width: 15%;
+$base-color: #c24;
+$num-colors: 10;
+
+@for $i from 0 to $num-colors {
+    .bgColor_#{$i} {
+      background-color: adjust-hue($base-color, 360deg / $num-colors * $i);
+    }
 }
 
-.icon-light {
-	background-image: url('http://i.imgur.com/ZXypoDA.png');
-	background-size: 15px;
-	background-repeat: no-repeat;
-	color: $light;
-	height: 15px;
-	width: 15px;
-}
-
-
-
-//////////////////
-// -- SWIPER -- //
-//////////////////
-
-.swiper-container {
-	padding: 10px 0;
-}
+//
+//SWIPER
 
 .swiper-pagination-bullet-active {
 	background: $light!important;
