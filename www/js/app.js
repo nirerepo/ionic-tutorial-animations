@@ -87,7 +87,14 @@ angular.module('starter', [
         controller: 'AccountCtrl'
       }
     }
-  });
+  })
+
+  .state('help', {
+    url: '/help',
+    templateUrl: 'templates/help.html',
+    controller: 'HelpCtrl'
+  })
+  ;
 
   // if none of the above states are matched, use this as the fallback
 //  $urlRouterProvider.otherwise('/tab/dash');
