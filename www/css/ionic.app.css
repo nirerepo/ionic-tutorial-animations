@@ -9082,6 +9082,15 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.bar.bar-stable .title {
+  color: #FFF; }
+
+.bar-stable .button.button-clear {
+  color: #FFF; }
+
+.custom-dark {
+  background-color: #01344F !important; }
+
 .pane {
   background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
@@ -9093,6 +9102,7 @@ a.button {
 
 .card.add .item {
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.2); }
 
 .card.add .item h2 {
@@ -9124,3 +9134,92 @@ a.button {
   color: #fff;
   padding-top: 15px;
   padding-bottom: 15px; }
+
+.swiper-container {
+  padding: 10px 0; }
+
+.swiper-slide .item {
+  background-color: #fff;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 4px; }
+
+.conversation {
+  display: block;
+  overflow: auto; }
+
+.bubble {
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 15px;
+  max-width: 85%;
+  clear: both;
+  font-size: 16px;
+  line-height: 20px;
+  display: block; }
+
+.bubble.system,
+.bubble.user {
+  color: #fff;
+  margin: 5px 0 10px 0; }
+
+.bubble.system {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  float: left; }
+
+.bubble.system.ficha {
+  height: 170px;
+  width: 85%;
+  vertical-align: bottom;
+  position: relative;
+  overflow: auto;
+  background: -webkit-linear-gradient(90deg, rgba(0, 0, 0, 0.75), transparent), url("http://i.imgur.com/r4BW1gr.png") no-repeat;
+  background-size: cover;
+  background-position: center; }
+
+.bubble.system.ficha h2 {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  font-size: 18px; }
+
+.bubble.system.loading {
+  background-image: url("http://i.imgur.com/vs8sKE9.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 70px !important; }
+
+.bubble.user {
+  background-color: rgba(0, 52, 79, 0.5);
+  float: right; }
+
+.options {
+  text-align: center;
+  width: 100%;
+  overflow: auto;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.bubble.option {
+  color: #fff;
+  background-color: #FFF;
+  color: #01344F;
+  margin: 5px 5px 5px 5px;
+  float: left;
+  clear: none; }
+
+.swiper-pagination-bullet-active {
+  background: #fff !important; }
+
+.swiper-slide .item {
+  background-image: url("http://pngimg.com/upload/tree_PNG3498.png") !important;
+  background-size: 100px !important;
+  background-position: right !important;
+  background-color: #FFF !important;
+  background-repeat: no-repeat !important; }
+
+.swiper-slide .item h2,
+.swiper-slide .item p {
+  color: #01344F !important; }
