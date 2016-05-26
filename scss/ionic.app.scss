@@ -42,6 +42,10 @@ $cardradius:                      4px;
 	background: $movistargradient;
 }
 
+//////////////////
+// -- DIARIO -- //
+//////////////////
+
 .list.card {
 	background: transparent;
 }
@@ -92,17 +96,14 @@ $cardradius:                      4px;
 	padding-bottom: 15px;
 }
 
-.swiper-container {
-	padding: 10px 0;
+//////////////////
+// --- CHAT --- //
+//////////////////
+
+.bubble p {
+	margin: 0px 0px 0px!important;
 }
 
-.swiper-slide .item {
-	background-color: $light;
-	box-shadow: $cardshadow;
-	border-radius: $cardradius;
-}
-
-// CHAT
 .conversation {
 	display: block;
 	overflow: auto;
@@ -136,12 +137,9 @@ $cardradius:                      4px;
 	width: 85%;
 	vertical-align: bottom;
 	position: relative;
-	overflow: auto;
-	background: -webkit-linear-gradient(90deg, rgba(0,0,0,0.75),rgba(0,0,0,0)), url('http://i.imgur.com/r4BW1gr.png') no-repeat;
+	background: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("http://i.imgur.com/r4BW1gr.png") no-repeat;
 	background-size: cover;
 	background-position: center;
-	// background: linear-gradient(-180deg, rgba(0,0,0,0.00) 40%, #000000 92%);
-	// background-size: cover;
 }
 
 .bubble.system.ficha h2{
@@ -153,6 +151,7 @@ $cardradius:                      4px;
 
 .bubble.system.loading {
 	background-image: url('http://i.imgur.com/vs8sKE9.gif');
+	background-size: 35px;
 	background-repeat: no-repeat;
 	background-position: center;
 	width: 70px!important;
@@ -182,7 +181,38 @@ $cardradius:                      4px;
 	clear: none;
 }
 
-//SWIPER
+.ficha-wrapper {
+	position: relative;
+	overflow: auto;
+}
+
+.info {
+	position: absolute;
+	text-align: left;
+	top: 45%;
+	margin-left: 90%;
+	width: 15%;
+}
+
+.icon-light {
+	background-image: url('http://i.imgur.com/ZXypoDA.png');
+	background-size: 15px;
+	background-repeat: no-repeat;
+	color: $light;
+	height: 15px;
+	width: 15px;
+}
+
+
+
+//////////////////
+// -- SWIPER -- //
+//////////////////
+
+.swiper-container {
+	padding: 10px 0;
+}
+
 .swiper-pagination-bullet-active {
 	background: $light!important;
 }
@@ -193,6 +223,11 @@ $cardradius:                      4px;
     background-position: right!important;
     background-color: #FFF !important;
     background-repeat: no-repeat!important;
+	box-shadow: $cardshadow;
+	border-radius: $cardradius;
+}
+.swiper-slide .list:last-child.card {
+	margin-bottom: 25px;
 }
 
 .swiper-slide .item h2,

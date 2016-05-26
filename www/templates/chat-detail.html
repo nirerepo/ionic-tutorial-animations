@@ -8,49 +8,53 @@
   <ion-content class="padding">
     <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
     <p>
-      {{chat.lastText}}
+	 {{chat.lastText}}
     </p>
   </ion-content>
 </ion-view>
  -->
 
 <ion-view view-title="Chat">
-  <ion-content class="padding">
-  <div class="conversation">
-    <div class="bubble system img-background ficha">
-      <h2>Actividad física. Recomendaciones</h2>
-    </div>
-    <div class="bubble system">
-      <p>Parece que tu ingesta de calorías está por debajo de lo normal</p>
-    </div>
-    <div class="bubble system">
-      <p>Puedo ayudarte sugeriéndote alguna idea para completar bien el día 💡</p>
-    </div>
-    <div class="bubble user">
-      ¡Cuéntame!
-    </div>
-    <div class="bubble system">
-      <p>Veamos...</p>    </div>
-    <div class="bubble system">
-      <p>Ayer solamente hiciste dos tomas</p>
-    </div>
-    <div class="bubble system">
-      <p>Hacer 5 tomas al día es importante para acelerar el metabolismo</p>
-    </div>
-    <div class="bubble system loading">
-      &nbsp;
-    </div>
-  </div>
-    <div class="options">
-      <div class="bubble option">
-      <p>  Lo tendré en cuenta!</p>
-    </div>
-        <div class="bubble option">
-      <p>  Comí algo más  </p>
-    </div>
-      <div class="bubble option">
-      <p>  Necesito más ayuda  </p>
-    </div>
-    </div>
-  </ion-content>
+	<ion-content class="padding">
+		<div class="conversation">
+			<div class="ficha-wrapper">
+				<div class="bubble system img-background ficha">
+					<h2>Actividad física. Recomendaciones</h2>
+				</div>
+				<div class="info icon-light"></div>
+			</div>
+			<div class="bubble system">
+				<p>Parece que tu ingesta de calorías está por debajo de lo normal</p>
+			</div>
+			<div class="bubble system">
+				<p>Puedo ayudarte sugeriéndote alguna idea para completar bien el día</p>
+			</div>
+			<div class="bubble user">
+				<p>¡Cuéntame!</p>
+			</div>
+			<div class="bubble system">
+				<p>Veamos...</p>
+			</div>
+			<div class="bubble system">
+				<p>Ayer solamente hiciste dos tomas</p>
+			</div>
+			<div class="bubble system">
+				<p>Hacer 5 tomas al día es importante para acelerar el metabolismo</p>
+			</div>
+			<div class="bubble system loading">
+				&nbsp;
+			</div>
+		</div>
+		<div class="options">
+			<div class="bubble option">
+				<p>Lo tendré en cuenta!</p>
+			</div>
+			<div class="bubble option">
+				<p>Comí algo más</p>
+			</div>
+			<div class="bubble option">
+				<p>Necesito más ayuda</p>
+			</div>
+		</div>
+	</ion-content>
 </ion-view>
