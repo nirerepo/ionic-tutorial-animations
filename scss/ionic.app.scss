@@ -134,3 +134,21 @@ $cardradius:                      4px;
 	margin: 5px 0 10px 0;
 	color: #01344F;
 }
+
+// Swipes example
+.box{
+  height: 100%;
+}
+ion-slides{
+  height: 100vh !important;
+}
+
+$base-color: #c24;
+$num-colors: 10;
+
+@for $i from 0 to $num-colors {
+    .bgColor_#{$i} {
+      background-color: adjust-hue($base-color, 360deg / $num-colors * $i);
+    }
+}
+//
