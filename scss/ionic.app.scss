@@ -182,24 +182,28 @@ $cardradius:                      4px;
 }
 
 // Swipes example
-.box{
-  height: 100%;
-}
-ion-slides{
-  height: 100vh !important;
-}
+// .box{
+//   height: 100%;
+// }
+// ion-slides{
+//   height: 100vh !important;
+// }
 
-$base-color: #c24;
-$num-colors: 10;
+// $base-color: #c24;
+// $num-colors: 10;
 
-@for $i from 0 to $num-colors {
-    .bgColor_#{$i} {
-      background-color: adjust-hue($base-color, 360deg / $num-colors * $i);
-    }
-}
+// @for $i from 0 to $num-colors {
+//     .bgColor_#{$i} {
+//       background-color: adjust-hue($base-color, 360deg / $num-colors * $i);
+//     }
+// }
 
 //
 //SWIPER
+
+.swiper-container {
+	height: inherit!important;
+}
 
 .swiper-pagination-bullet-active {
 	background: $light!important;
@@ -213,9 +217,6 @@ $num-colors: 10;
     background-repeat: no-repeat!important;
 	box-shadow: $cardshadow;
 	border-radius: $cardradius;
-}
-.swiper-slide .list:last-child.card {
-	margin-bottom: 25px;
 }
 
 .swiper-slide .item h2,
