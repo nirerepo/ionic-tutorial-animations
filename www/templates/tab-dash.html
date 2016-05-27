@@ -1,8 +1,8 @@
 <ion-view view-title="Hoy">
-  <ion-content class="padding">
+  <ion-content class="padding diary">
       <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}">
       <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
-        <div class="list card add animated fadeIn">
+        <div class="card add animated fadeIn">
           <div class="item item-body">
               <h2>Consejo del día {{s}}</h2>
               <p>Al que madruga, buen arbol le cobija</p>
@@ -10,46 +10,63 @@
         </div>
       </ks-swiper-slide>
       </ks-swiper-container>
-    <div class="list card add animated fadeIn">
+    <div class="card add animated fadeIn">
       <div class="item item-body">
           <h2>Añadir desayuno</h2>
           <p>Mantén pulsado para repetir tu desayuno de ayer</p>
-      <button class="button" ng-click="showActionsheet()">
-        Show Actionsheet
-      </button>
       </div>
     </div>
-    <div class="list card add animated fadeIn">
+    <div class="card add animated fadeIn">
       <div class="item item-body">
           <h2>Añadir mediamañana</h2>
           <p>No olvides tomar algo entre el desayuno y tu comida</p>
       </div>
     </div>
-    <div class="list card animated fadeIn">
+    <div class="card animated fadeIn">
       <div class="item item-divider header">Comida</div>
       <div class="item item-body content">
-          <ul class="list">
-              <li class="item">Mi ensalada mixta con zanahoria</li>
-              <li class="item">Pechuga de pollo a la plancha</li>
-              <li class="item">Pan</li>
-              <li class="item">Yogurt natural</li>           
-          </ul>
+        <div class="list">
+          <div class="item item-button-right">
+             Mi ensalada con queso de cabra y nueces
+             <span class="item-info">173 Kcal</span>
+             <button class="button button-icon" ng-click="showActionsheet()">
+               <i class="icon ion-more"></i>
+             </button>
+           </div>
+          <div class="item item-button-right">
+            Pollo en salsa de naranja
+             <span class="item-info">210 Kcal</span>
+            <button class="button button-icon" ng-click="showActionsheet()">
+              <i class="icon ion-more"></i>
+            </button>
+          </div>
+          <div class="item item-button-right">
+            Arroz con leche
+             <span class="item-info">168 Kcal</span>
+            <button class="button button-icon" ng-click="showActionsheet()">
+              <i class="icon ion-more"></i>
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="item item-divider footer">Añadir más...</div>
-    </div>
-    <div class="list card add animated fadeIn">
+      <a class="item item-divider footer item-icon-right" ng-click="showActionsheet()">
+        Añadir más...
+            <i class="icon ion-plus-round"></i>
+      </a>
+ </div>
+    <div class="card add animated fadeIn">
       <div class="item item-body">
           <h2>Añadir ejercicio físico</h2>
           <p>Esta semana no has realizado ningún ejercicio físico, ¡Empieza hoy!</p>
       </div>
     </div>
-    <div class="list card add animated fadeIn">
+    <div class="card add animated fadeIn">
       <div class="item item-body">
           <h2>Añadir merienda</h2>
           <p>Repon tus fuerzas por la tarde</p>
       </div>
     </div>
-    <div class="list card add animated fadeIn">
+    <div class="card add animated fadeIn">
       <div class="item item-body">
           <h2>Añadir cena</h2>
           <p>Cenar limpio y ligero te ayudará a no tener una digestión lenta y pesada</p>
