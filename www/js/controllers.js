@@ -89,6 +89,6 @@ angular.module('starter.controllers', [])
   console.log($ionicNavBarDelegate);
   Help.loadPages($scope, $ionicNavBarDelegate);
   $ionicNavBarDelegate.showBackButton(true);
-
+  window.plugins.toast.show("This is a help message", "long", "center");
 })
 ;
