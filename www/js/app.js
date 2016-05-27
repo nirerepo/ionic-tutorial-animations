@@ -94,6 +94,11 @@ angular.module('starter', [
     templateUrl: 'templates/help.html',
     controller: 'HelpCtrl'
   })
+  .state('help-actividad', {
+    url: '/helpactividad',
+    templateUrl: 'templates/help-actividad.html',
+    controller: 'HelpCtrl'
+  })
   ;
 
   // if none of the above states are matched, use this as the fallback
