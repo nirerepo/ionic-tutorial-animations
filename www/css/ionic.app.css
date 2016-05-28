@@ -9984,7 +9984,7 @@ p, span, a, div {
   font-size: 18px; }
 
 .bubble.system.loading {
-  background-image: url("http://i.imgur.com/vs8sKE9.gif");
+  background-image: url("img/chatloading.gif");
   background-size: 35px;
   background-repeat: no-repeat;
   background-position: center;

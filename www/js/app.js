@@ -91,11 +91,13 @@ angular.module('starter', [
 
   .state('help', {
     url: '/help',
+    params: { startpage: { dynamic: true } },
     templateUrl: 'templates/help.html',
     controller: 'HelpCtrl'
   })
-  .state('help-actividad', {
+  .state('helpactividad', {
     url: '/helpactividad',
+    params: { startpage: { dynamic: true } },
     templateUrl: 'templates/help-actividad.html',
     controller: 'HelpCtrl'
   })

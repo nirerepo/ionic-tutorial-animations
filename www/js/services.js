@@ -54,14 +54,14 @@ angular.module('starter.services', [])
     loadPages: function($scope, $ionicNavBarDelegate) {
       //$ionicNavBarDelegate.title('Cómo funciona Nire...');
 
-      for (var i = 0; i < 3; i++) {
+      for (var i = 0; i < 5; i++) {
         $scope.data.bgColors.push("bgColor_" + i);
       }
 
       var setupSlider = function() {
         //some options to pass to our slider
         $scope.data.sliderOptions = {
-          initialSlide: 0,
+          initialSlide: $scope.data.currentPage,
           direction: 'horizontal', //or vertical
           speed: 250 //0.3s transition
         };

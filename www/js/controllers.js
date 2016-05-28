@@ -59,9 +59,11 @@ angular.module('starter.controllers', [])
 
 .controller('ChatDetailCtrl', function($scope, $state, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
-  $scope.showHelp = function() {
-    console.log('show help');
-    $state.go('help-actividad');
+  $scope.showHelp = function(tipo) {
+    if (!tipo)
+        tipo = ''
+    console.log("Show Help: ", tipo);
+    $state.go('help'+tipo, {startpage: 2});
   };
 })
 
@@ -84,7 +86,10 @@ angular.module('starter.controllers', [])
     $state.go('tab.dash');
   };
   $scope.showHelp = function(tipo) {
-    $state.go('help');
+    if (!tipo)
+        tipo = ''
+    console.log("Show Help: ", tipo);
+    $state.go('help'+tipo, {startpage: 0});
   };
 
 
@@ -93,9 +98,8 @@ angular.module('starter.controllers', [])
 .controller('HelpCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, Help) {
   $scope.data = {};
   $scope.data.bgColors = [];
-  $scope.data.currentPage = 0;
-  console.log($ionicNavBarDelegate);
-  console.log($stateParams);
+  $scope.data.currentPage = $stateParams.startpage;
+  console.log("Current: ", $scope.data);
   Help.loadPages($scope, $ionicNavBarDelegate);
   $ionicNavBarDelegate.showBackButton(true);
   if (window.plugins && window.plugins.toast)
