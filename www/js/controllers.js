@@ -1,10 +1,13 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $ionicActionSheet) {
+.controller('DashCtrl', function($scope, $ionicActionSheet, Timeline) {
   $scope.cards = [
     {  },
     {  }
   ];
+
+  $scope.desayuno = Timeline.desayuno();
+  console.log($scope.desayuno);
 
   $scope.cardDestroyed = function(index) {
     $scope.cards.splice(index, 1);
@@ -16,14 +19,14 @@ angular.module('starter.controllers', [])
   };
 
 //
-  $scope.showActionsheet = function() {
+  $scope.showActionsheet = function(plato) {
     $ionicActionSheet.show({
-      titleText: 'ActionSheet Example',
+      titleText: plato.name,
       buttons: [
-        { text: '<i class="icon ion-share"></i> Share' },
-        { text: '<i class="icon ion-arrow-move"></i> Move' },
+        { text: '<i class="icon ion-arrow-move"></i>Planear mañana' },
+        { text: '<i class="icon ion-arrow-move"></i>Modificar' }
       ],
-      destructiveText: 'Delete',
+      destructiveText: '<i class="icon ion-share"></i>Borrar',
       cancelText: 'Cancel',
       cancel: function() {
         console.log('CANCELLED');

@@ -49,6 +49,18 @@ angular.module('starter.services', [])
   };
 })
 
+.factory('Timeline', function() {
+  return {
+    desayuno: function() {
+      return [{name: 'Café con leche', info: '245 Kcal'},
+              {name: 'Tostada con mermelada', info: '250 Kcal'},
+              {name: 'Zumo de naranja', info: '10 Kcal'}
+      ];
+    }
+  }
+
+})
+
 .factory('Help', function() {
   return {
     loadPages: function($scope, $ionicNavBarDelegate) {
