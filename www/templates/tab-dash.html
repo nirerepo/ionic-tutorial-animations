@@ -92,15 +92,16 @@
           <p>Cenar limpio y ligero te ayudará a no tener una digestión lenta y pesada</p>
       </div>
     </div>
-<ks-swiper-container initial-slide="3" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="3" space-between="5" pagination-clickable="false" override-parameters="{effect: 'coverflow',coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}">
+    <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}">
     <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
-      <div class="item item-body">
-        <div>
-          Este es un slider diferente al de arriba...
+      <div class="card add animated fadeIn">
+        <div class="item item-body">
+            <h2>Mensaje {{s}}</h2>
+            <p>Tenemos una propuesta que no podrás rechazar...</p>
         </div>
       </div>
-    </ks-swiper-slide>            
-</ks-swiper-container>
+    </ks-swiper-slide>
+    </ks-swiper-container>
   </ion-content>
 </ion-view>
 
