@@ -77,10 +77,13 @@
     <gap:plugin name="cordova-plugin-whitelist" version="1.2.1" source="npm"/>
     <gap:plugin name="cordova-plugin-x-toast" source="npm" />
     <gap:plugin name="cordova-plugin-crosswalk-webview" source="npm" version="1.5.0"/>
-    <plugin name="cordova-plugin-facebook4" spec="~1.7.1">
+    <gap:plugin name="cordova-plugin-facebook4" spec="~1.7.1" source="npm">
         <variable name="APP_ID" value="1173888669289901" />
         <variable name="APP_NAME" value="nire-test" />
-    </plugin>
+    </gap:plugin>
+    <gap:plugin name="phonegap-plugin-push" spec="~1.6.4" source="npm">
+        <variable name="SENDER_ID" value="606551403580" />
+    </gap:plugin>
 
     <preference name="xwalkVersion" value="xwalk_core_library_beta:18+" />
     <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
