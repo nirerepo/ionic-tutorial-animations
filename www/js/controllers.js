@@ -1,10 +1,13 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $ionicActionSheet) {
+.controller('DashCtrl', function($scope, $ionicActionSheet, Timeline) {
   $scope.cards = [
     {  },
     {  }
   ];
+
+  $scope.desayuno = Timeline.desayuno();
+  console.log($scope.desayuno);
 
   $scope.cardDestroyed = function(index) {
     $scope.cards.splice(index, 1);
@@ -16,14 +19,17 @@ angular.module('starter.controllers', [])
   };
 
 //
-  $scope.showActionsheet = function() {
+  $scope.showActionsheet = function(plato) {
+    var title = '';
+    if (plato)
+      title = plato.name;
     $ionicActionSheet.show({
-      titleText: 'ActionSheet Example',
+      titleText: title,
       buttons: [
-        { text: '<i class="icon ion-share"></i> Share' },
-        { text: '<i class="icon ion-arrow-move"></i> Move' },
+        { text: '<i class="icon ion-arrow-move"></i>Planear mañana' },
+        { text: '<i class="icon ion-arrow-move"></i>Modificar' }
       ],
-      destructiveText: 'Delete',
+      destructiveText: '<i class="icon ion-share"></i>Borrar',
       cancelText: 'Cancel',
       cancel: function() {
         console.log('CANCELLED');
@@ -59,9 +65,11 @@ angular.module('starter.controllers', [])
 
 .controller('ChatDetailCtrl', function($scope, $state, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
-  $scope.showHelp = function() {
-    console.log('show help');
-    $state.go('help-actividad');
+  $scope.showHelp = function(tipo) {
+    if (!tipo)
+        tipo = ''
+    console.log("Show Help: ", tipo);
+    $state.go('help'+tipo, {startpage: 2});
   };
 })
 
@@ -84,7 +92,10 @@ angular.module('starter.controllers', [])
     $state.go('tab.dash');
   };
   $scope.showHelp = function(tipo) {
-    $state.go('help');
+    if (!tipo)
+        tipo = ''
+    console.log("Show Help: ", tipo);
+    $state.go('help'+tipo, {startpage: 0});
   };
   $scope.facebookLogin = function(){
     var fbLoginSuccess = function (userData) {
@@ -105,11 +116,11 @@ angular.module('starter.controllers', [])
 .controller('HelpCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, Help) {
   $scope.data = {};
   $scope.data.bgColors = [];
-  $scope.data.currentPage = 0;
-  console.log($ionicNavBarDelegate);
-  console.log($stateParams);
+  $scope.data.currentPage = $stateParams.startpage;
+  console.log("Current: ", $scope.data);
   Help.loadPages($scope, $ionicNavBarDelegate);
   $ionicNavBarDelegate.showBackButton(true);
-  window.plugins.toast.show("This is a help message", "long", "center");
+  if (window.plugins && window.plugins.toast)
+    window.plugins.toast.show("This is a help message", "long", "center");
 })
 ;

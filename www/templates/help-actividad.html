@@ -1,8 +1,4 @@
-<ion-view hide-nav-bar="false">
-<ion-nav-bar class="bar-stable custom-dark">
-  <ion-nav-back-button>
-  </ion-nav-back-button>
-</ion-nav-bar>
+<ion-content has-header="false">
   <ion-slides options="data.sliderOptions" slider="data.sliderDelegate">
     <ion-slide-page ng-repeat="bgColor in data.bgColors">
     <ion-pane>
@@ -12,4 +8,4 @@
     </ion-pane>
     </ion-slide-page>
   </ion-slides>
-</ion-view>
+</ion-content>

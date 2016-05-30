@@ -9841,9 +9841,12 @@ p, span, a, div {
 .pane {
   background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
-.diary .card .list .icon {
+.diary .list .icon {
   color: #BDC3C7;
   font-size: 2px !important; }
+
+.diary .add .item:active {
+  opacity: 0.6; }
 
 .diary .card {
   background: transparent; }
@@ -9911,8 +9914,7 @@ p, span, a, div {
 
 .card .item-body.content .item {
   color: #003245;
-  font-size: 18px;
-  background-color: #EDF2F5; }
+  font-size: 18px; }
 
 .card .item-divider.footer {
   font-family: MovistarText-Bold;
@@ -9921,6 +9923,11 @@ p, span, a, div {
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 18px; }
+
+/* Swipe action items */
+.card .item-complex.item-icon-right .item-content {
+  padding-left: 16px;
+  padding-right: 16px; }
 
 .bubble p {
   margin: 0px 0px 0px !important; }
@@ -9984,7 +9991,7 @@ p, span, a, div {
   font-size: 18px; }
 
 .bubble.system.loading {
-  background-image: url("http://i.imgur.com/vs8sKE9.gif");
+  background-image: url("img/chatloading.gif");
   background-size: 35px;
   background-repeat: no-repeat;
   background-position: center;
@@ -10010,6 +10017,42 @@ p, span, a, div {
   margin: 5px 5px 5px 5px;
   float: left;
   clear: none; }
+
+.box {
+  height: 100%; }
+
+ion-slides {
+  height: 100vh !important; }
+
+.bgColor_0 {
+  background-color: #cc2244; }
+
+.bgColor_1 {
+  background-color: #cc6622; }
+
+.bgColor_2 {
+  background-color: #cccc22; }
+
+.bgColor_3 {
+  background-color: #66cc22; }
+
+.bgColor_4 {
+  background-color: #22cc44; }
+
+.bgColor_5 {
+  background-color: #22ccaa; }
+
+.bgColor_6 {
+  background-color: #2288cc; }
+
+.bgColor_7 {
+  background-color: #2222cc; }
+
+.bgColor_8 {
+  background-color: #8822cc; }
+
+.bgColor_9 {
+  background-color: #cc22aa; }
 
 .swiper-container {
   height: inherit !important; }

@@ -2,7 +2,7 @@
   <ion-content class="padding diary">
       <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}">
       <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
-        <div class="card add animated fadeIn">
+        <div class="card animated fadeIn">
           <div class="item item-body">
               <h2>Consejo del día {{s}}</h2>
               <p>Al que madruga, buen arbol le cobija</p>
@@ -17,9 +17,23 @@
       </div>
     </div>
     <div class="card add animated fadeIn">
-      <div class="item item-body">
+      <item class="item item-body">
           <h2>Añadir mediamañana</h2>
           <p>No olvides tomar algo entre el desayuno y tu comida</p>
+      </item>
+    </div>
+    <div class="card animated fadeIn">
+      <div class="item item-divider header">Desayuno</div>
+      <div class="item item-body content">
+      <ion-list>
+        <ion-item class="item-remove-animate item-avatar item-icon-right chat-item" ng-repeat="plato in desayuno" type="item-text-wrap">
+          {{plato.name}}
+          <span class="item-info">{{plato.info}}</span>
+          <ion-option-button class="button-assertive" ng-click="remove(chat)">
+            Borrar
+          </ion-option-button>
+        </ion-item>
+      </ion-list>
       </div>
     </div>
     <div class="card animated fadeIn">
@@ -72,15 +86,16 @@
           <p>Cenar limpio y ligero te ayudará a no tener una digestión lenta y pesada</p>
       </div>
     </div>
-<ks-swiper-container initial-slide="3" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="3" space-between="5" pagination-clickable="false" override-parameters="{effect: 'coverflow',coverflow: {rotate: 50,stretch: 0,depth: 100,modifier: 1,slideShadows : false}}">
+    <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}">
     <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
-      <div class="item item-body">
-        <div>
-          Este es un slider diferente al de arriba...
+      <div class="card add animated fadeIn">
+        <div class="item item-body">
+            <h2>Mensaje {{s}}</h2>
+            <p>Tenemos una propuesta que no podrás rechazar...</p>
         </div>
       </div>
-    </ks-swiper-slide>            
-</ks-swiper-container>
+    </ks-swiper-slide>
+    </ks-swiper-container>
   </ion-content>
 </ion-view>
 

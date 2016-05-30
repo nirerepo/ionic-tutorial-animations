@@ -49,19 +49,31 @@ angular.module('starter.services', [])
   };
 })
 
+.factory('Timeline', function() {
+  return {
+    desayuno: function() {
+      return [{name: 'Café con leche', info: '245 Kcal'},
+              {name: 'Tostada con mermelada', info: '250 Kcal'},
+              {name: 'Zumo de naranja', info: '10 Kcal'}
+      ];
+    }
+  }
+
+})
+
 .factory('Help', function() {
   return {
     loadPages: function($scope, $ionicNavBarDelegate) {
       //$ionicNavBarDelegate.title('Cómo funciona Nire...');
 
-      for (var i = 0; i < 3; i++) {
+      for (var i = 0; i < 5; i++) {
         $scope.data.bgColors.push("bgColor_" + i);
       }
 
       var setupSlider = function() {
         //some options to pass to our slider
         $scope.data.sliderOptions = {
-          initialSlide: 0,
+          initialSlide: $scope.data.currentPage,
           direction: 'horizontal', //or vertical
           speed: 250 //0.3s transition
         };
