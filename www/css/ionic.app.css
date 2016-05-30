@@ -9841,9 +9841,12 @@ p, span, a, div {
 .pane {
   background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
-.diary .card .list .icon {
+.diary .list .icon {
   color: #BDC3C7;
   font-size: 2px !important; }
+
+.diary .add .item:active {
+  opacity: 0.6; }
 
 .diary .card {
   background: transparent; }
@@ -9911,8 +9914,7 @@ p, span, a, div {
 
 .card .item-body.content .item {
   color: #003245;
-  font-size: 18px;
-  background-color: #EDF2F5; }
+  font-size: 18px; }
 
 .card .item-divider.footer {
   font-family: MovistarText-Bold;
@@ -9921,6 +9923,11 @@ p, span, a, div {
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 18px; }
+
+/* Swipe action items */
+.card .item-complex.item-icon-right .item-content {
+  padding-left: 16px;
+  padding-right: 16px; }
 
 .bubble p {
   margin: 0px 0px 0px !important; }

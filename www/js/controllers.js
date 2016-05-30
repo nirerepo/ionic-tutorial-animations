@@ -20,8 +20,11 @@ angular.module('starter.controllers', [])
 
 //
   $scope.showActionsheet = function(plato) {
+    var title = '';
+    if (plato)
+      title = plato.name;
     $ionicActionSheet.show({
-      titleText: plato.name,
+      titleText: title,
       buttons: [
         { text: '<i class="icon ion-arrow-move"></i>Planear mañana' },
         { text: '<i class="icon ion-arrow-move"></i>Modificar' }
