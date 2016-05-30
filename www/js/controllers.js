@@ -86,6 +86,18 @@ angular.module('starter.controllers', [])
   $scope.showHelp = function(tipo) {
     $state.go('help');
   };
+  $scope.facebookLogin = function(){
+    var fbLoginSuccess = function (userData) {
+      var userId = userData.authResponse.userID;
+      console.log('Sign-In', userId);
+      $state.go('tab.dash');
+    }
+
+    facebookConnectPlugin.login(["public_profile", "email", "user_birthday"],
+      fbLoginSuccess,
+      function (error) { console.log(error) }
+    );
+  }
 
 
 })
