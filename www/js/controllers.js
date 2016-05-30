@@ -26,10 +26,10 @@ angular.module('starter.controllers', [])
     $ionicActionSheet.show({
       titleText: title,
       buttons: [
-        { text: '<i class="icon ion-arrow-move"></i>Planear mañana' },
-        { text: '<i class="icon ion-arrow-move"></i>Modificar' }
+        { text: '<i class="icon ion-arrow-move"></i>Cantidades' },
+        { text: '<i class="icon ion-arrow-move"></i>Sustituir' }
       ],
-      destructiveText: '<i class="icon ion-share"></i>Borrar',
+      destructiveText: '<i class="icon ion-share"></i>Quitar',
       cancelText: 'Cancel',
       cancel: function() {
         console.log('CANCELLED');
