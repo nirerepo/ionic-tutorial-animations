@@ -86,7 +86,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('SignInCtrl', function($scope, $state) {
-
+  initiatePushPlugin();
   $scope.signIn = function(user) {
     console.log('Sign-In', user);
     $state.go('tab.dash');

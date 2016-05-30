@@ -57,7 +57,8 @@ angular.module('starter.services', [])
         $scope.data.sliderOptions = {
           initialSlide: $scope.data.currentPage,
           direction: 'horizontal', //or vertical
-          speed: 250 //0.3s transition
+          speed: 250, //0.3s transition,
+          shortSwipes: false
         };
 
         //create delegate reference to link with slider
