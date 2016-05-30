@@ -6,7 +6,7 @@
   <ion-content class="padding diary">
       <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}">
       <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
-        <div class="card add animated fadeIn">
+        <div class="card animated fadeIn">
           <div class="item item-body">
               <h2>Consejo del día {{s}}</h2>
               <p>Al que madruga, buen arbol le cobija</p>
@@ -31,17 +31,11 @@
       <div class="item item-body content">
       <ion-list>
         <ion-item class="item-remove-animate item-avatar item-icon-right chat-item" ng-repeat="plato in desayuno" type="item-text-wrap">
-        <div class="item item-button-right">
           {{plato.name}}
           <span class="item-info">{{plato.info}}</span>
-          <button class="button button-icon" ng-click="showActionsheet(plato)">
-              <i class="icon ion-more"></i>
-          </button>
-
           <ion-option-button class="button-assertive" ng-click="remove(chat)">
             Borrar
           </ion-option-button>
-        </div>
         </ion-item>
       </ion-list>
       </div>

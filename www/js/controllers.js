@@ -20,8 +20,11 @@ angular.module('starter.controllers', [])
 
 //
   $scope.showActionsheet = function(plato) {
+    var title = '';
+    if (plato)
+      title = plato.name;
     $ionicActionSheet.show({
-      titleText: plato.name,
+      titleText: title,
       buttons: [
         { text: '<i class="icon ion-arrow-move"></i>Cantidades' },
         { text: '<i class="icon ion-arrow-move"></i>Sustituir' }
@@ -94,6 +97,18 @@ angular.module('starter.controllers', [])
     console.log("Show Help: ", tipo);
     $state.go('help'+tipo, {startpage: 0});
   };
+  $scope.facebookLogin = function(){
+    var fbLoginSuccess = function (userData) {
+      var userId = userData.authResponse.userID;
+      console.log('Sign-In', userId);
+      $state.go('tab.dash');
+    }
+
+    facebookConnectPlugin.login(["public_profile", "email", "user_birthday"],
+      fbLoginSuccess,
+      function (error) { console.log(error) }
+    );
+  }
 
 
 })

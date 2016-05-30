@@ -66,9 +66,13 @@ p, span, a, div {
 
 
 
-.diary .card .list .icon {
+.diary .list .icon {
 	color: $gray;
 	font-size: 2px!important;
+}
+
+.diary .add .item:active {
+	opacity: 0.6;
 }
 
 //////////////////
@@ -152,7 +156,6 @@ p, span, a, div {
 .card .item-body.content .item {
 	color: #003245;
 	font-size: 18px;
-	background-color: #EDF2F5;
 }
 
 .card .item-divider.footer {
@@ -162,6 +165,12 @@ p, span, a, div {
 	padding-top: 15px;
 	padding-bottom: 15px;
 	font-size: 18px;
+}
+
+/* Swipe action items */
+.card .item-complex.item-icon-right .item-content {
+	padding-left: 16px;
+	padding-right: 16px;
 }
 
 //////////////////
