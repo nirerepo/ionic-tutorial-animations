@@ -9876,15 +9876,13 @@ p, span, a, div {
   background-color: rgba(0, 52, 79, 0.5);
   color: #fff;
   padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 16px; }
+  padding-bottom: 10px; }
 
 .card .item-body.content {
   padding: 0px; }
 
 .card .item-body.content {
   color: #003245;
-  font-size: 18px;
   margin: 0px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -9893,7 +9891,6 @@ p, span, a, div {
 .card .item-body span.item-info {
   opacity: 0.6;
   font-family: MovistarText;
-  font-size: 14px;
   color: #003245;
   margin: 0px;
   display: block; }
@@ -9909,20 +9906,17 @@ p, span, a, div {
   align-items: center;
   position: absolute;
   top: 0;
-  height: 100%;
-  font-size: 32px; }
+  height: 100%; }
 
 .card .item-body.content .item {
-  color: #003245;
-  font-size: 18px; }
+  color: #003245; }
 
 .card .item-divider.footer {
   font-family: MovistarText-Bold;
   background-color: rgba(255, 255, 255, 0.35);
   color: #fff;
   padding-top: 15px;
-  padding-bottom: 15px;
-  font-size: 18px; }
+  padding-bottom: 15px; }
 
 /* Swipe action items */
 .card .item-complex.item-icon-right .item-content {
@@ -9987,8 +9981,7 @@ p, span, a, div {
 .bubble.system.ficha h2 {
   position: absolute;
   bottom: 0;
-  color: #fff;
-  font-size: 18px; }
+  color: #fff; }
 
 .bubble.system.loading {
   background-image: url("img/chatloading.gif");

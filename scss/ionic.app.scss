@@ -113,7 +113,7 @@ p, span, a, div {
 	color: $light;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	font-size: 16px;
+	// font-size: 16px;
 }
 
 .card .item-body.content {
@@ -122,7 +122,7 @@ p, span, a, div {
 
 .card .item-body.content {
 	color: $movistardark;
-    font-size: 18px;
+    // font-size: 18px;
     margin: $nomargin;
 	text-overflow: ellipsis;
     white-space: nowrap;
@@ -132,7 +132,7 @@ p, span, a, div {
 .card .item-body span.item-info {
 	opacity: 0.6;
 	font-family: MovistarText;
-	font-size: 14px;
+	// font-size: 14px;
 	color: $movistardark;
     margin: $nomargin;
     display: block;
@@ -150,12 +150,12 @@ p, span, a, div {
     position: absolute;
     top: 0;
     height: 100%;
-    font-size: 32px;
+    // font-size: 32px;
 }
 
 .card .item-body.content .item {
 	color: #003245;
-	font-size: 18px;
+	// font-size: 18px;
 }
 
 .card .item-divider.footer {
@@ -164,7 +164,7 @@ p, span, a, div {
 	color: $light;
 	padding-top: 15px;
 	padding-bottom: 15px;
-	font-size: 18px;
+	// font-size: 18px;
 }
 
 /* Swipe action items */
@@ -245,7 +245,7 @@ p, span, a, div {
 	position: absolute;
     bottom: 0;
 	color: $light;
-	font-size: 18px;
+	// font-size: 18px;
 }
 
 .bubble.system.loading {
