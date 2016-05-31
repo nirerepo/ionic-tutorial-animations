@@ -1,5 +1,4 @@
 var push
-<<<<<<< HEAD
 function initiatePushPlugin($q, $state) {
     if (typeof PushNotification !== 'undefined') {
         this.$state = $state
