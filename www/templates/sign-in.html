@@ -1,5 +1,5 @@
       <ion-view view-title="Sign-In">
-        <ion-content>
+        <ion-content class="has-header">
           <div class="list">
             <label class="item item-input">
               <span class="input-label">Username</span>
@@ -23,6 +23,9 @@
             <div>
               <p>Device token: {{pushToken}}</p>
             </div>
+            <button class="button button-block button-positive" ng-click="trackFood()">
+              New track
+            </button>
           </div>
         </ion-content>
       </ion-view>

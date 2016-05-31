@@ -102,6 +102,9 @@ angular.module('starter.controllers', [])
     console.log("Show Help: ", tipo);
     $state.go('help'+tipo, {startpage: 0});
   };
+  $scope.trackFood = function() {
+    $state.go('trackfood');
+  };
   $scope.facebookLogin = function(){
     var fbLoginSuccess = function (userData) {
       var userId = userData.authResponse.userID;
@@ -117,6 +120,25 @@ angular.module('starter.controllers', [])
 
 
 })
+.controller('TrackCtrl', function($scope, $state, $stateParams, FoodSearch) {
+    $scope.data = {
+      "plates" : [],
+      "search" : ''
+    };
+    $scope.search = function() {
+      console.log("Searching...", $scope.data.search);
+      FoodSearch.plateByName($scope.data.search).then(function(matches) {
+        $scope.data.plates = matches.data.hits.hits;
+      });
+    }
+/*
+    $scope.search().promise.then(function(rest) {
+      console.log("HITS: ", rest.data.hits.hits);
+      $scope.data.plates = rest.data.hits.hits;
+      console.log("PLATES: ", $scope.data.plates);
+    });
+*/
+})
 
 .controller('HelpCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, Help) {
   $scope.data = {};
@@ -128,4 +150,5 @@ angular.module('starter.controllers', [])
   if (window.plugins && window.plugins.toast)
     window.plugins.toast.show("This is a help message", "long", "center");
 })
+
 ;
