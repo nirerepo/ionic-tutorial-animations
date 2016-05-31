@@ -1,5 +1,8 @@
 var push
-function initiatePushPlugin() {
+function initiatePushPlugin($q, $state) {
+    this.$state = $state
+    var deferred = $q.defer();
+    var self = this;
     push = PushNotification.init({
         android: {
             senderID: 606551403580
@@ -14,9 +17,10 @@ function initiatePushPlugin() {
         // data.registrationId
         //saveClientToken(data.registrationId)
         console.log(data.registrationId)
+        deferred.resolve(data.registrationId)
     });
 
-    /*push.on('notification', function(data) {
+    push.on('notification', function(data) {
         // data.message,
         // data.title,
         // data.count,
@@ -24,12 +28,13 @@ function initiatePushPlugin() {
         // data.image,
         // data.additionalData
         console.log(data.additionalData)
-        if(!data.additionalData.foreground)
-            processAutoLogin(data.additionalData.token);
-    });*/
+        console.log(data.additionalData.redirect)
+        self.$state.go('tab.' + data.additionalData.redirect);
+    });
 
     push.on('error', function(e) {
-        console.log(e.message)
+        deferred.reject(e.message)
     });
+    return deferred.promise;
 }
 
