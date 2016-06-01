@@ -88,9 +88,10 @@ angular.module('starter.controllers', [])
 .controller('SignInCtrl', function($scope, $state, $q, $location) {
   
   var promise = initiatePushPlugin($q, $state);
-  promise.then(function(token){
-    $scope.pushToken = token;
-  })
+  if (promise)
+    promise.then(function(token){
+      $scope.pushToken = token;
+    })
 
   $scope.signIn = function(user) {
     console.log('Sign-In', user);
