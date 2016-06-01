@@ -1,3 +1,5 @@
+/// <reference path="../typings/index.d.ts" />
+
 var push
 function initiatePushPlugin($q, $state) {
     if (typeof PushNotification !== 'undefined') {

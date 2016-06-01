@@ -1,3 +1,5 @@
+/// <reference path="../typings/index.d.ts" />
+
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $ionicActionSheet, Timeline) {

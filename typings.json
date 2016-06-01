@@ -1,0 +1,7 @@
+{
+  "globalDependencies": {
+    "angular": "registry:dt/angular#1.5.0+20160517064839",
+    "cordova": "registry:dt/cordova#0.0.0+20160510234918",
+    "ionic": "registry:dt/ionic#0.0.0+20160501155303"
+  }
+}
