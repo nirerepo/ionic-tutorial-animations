@@ -1,19 +1,20 @@
-<ion-view hide-nav-bar="false" class="has-header">
-   <ion-header-bar class="bar-positive">
-      <h1 class="title">{{myTitle}}</h1>
-    </ion-header-bar>
-    <ion-header-bar class="bar-subheader item-input-inset">
+<ion-view hide-nav-bar="true" class="search">
+<ion-header-bar class="bar bar-header item-input-inset">
+  <a href="#" class="back"><i class="ion-close-round"></i></a>
   <label class="item-input-wrapper">
-    <i class="icon ion-ios7-search placeholder-icon"></i>
+    <i class="icon ion-android-search placeholder-icon"></i>
     <input type="search" placeholder="Search" ng-change="search()" ng-model="data.search">
   </label>
   <button class="button button-clear">
     Cancel
   </button>
-    </ion-header-bar>
+</ion-header-bar>
     <ion-content>
       <div class="list">
-        <li class="item" ng-repeat="plate in data.plates">{{plate.fields.nombredieta[0]}}</li>
+        <li class="item" ng-repeat="plate in data.plates">
+          <span class="item-title">{{plate.fields.nombredieta[0]}}</span><br>
+          <span class="item-info">{{plate.fields.nombredieta[0]}}</span>
+        </li>
       </div>
     </ion-content>
 </ion-view>

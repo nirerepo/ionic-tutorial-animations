@@ -1,19 +1,13 @@
-/*
-To customize the look and feel of Ionic, you can override the variables
-in ionic's _variables.scss file.
-
-For example, you might change some of the default colors:
-
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
+$light:                           #fff!default;
+$stable:                          #003245 !default;
+$positive:                        #7AB800 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
-*/
+
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -30,6 +24,7 @@ $cardshadow:                      0px 1px 2px 0px rgba(0,0,0,0.20);
 $cardradius:                      4px;
 
 $nomargin:						  0px;
+
 
 @font-face {
 	font-family: 'MovistarHeadline-Regular';
@@ -48,7 +43,7 @@ h1,h2,h3,h4 {
 	font-family: MovistarHeadline-Bold;
 }
 
-p, span, a, div {
+p, span, a, div, button, input {
 	font-family: MovistarText;
 }
 
@@ -68,7 +63,57 @@ p, span, a, div {
 	background: $movistargradient;
 }
 
+.search.pane {
+	background: #EDF2F5!important;
+}
 
+.list .item {
+	font-family: MovistarText;
+	font-size: 18px;
+	color: $movistardark;
+}
+
+.list .item .item-info {
+	font-size: 14px;
+	color: #7F8C8D;
+}
+
+///////////////////
+// - SEARCHBAR - //
+///////////////////
+
+.item-input-inset {
+	background-color: $movistardark;
+}
+
+.item-input-inset a.back {
+    padding-right: 15px;
+    color: $light;
+    font-size: 20px;
+}
+
+.item-input-wrapper {
+	background-color: rgba(255,255,255,.1);
+	height: 35px;
+}
+
+.bar.item-input-inset .item-input-wrapper input {
+	color: $light;
+	font-size: 16px;
+}
+
+.button-clear.button-clear {
+	color: $light;
+}
+
+.placeholder-icon {
+	color: $light;
+	font-size: 20px;
+}
+
+//////////////////
+// -- DIARIO -- //
+//////////////////
 
 .diary .content .item .icon {
 	color: $gray;
@@ -78,10 +123,6 @@ p, span, a, div {
 .diary .add .item:active {
 	opacity: 0.6;
 }
-
-//////////////////
-// -- DIARIO -- //
-//////////////////
 
 .diary .card {
 	background: transparent;
