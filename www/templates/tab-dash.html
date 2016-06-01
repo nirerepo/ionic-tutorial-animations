@@ -1,11 +1,11 @@
 
 <ion-view view-title="Hoy">
-  <ion-slides options="data.sliderOptions" slider="data.sliderDelegate">>
+  <ion-slides options="data.sliderOptions" slider="data.sliderDelegate">
     <ion-slide-page>
 
   <ion-content class="padding diary">
       <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}">
-      <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
+      <ks-swiper-slide class="swiper-slide light" ng-repeat="s in [1,2,3,4,5,6,7,8]">
         <div class="card animated fadeIn">
           <div class="item item-body">
               <h2>Consejo del día {{s}}</h2>
@@ -22,7 +22,7 @@
     </div>
     <div class="card add animated fadeIn">
       <item class="item item-body">
-          <h2>Añadir mediamañana</h2>
+          <h2 class="title">Añadir mediamañana</h2>
           <p>No olvides tomar algo entre el desayuno y tu comida</p>
       </item>
     </div>
@@ -41,31 +41,25 @@
       </div>
     </div>
     <div class="card animated fadeIn">
-      <div class="item item-divider header">Comida</div>
-      <div class="item item-body content">
-        <div class="list">
+      <div class="item item-divider header">
+        Comida
+      </div>
+      <div class=" item-body content">
           <div class="item item-button-right">
              Mi ensalada con queso de cabra y nueces
              <span class="item-info">173 Kcal</span>
-             <button class="button button-icon" ng-click="showActionsheet()">
-               <i class="icon ion-more"></i>
-             </button>
+            <button class="button button-icon" ng-click="showActionsheet()"><i class="icon ion-more"></i></button>
            </div>
           <div class="item item-button-right">
             Pollo en salsa de naranja
              <span class="item-info">210 Kcal</span>
-            <button class="button button-icon" ng-click="showActionsheet()">
-              <i class="icon ion-more"></i>
-            </button>
+            <button class="button button-icon" ng-click="showActionsheet()"><i class="icon ion-more"></i></button>
           </div>
           <div class="item item-button-right">
             Arroz con leche
-             <span class="item-info">168 Kcal</span>
-            <button class="button button-icon" ng-click="showActionsheet()">
-              <i class="icon ion-more"></i>
-            </button>
+            <span class="item-info">168 Kcal</span>
+            <button class="button button-icon" ng-click="showActionsheet()"><i class="icon ion-more"></i></button>
           </div>
-        </div>
       </div>
       <a class="item item-divider footer item-icon-right" ng-click="showActionsheet()">
         Añadir más...

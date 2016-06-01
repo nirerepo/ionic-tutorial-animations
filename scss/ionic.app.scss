@@ -1,19 +1,13 @@
-/*
-To customize the look and feel of Ionic, you can override the variables
-in ionic's _variables.scss file.
-
-For example, you might change some of the default colors:
-
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
+$light:                           #fff!default;
+$stable:                          #003245 !default;
+$positive:                        #7AB800 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
-*/
+
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -31,6 +25,11 @@ $cardradius:                      4px;
 
 $nomargin:						  0px;
 
+
+@font-face {
+	font-family: 'MovistarHeadline-Regular';
+	src: url("../lib/ionic/fonts/MovistarHeadline-Regular.ttf");
+}
 @font-face {
 	font-family: 'MovistarHeadline-Bold';
 	src: url("../lib/ionic/fonts/MovistarHeadline-Bold.ttf");
@@ -44,7 +43,7 @@ h1,h2,h3,h4 {
 	font-family: MovistarHeadline-Bold;
 }
 
-p, span, a, div {
+p, span, a, div, button, input {
 	font-family: MovistarText;
 }
 
@@ -64,9 +63,59 @@ p, span, a, div {
 	background: $movistargradient;
 }
 
+.search.pane {
+	background: #EDF2F5!important;
+}
 
+.list .item {
+	font-family: MovistarText;
+	font-size: 18px;
+	color: $movistardark;
+}
 
-.diary .list .icon {
+.list .item .item-info {
+	font-size: 14px;
+	color: #7F8C8D;
+}
+
+///////////////////
+// - SEARCHBAR - //
+///////////////////
+
+.item-input-inset {
+	background-color: $movistardark;
+}
+
+.item-input-inset a.back {
+    padding-right: 15px;
+    color: $light;
+    font-size: 20px;
+}
+
+.item-input-wrapper {
+	background-color: rgba(255,255,255,.1);
+	height: 35px;
+}
+
+.bar.item-input-inset .item-input-wrapper input {
+	color: $light;
+	font-size: 16px;
+}
+
+.button-clear.button-clear {
+	color: $light;
+}
+
+.placeholder-icon {
+	color: $light;
+	font-size: 20px;
+}
+
+//////////////////
+// -- DIARIO -- //
+//////////////////
+
+.diary .content .item .icon {
 	color: $gray;
 	font-size: 2px!important;
 }
@@ -75,21 +124,17 @@ p, span, a, div {
 	opacity: 0.6;
 }
 
-//////////////////
-// -- DIARIO -- //
-//////////////////
-
 .diary .card {
 	background: transparent;
 }
 
 .card {
 	box-shadow: $cardshadow;
+	border-radius: $cardradius;
+	padding-bottom: 0px;
 }
 
 .card.add .item {
-	box-shadow: $cardshadow;
-	border-radius: $cardradius;
 	background: rgba(255,255,255,0.20);
 }
 
@@ -101,7 +146,7 @@ p, span, a, div {
     font-weight: bolder;
 }
 
-.card.add .item p{
+.card.add .item p {
 	color: $light;
 	font-size: 18px;
 	margin-top: 0px;
@@ -113,16 +158,20 @@ p, span, a, div {
 	color: $light;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	font-size: 16px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-bottom: 0px;
+	border-radius: 0px;
 }
 
 .card .item-body.content {
 	padding: 0px;
+	border-radius: 0px;
+	background-color: #fff;
 }
 
 .card .item-body.content {
 	color: $movistardark;
-    font-size: 18px;
     margin: $nomargin;
 	text-overflow: ellipsis;
     white-space: nowrap;
@@ -132,7 +181,6 @@ p, span, a, div {
 .card .item-body span.item-info {
 	opacity: 0.6;
 	font-family: MovistarText;
-	font-size: 14px;
 	color: $movistardark;
     margin: $nomargin;
     display: block;
@@ -150,21 +198,34 @@ p, span, a, div {
     position: absolute;
     top: 0;
     height: 100%;
-    font-size: 32px;
+}
+
+.diary .card .item-button-right {
+	padding-right: 50px;
+}
+
+.diary .card .item-button-right > .button {
+	right: 10px;
 }
 
 .card .item-body.content .item {
 	color: #003245;
-	font-size: 18px;
+}
+
+.card .item:last-child {
+	margin-bottom: 0px;
+	border-bottom: 0px;
 }
 
 .card .item-divider.footer {
-	font-family: MovistarText-Bold;
+	font-family: MovistarText;
 	background-color: rgba(255,255,255,0.35);
 	color: $light;
 	padding-top: 15px;
 	padding-bottom: 15px;
-	font-size: 18px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-radius: 0px;
 }
 
 /* Swipe action items */
@@ -241,11 +302,12 @@ p, span, a, div {
 	background-position: center;
 }
 
-.bubble.system.ficha h2{
+.bubble.system.ficha h2 {
 	position: absolute;
     bottom: 0;
 	color: $light;
-	font-size: 18px;
+	font-size: 18px!important;
+	font-family: MovistarHeadline-Regular;
 }
 
 .bubble.system.loading {
@@ -312,17 +374,32 @@ $num-colors: 10;
 	background: $light!important;
 }
 
-.swiper-slide .item {
+.light.swiper-slide .item {
 	background-image: url('http://pngimg.com/upload/tree_PNG3498.png')!important;
-    background-size: 100px!important;
+	background-size: 100px!important;
     background-position: right!important;
-    background-color: #FFF !important;
     background-repeat: no-repeat!important;
-	box-shadow: $cardshadow;
-	border-radius: $cardradius;
+
 }
 
-.swiper-slide .item h2,
+.light.swiper-slide .item h2,
+.light.swiper-slide .item p {
+	color: $movistardark;
+}
+
+.dark.swiper-slide .item {
+	background-color: $movistardark;
+}
+
+.dark.swiper-slide .item h2,
+.dark.swiper-slide .item p {
+	color: $light;
+}
+
+.swiper-slide .item h2 {
+	font-size: 20px;
+}
+
 .swiper-slide .item p {
-    color: #01344F!important;
+	font-size: 18px;
 }
