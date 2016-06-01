@@ -123,7 +123,7 @@ angular.module('starter.controllers', [])
 
 
 })
-.controller('TrackCtrl', function($scope, $state, $stateParams, FoodSearch) {
+.controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, FoodSearch) {
     $scope.data = {
       "plates" : [],
       "search" : ''
@@ -134,6 +134,9 @@ angular.module('starter.controllers', [])
         $scope.data.plates = matches.data.hits.hits;
       });
     }
+    $scope.goBack = function() {
+      $ionicHistory.goBack();
+    };
 /*
     $scope.search().promise.then(function(rest) {
       console.log("HITS: ", rest.data.hits.hits);
