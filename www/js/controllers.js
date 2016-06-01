@@ -85,7 +85,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('SignInCtrl', function($scope, $state, $q, $location) {
+.controller('SignInCtrl', function($scope, $state, $q, $location, Login) {
   
   var promise = initiatePushPlugin($q, $state);
   if (promise)
@@ -94,8 +94,10 @@ angular.module('starter.controllers', [])
     })
 
   $scope.signIn = function(user) {
-    console.log('Sign-In', user);
-    $state.go('tab.dash');
+    Login.formLogin(user).then(function(data){
+      console.log('Sign-In', user);
+      $state.go('tab.dash');
+    })    
   };
   $scope.showHelp = function(tipo) {
     if (!tipo)
