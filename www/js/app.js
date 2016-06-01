@@ -88,7 +88,11 @@ angular.module('starter', [
       }
     }
   })
-
+  .state('trackfood', {
+    url: '/trackfood',
+    templateUrl: 'templates/track-food.html',
+    controller: 'TrackCtrl'
+  })
   .state('help', {
     url: '/help',
     params: { startpage: { dynamic: true } },

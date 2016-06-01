@@ -85,8 +85,13 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('SignInCtrl', function($scope, $state) {
-  initiatePushPlugin();
+.controller('SignInCtrl', function($scope, $state, $q, $location) {
+  
+  var promise = initiatePushPlugin($q, $state);
+  promise.then(function(token){
+    $scope.pushToken = token;
+  })
+
   $scope.signIn = function(user) {
     console.log('Sign-In', user);
     $state.go('tab.dash');
@@ -96,6 +101,9 @@ angular.module('starter.controllers', [])
         tipo = ''
     console.log("Show Help: ", tipo);
     $state.go('help'+tipo, {startpage: 0});
+  };
+  $scope.trackFood = function() {
+    $state.go('trackfood');
   };
   $scope.facebookLogin = function(){
     var fbLoginSuccess = function (userData) {
@@ -112,6 +120,25 @@ angular.module('starter.controllers', [])
 
 
 })
+.controller('TrackCtrl', function($scope, $state, $stateParams, FoodSearch) {
+    $scope.data = {
+      "plates" : [],
+      "search" : ''
+    };
+    $scope.search = function() {
+      console.log("Searching...", $scope.data.search);
+      FoodSearch.plateByName($scope.data.search).then(function(matches) {
+        $scope.data.plates = matches.data.hits.hits;
+      });
+    }
+/*
+    $scope.search().promise.then(function(rest) {
+      console.log("HITS: ", rest.data.hits.hits);
+      $scope.data.plates = rest.data.hits.hits;
+      console.log("PLATES: ", $scope.data.plates);
+    });
+*/
+})
 
 .controller('HelpCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, Help) {
   $scope.data = {};
@@ -123,4 +150,5 @@ angular.module('starter.controllers', [])
   if (window.plugins && window.plugins.toast)
     window.plugins.toast.show("This is a help message", "long", "center");
 })
+
 ;
