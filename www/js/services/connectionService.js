@@ -2,13 +2,13 @@ angular.module('starter.services')
 
 .factory('Connection', function($http) {
     var self = this;
-    self.currentHash = "";
-    self.currentUsername = "";
+    self.currentHash = null;
+    self.currentUsername = null;
 
     var URL_JSON_READER = "http://192.168.0.14:8080/nire/";
     var URL_JSON_WRITER = "http://192.168.0.14:8080/nire/";
 
-    var headers = function(){
+    self.getHeaders = function(){
         return { 
             "security-token": self.currentHash, 
             "security-user": self.currentUsername,
@@ -24,10 +24,11 @@ angular.module('starter.services')
     return {
         request: function(url, data){
             return $http({
-                headers: getHeaders(),
+                headers: self.getHeaders(),
                 url: URL_JSON_WRITER + url,
                 method: data ? "POST" : "GET",
-                data: data
+                data: data,
+                cache:false
             })
         }
     }
