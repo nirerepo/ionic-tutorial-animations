@@ -9,7 +9,8 @@ cli.with {
     t longOpt: 'token', args: 1, 'Token del dispositivo', required: true
     m longOpt: 'message', args: 1, 'Mensaje del push', required: true
     a longOpt: 'title', args: 1, 'Titulo del push', required: true
-    r longOpt: 'redirect', args: 1, 'Pagina a abrir con el push (dash, chats o account)', required: true
+    r longOpt: 'redirect', args: 1, 'Pagina a abrir con el push (dash, chats,chat-detail o account)', required: true
+    c longOpt: 'chatId', args: 1, 'Numero de chat al que se desea acceder (unicamente en chat-detail)'
 }
 
 def options = cli.parse(args)
@@ -23,11 +24,12 @@ def msgBody = [
     data: [
         message: options.m,
         title: options.a,
-        redirect: options.r,
+        redirect: "tab.${options.r}".toString(),
         bigview: true,
     ]
 ]
-
+if(options.c)
+    msgBody.data.params = [chatId:options.c]
 
 def http = new HTTPBuilder( androidService )
 http.request(POST) {

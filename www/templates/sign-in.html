@@ -17,13 +17,13 @@
             <button class="button button-block button-positive" ng-click="facebookLogin()">
               Facebook login
             </button>
-            <button class="button button-block button-positive" ng-click="showHelp()">
+            <button class="button button-block button-positive" nav-direction="enter" ui-sref="help">
               Help me!
             </button>
             <div>
-              <p>Device token: {{pushToken}}</p>
+              <p>Device token: <input tyle="text" value="{{pushToken}}"></p>
             </div>
-            <button class="button button-block button-positive" ng-click="trackFood()">
+            <button class="button button-block button-positive" nav-direction="enter" ui-sref="trackfood">
               New track
             </button>
           </div>

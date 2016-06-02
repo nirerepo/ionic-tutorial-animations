@@ -1,3 +1,5 @@
+/// <reference path="../typings/index.d.ts" />
+
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $ionicActionSheet, Timeline) {
@@ -85,7 +87,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('SignInCtrl', function($scope, $state, $q, $location) {
+.controller('SignInCtrl', function($scope, $state, $q, $location, Login) {
   
   var promise = initiatePushPlugin($q, $state);
   if (promise)
@@ -94,8 +96,10 @@ angular.module('starter.controllers', [])
     })
 
   $scope.signIn = function(user) {
-    console.log('Sign-In', user);
-    $state.go('tab.dash');
+    Login.formLogin(user).then(function(data){
+      console.log('Sign-In', user);
+      $state.go('tab.dash');
+    })    
   };
   $scope.showHelp = function(tipo) {
     if (!tipo)
@@ -121,7 +125,7 @@ angular.module('starter.controllers', [])
 
 
 })
-.controller('TrackCtrl', function($scope, $state, $stateParams, FoodSearch) {
+.controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, FoodSearch) {
     $scope.data = {
       "plates" : [],
       "search" : ''
@@ -132,6 +136,9 @@ angular.module('starter.controllers', [])
         $scope.data.plates = matches.data.hits.hits;
       });
     }
+    $scope.goBack = function() {
+      $ionicHistory.goBack();
+    };
 /*
     $scope.search().promise.then(function(rest) {
       console.log("HITS: ", rest.data.hits.hits);

@@ -1,3 +1,5 @@
+/// <reference path="../typings/index.d.ts" />
+
 var push
 function initiatePushPlugin($q, $state) {
     if (typeof PushNotification !== 'undefined') {
@@ -30,7 +32,7 @@ function initiatePushPlugin($q, $state) {
             // data.additionalData
             console.log(data.additionalData)
             console.log(data.additionalData.redirect)
-            self.$state.go('tab.' + data.additionalData.redirect);
+            self.$state.go(data.additionalData.redirect, data.additionalData.params);
         });
 
         push.on('error', function(e) {
