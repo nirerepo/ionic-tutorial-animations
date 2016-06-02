@@ -138,7 +138,7 @@ angular.module('starter.services', [])
           console.log("RES: ", res);
           rdo.resolve(res);
         }).catch(function(data, status) {
-          console.error('Gists error', response.status, response.data);
+          console.error('Gists error', data, status);
         })
         .finally(function() {
           console.log("finally finished gists");

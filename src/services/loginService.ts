@@ -7,7 +7,7 @@ angular.module('starter.services')
                 .then(function(result){
                     if(result.hash){
                         Connection.currentHash = result.hash;
-                        Connection.currentUsername = username;
+                        Connection.currentUsername = result.username;
                     }   
                 });
         }

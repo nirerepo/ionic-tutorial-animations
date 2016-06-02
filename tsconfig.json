@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es3"
+    "target": "es3",
+    "noEmit": true
   },
   
   "files": [
     "typings/index.d.ts",
+    "customTypings/index.d.ts",
     
     "src/controllers.ts",
     "src/initiatePushPlugin.ts",
