@@ -55,7 +55,7 @@ angular.module('starter', [
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        controller: 'DashCtrl as dash'
       }
     }
   })
