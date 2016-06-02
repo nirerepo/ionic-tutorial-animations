@@ -1,17 +1,13 @@
-interface DashControllerScope extends angular.IScope {
-  desayuno: any;  
-}
-
 class DashController {
-  public static $inject = ["$scope", "$ionicActionSheet", "Timeline"]
+  public static $inject = ["$ionicActionSheet", "Timeline"]
+  
+  public desayuno: any[]
   public cards : any[]
   
   constructor(
-    public $scope : DashControllerScope, 
     public $ionicActionSheet : ionic.actionSheet.IonicActionSheetService, 
     public Timeline) 
   {
-    $scope.desayuno = Timeline.desayuno;
   }
   
   public cardDestroyed(index: number) {
