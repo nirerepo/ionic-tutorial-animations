@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es3"
+  },
+  
+  "files": [
+    "typings/index.d.ts",
+    
+    "src/controllers.ts",
+    "src/initiatePushPlugin.ts",
+    "src/app.ts",
+    "src/services/services.ts",
+    "src/services/loginService.ts",
+    "src/services/connectionService.ts"
+  ]
+}

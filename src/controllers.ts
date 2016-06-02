@@ -1,4 +1,10 @@
-/// <reference path="../typings/index.d.ts" />
+class DashController {
+  public $inject = ["$scope", "$ionicActionSheet", "Timeline"]
+  
+  constructor(public $scope, public $ionicActionSheet, public Timeline) {
+    
+  }
+}
 
 angular.module('starter.controllers', [])
 
