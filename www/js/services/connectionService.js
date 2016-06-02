@@ -5,8 +5,8 @@ angular.module('starter.services')
     self.currentHash = null;
     self.currentUsername = null;
 
-    var URL_JSON_READER = "http://192.168.0.14:8080/nire/";
-    var URL_JSON_WRITER = "http://192.168.0.14:8080/nire/";
+    var URL_JSON_READER = "http://nire0.gailen.es:8080/nire/";
+    var URL_JSON_WRITER = "http://nire0.gailen.es:8080/nire/";
 
     self.getHeaders = function(){
         return { 
