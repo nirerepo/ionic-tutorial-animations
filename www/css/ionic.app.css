@@ -9832,8 +9832,12 @@ p, span, a, div, button, input {
 .pane {
   background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
-.search.pane {
+#track-food.pane {
   background: #EDF2F5 !important; }
+
+#signin.pane {
+  background-image: url("../img/clouds.jpg");
+  background-size: cover; }
 
 .list .item {
   font-family: MovistarText;
@@ -9856,9 +9860,6 @@ p, span, a, div, button, input {
 .bar.item-input-inset .item-input-wrapper input {
   color: #fff;
   font-size: 16px; }
-
-.bar.item-input-inset .item-input-wrapper input .placehoder {
-  color: red; }
 
 .button-clear.button-clear {
   color: #fff; }
