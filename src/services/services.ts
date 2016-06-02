@@ -1,3 +1,5 @@
+/// <reference path="../../typings/index.d.ts" />
+
 angular.module('starter.services', [])
 
 .factory('Chats', function() {
@@ -138,7 +140,7 @@ angular.module('starter.services', [])
           console.log("RES: ", res);
           rdo.resolve(res);
         }).catch(function(data, status) {
-          console.error('Gists error', data, status);
+          console.error('Gists error', response.status, response.data);
         })
         .finally(function() {
           console.log("finally finished gists");

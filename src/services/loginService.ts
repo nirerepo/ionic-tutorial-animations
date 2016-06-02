@@ -1,3 +1,5 @@
+/// <reference path="../../typings/index.d.ts" />
+
 angular.module('starter.services')
 
 .factory('Login', function(Connection) {
@@ -7,7 +9,7 @@ angular.module('starter.services')
                 .then(function(result){
                     if(result.hash){
                         Connection.currentHash = result.hash;
-                        Connection.currentUsername = result.username;
+                        Connection.currentUsername = username;
                     }   
                 });
         }

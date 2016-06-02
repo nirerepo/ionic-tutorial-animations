@@ -1,3 +1,5 @@
+/// <reference path="../typings/index.d.ts" />
+
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -55,7 +57,7 @@ angular.module('starter', [
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl as dash'
+        controller: 'DashCtrl'
       }
     }
   })

@@ -1,57 +1,54 @@
-class DashController {
-  public static $inject = ["$ionicActionSheet", "Timeline"]
-  
-  public desayuno: any[]
-  public cards : any[]
-  
-  constructor(
-    public $ionicActionSheet : ionic.actionSheet.IonicActionSheetService, 
-    public Timeline) 
-  {
-  }
-  
-  public cardDestroyed(index: number) {
-    this.cards.splice(index, 1);
-  }
-  
-  public cardSwiped(index: number) {
-    // TODO: instanciar una carta
-    let newCard = undefined;
-    this.cards.push(newCard);
-  }
-  
-  public showActionsheet(plato) {
-    let title = ""
-    if(plato) {
-      title = plato.name;
-      this.$ionicActionSheet.show({
-        titleText: title,
-        buttons: [
-          { text: '<i class="icon ion-arrow-move"></i>Cantidades' },
-          { text: '<i class="icon ion-arrow-move"></i>Sustituir' }
-        ],
-        destructiveText: '<i class="icon ion-share"></i>Quitar',
-        cancelText: "Cancel",
-        cancel: () => {
-          console.log('CANCELLED');
-        },
-        buttonClicked: (index: number) => {
-          console.log('BUTTON CLICKED', index);
-          return true;
-        },
-        destructiveButtonClicked: () => {
-          console.log('DESTRUCT');
-          return true;
-        }
-      });
-    }
-    
-  }
-}
+/// <reference path="../typings/index.d.ts" />
 
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', DashController)
+.controller('DashCtrl', function($scope, $ionicActionSheet, Timeline) {
+  $scope.cards = [
+    {  },
+    {  }
+  ];
+
+  $scope.desayuno = Timeline.desayuno();
+  console.log($scope.desayuno);
+
+  $scope.cardDestroyed = function(index) {
+    $scope.cards.splice(index, 1);
+  };
+
+  $scope.cardSwiped = function(index) {
+    var newCard = // new card data
+    $scope.cards.push(newCard);
+  };
+
+//
+  $scope.showActionsheet = function(plato) {
+    var title = '';
+    if (plato)
+      title = plato.name;
+    $ionicActionSheet.show({
+      titleText: title,
+      buttons: [
+        { text: '<i class="icon ion-arrow-move"></i>Cantidades' },
+        { text: '<i class="icon ion-arrow-move"></i>Sustituir' }
+      ],
+      destructiveText: '<i class="icon ion-share"></i>Quitar',
+      cancelText: 'Cancel',
+      cancel: function() {
+        console.log('CANCELLED');
+      },
+      buttonClicked: function(index) {
+        console.log('BUTTON CLICKED', index);
+        return true;
+      },
+      destructiveButtonClicked: function() {
+        console.log('DESTRUCT');
+        return true;
+      }
+    });
+  };
+//
+
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
