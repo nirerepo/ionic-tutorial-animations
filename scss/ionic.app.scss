@@ -16,7 +16,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 $movistargradient:                linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
 $movistargreen:                   #7AB800 !default;
-$movistardark:					  #003245 !default;
+$textdark:					  	  #003245 !default;
 $gray:							  #BDC3C7 !default;
 
 $cardshadow:                      0px 1px 2px 0px rgba(0,0,0,0.20); 
@@ -36,6 +36,10 @@ $nomargin:						  0px;
 @font-face {
 	font-family: 'MovistarText';
 	src: url("../lib/ionic/fonts/MovistarText-Regular.ttf");
+}
+@font-face {
+	font-family: 'MovistarText-Bold';
+	src: url("../lib/ionic/fonts/MovistarText-Bold.ttf");
 }
 
 h1,h2,h3,h4 {
@@ -78,7 +82,7 @@ p, span, a, div, button, input {
 .list .item {
 	font-family: MovistarText;
 	font-size: 18px;
-	color: $movistardark;
+	color: $textdark;
 }
 
 .list .item .item-info {
@@ -116,25 +120,15 @@ p, span, a, div, button, input {
 }
 
 .item-input-inset input::-webkit-input-placeholder {
-    color:    rgba(255,255,255,.3);
+    color: rgba(255,255,255,.3);
 }
 
 //////////////////
 // -- DIARIO -- //
 //////////////////
 
-.diary .content .item .icon {
+#diary .content .item i {
 	color: $gray;
-	font-size: 2px!important;
-}
-
-.diary .add .item:active {
-	opacity: 0.6;
-}
-
-.diary .card {
-	background: transparent;
-	margin: 10px 0px 5px 0px
 }
 
 .card {
@@ -143,8 +137,17 @@ p, span, a, div, button, input {
 	padding-bottom: 0px;
 }
 
+#diary .card {
+	background: transparent;
+	margin: 10px 0px 5px 0px
+}
+
 .card.add .item {
 	background: rgba(255,255,255,0.20);
+}
+
+#diary .add .item:active {
+	opacity: 0.6;
 }
 
 .card.add .item h2 {
@@ -165,8 +168,8 @@ p, span, a, div, button, input {
 	font-family: MovistarHeadline-Bold;
 	background-color: rgba(0,52,79,0.50);
 	color: $light;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 12px;
+	padding-bottom: 12px;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
 	border-bottom: 0px;
@@ -174,23 +177,19 @@ p, span, a, div, button, input {
 }
 
 .card .item-body.content {
+    margin: $nomargin;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 	padding: 0px;
 	border-radius: 0px;
 	background-color: #fff;
 }
 
-.card .item-body.content {
-	color: $movistardark;
-    margin: $nomargin;
-	text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
 .card .item-body span.item-info {
 	opacity: 0.6;
 	font-family: MovistarText;
-	color: $movistardark;
+	color: $textdark;
     margin: $nomargin;
     display: block;
 }
@@ -209,16 +208,16 @@ p, span, a, div, button, input {
     height: 100%;
 }
 
-.diary .card .item-button-right {
+#diary .card .item-button-right {
 	padding-right: 50px;
 }
 
-.diary .card .item-button-right > .button {
+#diary .card .item-button-right > .button {
 	right: 10px;
 }
 
 .card .item-body.content .item {
-	color: #003245;
+	color: $textdark;
 }
 
 .card .item:last-child {
@@ -227,14 +226,19 @@ p, span, a, div, button, input {
 }
 
 .card .item-divider.footer {
-	font-family: MovistarText;
-	background-color: rgba(255,255,255,0.35);
 	color: $light;
-	padding-top: 15px;
-	padding-bottom: 15px;
+	font-size: 18px;
+	font-family: 'MovistarText-Bold';
+	background-color: rgba(255,255,255,0.35);
+	padding-top: 20px;
+	padding-bottom: 20px;
 	border-bottom-left-radius: 4px;
 	border-bottom-right-radius: 4px;
 	border-radius: 0px;
+}
+
+.card .item-divider.footer i {
+	font-size: 25px;
 }
 
 /* Swipe action items */
@@ -247,10 +251,6 @@ p, span, a, div, button, input {
 // --- CHAT --- //
 //////////////////
 
-.bubble p {
-	margin: 0px 0px 0px!important;
-}
-
 .conversation {
 	display: block;
 	overflow: auto;
@@ -262,8 +262,8 @@ p, span, a, div, button, input {
 	padding: 15px;
     max-width: 85%;
     clear: both;
-   	font-size: 16px;
-   	line-height: 20px;
+   	font-size: 18px;
+   	line-height: 22px;
    	display: block;
 }
 
@@ -272,11 +272,14 @@ p, span, a, div, button, input {
 	color: $light;
 	margin: 5px 0 10px 0;
 }
-
 .bubble.system {
 	color: $light;
 	background-color: rgba(255,255,255,0.20);
 	float: left;
+}
+
+.bubble p {
+	margin: 0px 0px 0px!important;
 }
 
 .ficha-wrapper {
@@ -294,11 +297,11 @@ p, span, a, div, button, input {
 
 .icon-light {
 	background-image: url('http://i.imgur.com/ZXypoDA.png');
-	background-size: 15px;
+	background-size: 20px;
 	background-repeat: no-repeat;
 	color: $light;
-	height: 15px;
-	width: 15px;
+	height: 20px;
+	width: 20px;
 }
 
 .bubble.system.ficha {
@@ -319,7 +322,7 @@ p, span, a, div, button, input {
 }
 
 .bubble.system.loading {
-	background-image: url('img/chatloading.gif');
+	background-image: url('../img/chatloading.gif');
 	background-size: 35px;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -376,7 +379,7 @@ $num-colors: 10;
 }
 
 .swiper-slide > .card {
-	margin: 0px 0px 20px 0px;
+	margin: 0px 0px 20px 0px!important;
 }
 
 .swiper-container-horizontal>.swiper-pagination {
@@ -397,11 +400,7 @@ $num-colors: 10;
 
 .light.swiper-slide .item h2,
 .light.swiper-slide .item p {
-	color: $movistardark;
-}
-
-.dark.swiper-slide .item {
-	background-color: $movistardark;
+	color: $textdark;
 }
 
 .dark.swiper-slide .item h2,
