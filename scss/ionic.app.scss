@@ -1,13 +1,12 @@
 $light:                           #fff!default;
-$stable:                          #003245 !default;
+$stable:                          #5CD2ED !default;
 $positive:                        #7AB800 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-$dark:                            #444 !default;
-
+$dark:                            #01344F !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -47,6 +46,10 @@ p, span, a, div, button, input {
 	font-family: MovistarText;
 }
 
+.action-sheet-wrapper button{
+	font-family: -apple-system, 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif!important;
+}
+
 .bar.bar-stable .title {
 	color: #FFF;
 }
@@ -82,10 +85,6 @@ p, span, a, div, button, input {
 // - SEARCHBAR - //
 ///////////////////
 
-.item-input-inset {
-	background-color: $movistardark;
-}
-
 .item-input-inset a.back {
     padding-right: 15px;
     color: $light;
@@ -102,6 +101,10 @@ p, span, a, div, button, input {
 	font-size: 16px;
 }
 
+.bar.item-input-inset .item-input-wrapper input .placehoder {
+	color: red;
+}
+
 .button-clear.button-clear {
 	color: $light;
 }
@@ -109,6 +112,10 @@ p, span, a, div, button, input {
 .placeholder-icon {
 	color: $light;
 	font-size: 20px;
+}
+
+.item-input-inset input::-webkit-input-placeholder {
+    color:    rgba(255,255,255,.3);
 }
 
 //////////////////
@@ -126,6 +133,7 @@ p, span, a, div, button, input {
 
 .diary .card {
 	background: transparent;
+	margin: 10px 0px 5px 0px
 }
 
 .card {
@@ -307,7 +315,6 @@ p, span, a, div, button, input {
     bottom: 0;
 	color: $light;
 	font-size: 18px!important;
-	font-family: MovistarHeadline-Regular;
 }
 
 .bubble.system.loading {
@@ -364,6 +371,11 @@ $num-colors: 10;
 
 .swiper-container {
 	height: inherit!important;
+	display: block;
+}
+
+.swiper-slide > .card {
+	margin: 0px 0px 20px 0px;
 }
 
 .swiper-container-horizontal>.swiper-pagination {
