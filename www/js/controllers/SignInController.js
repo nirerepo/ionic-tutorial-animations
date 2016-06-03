@@ -5,7 +5,7 @@
  * @param {LoginService} Login
  * @param {ng.ui.IStateService} $state
  */
-function SignInCtrl(push, Login, $state) {
+function SignInCtrl($scope, push, Login, $state) {
     this.user = { username: "", password: "" };
     this.pushToken = "This is the push token in a device.";
     
@@ -19,7 +19,7 @@ function SignInCtrl(push, Login, $state) {
      * Intenta loguear un usuario a la aplicación por medio de username & password.
      */
     this.signIn = function() {
-        Login.formLogin(user).then(function(data) {
+        Login.formLogin($scope.vm.user).then(function(data) {
             $state.go("tab.dash");
         });        
     }
