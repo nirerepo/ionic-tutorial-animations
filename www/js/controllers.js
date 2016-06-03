@@ -73,36 +73,6 @@ angular.module('starter.controllers', [])
         $state.go('signin');
     };
 })
-    .controller('SignInCtrl', function ($scope, $state, $q, $location, Login) {
-    var promise = initiatePushPlugin($q, $state);
-    if (promise)
-        promise.then(function (token) {
-            $scope.pushToken = token;
-        });
-    $scope.signIn = function (user) {
-        Login.formLogin(user).then(function (data) {
-            console.log('Sign-In', user);
-            $state.go('tab.dash');
-        });
-    };
-    $scope.showHelp = function (tipo) {
-        if (!tipo)
-            tipo = '';
-        console.log("Show Help: ", tipo);
-        $state.go('help' + tipo, { startpage: 0 });
-    };
-    $scope.trackFood = function () {
-        $state.go('trackfood');
-    };
-    $scope.facebookLogin = function () {
-        var fbLoginSuccess = function (userData) {
-            var userId = userData.authResponse.userID;
-            console.log('Sign-In', userId);
-            $state.go('tab.dash');
-        };
-        facebookConnectPlugin.login(["public_profile", "email", "user_birthday"], fbLoginSuccess, function (error) { console.log(error); });
-    };
-})
 .controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, FoodSearch) {
     $scope.data = {
         "plates": [],

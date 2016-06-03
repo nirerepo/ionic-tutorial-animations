@@ -1,31 +1,31 @@
-      <ion-view view-title="Sign-In">
-        <ion-content class="has-header" id="signin">
-          <div class="list">
-            <label class="item item-input">
-              <span class="input-label">Username</span>
-              <input type="text" ng-model="user.username">
-            </label>
-            <label class="item item-input">
-              <span class="input-label">Password</span>
-              <input type="password" ng-model="user.password">
-            </label>
-          </div>
-          <div class="padding">
-            <button class="button button-block button-positive" ng-click="signIn(user)">
-              Sign-In
-            </button>
-            <button class="button button-block button-positive" ng-click="facebookLogin()">
-              Facebook login
-            </button>
-            <button class="button button-block button-positive" nav-direction="enter" ui-sref="help">
-              Help me!
-            </button>
-            <div>
-              <p>Device token: <input tyle="text" value="{{pushToken}}"></p>
-            </div>
-            <button class="item button button-block button-positive" nav-transition="none" nav-direction="enter" ui-sref="trackfood">
-              New track
-            </button>
-          </div>
-        </ion-content>
-      </ion-view>
+<ion-view view-title="Sign-In">
+  <ion-content class="has-header" id="signin">
+    
+    <div class="list card">
+      <label class="item item-input">
+        <input type="text" placeholder="Username" ng-model="vm.user.username">
+      </label>
+      <label class="item item-input">
+        <input type="password" placeholder="Password" ng-model="vm.user.password">
+      </label>
+    </div>
+    <div class="padding">
+      <button class="button button-block button-positive" ng-click="vm.signIn()">
+        Sign-In
+      </button>
+    </div>
+
+    <div class="padding">
+      <button class="button button-block button-positive" ng-click="facebookLogin()">
+        Facebook login
+      </button>
+    </div>
+    
+    <div class="list">
+      <label class="item item-input item-stacked-label padding">
+        <span class="input-label">Pushh Token</span>
+        <input type="text" value="{{ vm.pushToken }}" readonly>
+      </label>
+    </div>
+  </ion-content>
+</ion-view>

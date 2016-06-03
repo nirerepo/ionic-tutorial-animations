@@ -34,7 +34,7 @@ angular.module('starter', [
         .state('signin', {
         url: '/sign-in',
         templateUrl: "templates/sign-in.html",
-        controller: 'SignInCtrl'
+        controller: 'SignInCtrl as vm'
     })
         .state('tab', {
         url: '/tab',
