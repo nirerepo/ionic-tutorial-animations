@@ -10,26 +10,26 @@ function PushService($q, $state) {
         if(!window.PushNotification) {
             deferred.reject("Push plugin no instalado.");
             return deferred.promise;
-        };
+        }
 
         this.push = PushNotification.init({
             android: { senderID: "606551403580" }
         });
         
         this.push.on('registration', function(data) { 
-            deferred.resolve(data.registrationId) 
+            deferred.resolve(data.registrationId); 
         });
         
         this.push.on('notification', function(data) {
-           $state.go(data.additionalData.redirect, data.additionalData.params)
+           $state.go(data.additionalData.redirect, data.additionalData.params);
         });
         
         this.push.on('error', function(data) {
-            deferred.reject(data.message)
-        })
+            deferred.reject(data.message);
+        });
         
         return deferred.promise;
-    }
+    };
 }
 
 angular.module('starter.services')

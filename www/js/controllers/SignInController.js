@@ -12,7 +12,7 @@ function SignInCtrl($scope, push, Login, $state) {
     // Cuando se instancia este controller, aprovechamos para inicializar
     // las notificaciones push
     push.init().then(function(value) { 
-        this.pushToken = value 
+        this.pushToken = value; 
     }.bind(this));
 
     /**
@@ -22,7 +22,7 @@ function SignInCtrl($scope, push, Login, $state) {
         Login.formLogin($scope.vm.user).then(function(data) {
             $state.go("tab.dash");
         });        
-    }
+    };
 
     /**
      * Intenta loguear un usuario utilizando autenticacion de Facebook.
@@ -34,8 +34,8 @@ function SignInCtrl($scope, push, Login, $state) {
             $state.go('tab.dash');
         };
         facebookConnectPlugin.login(["public_profile", "email", "user_birthday"], fbLoginSuccess, function (error) { console.log(error); });
-    }
-};
+    };
+}
 
 angular.module('starter.controllers')
     .controller('SignInCtrl', SignInCtrl);
