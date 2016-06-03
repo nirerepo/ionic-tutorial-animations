@@ -21,8 +21,7 @@ angular.module('starter.controllers')
     /**
      * 
      */
-    this.showHelp = function() {
-        
+    this.showHelp = function() {       
     }
     
     var promise = initiatePushPlugin($q, $state);
@@ -35,15 +34,6 @@ angular.module('starter.controllers')
             console.log('Sign-In', user);
             $state.go('tab.dash');
         });
-    };
-    $scope.showHelp = function (tipo) {
-        if (!tipo)
-            tipo = '';
-        console.log("Show Help: ", tipo);
-        $state.go('help' + tipo, { startpage: 0 });
-    };
-    $scope.trackFood = function () {
-        $state.go('trackfood');
     };
     $scope.facebookLogin = function () {
         var fbLoginSuccess = function (userData) {
