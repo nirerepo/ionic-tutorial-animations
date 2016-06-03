@@ -12,8 +12,8 @@ function ConnectionService($http) {
         return { 
             "security-token": self.currentHash, 
             "security-user": self.currentUsername,
-            "Accept-Language": "en-AR",
-            "App-Domain": "nire",
+            "Accept-Language": "es-CO",
+            "App-Domain": "movistarSalud",
             "App-TimezoneOffset": new Date().getTimezoneOffset(),
             "Content-Type": 'application/x-www-form-urlencoded'
         };
