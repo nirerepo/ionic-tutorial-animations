@@ -53,6 +53,26 @@ angular.module('starter', [
                 templateUrl: 'templates/sign-in-email.html'
             })
             
+            .state('registro-datos', {
+                url: '/registro-datos',
+                templateUrl: 'templates/registro/datos.html'
+            })
+
+            .state('registro-numero', {
+                url: '/registro-numero',
+                templateUrl: 'templates/registro/numero.html'
+            })
+
+            .state('registro-no-movistar', {
+                url: '/registro-no-movistar',
+                templateUrl: 'templates/registro/no-movistar.html'
+            })
+            
+            .state('registro-codigo', {
+                url: '/registro-codigo',
+                templateUrl: 'templates/registro/codigo.html'
+            })
+            
             .state('tab', {
                 url: '/tab',
                 abstract: true,
