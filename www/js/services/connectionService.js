@@ -2,8 +2,8 @@
 function ConnectionService($http) {
     var self = this;
 
-    var URL_JSON_READER = "http://localhost:8080/nire/";
-    var URL_JSON_WRITER = "http://localhost:8080/nire/";
+    var URL_JSON_READER = "http://nire0.gailen.es:8080/nire/";
+    var URL_JSON_WRITER = "http://nire0.gailen.es:8080/nire/";
 
     self.currentHash = null;
     self.currentUsername = null;
