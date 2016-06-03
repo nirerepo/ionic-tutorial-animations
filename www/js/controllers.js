@@ -4,7 +4,9 @@ angular.module('starter.controllers', [])
         {},
         {}
     ];
-    $scope.platos = Timeline.get();
+    Timeline.get().then(function(result){
+        $scope.nutrition = result.data.data.body.nutrition
+    });
     //$scope.desayuno = Timeline.desayuno();
     console.log($scope.desayuno);
     $scope.cardDestroyed = function (index) {

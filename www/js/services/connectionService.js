@@ -1,11 +1,12 @@
-angular.module('starter.services')
-    .factory('Connection', function ($http) {
+
+function ConnectionService($http) {
     var self = this;
+
+    var URL_JSON_READER = "http://localhost:8080/nire/";
+    var URL_JSON_WRITER = "http://localhost:8080/nire/";
+
     self.currentHash = null;
     self.currentUsername = null;
-
-    var URL_JSON_READER = "http://nire0.gailen.es:8080/nire/";
-    var URL_JSON_WRITER = "http://nire0.gailen.es:8080/nire/";
 
     self.getHeaders = function(){
         return { 
@@ -13,18 +14,21 @@ angular.module('starter.services')
             "security-user": self.currentUsername,
             "Accept-Language": "en-AR",
             "App-Domain": "nire",
-            "App-TimezoneOffset": new Date().getTimezoneOffset()
+            "App-TimezoneOffset": new Date().getTimezoneOffset(),
+            "Content-Type": 'application/x-www-form-urlencoded'
         };
     };
-    return {
-        request: function (url, data) {
-            return $http({
-                headers: self.getHeaders(),
-                url: URL_JSON_WRITER + url,
-                method: data ? "POST" : "GET",
-                data: data,
-                cache:false
-            })
-        }
+
+    self.request = function (url, data) {
+        return $http({
+            headers: self.getHeaders(),
+            url: URL_JSON_WRITER + url,
+            method: data ? "POST" : "GET",
+            data: data ? $.param(data) : null,
+            cache:false
+        })
     }
-});
+}
+
+angular.module('starter.services')
+    .service('Connection', ConnectionService);

@@ -4,9 +4,9 @@ angular.module('starter.services')
         formLogin: function (user) {
             return Connection.request("login/login", { username: user.username, password: user.password })
                 .then(function (result) {
-                if (result.hash) {
-                    Connection.currentHash = result.hash;
-                    Connection.currentUsername = username;
+                if (result.data.hash) {
+                    Connection.currentHash = result.data.hash;
+                    Connection.currentUsername = result.data.assignedUsername;
                 }
             });
         }

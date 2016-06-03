@@ -26,46 +26,22 @@
           <p>No olvides tomar algo entre el desayuno y tu comida</p>
       </item>
     </div>
-    <div class="card animated fadeIn">
-      <div class="item item-divider header">Desayuno</div>
+    <div ng-repeat="nutritionSeccion in nutrition" class="card animated fadeIn">
+      <div class="item item-divider header">{{nutritionSeccion.type}}</div>
       <div class="item item-body content">
       <ion-list>
-        <ion-item class="item-remove-animate item-avatar item-icon-right chat-item" ng-repeat="plato in desayuno" type="item-text-wrap">
-          {{plato.name}}
-          <span class="item-info">{{plato.info}}</span>
-          <ion-option-button class="button-assertive" ng-click="remove(chat)">
-            Borrar
-          </ion-option-button>
+        <ion-item class="item-remove-animate item-avatar item-icon-right chat-item" ng-repeat="plato in nutritionSeccion.items" type="item-text-wrap">
+          {{plato.title}}
+          <span class="item-info">{{plato.quantity}}</span>
+          <!--<button class="button button-icon" ng-click="showActionsheet()"><i class="icon ion-more"></i></button>-->
         </ion-item>
       </ion-list>
-      </div>
-    </div>
-    <div class="card animated fadeIn">
-      <div class="item item-divider header">
-        Comida
-      </div>
-      <div class=" item-body content">
-          <div class="item item-button-right">
-             Mi ensalada con queso de cabra y nueces
-             <span class="item-info">173 Kcal</span>
-            <button class="button button-icon" ng-click="showActionsheet()"><i class="icon ion-more"></i></button>
-           </div>
-          <div class="item item-button-right">
-            Pollo en salsa de naranja
-             <span class="item-info">210 Kcal</span>
-            <button class="button button-icon" ng-click="showActionsheet()"><i class="icon ion-more"></i></button>
-          </div>
-          <div class="item item-button-right">
-            Arroz con leche
-            <span class="item-info">168 Kcal</span>
-            <button class="button button-icon" ng-click="showActionsheet()"><i class="icon ion-more"></i></button>
-          </div>
-      </div>
       <a class="item item-divider footer item-icon-right" ng-click="showActionsheet()">
         Añadir más...
             <i class="icon ion-plus-round"></i>
       </a>
- </div>
+      </div>
+    </div>
     <div class="card add animated fadeIn">
       <div class="item item-body">
           <h2>Añadir ejercicio físico</h2>

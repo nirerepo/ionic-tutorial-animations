@@ -46,40 +46,6 @@ angular.module('starter.services', [])
         }
     };
 })
-    .factory('Timeline', function () {
-    return {
-        init: function ($scope, $sliderDelegate) {
-            var setupSlider = function () {
-                //some options to pass to our slider
-                $scope.data.sliderOptions = {
-                    initialSlide: $scope.data.currentPage,
-                    direction: 'horizontal',
-                    speed: 250,
-                    shortSwipes: false
-                };
-                //create delegate reference to link with slider
-                $scope.data.sliderDelegate = null;
-                //watch our sliderDelegate reference, and use it when it becomes available
-                $scope.$watch('data.sliderDelegate', function (newVal, oldVal) {
-                    if (newVal != null) {
-                        $scope.data.sliderDelegate.on('slideChangeEnd', function () {
-                            $scope.data.currentPage = $scope.data.sliderDelegate.activeIndex;
-                            //use $scope.$apply() to refresh any content external to the slider
-                            $scope.$apply();
-                        });
-                    }
-                });
-            };
-            setupSlider();
-        },
-        desayuno: function () {
-            return [{ name: 'Café con leche', info: '245 Kcal' },
-                { name: 'Tostada con mermelada', info: '250 Kcal' },
-                { name: 'Zumo de naranja', info: '10 Kcal' }
-            ];
-        }
-    };
-})
     .factory('Help', function () {
     return {
         loadPages: function ($scope, $ionicNavBarDelegate) {
