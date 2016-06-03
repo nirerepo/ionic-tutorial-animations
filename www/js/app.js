@@ -48,6 +48,11 @@ angular.module('starter', [
                 controller: 'SignInPasswordCtrl as vm'
             })
             
+            .state('signin-email', {
+                url: '/signin-email',
+                templateUrl: 'templates/sign-in-email.html'
+            })
+            
             .state('tab', {
                 url: '/tab',
                 abstract: true,
