@@ -5,16 +5,16 @@ navigation history that also transitions its views in and out.
 -->
 <ion-view>
 <ion-pane>
-<ion-tabs class="tabs-icon-top tabs-color-active-light">
+<ion-tabs class="tabs-icon-top tabs-dark">
+
+  <!-- Chats Tab -->
+  <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats/1">
+    <ion-nav-view name="tab-chats" class="animated fadeIn"></ion-nav-view>
+  </ion-tab> 
 
   <!-- Dashboard Tab -->
   <ion-tab title="Timeline" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/dash">
     <ion-nav-view name="tab-dash" class="animated fadeIn"></ion-nav-view>
-  </ion-tab>
-
-  <!-- Chats Tab -->
-  <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats">
-    <ion-nav-view name="tab-chats" class="animated fadeIn"></ion-nav-view>
   </ion-tab>
 
   <!-- Account Tab -->

@@ -1,29 +1,5 @@
-$light:                           #fff!default;
-$stable:                          #5CD2ED !default;
-$positive:                        #7AB800 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #01344F !default;
-
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
-
-// Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
-
-$movistargradient:                linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
-$movistargreen:                   #7AB800 !default;
-$movistardark:					  #003245 !default;
-$gray:							  #BDC3C7 !default;
-
-$cardshadow:                      0px 1px 2px 0px rgba(0,0,0,0.20); 
-$cardradius:                      4px;
-
-$nomargin:						  0px;
-
 
 @font-face {
 	font-family: 'MovistarHeadline-Regular';
@@ -37,48 +13,235 @@ $nomargin:						  0px;
 	font-family: 'MovistarText';
 	src: url("../lib/ionic/fonts/MovistarText-Regular.ttf");
 }
+@font-face {
+	font-family: 'MovistarText-Bold';
+	src: url("../lib/ionic/fonts/MovistarText-Bold.ttf");
+}
+
+//	Colors
+$light:                           #fff!default;
+$stable:                          #01344F !default;
+$positive:                        #7AB800 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #01344F !default;
+
+//	Base Font
+$base-font-family:					MovistarText;
+$base-font-family-bold:				MovistarText-Bold;
+$base-font-size-default:			16px;
+$base-font-size-large:				18px;
+$base-font-line-height:				1.4;
+$base-font-color-dark:				#01344F;
+$base-font-color-soft:				#7F8C8D;
+
+//	Small Font
+$small-font-family:					MovistarText;
+$small-font-size-default:			14px;
+$small-font-color:					rgba(0,50,69,0.50);
+
+//	Headings
+$header-font-family:				MovistarHeadline-Bold;
+$header-font-size-bigger:			20px;
+$header-font-size-default:			16px;
+$header-font-size-smaller:			10px;
+
+//	Base colors
+
+//	Backgrounds
+$background-1:						url("../img/clouds.jpg"); //Image
+$background-2:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); //Gradient
+$background-3:						#EDF2F5; //Solid-color-1
+
+//	Element default details
+$shadow-default:                   	0px 1px 2px 0px rgba(0,0,0,0.20); 
+$radius-default:                  	4px;
+$background-transparent:			rgba(255,255,255,0.20);
+
+	// 	Cards
+	$card-shadow:                  	$shadow-default; 
+	$card-radius:                  	$radius-default;
+	$card-background-transparent:	$background-transparent;
+
+	//	Forms
+	$input-radius:					$radius-default;
+	$input-color-placeholder:       rgba(0,52,79,0.70);
+
+
+
+$movistargreen:                 	#7AB800 !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
 
 h1,h2,h3,h4 {
-	font-family: MovistarHeadline-Bold;
+	font-family: $header-font-family;
 }
 
 p, span, a, div, button, input {
-	font-family: MovistarText;
+	font-family: $base-font-family;
+}
+
+.list-inset {
+	border-radius: $radius-default;
+}
+
+.list-inset .item {
+	padding: 8px 0 8px 16px;
+}
+
+.list-inset.transparent .item input {
+	font-size: $base-font-size-large;
+	color: $dark;
+	line-height: inherit;
+}
+
+.list-inset.transparent .item input::-webkit-input-placeholder  {
+	color: $input-color-placeholder;
 }
 
 .action-sheet-wrapper button{
 	font-family: -apple-system, 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif!important;
 }
 
-.bar.bar-stable .title {
-	color: #FFF;
+.pane {
+	background: $background-2;
 }
 
-.bar-stable .button.button-clear {
-	color: #FFF;
+#signin.pane {
+	background-image: $background-1;
+	background-size: cover;
 }
 
-.custom-dark{
-    background-color: #01344F!important;
- }
-
-.pane{
-	background: $movistargradient;
-}
-
-.search.pane {
-	background: #EDF2F5!important;
+#track.pane {
+	background: $background-3;
 }
 
 .list .item {
 	font-family: MovistarText;
-	font-size: 18px;
-	color: $movistardark;
+	font-size: $base-font-size-default;
+	color: $base-font-color-dark;
 }
 
 .list .item .item-info {
-	font-size: 14px;
-	color: #7F8C8D;
+	font-size: $small-font-size-default;
+	color: $small-font-color;
+}
+
+//////////////////
+// -- DIARIO -- //
+//////////////////
+
+#diary .card {
+	background: transparent;
+	box-shadow: $card-shadow;
+	border-radius: $card-radius;
+	padding-bottom: 0px;
+	margin: 10px 0px 5px 0px
+}
+
+/* CARD WITHOUT CONTENTS */
+
+#diary .card.add .item {
+	background: $card-background-transparent;
+	-webkit-transition: opacity .1s linear;
+	-moz-transition: opacity .1s linear;
+	-o-transition: opacity .1s linear;
+	-ms-transition: opacity .1s linear;
+	transition: opacity .1s linear;
+}
+
+#diary .card.add .item:active {
+	opacity: 0.6;
+}
+
+#diary .card.add .item h2 {
+    margin:0 0 10px 0;
+    color: $light;
+    font-size: $header-font-size-bigger;
+}
+
+#diary .card.add .item p {
+	margin-top: 0px;
+	color: $light;
+	font-size: $base-font-size-default;
+}
+
+/* CARD WITH CONTENTS */
+
+#diary .card .item-divider.header {
+	font-family: $header-font-family;
+	color: $light;
+	background-color: rgba(0,52,79,0.50);
+	padding-top: 12px;
+	padding-bottom: 12px;
+	border-bottom: 0px;
+}
+
+#diary .card .item-body.content {
+    margin: 0px;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+	padding: 0px;
+	border-radius: 0px;
+	background-color: #fff;
+}
+
+.card .item-body.content .item {
+	color: $base-font-color-dark;
+	font-size: $base-font-size-default;
+}
+
+#diary .card .item-body span.item-info {
+	font-family: $small-font-family;
+	color: $small-font-color;
+    margin: 0px;
+    display: block;
+}
+
+#diary .card .item-body .item button {
+	display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    color: #BDC3C7;
+}
+
+#diary .card .item-button-right > .button {
+	right: 10px;
+}
+
+.card .item:last-child {
+	margin-bottom: 0px;
+}
+
+.card .item-divider.footer {
+	color: $light;
+	font-size: $base-font-size-default;
+	font-family: $base-font-family-bold;
+	background-color: rgba(255,255,255,0.35);
+	padding: 20px 20px;
+}
+
+.card .item-divider.footer i {
+	font-size: 25px;
+}
+
+/* Swipe action items */
+.card .item-complex.item-icon-right .item-content {
+	padding-left: 16px;
+	padding-right: 16px;
 }
 
 ///////////////////
@@ -94,15 +257,12 @@ p, span, a, div, button, input {
 .item-input-wrapper {
 	background-color: rgba(255,255,255,.1);
 	height: 35px;
+	font-size: $base-font-size-default;
 }
 
 .bar.item-input-inset .item-input-wrapper input {
 	color: $light;
-	font-size: 16px;
-}
 
-.bar.item-input-inset .item-input-wrapper input .placehoder {
-	color: red;
 }
 
 .button-clear.button-clear {
@@ -115,145 +275,12 @@ p, span, a, div, button, input {
 }
 
 .item-input-inset input::-webkit-input-placeholder {
-    color:    rgba(255,255,255,.3);
-}
-
-///////////////////
-// -- SIGN IN -- //
-///////////////////
-#signin
-
-//////////////////
-// -- DIARIO -- //
-//////////////////
-
-.diary .content .item .icon {
-	color: $gray;
-	font-size: 2px!important;
-}
-
-.diary .add .item:active {
-	opacity: 0.6;
-}
-
-.diary .card {
-	background: transparent;
-	margin: 10px 0px 5px 0px
-}
-
-.card {
-	box-shadow: $cardshadow;
-	border-radius: $cardradius;
-	padding-bottom: 0px;
-}
-
-.card.add .item {
-	background: rgba(255,255,255,0.20);
-}
-
-.card.add .item h2 {
-	margin-top: 0px;
-    margin-bottom: 10px;
-    color: $light;
-    font-size: 20px;
-    font-weight: bolder;
-}
-
-.card.add .item p {
-	color: $light;
-	font-size: 18px;
-	margin-top: 0px;
-}
-
-.card .item-divider.header {
-	font-family: MovistarHeadline-Bold;
-	background-color: rgba(0,52,79,0.50);
-	color: $light;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
-	border-bottom: 0px;
-	border-radius: 0px;
-}
-
-.card .item-body.content {
-	padding: 0px;
-	border-radius: 0px;
-	background-color: #fff;
-}
-
-.card .item-body.content {
-	color: $movistardark;
-    margin: $nomargin;
-	text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.card .item-body span.item-info {
-	opacity: 0.6;
-	font-family: MovistarText;
-	color: $movistardark;
-    margin: $nomargin;
-    display: block;
-}
-
-.card .item-body .item button {
-	display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    height: 100%;
-}
-
-.diary .card .item-button-right {
-	padding-right: 50px;
-}
-
-.diary .card .item-button-right > .button {
-	right: 10px;
-}
-
-.card .item-body.content .item {
-	color: #003245;
-}
-
-.card .item:last-child {
-	margin-bottom: 0px;
-	border-bottom: 0px;
-}
-
-.card .item-divider.footer {
-	font-family: MovistarText;
-	background-color: rgba(255,255,255,0.35);
-	color: $light;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
-	border-radius: 0px;
-}
-
-/* Swipe action items */
-.card .item-complex.item-icon-right .item-content {
-	padding-left: 16px;
-	padding-right: 16px;
+    color: rgba(255,255,255,.3);
 }
 
 //////////////////
 // --- CHAT --- //
 //////////////////
-
-.bubble p {
-	margin: 0px 0px 0px!important;
-}
 
 .conversation {
 	display: block;
@@ -261,13 +288,13 @@ p, span, a, div, button, input {
 }
 
 .bubble {
-	box-shadow: $cardshadow;
+	box-shadow: $card-shadow;
 	border-radius: 8px;
 	padding: 15px;
     max-width: 85%;
     clear: both;
-   	font-size: 16px;
-   	line-height: 20px;
+   	font-size: $base-font-size-default;
+   	line-height: 22px;
    	display: block;
 }
 
@@ -276,11 +303,14 @@ p, span, a, div, button, input {
 	color: $light;
 	margin: 5px 0 10px 0;
 }
-
 .bubble.system {
 	color: $light;
 	background-color: rgba(255,255,255,0.20);
 	float: left;
+}
+
+.bubble p {
+	margin: 0px 0px 0px!important;
 }
 
 .ficha-wrapper {
@@ -298,11 +328,11 @@ p, span, a, div, button, input {
 
 .icon-light {
 	background-image: url('http://i.imgur.com/ZXypoDA.png');
-	background-size: 15px;
+	background-size: 20px;
 	background-repeat: no-repeat;
 	color: $light;
-	height: 15px;
-	width: 15px;
+	height: 20px;
+	width: 20px;
 }
 
 .bubble.system.ficha {
@@ -323,7 +353,7 @@ p, span, a, div, button, input {
 }
 
 .bubble.system.loading {
-	background-image: url('img/chatloading.gif');
+	background-image: url('../img/chatloading.gif');
 	background-size: 35px;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -380,7 +410,7 @@ $num-colors: 10;
 }
 
 .swiper-slide > .card {
-	margin: 0px 0px 20px 0px;
+	margin: 0px 0px 20px 0px!important;
 }
 
 .swiper-container-horizontal>.swiper-pagination {
@@ -401,11 +431,7 @@ $num-colors: 10;
 
 .light.swiper-slide .item h2,
 .light.swiper-slide .item p {
-	color: $movistardark;
-}
-
-.dark.swiper-slide .item {
-	background-color: $movistardark;
+	color: $base-font-color-dark;
 }
 
 .dark.swiper-slide .item h2,
@@ -418,5 +444,5 @@ $num-colors: 10;
 }
 
 .swiper-slide .item p {
-	font-size: 18px;
+	font-size: $base-font-size-default
 }
