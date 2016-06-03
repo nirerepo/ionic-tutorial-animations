@@ -1,4 +1,3 @@
-/// <reference path="../typings/index.d.ts" />
 angular.module('starter.controllers', [])
     .controller('DashCtrl', function ($scope, $ionicActionSheet, Timeline) {
     $scope.cards = [
@@ -104,35 +103,37 @@ angular.module('starter.controllers', [])
         facebookConnectPlugin.login(["public_profile", "email", "user_birthday"], fbLoginSuccess, function (error) { console.log(error); });
     };
 })
-    .controller('TrackCtrl', function ($scope, $state, $stateParams, $ionicHistory, FoodSearch) {
+.controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, FoodSearch) {
     $scope.data = {
         "plates": [],
         "search": ''
     };
-    $scope.search = function () {
-        console.log("Searching...", $scope.data.search);
-        FoodSearch.plateByName($scope.data.search).then(function (matches) {
-            $scope.data.plates = matches.data.hits.hits;
-        });
+    $scope.search = function() {
+      console.log("Searching...", $scope.data.search);
+      FoodSearch.plateByName($scope.data.search).then(function(matches) {
+        $scope.data.plates = matches.data.hits.hits;
+      });
+    }
+    $scope.goBack = function() {
+      $ionicHistory.goBack();
     };
-    $scope.goBack = function () {
-        $ionicHistory.goBack();
-    };
-    /*
-        $scope.search().promise.then(function(rest) {
-          console.log("HITS: ", rest.data.hits.hits);
-          $scope.data.plates = rest.data.hits.hits;
-          console.log("PLATES: ", $scope.data.plates);
-        });
-    */
+/*
+    $scope.search().promise.then(function(rest) {
+      console.log("HITS: ", rest.data.hits.hits);
+      $scope.data.plates = rest.data.hits.hits;
+      console.log("PLATES: ", $scope.data.plates);
+    });
+*/
 })
-    .controller('HelpCtrl', function ($scope, $state, $stateParams, $ionicNavBarDelegate, Help) {
-    $scope.data = {};
-    $scope.data.bgColors = [];
-    $scope.data.currentPage = $stateParams.startpage;
-    console.log("Current: ", $scope.data);
-    Help.loadPages($scope, $ionicNavBarDelegate);
-    $ionicNavBarDelegate.showBackButton(true);
-    if (window.plugins && window.plugins.toast)
-        window.plugins.toast.show("This is a help message", "long", "center");
-});
+
+.controller('HelpCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, Help) {
+  $scope.data = {};
+  $scope.data.bgColors = [];
+  $scope.data.currentPage = $stateParams.startpage;
+  console.log("Current: ", $scope.data);
+  Help.loadPages($scope, $ionicNavBarDelegate);
+  $ionicNavBarDelegate.showBackButton(true);
+  if (window.plugins && window.plugins.toast)
+    window.plugins.toast.show("This is a help message", "long", "center");
+})
+;
