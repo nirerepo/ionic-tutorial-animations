@@ -1,14 +1,29 @@
-angular.module('starter.services')
-    .factory('Login', function (Connection) {
-    return {
-        formLogin: function (user) {
-            return Connection.request("login/login", { username: user.username, password: user.password })
-                .then(function (result) {
+/**
+ * Funciones para loguear, desloguear y realizar consultas básicas
+ * sobre el usuario logueado.
+ * 
+ * @param {ConnectionService} Connection
+ */
+function LoginService(Connection) {
+    this.credentials = { username: "", password: "" };
+    this.currentUsername = "";
+    this.currentHash = "";
+
+    /**
+     * Intenta loguearse utilizando las credenciales del servicio.
+     */
+    this.formLogin = function () {
+        return Connection
+            .request('login/login', this.credentials)
+            .then(function (result) {
                 if (result.data.hash) {
-                    Connection.currentHash = result.data.hash;
-                    Connection.currentUsername = result.data.assignedUsername;
+                    this.currentUsername = result.data.assignedUsername;
+                    this.currentHash = result.data.hash;
                 }
             });
-        }
+
     };
-});
+}
+
+angular.module('starter.services')
+    .service('Login', LoginService);

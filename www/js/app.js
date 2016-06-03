@@ -44,7 +44,8 @@ angular.module('starter', [
             
             .state('signin-password', {
                 url: '/signin-password',
-                templateUrl: 'templates/sign-in-password.html'
+                templateUrl: 'templates/sign-in-password.html',
+                controller: 'SignInPasswordCtrl as vm'
             })
             
             .state('tab', {
