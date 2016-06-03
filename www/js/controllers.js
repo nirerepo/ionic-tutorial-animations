@@ -5,7 +5,8 @@ angular.module('starter.controllers', [])
         {},
         {}
     ];
-    $scope.desayuno = Timeline.desayuno();
+    $scope.platos = Timeline.get();
+    //$scope.desayuno = Timeline.desayuno();
     console.log($scope.desayuno);
     $scope.cardDestroyed = function (index) {
         $scope.cards.splice(index, 1);
