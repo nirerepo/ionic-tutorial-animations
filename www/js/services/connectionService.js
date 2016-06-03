@@ -19,12 +19,18 @@ function ConnectionService($http) {
         };
     };
 
+    self.toQueryString = function(obj) {
+      return _.map(obj,function(v,k){
+        return encodeURIComponent(k) + '=' + encodeURIComponent(v);
+      }).join('&');
+    };
+
     self.request = function (url, data) {
         return $http({
             headers: self.getHeaders(),
             url: URL_JSON_WRITER + url,
             method: data ? "POST" : "GET",
-            data: data ? $.param(data) : null,
+            data: data ? self.toQueryString(data) : null,
             cache:false
         })
     }
