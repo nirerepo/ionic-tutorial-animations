@@ -1,15 +1,13 @@
 <ion-view view-title="Sign-In" id="signin">
   <ion-content class="has-header">
-    <div class="list">
-      <label class="item item-input">
-        <span class="input-label">Username</span>
-        <input type="text" ng-model="user.username">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Password</span>
-        <input type="password" ng-model="user.password">
-      </label>
-    </div>
+<div class="list list-inset transparent">
+  <label class="item item-input">
+    <input type="text" placeholder="Username" ng-model="user.username">
+  </label>
+  <label class="item item-input">
+    <input type="password" placeholder="Password" ng-model="user.password">
+  </label>
+</div>
     <div class="padding">
       <button class="button button-block button-positive" ng-click="signIn(user)">
         Sign-In
@@ -29,3 +27,5 @@
     </div>
   </ion-content>
 </ion-view>
+
+
