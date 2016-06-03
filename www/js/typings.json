@@ -1,0 +1,10 @@
+{
+  "globalDependencies": {
+    "angular": "registry:dt/angular#1.5.0+20160602160139",
+    "angular-ui-router": "registry:dt/angular-ui-router#1.1.5+20160521151413",
+    "cordova": "registry:dt/cordova#0.0.0+20160510234918",
+    "ionic": "registry:dt/ionic#0.0.0+20160501155303",
+    "jquery": "registry:dt/jquery#1.10.0+20160417213236",
+    "phonegap-plugin-push": "registry:dt/phonegap-plugin-push#0.0.0+20160501153936"
+  }
+}
