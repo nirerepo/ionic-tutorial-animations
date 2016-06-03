@@ -41,6 +41,12 @@ angular.module('starter', [
                 templateUrl: "templates/sign-in.html",
                 controller: 'SignInCtrl as vm'
             })
+            
+            .state('signin-password', {
+                url: '/signin-password',
+                templateUrl: 'templates/sign-in-password.html'
+            })
+            
             .state('tab', {
                 url: '/tab',
                 abstract: true,
