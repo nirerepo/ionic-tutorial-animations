@@ -43,39 +43,54 @@ angular.module('starter.controllers', [])
     };
     //
 })
-    .controller('ChatsCtrl', function ($scope, Chats) {
-    // With the new view caching in Ionic, Controllers are only called
-    // when they are recreated or on app start, instead of every page change.
-    // To listen for when this page is active (for example, to refresh data),
-    // listen for the $ionicView.enter event:
-    //
-    //$scope.$on('$ionicView.enter', function(e) {
-    //});
-    $scope.chats = Chats.all();
-    $scope.remove = function (chat) {
-        Chats.remove(chat);
-    };
-})
-    .controller('ChatDetailCtrl', function ($scope, $state, $stateParams, Chats) {
-    $scope.chat = Chats.get($stateParams.chatId);
-    $scope.showHelp = function (tipo) {
-        if (!tipo)
-            tipo = '';
-        console.log("Show Help: ", tipo);
-        $state.go('help' + tipo, { startpage: 2 });
-    };
-})
+    .controller('ChatDetailCtrl', function ($scope, $state, $stateParams, $interval, $ionicScrollDelegate, Chats) {
+        var localStoredShownMessages = [
+            { source: 'system', type: 'message', text: 'Bienvenido a Movistar Salud'},
+            { source: 'system', type: 'message', text: 'Vamos a ver en qué podemos ayudarte hoy'}
+        ];   // Ya mostrados
+        $scope.newMessages = [];
+        $scope.pending = false;
+
+        /* 
+         * Sincronizams con la vista el arrancar y detener el servicio
+         * de presentación de mensajes ya recibidos, para controlar su
+         * $interval interno.
+         */
+        $scope.$on('$ionicView.enter', function() {
+            $scope.shownMessages = localStoredShownMessages;
+            Chats.start($scope.newMessages, $scope.pending);
+
+        });
+        $scope.$on('$ionicView.leave', function() {
+            Chats.stop();
+        });
+        $scope.$on('nire.chat.messageIncoming', function(e, msg) {
+            $scope.pending = msg.value;
+        });
+        $scope.$watch('shownMessages', function(newValue, oldValue) {
+            $ionicScrollDelegate.scrollBottom(false);
+        }, true);
+        $scope.$watch('newMessages', function(newValue, oldValue) {
+            $ionicScrollDelegate.scrollBottom(false);
+        }, true);
+
+        $scope.showHelp = function (tipo) {
+            if (!tipo)
+                tipo = '';
+            $state.go('help' + tipo, { startpage: 2 });
+        };
+    })
     .controller('AccountCtrl', function ($scope, $state) {
-    $scope.settings = {
-        enableFriends: true,
-        enableOtrascosas: true,
-        enableYotramastodavia: true
-    };
-    $scope.signOut = function () {
-        console.log("Sign-Out");
-        $state.go('signin');
-    };
-})
+        $scope.settings = {
+            enableFriends: true,
+            enableOtrascosas: true,
+            enableYotramastodavia: true
+        };
+        $scope.signOut = function () {
+            console.log("Sign-Out");
+            $state.go('signin');
+        };
+    })
 .controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, FoodSearch) {
     $scope.data = {
         "plates": [],

@@ -1,51 +1,66 @@
 /// <reference path="../../typings/index.d.ts" />
 angular.module('starter.services', [])
-    .factory('Chats', function () {
-    // Might use a resource here that returns a JSON array
-    // Some fake testing data
-    var chats = [{
-            id: 0,
-            name: 'Ben Sparrow',
-            lastText: 'You on your way?',
-            face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
-        }, {
-            id: 1,
-            name: 'Max Lynx',
-            lastText: 'Hey, it\'s me',
-            face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
-        }, {
-            id: 2,
-            name: 'Adam Bradleyson',
-            lastText: 'I should buy a boat',
-            face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
-        }, {
-            id: 3,
-            name: 'Perry Governor',
-            lastText: 'Look at my mukluks!',
-            face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
-        }, {
-            id: 4,
-            name: 'Mike Harrington',
-            lastText: 'This is wicked good ice cream.',
-            face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
-        }];
-    return {
-        all: function () {
-            return chats;
-        },
-        remove: function (chat) {
-            chats.splice(chats.indexOf(chat), 1);
-        },
-        get: function (chatId) {
-            for (var i = 0; i < chats.length; i++) {
-                if (chats[i].id === parseInt(chatId)) {
-                    return chats[i];
-                }
+    .factory('Chats', ['$rootScope', '$interval', '$timeout', function($rootScope, $interval, $timeout) {
+        var receivedMessages = [];  // Recibidos, aún sin mostrar
+
+        // Acumulamos los mensajes ya recibidos desde el monitor...
+        // ...y se mostrarán suavemente cuando se vuelva a abrir el chat
+        $rootScope.$on('nire.chat.messageReceived', function(event, msg) {
+            // TODO: ¿Quizás en paralelo a esto, podemos almacenar los recibidos
+            // en localstorage, e inicializar desde ahí al arrancar el servicio?
+            $timeout(function() {
+                $rootScope.$broadcast('nire.chat.messageIncoming', { value: false });
+                receivedMessages.push(msg);
+            }, 700);
+        });
+
+        var msgAnimator;
+
+        return {
+            start: function(messages, pending) {
+                msgAnimator = $interval(function() {
+                    var msg = '';
+                    if (receivedMessages.length > 0) {
+                        console.log(msg);
+                        msg = receivedMessages.shift();
+                        messages.push(msg.message);
+                        console.log(messages);
+                    }
+                }, 500);
+            },
+            stop: function() {
+                $interval.cancel(msgAnimator);
             }
-            return null;
         }
-    };
-})
+    }])
+    .factory('Monitor', ['$rootScope', '$interval', function($rootScope, $interval) {
+        var externalMessages = [
+            { source: 'system', type: 'message', text: 'Parece que tu ingesta de calorías está por debajo de lo normal.'},
+            { source: 'system', type: 'message', text: '¿Puedo ayudarte sugiriéndote alguna idea para completar bien el día?', options: ['No, gracias', '¡Cuéntame!']},
+            { source: 'user', type: 'message', text: '¡Cuéntame!'},
+            { source: 'system', type: 'message', text: 'Veamos...'},
+            { source: 'system', type: 'message', text: 'Ayer solamente hiciste dos tomas'},
+            { source: 'system', type: 'message', text: 'Hacer 5 tomas al día es importante para acelerar el metabolismo'},
+            { source: 'system', type: 'options', options: [
+                    { text: '¡Lo tendré en cuenta!'},
+                    { text: 'Comí algo más'},
+                    { text: 'Necesito más ayuda'}
+                ]
+            }
+        ];
+        var i = 0;
+        var msgMonitor = $interval(function() {
+            if (i < externalMessages.length) {
+                $rootScope.$broadcast('nire.chat.messageIncoming', { value: true });
+                $rootScope.$broadcast('nire.chat.messageReceived', { message: externalMessages[i]})
+                i++;
+            }
+        }, 3000);
+
+        return {
+
+        }
+    }])
     .factory('Help', function () {
     return {
         loadPages: function ($scope, $ionicNavBarDelegate) {
