@@ -19,6 +19,8 @@ function LoginService(Connection) {
                 if (result.data.hash) {
                     this.currentUsername = result.data.assignedUsername;
                     this.currentHash = result.data.hash;
+                    window.localStorage['username'] = this.currentUsername;
+                    window.localStorage['userhash'] = this.currentHash;
                 }
             });
 

@@ -9,11 +9,12 @@ function ConnectionService($http) {
     self.currentUsername = null;
 
     self.getHeaders = function(){
+        console.log("HEADERS", self.currentUsername, self.currentHash);
         return { 
-            "security-token": self.currentHash, 
-            "security-user": self.currentUsername,
-            "Accept-Language": "es-CO",
-            "App-Domain": "movistarSalud",
+            "security-token": window.localStorage['userhash'], 
+            "security-user": window.localStorage['username'],
+            "Accept-Language": "es-ES",
+            "App-Domain": "movistar",
             "App-TimezoneOffset": new Date().getTimezoneOffset(),
             "Content-Type": 'application/x-www-form-urlencoded'
         };
