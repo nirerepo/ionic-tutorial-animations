@@ -26,7 +26,7 @@ angular.module('starter.services', [])
                         messages.push(msg.message);
                         console.log(messages);
                     }
-                }, 500);
+                }, 1000);
             },
             stop: function() {
                 $interval.cancel(msgAnimator);
