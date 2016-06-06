@@ -1,5 +1,6 @@
 <ion-view view-title="Registra tus datos" id="signin">
-  <ion-content class="has-header">
+<ion-content class="has-header light centered" scroll="false">
+  <div class="padding">
     <div class="list list-inset transparent">
       <label class="item item-input">
         <input type="text" placeholder="Nombres">
@@ -17,13 +18,23 @@
         <input type="password" placeholder="Repite tu contraseña">
       </label>
     </div>
-    <div class="padding">
-      <button class="button button-block button-positive" ui-sref="registro-numero">
-        Siguiente
-      </button>
-      <button class="button button-block button-positive">
-        Regístrate con Facebook
-      </button>
-    </div>
-  </ion-content>
+    <button class="button button-block button-positive" ui-sref="registro-numero">
+      Siguiente
+    </button>
+  </div>
+  <div class="padding separator">
+    --------------------------
+  </div>
+  <div class="padding">
+    <button class="button button-block button-facebook icon-left ion-social-facebook" ng-click="facebookLogin()">
+      Registrarse con Facebook
+    </button>
+    <p>¡No publicaremos nada sin tu permiso!</p>
+  </div>
+</ion-content>
+<div class="padding conditions centered fix-to-bottom">
+  <p class="padding">
+    Al continuar, estás de acuerdo con nuestros <br><a href="#">Términos de servicio</a> y <a href="#">Política de privacidad</a>
+  </p>
+</div>
 </ion-view>

@@ -38,6 +38,9 @@ $base-font-line-height:				1.4;
 $base-font-color-dark:				#01344F;
 $base-font-color-soft:				#7F8C8D;
 
+$link-color:                      	$positive !default;
+$link-hover-color:                	darken($link-color, 15%) !default;
+
 //	Small Font
 $small-font-family:					MovistarText;
 $small-font-size-default:			14px;
@@ -71,7 +74,10 @@ $background-transparent:			rgba(255,255,255,0.20);
 	$input-radius:					$radius-default;
 	$input-color-placeholder:       rgba(0,52,79,0.70);
 
-	//	Chat
+	//	Buttons
+	$button-font-size:              18px !default;
+
+	//	Chat Elements
 	$bubble-shadow:					$shadow-default;
 	$bubbble-radius:				8px;
 	$bubble-font-size:				18px;
@@ -94,9 +100,48 @@ p, span, a, button, input {
 	font-family: $base-font-family;
 }
 
+p {
+	font-size: $base-font-size-default;
+}
+
+button {
+	color: $light!important;
+}
+
 .h1.title,
 .bar.bar-header {
 	font-family: $header-font-family-alt;
+}
+
+.light h2 {
+	color: #FFF;
+}
+
+.centered {
+	text-align: center;
+}
+
+.button-light {
+	color: $light!important;
+}
+
+// FACEBOOK BUTTON //
+button.button-facebook {
+	background-color: #3B5998;
+}
+button.button-facebook:active {
+	background-color: darken(#3B5998, 10%);
+}
+
+.fix-to-bottom {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+}
+
+.light-centered {
+color: $light;
+text-align: center;
 }
 
 .list-inset {
@@ -117,6 +162,16 @@ p, span, a, button, input {
 	color: $input-color-placeholder;
 }
 
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly]:not(.cloned-text-input),
+textarea[readonly]:not(.cloned-text-input),
+select[readonly] {
+  background-color: #FFF;
+  cursor: not-allowed;
+  }
+
 .action-sheet-wrapper button{
 	font-family: -apple-system, 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif!important;
 }
@@ -125,7 +180,7 @@ p, span, a, button, input {
 	background: $background-2;
 }
 
-#signin.pane {
+#welcome.pane {
 	background-image: $background-1;
 	background-size: cover;
 }
@@ -143,6 +198,38 @@ p, span, a, button, input {
 .list .item .item-info {
 	font-size: $small-font-size-default;
 	color: $small-font-color;
+}
+
+/////////////////////////////////////
+// -- WELCOME, SIGN IN & LOG IN -- //
+/////////////////////////////////////
+
+#welcome p,
+#signin p,
+#login p {
+	font-size: $base-font-size-large;
+}
+
+#welcome p.padding-vertical,
+#signin p.padding-vertical,
+#login p.padding-vertical,
+#login img.padding-vertical {
+	padding: 40px 20px;
+}
+
+#login img.padding-vertical {
+	width: 50%;
+	height: 50%;
+}
+
+.conditions p {
+	color: $light;
+	font-size: 13px!important;
+}
+
+.conditions p a {
+	color: $light;
+	text-decoration: underline;
 }
 
 //////////////////
@@ -349,6 +436,12 @@ p, span, a, button, input {
 .bubble.user {
 	background-color: $bubble-background-user;
 	float: right;
+}
+
+.bubble.system,
+.bubble.user  {
+    -webkit-animation: fadeIn .5s;
+    animation: fadeIn .5s;
 }
 
 /* LOADING */

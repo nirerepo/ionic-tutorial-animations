@@ -8581,7 +8581,7 @@ progress {
   display: inline-block;
   margin: 0;
   padding: 0 12px;
-  min-width: 52px;
+  min-width: 54px;
   min-height: 47px;
   border-width: 1px;
   border-style: solid;
@@ -8589,7 +8589,7 @@ progress {
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 42px;
   cursor: pointer; }
   .button:hover {
@@ -9821,9 +9821,39 @@ h1, h2, h3, h4 {
 p, span, a, button, input {
   font-family: MovistarText; }
 
+p {
+  font-size: 16px; }
+
+button {
+  color: #fff !important; }
+
 .h1.title,
 .bar.bar-header {
   font-family: MovistarHeadline-Regular; }
+
+.light h2 {
+  color: #FFF; }
+
+.centered {
+  text-align: center; }
+
+.button-light {
+  color: #fff !important; }
+
+button.button-facebook {
+  background-color: #3B5998; }
+
+button.button-facebook:active {
+  background-color: #2d4373; }
+
+.fix-to-bottom {
+  position: fixed;
+  bottom: 0px;
+  width: 100%; }
+
+.light-centered {
+  color: #fff;
+  text-align: center; }
 
 .list-inset {
   border-radius: 4px; }
@@ -9839,13 +9869,22 @@ p, span, a, button, input {
 .list-inset.transparent .item input::-webkit-input-placeholder {
   color: rgba(0, 52, 79, 0.7); }
 
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly]:not(.cloned-text-input),
+textarea[readonly]:not(.cloned-text-input),
+select[readonly] {
+  background-color: #FFF;
+  cursor: not-allowed; }
+
 .action-sheet-wrapper button {
   font-family: -apple-system, "Helvetica Neue", Roboto, "Segoe UI", sans-serif !important; }
 
 .pane {
   background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
-#signin.pane {
+#welcome.pane {
   background-image: url("../img/clouds.jpg");
   background-size: cover; }
 
@@ -9860,6 +9899,29 @@ p, span, a, button, input {
 .list .item .item-info {
   font-size: 14px;
   color: rgba(0, 50, 69, 0.5); }
+
+#welcome p,
+#signin p,
+#login p {
+  font-size: 18px; }
+
+#welcome p.padding-vertical,
+#signin p.padding-vertical,
+#login p.padding-vertical,
+#login img.padding-vertical {
+  padding: 40px 20px; }
+
+#login img.padding-vertical {
+  width: 50%;
+  height: 50%; }
+
+.conditions p {
+  color: #fff;
+  font-size: 13px !important; }
+
+.conditions p a {
+  color: #fff;
+  text-decoration: underline; }
 
 #diary .card {
   background: transparent;
@@ -10021,6 +10083,11 @@ p, span, a, button, input {
 .bubble.user {
   background-color: rgba(0, 52, 79, 0.6);
   float: right; }
+
+.bubble.system,
+.bubble.user {
+  -webkit-animation: fadeIn .5s;
+  animation: fadeIn .5s; }
 
 /* LOADING */
 .bubble.system.loading {
