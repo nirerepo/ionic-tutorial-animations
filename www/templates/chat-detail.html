@@ -2,6 +2,26 @@
 	<ion-content class="padding">
 		<div class="conversation">
 			<div class="ficha-wrapper animated fadeInLeft">
+			<div ng-repeat="msg in shownMessages" class="bubble {{msg.source}}" style="border: 1px red solid">
+			{{msg.text}}
+			</div>
+			<div ng-repeat="msg in newMessages">
+				<div ng-show="msg.type=='message'" class="bubble {{msg.source}} animated bounceInLeft">
+				{{msg.text}}
+				</div>
+				<div ng-show="msg.type=='options'" class="options">
+					<div ng-repeat="opt in msg.options" class="bubble option">
+						<p>{{opt.text}}</p>
+					</div>
+				</div>
+			</div>
+			<div ng-show="pending" class="bubble system loading">
+				&nbsp;
+			</div>
+		</div>
+<!--
+		<div class="conversation">
+			<div class="ficha-wrapper">
 				<div class="bubble system img-background ficha" ng-click="showHelp('actividad')">
 					<h2>Cómo estirar después de cada entrenamiento</h2>
 				</div>
@@ -42,5 +62,6 @@
 				<p>Necesito más ayuda</p>
 			</div>
 		</div>
+-->
 	</ion-content>
 </ion-view>

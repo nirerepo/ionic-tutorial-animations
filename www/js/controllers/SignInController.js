@@ -5,24 +5,15 @@
  * @param {LoginService} Login
  * @param {ng.ui.IStateService} $state
  */
-function SignInCtrl($scope, push, Login, $state) {
-    this.user = { username: "", password: "" };
+function SignInCtrl(push, Login, $state) {
+    this.user = Login.credentials;
     this.pushToken = "This is the push token in a device.";
     
     // Cuando se instancia este controller, aprovechamos para inicializar
     // las notificaciones push
     push.init().then(function(value) { 
-        this.pushToken = value 
+        this.pushToken = value; 
     }.bind(this));
-
-    /**
-     * Intenta loguear un usuario a la aplicación por medio de username & password.
-     */
-    this.signIn = function() {
-        Login.formLogin($scope.vm.user).then(function(data) {
-            $state.go("tab.dash");
-        });        
-    }
 
     /**
      * Intenta loguear un usuario utilizando autenticacion de Facebook.
@@ -34,8 +25,8 @@ function SignInCtrl($scope, push, Login, $state) {
             $state.go('tab.dash');
         };
         facebookConnectPlugin.login(["public_profile", "email", "user_birthday"], fbLoginSuccess, function (error) { console.log(error); });
-    }
-};
+    };
+}
 
 angular.module('starter.controllers')
     .controller('SignInCtrl', SignInCtrl);

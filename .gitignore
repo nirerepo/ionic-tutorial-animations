@@ -6,5 +6,5 @@ www/css/ionic.app.min.css
 node_modules/
 platforms/
 plugins/
-
+www/js/typings
 
