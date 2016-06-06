@@ -1,51 +1,37 @@
-<!--
-  This template loads for the 'tab.friend-detail' state (app.js)
-  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
-  The FriendsCtrl pulls data from the Friends service (service.js)
-  The Friends service returns an array of friend data
--->
-<!-- <ion-view view-title="{{chat.name}}">
-  <ion-content class="padding">
-    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
-    <p>
-	 {{chat.lastText}}
-    </p>
-  </ion-content>
-</ion-view>
- -->
-
 <ion-view view-title="Chat">
 	<ion-content class="padding">
 		<div class="conversation">
-			<div class="ficha-wrapper">
+			<div class="ficha-wrapper animated fadeInLeft">
 				<div class="bubble system img-background ficha" ng-click="showHelp('actividad')">
-					<h2>Actividad física. Recomendaciones</h2>
+					<h2>Cómo estirar después de cada entrenamiento</h2>
 				</div>
-				<div class="info icon-light"></div>
+				<div class="info">
+					<i class="icon ion-ios-information-outline"></i>
+				</div>
 			</div>
-			<div class="bubble system">
+			<div class="bubble system animated fadeInLeft">
 				<p>Parece que tu ingesta de calorías está por debajo de lo normal</p>
 			</div>
-			<div class="bubble system">
+			<div class="bubble system animated fadeInLeft">
 				<p>Puedo ayudarte sugeriéndote alguna idea para completar bien el día</p>
 			</div>
-			<div class="bubble user">
+			<div class="bubble user animated fadeInRight">
 				<p>¡Cuéntame!</p>
 			</div>
-			<div class="bubble system">
+			<div class="bubble system animated fadeInLeft">
 				<p>Veamos...</p>
 			</div>
-			<div class="bubble system">
+			<div class="bubble system animated fadeInLeft">
 				<p>Ayer solamente hiciste dos tomas</p>
 			</div>
-			<div class="bubble system">
+			<div class="bubble system animated fadeInLeft">
 				<p>Hacer 5 tomas al día es importante para acelerar el metabolismo</p>
 			</div>
 			<div class="bubble system loading">
 				&nbsp;
 			</div>
 		</div>
-		<div class="options">
+		<div class="options animated fadeInUp">
 			<div class="bubble option">
 				<p>Lo tendré en cuenta!</p>
 			</div>

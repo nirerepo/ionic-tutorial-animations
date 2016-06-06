@@ -8,23 +8,23 @@ navigation history that also transitions its views in and out.
 <ion-tabs class="tabs-icon-top tabs-dark">
 
   <!-- Chats Tab -->
-  <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats/1">
-    <ion-nav-view name="tab-chats" class="animated fadeIn"></ion-nav-view>
+  <ion-tab title="Chat" icon-off="ion-ios-chatbubble-outline" icon-on="ion-ios-chatbubble" href="#/tab/chats/1">
+    <ion-nav-view name="tab-chats"></ion-nav-view>
   </ion-tab> 
 
   <!-- Dashboard Tab -->
-  <ion-tab title="Timeline" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/dash">
-    <ion-nav-view name="tab-dash" class="animated fadeIn"></ion-nav-view>
+  <ion-tab title="Diario" icon-off="ion-ios-bookmarks-outline" icon-on="ion-ios-bookmarks" href="#/tab/dash">
+    <ion-nav-view name="tab-dash"></ion-nav-view>
   </ion-tab>
 
   <!-- Account Tab -->
-  <ion-tab title="Account" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/account">
-    <ion-nav-view name="tab-account" class="animated fadeIn"></ion-nav-view>
-  </ion-tab>
-
-  <!-- Account Tab -->
-  <ion-tab title="Account" icon-off="ion-ios-gear-outline animated fadeIn" icon-on="ion-ios-gear" ng-click="showHelp()">
+  <ion-tab title="Evolución" icon-off="ion-ios-pulse animated fadeIn" icon-on="ion-ios-pulse-strong" ng-click="showHelp()">
     <ion-nav-view></ion-nav-view>
+  </ion-tab>
+
+  <!-- Account Tab -->
+  <ion-tab title="Más..." icon-off="ion-ios-more-outline" icon-on="ion-ios-more" href="#/tab/account">
+    <ion-nav-view name="tab-account" class="animated fadeIn"></ion-nav-view>
   </ion-tab>
 
 

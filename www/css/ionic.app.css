@@ -9818,8 +9818,12 @@ a.button {
 h1, h2, h3, h4 {
   font-family: MovistarHeadline-Bold; }
 
-p, span, a, div, button, input {
+p, span, a, button, input {
   font-family: MovistarText; }
+
+.h1.title,
+.bar.bar-header {
+  font-family: MovistarHeadline-Regular; }
 
 .list-inset {
   border-radius: 4px; }
@@ -9845,7 +9849,7 @@ p, span, a, div, button, input {
   background-image: url("../img/clouds.jpg");
   background-size: cover; }
 
-#track.pane {
+#tracker.pane {
   background: #EDF2F5; }
 
 .list .item {
@@ -9888,12 +9892,24 @@ p, span, a, div, button, input {
 
 /* CARD WITH CONTENTS */
 #diary .card .item-divider.header {
-  font-family: MovistarHeadline-Bold;
   color: #fff;
   background-color: rgba(0, 52, 79, 0.5);
   padding-top: 12px;
   padding-bottom: 12px;
   border-bottom: 0px; }
+
+#diary .card .item-divider.header .title,
+#diary .card .item-divider.header .resume {
+  width: 50%;
+  float: left;
+  clear: none; }
+
+#diary .card .item-divider.header .title {
+  font-family: MovistarHeadline-Bold; }
+
+#diary .card .item-divider.header .resume {
+  font-family: MovistarText;
+  text-align: right; }
 
 #diary .card .item-body.content {
   margin: 0px;
@@ -9905,8 +9921,10 @@ p, span, a, div, button, input {
   background-color: #fff; }
 
 .card .item-body.content .item {
+  font-family: MovistarText;
   color: #01344F;
-  font-size: 16px; }
+  font-size: 16px;
+  padding-right: 50px; }
 
 #diary .card .item-body span.item-info {
   font-family: MovistarText;
@@ -9952,22 +9970,22 @@ p, span, a, div, button, input {
 .item-input-inset a.back {
   padding-right: 15px;
   color: #fff;
-  font-size: 20px; }
+  font-size: 18px; }
 
 .item-input-wrapper {
-  background-color: rgba(255, 255, 255, 0.1);
-  height: 35px;
-  font-size: 16px; }
+  background-color: rgba(255, 255, 255, 0.1); }
 
 .bar.item-input-inset .item-input-wrapper input {
-  color: #fff; }
+  color: #fff;
+  font-size: 18px;
+  line-height: inherit; }
 
 .button-clear.button-clear {
   color: #fff; }
 
 .placeholder-icon {
   color: #fff;
-  font-size: 20px; }
+  font-size: 18px; }
 
 .item-input-inset input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.3); }
@@ -9977,52 +9995,51 @@ p, span, a, div, button, input {
   overflow: auto; }
 
 .bubble {
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  padding: 15px;
+  padding: 12px;
   max-width: 85%;
   clear: both;
+  display: block;
   font-size: 16px;
-  line-height: 22px;
-  display: block; }
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 8px; }
+
+.bubble p {
+  margin-bottom: 0px !important; }
 
 .bubble.system,
 .bubble.user {
+  margin: 5px 0 10px 0;
   color: #fff;
-  margin: 5px 0 10px 0; }
+  font-size: 18px;
+  line-height: 22px; }
 
 .bubble.system {
+  float: left;
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.2);
-  float: left; }
+  background-color: rgba(255, 255, 255, 0.2); }
 
-.bubble p {
-  margin: 0px 0px 0px !important; }
+.bubble.user {
+  background-color: rgba(0, 52, 79, 0.6);
+  float: right; }
 
+/* LOADING */
+.bubble.system.loading {
+  background-image: url("../img/chatloading.gif");
+  background-size: 35px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 70px !important; }
+
+/* FICHAS */
 .ficha-wrapper {
   position: relative;
   overflow: auto; }
 
-.info {
-  position: absolute;
-  text-align: left;
-  top: 45%;
-  margin-left: 90%;
-  width: 15%; }
-
-.icon-light {
-  background-image: url("http://i.imgur.com/ZXypoDA.png");
-  background-size: 20px;
-  background-repeat: no-repeat;
-  color: #fff;
-  height: 20px;
-  width: 20px; }
-
 .bubble.system.ficha {
+  position: relative;
   height: 170px;
   width: 85%;
   vertical-align: bottom;
-  position: relative;
   background: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("http://i.imgur.com/r4BW1gr.png") no-repeat;
   background-size: cover;
   background-position: center; }
@@ -10033,17 +10050,14 @@ p, span, a, div, button, input {
   color: #fff;
   font-size: 18px !important; }
 
-.bubble.system.loading {
-  background-image: url("../img/chatloading.gif");
-  background-size: 35px;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 70px !important; }
+.info {
+  position: absolute;
+  top: 40%;
+  margin-left: 90%;
+  font-size: 25px;
+  color: #fff; }
 
-.bubble.user {
-  background-color: rgba(0, 52, 79, 0.5);
-  float: right; }
-
+/* OPTIONS */
 .options {
   text-align: center;
   width: 100%;
@@ -10054,12 +10068,9 @@ p, span, a, div, button, input {
   justify-content: center; }
 
 .bubble.option {
-  color: #fff;
   background-color: #FFF;
   color: #01344F;
-  margin: 5px 5px 5px 5px;
-  float: left;
-  clear: none; }
+  margin: 5px 5px 5px 5px; }
 
 .box {
   height: 100%; }
