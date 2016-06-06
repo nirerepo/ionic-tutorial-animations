@@ -91,20 +91,27 @@ angular.module('starter.controllers', [])
             $state.go('signin');
         };
     })
-.controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, FoodSearch) {
+.controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, Food) {
     $scope.data = {
         "plates": [],
         "search": ''
     };
     $scope.search = function() {
       console.log("Searching...", $scope.data.search);
-      FoodSearch.plateByName($scope.data.search).then(function(matches) {
+      Food.plateByName($scope.data.search).then(function(matches) {
         $scope.data.plates = matches.data.hits.hits;
       });
     }
     $scope.goBack = function() {
       $ionicHistory.goBack();
     };
+    $scope.addPlate = function(plate) {
+        console.log(plate.fields);
+        var plateData = {name: plate.fields.nombredieta[0], kcal: plate.fields.kcal[0], id: plate.fields.id[0]}
+        Food.addPlate(plateData).then(function(result){
+            $ionicHistory.goBack();
+        })
+    }
 /*
     $scope.search().promise.then(function(rest) {
       console.log("HITS: ", rest.data.hits.hits);
