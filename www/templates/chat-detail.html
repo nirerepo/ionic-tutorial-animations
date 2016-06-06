@@ -1,15 +1,16 @@
 <ion-view view-title="Chat">
 	<ion-content class="padding">
 		<div class="conversation">
+			<div class="ficha-wrapper">
 			<div ng-repeat="msg in shownMessages" class="bubble {{msg.source}}" style="border: 1px red solid">
-			{{msg.text}}
+				<p>{{msg.text}}</p>
 			</div>
 			<div ng-repeat="msg in newMessages">
-				<div ng-show="msg.type=='message'" class="bubble {{msg.source}} animated bounceInLeft">
-				{{msg.text}}
+				<div ng-show="msg.type=='message'" class="bubble {{msg.source}} animated fadeIn">
+					<p>{{msg.text}}</p>
 				</div>
 				<div ng-show="msg.type=='options'" class="options">
-					<div ng-repeat="opt in msg.options" class="bubble option">
+					<div ng-repeat="opt in msg.options" class="bubble option animated fadeInUp">
 						<p>{{opt.text}}</p>
 					</div>
 				</div>
@@ -22,33 +23,35 @@
 		<div class="conversation">
 			<div class="ficha-wrapper">
 				<div class="bubble system img-background ficha" ng-click="showHelp('actividad')">
-					<h2>Actividad física. Recomendaciones</h2>
+					<h2>Cómo estirar después de cada entrenamiento</h2>
 				</div>
-				<div class="info icon-light"></div>
+				<div class="info">
+					<i class="icon ion-ios-information-outline"></i>
+				</div>
 			</div>
-			<div class="bubble system">
+			<div class="bubble system animated fadeInLeft">
 				<p>Parece que tu ingesta de calorías está por debajo de lo normal</p>
 			</div>
-			<div class="bubble system">
+			<div class="bubble system animated fadeInLeft">
 				<p>Puedo ayudarte sugeriéndote alguna idea para completar bien el día</p>
 			</div>
-			<div class="bubble user">
+			<div class="bubble user animated fadeInRight">
 				<p>¡Cuéntame!</p>
 			</div>
-			<div class="bubble system">
+			<div class="bubble system animated fadeInLeft">
 				<p>Veamos...</p>
 			</div>
-			<div class="bubble system">
+			<div class="bubble system animated fadeInLeft">
 				<p>Ayer solamente hiciste dos tomas</p>
 			</div>
-			<div class="bubble system">
+			<div class="bubble system animated fadeInLeft">
 				<p>Hacer 5 tomas al día es importante para acelerar el metabolismo</p>
 			</div>
 			<div class="bubble system loading">
 				&nbsp;
 			</div>
 		</div>
-		<div class="options">
+		<div class="options animated fadeInUp">
 			<div class="bubble option">
 				<p>Lo tendré en cuenta!</p>
 			</div>
