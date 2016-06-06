@@ -84,6 +84,17 @@ angular.module('starter.controllers', [])
                 tipo = '';
             $state.go('help' + tipo, { startpage: 2 });
         };
+
+        $scope.pressOption = function($event, opt) {
+            var el = $event.currentTarget;
+            var elementDisplay = el.style.display;
+            Array.prototype.forEach.call(el.parentNode.childNodes, function(child) {
+                if (child.tagName == 'DIV' && child != el)
+                    child.style.display = 'none';
+            })
+            el.classList.remove('option');
+            el.classList.add('user');
+        }
     })
     .controller('AccountCtrl', function ($scope, $state) {
         $scope.settings = {
