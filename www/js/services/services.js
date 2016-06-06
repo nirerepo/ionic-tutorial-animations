@@ -24,7 +24,7 @@ angular.module('starter.services', [])
                         msg = receivedMessages.shift();
                         messages.push(msg.message);
                     }
-                }, 1000);
+                }, 100);
             },
             stop: function() {
                 $interval.cancel(msgAnimator);
@@ -55,7 +55,7 @@ angular.module('starter.services', [])
                 $rootScope.$broadcast('nire.chat.messageReceived', { message: externalMessages[i]})
                 i++;
             }
-        }, 3000);
+        }, 1000);
 
         return {
 
@@ -113,4 +113,8 @@ angular.module('starter.services', [])
             return rdo.promise;
         }
     };
-});
+})
+    .factory('_', ['$window', function($window) {
+    return $window._; // assumes underscore has already been loaded on the page
+}])
+;

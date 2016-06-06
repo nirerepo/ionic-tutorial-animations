@@ -12,7 +12,7 @@
 					<p>{{msg.text}}</p>
 				</div>
 				<div ng-show="msg.type=='options'" class="options">
-					<div ng-repeat="opt in msg.options" class="item bubble option animated fadeInUp" ng-click="pressOption(opt)">
+					<div id="{{opt.id}}" ng-repeat="opt in msg.options" class="item bubble option animated fadeInUp" ng-click="pressOption($event, opt)">
 						<p>{{opt.text}}</p>
 					</div>
 				</div>
