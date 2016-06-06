@@ -38,13 +38,17 @@ $base-font-line-height:				1.4;
 $base-font-color-dark:				#01344F;
 $base-font-color-soft:				#7F8C8D;
 
+$link-color:                      	$positive !default;
+$link-hover-color:                	darken($link-color, 15%) !default;
+
 //	Small Font
 $small-font-family:					MovistarText;
 $small-font-size-default:			14px;
 $small-font-color:					rgba(0,50,69,0.50);
 
 //	Headings
-$header-font-family:				MovistarHeadline-Bold;
+$header-font-family-default:		MovistarHeadline-Bold;
+$header-font-family-alt:			MovistarHeadline-Regular;
 $header-font-size-bigger:			20px;
 $header-font-size-default:			16px;
 $header-font-size-smaller:			10px;
@@ -70,6 +74,17 @@ $background-transparent:			rgba(255,255,255,0.20);
 	$input-radius:					$radius-default;
 	$input-color-placeholder:       rgba(0,52,79,0.70);
 
+	//	Buttons
+	$button-font-size:              18px !default;
+
+	//	Chat Elements
+	$bubble-shadow:					$shadow-default;
+	$bubbble-radius:				8px;
+	$bubble-font-size:				18px;
+	$bubble-line-height:			22px;
+	$bubble-background-system:		rgba(255,255,255,0.20);
+	$bubble-background-user:		rgba(0,52,79,0.60);
+
 
 
 $movistargreen:                 	#7AB800 !default;
@@ -78,11 +93,55 @@ $movistargreen:                 	#7AB800 !default;
 @import "www/lib/ionic/scss/ionic";
 
 h1,h2,h3,h4 {
-	font-family: $header-font-family;
+	font-family: $header-font-family-default;
 }
 
-p, span, a, div, button, input {
+p, span, a, button, input {
 	font-family: $base-font-family;
+}
+
+p {
+	font-size: $base-font-size-default;
+}
+
+button {
+	color: $light!important;
+}
+
+.h1.title,
+.bar.bar-header {
+	font-family: $header-font-family-alt;
+}
+
+.light h2 {
+	color: #FFF;
+}
+
+.centered {
+	text-align: center;
+}
+
+.button-light {
+	color: $light!important;
+}
+
+// FACEBOOK BUTTON //
+button.button-facebook {
+	background-color: #3B5998;
+}
+button.button-facebook:active {
+	background-color: darken(#3B5998, 10%);
+}
+
+.fix-to-bottom {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+}
+
+.light-centered {
+color: $light;
+text-align: center;
 }
 
 .list-inset {
@@ -103,6 +162,16 @@ p, span, a, div, button, input {
 	color: $input-color-placeholder;
 }
 
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly]:not(.cloned-text-input),
+textarea[readonly]:not(.cloned-text-input),
+select[readonly] {
+  background-color: #FFF;
+  cursor: not-allowed;
+  }
+
 .action-sheet-wrapper button{
 	font-family: -apple-system, 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif!important;
 }
@@ -111,12 +180,12 @@ p, span, a, div, button, input {
 	background: $background-2;
 }
 
-#signin.pane {
+#welcome.pane {
 	background-image: $background-1;
 	background-size: cover;
 }
 
-#track.pane {
+#tracker.pane {
 	background: $background-3;
 }
 
@@ -129,6 +198,38 @@ p, span, a, div, button, input {
 .list .item .item-info {
 	font-size: $small-font-size-default;
 	color: $small-font-color;
+}
+
+/////////////////////////////////////
+// -- WELCOME, SIGN IN & LOG IN -- //
+/////////////////////////////////////
+
+#welcome p,
+#signin p,
+#login p {
+	font-size: $base-font-size-large;
+}
+
+#welcome p.padding-vertical,
+#signin p.padding-vertical,
+#login p.padding-vertical,
+#login img.padding-vertical {
+	padding: 40px 20px;
+}
+
+#login img.padding-vertical {
+	width: 50%;
+	height: 50%;
+}
+
+.conditions p {
+	color: $light;
+	font-size: 13px!important;
+}
+
+.conditions p a {
+	color: $light;
+	text-decoration: underline;
 }
 
 //////////////////
@@ -173,12 +274,28 @@ p, span, a, div, button, input {
 /* CARD WITH CONTENTS */
 
 #diary .card .item-divider.header {
-	font-family: $header-font-family;
 	color: $light;
 	background-color: rgba(0,52,79,0.50);
 	padding-top: 12px;
 	padding-bottom: 12px;
 	border-bottom: 0px;
+}
+
+#diary .card .item-divider.header .title,
+#diary .card .item-divider.header .resume {
+	width: 50%;
+	float: left;
+	clear: none;
+}
+
+
+#diary .card .item-divider.header .title {
+	font-family: $header-font-family-default;
+}
+
+#diary .card .item-divider.header .resume {
+	font-family: $base-font-family;
+	text-align: right;
 }
 
 #diary .card .item-body.content {
@@ -192,8 +309,10 @@ p, span, a, div, button, input {
 }
 
 .card .item-body.content .item {
+	font-family: $base-font-family;
 	color: $base-font-color-dark;
 	font-size: $base-font-size-default;
+	padding-right: 50px;
 }
 
 #diary .card .item-body span.item-info {
@@ -251,18 +370,17 @@ p, span, a, div, button, input {
 .item-input-inset a.back {
     padding-right: 15px;
     color: $light;
-    font-size: 20px;
+	font-size: $base-font-size-large;
 }
 
 .item-input-wrapper {
 	background-color: rgba(255,255,255,.1);
-	height: 35px;
-	font-size: $base-font-size-default;
 }
 
 .bar.item-input-inset .item-input-wrapper input {
 	color: $light;
-
+	font-size: $base-font-size-large;
+	line-height: inherit;
 }
 
 .button-clear.button-clear {
@@ -271,7 +389,7 @@ p, span, a, div, button, input {
 
 .placeholder-icon {
 	color: $light;
-	font-size: 20px;
+	font-size: $base-font-size-large;
 }
 
 .item-input-inset input::-webkit-input-placeholder {
@@ -288,58 +406,66 @@ p, span, a, div, button, input {
 }
 
 .bubble {
-	box-shadow: $card-shadow;
-	border-radius: 8px;
-	padding: 15px;
+	padding: 12px;
     max-width: 85%;
     clear: both;
-   	font-size: $base-font-size-default;
-   	line-height: 22px;
    	display: block;
+	font-size: $base-font-size-default;
+	box-shadow: $shadow-default;
+	border-radius: $bubbble-radius;
+}
+
+.bubble p {
+	margin-bottom: 0px!important;
 }
 
 .bubble.system,
 .bubble.user {
-	color: $light;
 	margin: 5px 0 10px 0;
-}
-.bubble.system {
 	color: $light;
-	background-color: rgba(255,255,255,0.20);
-	float: left;
+	font-size: $bubble-font-size;
+	line-height: $bubble-line-height;
 }
 
-.bubble p {
-	margin: 0px 0px 0px!important;
+.bubble.system {
+	float: left;
+	color: $light;
+	background-color: $bubble-background-system;
 }
+
+.bubble.user {
+	background-color: $bubble-background-user;
+	float: right;
+}
+
+.bubble.system,
+.bubble.user  {
+    -webkit-animation: fadeIn .5s;
+    animation: fadeIn .5s;
+}
+
+/* LOADING */
+
+.bubble.system.loading {
+	background-image: url('../img/chatloading.gif');
+	background-size: 35px;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 70px!important;
+}
+
+/* FICHAS */
 
 .ficha-wrapper {
 	position: relative;
 	overflow: auto;
 }
 
-.info {
-	position: absolute;
-	text-align: left;
-	top: 45%;
-	margin-left: 90%;
-	width: 15%;
-}
-
-.icon-light {
-	background-image: url('http://i.imgur.com/ZXypoDA.png');
-	background-size: 20px;
-	background-repeat: no-repeat;
-	color: $light;
-	height: 20px;
-	width: 20px;
-}
-
 .bubble.system.ficha {
+	position: relative;
 	height: 170px;
 	width: 85%;
 	vertical-align: bottom;
-	position: relative;
 	background: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("http://i.imgur.com/r4BW1gr.png") no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -352,18 +478,15 @@ p, span, a, div, button, input {
 	font-size: 18px!important;
 }
 
-.bubble.system.loading {
-	background-image: url('../img/chatloading.gif');
-	background-size: 35px;
-	background-repeat: no-repeat;
-	background-position: center;
-	width: 70px!important;
+.info {
+	position: absolute;
+	top: 40%;
+	margin-left: 90%;
+	font-size: 25px;
+	color: $light;
 }
 
-.bubble.user {
-	background-color: rgba(0,52,79,0.50);
-	float: right;
-}
+/* OPTIONS */
 
 .options {
 	text-align: center;
@@ -376,13 +499,13 @@ p, span, a, div, button, input {
 }
 
 .bubble.option {
-	color: $light;
 	background-color: #FFF;
 	color: #01344F;
 	margin: 5px 5px 5px 5px;
-	float: left;
-	clear: none;
 }
+
+
+
 
 // Swipes example
 .box{

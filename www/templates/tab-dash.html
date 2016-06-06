@@ -33,7 +33,7 @@
         <ion-item class="item-remove-animate item-avatar item-icon-right chat-item" ng-repeat="plato in nutritionSeccion.items" type="item-text-wrap">
           {{plato.title}}
           <span class="item-info">{{plato.quantity}}</span>
-          <!--<button class="button button-icon" ng-click="showActionsheet()"><i class="icon ion-more"></i></button>-->
+          <button class="button button-icon" ng-click="showActionsheet()"><i class="icon ion-more"></i></button>
         </ion-item>
       </ion-list>
       <a class="item item-divider footer item-icon-right" ng-click="showActionsheet()">
@@ -79,7 +79,7 @@
       <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
         <div class="card add animated fadeIn">
           <div class="item item-body">
-              <h2>Consejo del día {{s}}</h2>
+              <h2>Día 2 - Consejo del día {{s}}</h2>
               <p>Al que madruga, buen arbol le cobija</p>
           </div>
         </div>
