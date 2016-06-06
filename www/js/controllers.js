@@ -112,8 +112,9 @@ angular.module('starter.controllers', [])
     };
     $scope.addPlate = function(plate) {
         console.log(plate.fields);
+        var mealId = $stateParams.mealId
         var plateData = {name: plate.fields.nombredieta[0], kcal: plate.fields.kcal[0], id: plate.fields.id[0]}
-        Food.addPlate(plateData).then(function(result){
+        Food.addPlate(mealId, plateData).then(function(result){
             $scope.reloadTimeline();
             $ionicHistory.goBack();
         })

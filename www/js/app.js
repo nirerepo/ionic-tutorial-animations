@@ -115,7 +115,7 @@ angular.module('starter', [
                 }
             })
             .state('trackfood', {
-                url: '/trackfood',
+                url: '/trackfood/:mealId',
                 templateUrl: 'templates/track-food.html',
                 controller: 'TrackCtrl'
             })
