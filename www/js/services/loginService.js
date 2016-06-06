@@ -5,9 +5,12 @@
  * @param {ConnectionService} Connection
  */
 function LoginService(Connection) {
-    this.credentials = { username: "", password: "" };
+    this.credentials = { 
+        username: window.localStorage.username, 
+        password: ""
+    };
     this.currentUsername = "";
-    this.currentHash = "";
+    this.currentHash = window.userhash;
 
     /**
      * Intenta loguearse utilizando las credenciales del servicio.
@@ -19,11 +22,10 @@ function LoginService(Connection) {
                 if (result.data.hash) {
                     this.currentUsername = result.data.assignedUsername;
                     this.currentHash = result.data.hash;
-                    window.localStorage['username'] = this.currentUsername;
-                    window.localStorage['userhash'] = this.currentHash;
+                    window.localStorage.username = this.currentUsername;
+                    window.localStorage.userhash = this.currentHash;
                 }
             });
-
     };
 }
 
