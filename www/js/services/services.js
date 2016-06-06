@@ -21,10 +21,8 @@ angular.module('starter.services', [])
                 msgAnimator = $interval(function() {
                     var msg = '';
                     if (receivedMessages.length > 0) {
-                        console.log(msg);
                         msg = receivedMessages.shift();
                         messages.push(msg.message);
-                        console.log(messages);
                     }
                 }, 1000);
             },
@@ -35,6 +33,7 @@ angular.module('starter.services', [])
     }])
     .factory('Monitor', ['$rootScope', '$interval', function($rootScope, $interval) {
         var externalMessages = [
+            { source: 'system', type: 'card', cardId: 'actividad', title: 'Actividad física. Recomendaciones'},
             { source: 'system', type: 'message', text: 'Parece que tu ingesta de calorías está por debajo de lo normal.'},
             { source: 'system', type: 'message', text: '¿Puedo ayudarte sugiriéndote alguna idea para completar bien el día?', options: ['No, gracias', '¡Cuéntame!']},
             { source: 'user', type: 'message', text: '¡Cuéntame!'},
@@ -46,7 +45,8 @@ angular.module('starter.services', [])
                     { text: 'Comí algo más'},
                     { text: 'Necesito más ayuda'}
                 ]
-            }
+            },
+
         ];
         var i = 0;
         var msgMonitor = $interval(function() {

@@ -79,6 +79,12 @@ angular.module('starter.controllers', [])
                 tipo = '';
             $state.go('help' + tipo, { startpage: 2 });
         };
+
+        $scope.pressOption = function(opt) {
+            console.log("Pressed!", opt);
+            opt.removeClass('system');
+            opt.addClass('user');
+        }
     })
     .controller('AccountCtrl', function ($scope, $state) {
         $scope.settings = {
