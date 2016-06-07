@@ -27,13 +27,18 @@
   </item>
 </div>
 <div ng-repeat="nutritionSeccion in nutrition" class="card animated fadeIn">
-  <div class="item item-divider header">{{nutritionSeccion.type}}</div>
+  <div class="item item-divider header">
+    <div class="title">{{nutritionSeccion.type}}</div>
+    <div class="resume" style="color: red;">645 Kcal <i class="ion-ios-information-outline"></i></div>
+  </div>
   <div class="item item-body content">
     <ion-list>
-    <ion-item class="item-remove-animate item-avatar item-icon-right chat-item" ng-repeat="plato in nutritionSeccion.items" type="item-text-wrap">
+    <ion-item class="item item-button-right" ng-repeat="plato in nutritionSeccion.items" type="item-text-wrap">
     {{plato.title}}
     <span class="item-info">{{plato.quantity}}</span>
-    <button class="button button-icon" ng-click="showActionsheet()"><i class="icon ion-more"></i></button>
+    <button class="button button-icon" ng-click="showActionsheet()">
+      <i class="icon ion-more"></i>
+    </button>
   </ion-item>
 </ion-list>
 <a class="item item-divider footer item-icon-right" ng-click="showActionsheet()">

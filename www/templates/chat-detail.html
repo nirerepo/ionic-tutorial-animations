@@ -16,11 +16,13 @@
 						<p>{{opt.text}}</p>
 					</div>
 				</div>
-				<div ng-show="msg.type=='card'" class="ficha-wrapper">
-					<div class="bubble system img-background ficha" ng-click="showHelp(msg.cardId)">
+				<div ng-show="msg.type=='card'" class="ficha-wrapper" ng-click="showHelp(msg.cardId)">
+					<div class="bubble system img-background ficha">
 						<h2>{{msg.title}}</h2>
 					</div>
-					<div class="info icon-light"></div>
+					<div class="info">
+						<i class="icon ion-ios-information-outline"></i>
+					</div>
 				</div>
 
 			</div>
