@@ -85,7 +85,8 @@ angular.module('starter.controllers', [])
             Array.prototype.forEach.call(el.parentNode.childNodes, function(child) {
                 if (child.tagName == 'DIV' && child != el)
                     child.style.display = 'none';
-            })
+            });
+            el.parentNode.classList.remove('options');
             el.classList.remove('option');
             el.classList.add('user');
         }
@@ -107,10 +108,14 @@ angular.module('starter.controllers', [])
         "search": ''
     };
     $scope.search = function() {
-      console.log("Searching...", $scope.data.search);
-      Food.plateByName($scope.data.search).then(function(matches) {
-        $scope.data.plates = matches.data.hits.hits;
-      });
+        console.log("Searching...", $scope.data.search);
+        if ($scope.data.search.length >= 3)
+            Food.plateByName($scope.data.search).then(function(matches) {
+                $scope.data.plates = matches.data.hits.hits;
+            });
+        else
+            $scope.data.plates = [];
+
     }
     $scope.goBack = function() {
       $ionicHistory.goBack();

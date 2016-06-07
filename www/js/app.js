@@ -25,7 +25,11 @@ angular.module('starter', [
             }
         });
     })
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+        // Agregamos un Interceptor para que si el servidor responde
+        // que el usuario no esta logueado, se le muestre la pantalla de login
+        $httpProvider.interceptors.push('LoginInterceptor');
+
         // Ionic uses AngularUI Router which uses the concept of states
         // Learn more here: https://github.com/angular-ui/ui-router
         // Set up the various states which the app can be in.
@@ -131,9 +135,11 @@ angular.module('starter', [
                 templateUrl: 'templates/help-actividad.html',
                 controller: 'HelpCtrl'
             });
-        // if none of the above states are matched, use this as the fallback
-        //  $urlRouterProvider.otherwise('/tab/dash');
-        $urlRouterProvider.otherwise('/welcome');
+
+            // La URL default es el Timeline. Si cuando se intenta mostrar el timeline o hacer
+            // cualquier otra acción el servidor retorna que no se esta autenticado, entonces
+            // recién en ese momento lo llevamos al Login.
+            $urlRouterProvider.otherwise('/tab/dash');
     })
     .config(function ($ionicConfigProvider) {
         $ionicConfigProvider.tabs.position('bottom');
