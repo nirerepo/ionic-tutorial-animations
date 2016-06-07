@@ -18,10 +18,12 @@ angular.module('starter.services', [])
 
         return {
             start: function(messages, pending) {
+                console.log("Chat animator START");
                 msgAnimator = $interval(function() {
                     var msg = '';
                     if (receivedMessages.length > 0) {
                         msg = receivedMessages.shift();
+                        console.log('Mensaje mostrado', msg);
                         messages.push(msg.message);
                     }
                 }, 100);
@@ -51,6 +53,7 @@ angular.module('starter.services', [])
         var i = 0;
         var msgMonitor = $interval(function() {
             if (i < externalMessages.length) {
+                console.log("Mensaje recibido...", externalMessages[i]);
                 $rootScope.$broadcast('nire.chat.messageIncoming', { value: true });
                 $rootScope.$broadcast('nire.chat.messageReceived', { message: externalMessages[i]})
                 i++;
