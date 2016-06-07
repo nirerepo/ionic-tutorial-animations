@@ -36,7 +36,7 @@ $base-font-size-default:			16px;
 $base-font-size-large:				18px;
 $base-font-line-height:				1.4;
 $base-font-color-dark:				#01344F;
-$base-font-color-soft:				#7F8C8D;
+$base-font-color-soft:				rgba(0,50,69,0.50);
 
 $link-color:                      	$positive !default;
 $link-hover-color:                	darken($link-color, 15%) !default;
@@ -45,6 +45,9 @@ $link-hover-color:                	darken($link-color, 15%) !default;
 $small-font-family:					MovistarText;
 $small-font-size-default:			14px;
 $small-font-color:					rgba(0,50,69,0.50);
+
+//	Icons
+$icon-color-soft:					rgba(0,50,69,0.25);
 
 //	Headings
 $header-font-family-default:		MovistarHeadline-Bold;
@@ -56,12 +59,13 @@ $header-font-size-smaller:			10px;
 //	Base colors
 
 //	Backgrounds
-$background-1:						url("../img/clouds.jpg"); //Image
+$background-1:						url("../img/backgrounds/clouds.jpg"); //Image
 $background-2:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); //Gradient
 $background-3:						#EDF2F5; //Solid-color-1
 
 //	Element default details
 $shadow-default:                   	0px 1px 2px 0px rgba(0,0,0,0.20); 
+$shadow-strong:						0px 1px 4px 0px rgba(0,0,0,0.30); 
 $radius-default:                  	4px;
 $background-transparent:			rgba(255,255,255,0.20);
 
@@ -104,10 +108,6 @@ p {
 	font-size: $base-font-size-default;
 }
 
-button {
-	color: $light!important;
-}
-
 .h1.title,
 .bar.bar-header {
 	font-family: $header-font-family-alt;
@@ -125,12 +125,19 @@ button {
 	color: $light!important;
 }
 
+.activated {
+	border-color: transparent!important;
+}
+
 // FACEBOOK BUTTON //
 button.button-facebook {
 	background-color: #3B5998;
+	color: $light!important;
 }
-button.button-facebook:active {
+
+button.button-facebook.activated {
 	background-color: darken(#3B5998, 10%);
+	color: $light;
 }
 
 .fix-to-bottom {
@@ -334,7 +341,10 @@ select[readonly] {
     position: absolute;
     top: 0;
     height: 100%;
-    color: #BDC3C7;
+}
+
+#diary .card .item-body .item button i {
+	color: $icon-color-soft!important;
 }
 
 #diary .card .item-button-right > .button {
@@ -345,7 +355,7 @@ select[readonly] {
 	margin-bottom: 0px;
 }
 
-.card .item-divider.footer {
+.card a.item-divider.footer {
 	color: $light;
 	font-size: $base-font-size-default;
 	font-family: $base-font-family-bold;
@@ -403,7 +413,6 @@ select[readonly] {
 .conversation {
 	display: block;
 	overflow: auto;
-    padding-bottom: 100px;
 }
 
 .bubble {
@@ -420,9 +429,24 @@ select[readonly] {
 	margin-bottom: 0px!important;
 }
 
+.bubble.system {
+    -webkit-animation: fadeInLeft 0.75s;
+    animation: fadeInLeft 0.75s;
+    border-top-left-radius: 0px;
+}
+
+.bubble.user {
+    border-top-right-radius: 0px;
+}
+
 .bubble.system,
 .bubble.user {
-	margin: 5px 0 10px 0;
+	margin: 5px 0 5px 0;
+	border: none;
+}
+
+.bubble.system p,
+.bubble.user p {	
 	color: $light;
 	font-size: $bubble-font-size;
 	line-height: $bubble-line-height;
@@ -430,7 +454,6 @@ select[readonly] {
 
 .bubble.system {
 	float: left;
-	color: $light;
 	background-color: $bubble-background-system;
 }
 
@@ -439,16 +462,53 @@ select[readonly] {
 	float: right;
 }
 
-.bubble.system,
-.bubble.user  {
-    -webkit-animation: fadeIn .5s;
-    animation: fadeIn .5s;
+/* OPTIONS */
+
+.options {
+	text-align: center;
+	width: 100%;
+	overflow: auto;
+	padding-top: 50px;
+	padding-bottom: 20px;
+	display:                 flex;
+	flex-wrap:               wrap;
+	justify-content:         center;
 }
 
+.options .bubble.option {
+	background-color: #FFF;
+	margin: 5px 5px 5px 5px;
+	box-shadow: $shadow-strong;
+	border: none;
+}
+
+.options .bubble.option p{
+	color: $base-font-color-dark;
+	font-size: $bubble-font-size;
+}
+
+.bubble.option:active {
+	background-color: $bubble-background-user;
+	float: right;
+	border: none;
+	-webkit-transition: background-color .1s linear;
+	-moz-transition: background-color .1s linear;
+	-o-transition: background-color .1s linear;
+	-ms-transition: background-color .1s linear;
+	transition: background-color .1s linear;
+}
+
+.bubble.option:active p {
+	color: $light;
+}
+
+.options .item{
+	border-color: transparent;
+}
 /* LOADING */
 
 .bubble.system.loading {
-	background-image: url('../img/chatloading.gif');
+	background-image: url('../img/others/chat/chatloading.gif');
 	background-size: 35px;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -486,27 +546,6 @@ select[readonly] {
 	font-size: 25px;
 	color: $light;
 }
-
-/* OPTIONS */
-
-.options {
-	text-align: center;
-	width: 100%;
-	overflow: auto;
-	margin-top: 50px;
-	display:                 flex;
-	flex-wrap:               wrap;
-	justify-content:         center;
-}
-
-.bubble.option {
-	background-color: #FFF;
-	color: #01344F;
-	margin: 5px 5px 5px 5px;
-}
-
-
-
 
 // Swipes example
 .box{

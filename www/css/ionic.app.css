@@ -9824,9 +9824,6 @@ p, span, a, button, input {
 p {
   font-size: 16px; }
 
-button {
-  color: #fff !important; }
-
 .h1.title,
 .bar.bar-header {
   font-family: MovistarHeadline-Regular; }
@@ -9840,11 +9837,16 @@ button {
 .button-light {
   color: #fff !important; }
 
-button.button-facebook {
-  background-color: #3B5998; }
+.activated {
+  border-color: transparent !important; }
 
-button.button-facebook:active {
-  background-color: #2d4373; }
+button.button-facebook {
+  background-color: #3B5998;
+  color: #fff !important; }
+
+button.button-facebook.activated {
+  background-color: #2d4373;
+  color: #fff; }
 
 .fix-to-bottom {
   position: fixed;
@@ -9885,7 +9887,7 @@ select[readonly] {
   background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
 #welcome.pane {
-  background-image: url("../img/clouds.jpg");
+  background-image: url("../img/backgrounds/clouds.jpg");
   background-size: cover; }
 
 #tracker.pane {
@@ -10005,8 +10007,10 @@ select[readonly] {
   align-items: center;
   position: absolute;
   top: 0;
-  height: 100%;
-  color: #BDC3C7; }
+  height: 100%; }
+
+#diary .card .item-body .item button i {
+  color: rgba(0, 50, 69, 0.25) !important; }
 
 #diary .card .item-button-right > .button {
   right: 10px; }
@@ -10014,7 +10018,7 @@ select[readonly] {
 .card .item:last-child {
   margin-bottom: 0px; }
 
-.card .item-divider.footer {
+.card a.item-divider.footer {
   color: #fff;
   font-size: 16px;
   font-family: MovistarText-Bold;
@@ -10054,8 +10058,7 @@ select[readonly] {
 
 .conversation {
   display: block;
-  overflow: auto;
-  padding-bottom: 100px; }
+  overflow: auto; }
 
 .bubble {
   padding: 12px;
@@ -10069,30 +10072,73 @@ select[readonly] {
 .bubble p {
   margin-bottom: 0px !important; }
 
+.bubble.system {
+  -webkit-animation: fadeInLeft 0.75s;
+  animation: fadeInLeft 0.75s;
+  border-top-left-radius: 0px; }
+
+.bubble.user {
+  border-top-right-radius: 0px; }
+
 .bubble.system,
 .bubble.user {
-  margin: 5px 0 10px 0;
+  margin: 5px 0 5px 0;
+  border: none; }
+
+.bubble.system p,
+.bubble.user p {
   color: #fff;
   font-size: 18px;
   line-height: 22px; }
 
 .bubble.system {
   float: left;
-  color: #fff;
   background-color: rgba(255, 255, 255, 0.2); }
 
 .bubble.user {
   background-color: rgba(0, 52, 79, 0.6);
   float: right; }
 
-.bubble.system,
-.bubble.user {
-  -webkit-animation: fadeIn .5s;
-  animation: fadeIn .5s; }
+/* OPTIONS */
+.options {
+  text-align: center;
+  width: 100%;
+  overflow: auto;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.options .bubble.option {
+  background-color: #FFF;
+  margin: 5px 5px 5px 5px;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.3);
+  border: none; }
+
+.options .bubble.option p {
+  color: #01344F;
+  font-size: 18px; }
+
+.bubble.option:active {
+  background-color: rgba(0, 52, 79, 0.6);
+  float: right;
+  border: none;
+  -webkit-transition: background-color .1s linear;
+  -moz-transition: background-color .1s linear;
+  -o-transition: background-color .1s linear;
+  -ms-transition: background-color .1s linear;
+  transition: background-color .1s linear; }
+
+.bubble.option:active p {
+  color: #fff; }
+
+.options .item {
+  border-color: transparent; }
 
 /* LOADING */
 .bubble.system.loading {
-  background-image: url("../img/chatloading.gif");
+  background-image: url("../img/others/chat/chatloading.gif");
   background-size: 35px;
   background-repeat: no-repeat;
   background-position: center;
@@ -10124,21 +10170,6 @@ select[readonly] {
   margin-left: 90%;
   font-size: 25px;
   color: #fff; }
-
-/* OPTIONS */
-.options {
-  text-align: center;
-  width: 100%;
-  overflow: auto;
-  margin-top: 50px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; }
-
-.bubble.option {
-  background-color: #FFF;
-  color: #01344F;
-  margin: 5px 5px 5px 5px; }
 
 .box {
   height: 100%; }
