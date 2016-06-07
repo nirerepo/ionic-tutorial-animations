@@ -1,12 +1,17 @@
 angular.module('starter.controllers', [])
-    .controller('DashCtrl', function ($scope, $ionicActionSheet, Timeline) {
+    .controller('DashCtrl', function ($scope, $ionicActionSheet, Timeline, $rootScope) {
     $scope.cards = [
         {},
         {}
     ];
-    Timeline.get().then(function(result){
-        $scope.nutrition = result.data.data.body.nutrition
-    });
+    $rootScope.reloadTimeline = function(){ loadTimeline(); }
+
+    var loadTimeline = function(){
+        Timeline.get().then(function(result){
+            $scope.nutrition = result.data.data.body.nutrition
+        });
+    }
+    loadTimeline();
     //$scope.desayuno = Timeline.desayuno();
     console.log($scope.desayuno);
     $scope.cardDestroyed = function (index) {
@@ -79,6 +84,17 @@ angular.module('starter.controllers', [])
                 tipo = '';
             $state.go('help' + tipo, { startpage: 2 });
         };
+
+        $scope.pressOption = function($event, opt) {
+            var el = $event.currentTarget;
+            var elementDisplay = el.style.display;
+            Array.prototype.forEach.call(el.parentNode.childNodes, function(child) {
+                if (child.tagName == 'DIV' && child != el)
+                    child.style.display = 'none';
+            })
+            el.classList.remove('option');
+            el.classList.add('user');
+        }
     })
     .controller('AccountCtrl', function ($scope, $state) {
         $scope.settings = {
@@ -91,20 +107,33 @@ angular.module('starter.controllers', [])
             $state.go('signin');
         };
     })
-.controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, FoodSearch) {
+.controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, Food, $rootScope) {
     $scope.data = {
         "plates": [],
         "search": ''
     };
     $scope.search = function() {
-      console.log("Searching...", $scope.data.search);
-      FoodSearch.plateByName($scope.data.search).then(function(matches) {
-        $scope.data.plates = matches.data.hits.hits;
-      });
+        console.log("Searching...", $scope.data.search);
+        if ($scope.data.search.length >= 3)
+            Food.plateByName($scope.data.search).then(function(matches) {
+                $scope.data.plates = matches.data.hits.hits;
+            });
+        else
+            $scope.data.plates = [];
+
     }
     $scope.goBack = function() {
       $ionicHistory.goBack();
     };
+    $scope.addPlate = function(plate) {
+        console.log(plate.fields);
+        var mealId = $stateParams.mealId
+        var plateData = {name: plate.fields.nombredieta[0], kcal: plate.fields.kcal[0], id: plate.fields.id[0]}
+        Food.addPlate(mealId, plateData).then(function(result){
+            $scope.reloadTimeline();
+            $ionicHistory.goBack();
+        })
+    }
 /*
     $scope.search().promise.then(function(rest) {
       console.log("HITS: ", rest.data.hits.hits);

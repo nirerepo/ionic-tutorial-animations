@@ -21,12 +21,10 @@ angular.module('starter.services', [])
                 msgAnimator = $interval(function() {
                     var msg = '';
                     if (receivedMessages.length > 0) {
-                        console.log(msg);
                         msg = receivedMessages.shift();
                         messages.push(msg.message);
-                        console.log(messages);
                     }
-                }, 1000);
+                }, 100);
             },
             stop: function() {
                 $interval.cancel(msgAnimator);
@@ -35,6 +33,7 @@ angular.module('starter.services', [])
     }])
     .factory('Monitor', ['$rootScope', '$interval', function($rootScope, $interval) {
         var externalMessages = [
+            { source: 'system', type: 'card', cardId: 'actividad', title: 'Actividad física. Recomendaciones'},
             { source: 'system', type: 'message', text: 'Parece que tu ingesta de calorías está por debajo de lo normal.'},
             { source: 'system', type: 'message', text: '¿Puedo ayudarte sugiriéndote alguna idea para completar bien el día?', options: ['No, gracias', '¡Cuéntame!']},
             { source: 'user', type: 'message', text: '¡Cuéntame!'},
@@ -46,7 +45,8 @@ angular.module('starter.services', [])
                     { text: 'Comí algo más'},
                     { text: 'Necesito más ayuda'}
                 ]
-            }
+            },
+
         ];
         var i = 0;
         var msgMonitor = $interval(function() {
@@ -55,7 +55,7 @@ angular.module('starter.services', [])
                 $rootScope.$broadcast('nire.chat.messageReceived', { message: externalMessages[i]})
                 i++;
             }
-        }, 3000);
+        }, 1000);
 
         return {
 
@@ -92,25 +92,7 @@ angular.module('starter.services', [])
         }
     };
 })
-    .factory('FoodSearch', function ($http, $q) {
-    //
-    // http://search.nire.co/contenidos_es_es/_search?q=name:*Ibup**&fields=id,name&sort=_score:asc
-    //
-    return {
-        plateByName: function (queryText) {
-            var rdo = $q.defer();
-            var query = "http://search.nire.co/platos_es_co/_search?q=nombredieta:*" + queryText + "**&fields=id,nombredieta&sort=_score:asc";
-            $http.get(query)
-                .then(function (res) {
-                console.log("RES: ", res);
-                rdo.resolve(res);
-            }).catch(function (data, status) {
-                console.error('Gists error', response.status, response.data);
-            })
-                .finally(function () {
-                console.log("finally finished gists");
-            });
-            return rdo.promise;
-        }
-    };
-});
+    .factory('_', ['$window', function($window) {
+    return $window._; // assumes underscore has already been loaded on the page
+}])
+;

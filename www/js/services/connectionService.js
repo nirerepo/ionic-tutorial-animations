@@ -8,7 +8,7 @@ function ConnectionService($http) {
     self.currentHash = null;
     self.currentUsername = null;
 
-    self.getHeaders = function(){
+    self.getHeaders = function(contentType){
         console.log("HEADERS", self.currentUsername, self.currentHash);
         return { 
             "security-token": window.localStorage['userhash'], 
@@ -16,7 +16,7 @@ function ConnectionService($http) {
             "Accept-Language": "es-ES",
             "App-Domain": "movistar",
             "App-TimezoneOffset": new Date().getTimezoneOffset(),
-            "Content-Type": 'application/x-www-form-urlencoded'
+            "Content-Type": contentType ? contentType : 'application/x-www-form-urlencoded'
         };
     };
 
@@ -26,12 +26,16 @@ function ConnectionService($http) {
       }).join('&');
     };
 
-    self.request = function (url, data) {
+    self.request = function (url, data, contentType) {
+        if(data) {
+            if(!contentType)
+                data = self.toQueryString(data)
+        }
         return $http({
-            headers: self.getHeaders(),
+            headers: self.getHeaders(contentType),
             url: URL_JSON_WRITER + url,
             method: data ? "POST" : "GET",
-            data: data ? self.toQueryString(data) : null,
+            data: data,
             cache:false
         })
     }

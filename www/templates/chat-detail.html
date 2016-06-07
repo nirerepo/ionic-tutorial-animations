@@ -1,19 +1,28 @@
-<ion-view view-title="Chat">
+<ion-view view-title="Chat" class="has-footer">
 	<ion-content class="padding">
 		<div class="conversation">
 			<div ng-repeat="msg in shownMessages" class="bubble {{msg.source}}" style="border: 1px red solid">
 				<p>{{msg.text}}</p>
 			</div>
+		</div>
+		<div class="conversation">
 			<div ng-repeat="msg in newMessages">
 				<div ng-show="msg.type=='message'" class="bubble {{msg.source}} animated fadeIn">
 					<p>{{msg.text}}</p>
 				</div>
 
 				<div ng-show="msg.type=='options'" class="options">
-					<div ng-repeat="opt in msg.options" class="bubble option animated fadeInUp">
+					<div id="{{opt.id}}" ng-repeat="opt in msg.options" class="item bubble option animated fadeInUp" ng-click="pressOption($event, opt)">
 						<p>{{opt.text}}</p>
 					</div>
 				</div>
+				<div ng-show="msg.type=='card'" class="ficha-wrapper">
+					<div class="bubble system img-background ficha" ng-click="showHelp(msg.cardId)">
+						<h2>{{msg.title}}</h2>
+					</div>
+					<div class="info icon-light"></div>
+				</div>
+
 			</div>
 			<div ng-show="pending" class="bubble system loading">
 				&nbsp;
