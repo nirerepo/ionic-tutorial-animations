@@ -1,7 +1,6 @@
 <ion-view view-title="Chat">
 	<ion-content class="padding">
 		<div class="conversation">
-			<div class="ficha-wrapper">
 			<div ng-repeat="msg in shownMessages" class="bubble {{msg.source}}" style="border: 1px red solid">
 				<p>{{msg.text}}</p>
 			</div>
@@ -9,6 +8,7 @@
 				<div ng-show="msg.type=='message'" class="bubble {{msg.source}} animated fadeIn">
 					<p>{{msg.text}}</p>
 				</div>
+
 				<div ng-show="msg.type=='options'" class="options">
 					<div ng-repeat="opt in msg.options" class="bubble option animated fadeInUp">
 						<p>{{opt.text}}</p>
