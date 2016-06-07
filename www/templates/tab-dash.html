@@ -15,13 +15,13 @@
 </ks-swiper-slide>
 </ks-swiper-container>
 <div class="card add animated fadeIn">
-  <div class="item item-body">
+  <div class="item item-body" nav-transition="none" nav-direction="enter" ui-sref="trackfood({mealId:1})">
     <h2>Añadir desayuno</h2>
     <p>Mantén pulsado para repetir tu desayuno de ayer</p>
   </div>
 </div>
 <div class="card add animated fadeIn">
-  <item class="item item-body" nav-transition="android" nav-direction="enter" ui-sref="trackfood">
+  <item class="item item-body" nav-transition="android" nav-direction="enter" ui-sref="trackfood({mealId:2})">
     <h2 class="title">Añadir mediamañana</h2>
     <p>No olvides tomar algo entre el desayuno y tu comida</p>
   </item>
@@ -55,13 +55,19 @@
   </div>
 </div>
 <div class="card add animated fadeIn">
-  <div class="item item-body">
+  <div class="item item-body" nav-transition="none" nav-direction="enter" ui-sref="trackfood({mealId:3})">
+    <h2>Añadir comida</h2>
+    <p>Repon tus fuerzas por la tarde</p>
+  </div>
+</div>
+<div class="card add animated fadeIn">
+  <div class="item item-body" nav-transition="none" nav-direction="enter" ui-sref="trackfood({mealId:4})">
     <h2>Añadir merienda</h2>
     <p>Repon tus fuerzas por la tarde</p>
   </div>
 </div>
 <div class="card add animated fadeIn">
-  <div class="item item-body">
+  <div class="item item-body" nav-transition="none" nav-direction="enter" ui-sref="trackfood({mealId:5})">
     <h2>Añadir cena</h2>
     <p>Cenar limpio y ligero te ayudará a no tener una digestión lenta y pesada</p>
   </div>

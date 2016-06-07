@@ -5,8 +5,7 @@ angular.module('starter.controllers', [])
         {}
     ];
 
-    Timeline.get()
-    $scope.nutrition = Timeline.tracks;
+    $scope.nutrition = Timeline.get();
 
     $scope.cardDestroyed = function (index) {
         $scope.cards.splice(index, 1);
