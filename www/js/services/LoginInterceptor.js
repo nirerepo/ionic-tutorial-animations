@@ -19,9 +19,10 @@ function LoginInterceptor($injector) {
     this.responseError = function(response) {
         // TODO: Dependiendo que datos estan cacheados deberíamos redirigir
         // a diferentes paginas.
-        console.log("Hola desde el Interceptor");
-        if(response.status === 401)
+        if(response.status === 401) {
+            console.log("El usuario se encuentra deslogueado. Redirigiendo al login.");
             $injector.get("$state").go("welcome");
+        }
     };
 }
 
