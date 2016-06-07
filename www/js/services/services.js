@@ -55,7 +55,10 @@ angular.module('starter.services', [])
 
         ];
         var i = 0;
-        var lastShownMessage = _.last(JSON.parse(window.localStorage.shownMessages));
+        var lastShownMessage = null;
+        if (window.localStorage.shownMessages != null) {
+            lastShownMessage = _.last(JSON.parse(window.localStorage.shownMessages));    
+        }
         var msgMonitor = $interval(function() {
             if (i < externalMessages.length) {
                 var msg = externalMessages[i];

@@ -51,8 +51,10 @@ angular.module('starter.controllers', [])
          * $interval interno.
          */
         $scope.$on('$ionicView.enter', function() {
-            $scope.shownMessages = JSON.parse(window.localStorage.shownMessages);
-            console.log("SHOWN: ", $scope.shownMessages);
+            if (window.localStorage.shownMessages)
+                $scope.shownMessages = JSON.parse(window.localStorage.shownMessages);
+            else
+                $scope.shownMessages = [];
             $scope.newMessages = [];
             $timeout(function() {
                 Chats.start($scope.newMessages, $scope.pending);
