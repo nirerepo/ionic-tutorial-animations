@@ -46,7 +46,7 @@ function LoginService(Connection, $q) {
         var result = $q.defer();
 
         // Si alguna promesa da error rechazamos la promesa principal
-        var error = function() { result.reject(); };
+        var error = function() { console.log("Login Error", arguments); result.reject(); };
 
         var nireSuccess = function(response) {
             this.currentUsername = response.data.assignedUsername;
