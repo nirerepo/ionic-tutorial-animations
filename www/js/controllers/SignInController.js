@@ -18,14 +18,11 @@ function SignInCtrl(push, Login, $state) {
     /**
      * Intenta loguear un usuario utilizando autenticacion de Facebook.
      */
-    this.facebookSignIn = function() {
-        var fbLoginSuccess = function (userData) {
-            var userId = userData.authResponse.userID;
-            console.log('Sign-In', userId);
-            $state.go('tab.dash');
-        };
-        facebookConnectPlugin.login(["public_profile", "email", "user_birthday"], fbLoginSuccess, function (error) { console.log(error); });
-    };
+    this.facebookLogin = function () {
+        var success = function() { $state.go("tab.dash"); };
+        var error = function() { console.log("Error al autenticar con facebook."); }.bind(this);
+        Login.facebookLogin().then(success, error);
+    }.bind(this);
 }
 
 angular.module('starter.controllers')

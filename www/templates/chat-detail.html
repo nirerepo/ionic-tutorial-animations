@@ -1,18 +1,31 @@
 <ion-view view-title="Chat" class="has-footer">
 	<ion-content class="padding">
 		<div class="conversation">
-			<div ng-repeat="msg in shownMessages" class="bubble {{msg.source}}" style="border: 1px red solid">
-				<p>{{msg.text}}</p>
+			<div ng-repeat="m in shownMessages track by $index">
+				<div ng-show="m.type=='message'" class="bubble {{m.source}} animated fadeIn">
+					<p>{{m.text}}</p>
+				</div>
+				<div ng-show="m.type=='options'" class="options">
+					<div id="{{opt.id}}" ng-repeat="opt in m.options" class="item bubble option" ng-click="pressOption($event, opt)">
+						<p>{{opt.text}}</p>
+					</div>
+				</div>
+				<div ng-show="m.type=='card'" class="ficha-wrapper">
+					<div class="bubble system img-background ficha" ng-click="showHelp(m.cardId)">
+						<h2>{{m.title}}</h2>
+					</div>
+					<div class="info icon-light"></div>
+				</div>
 			</div>
 		</div>
-		<div class="conversation">
-			<div ng-repeat="msg in newMessages">
+		<div class="previousconversation">
+			<div ng-repeat="msg in newMessages track by $index">
 				<div ng-show="msg.type=='message'" class="bubble {{msg.source}} animated fadeIn">
 					<p>{{msg.text}}</p>
 				</div>
 
 				<div ng-show="msg.type=='options'" class="options">
-					<div id="{{opt.id}}" ng-repeat="opt in msg.options" class="item bubble option animated fadeInUp" ng-click="pressOption($event, opt)">
+					<div id="{{opt.id}}" ng-repeat="opt in msg.options" class="item bubble option" ng-click="pressOption($event, opt)">
 						<p>{{opt.text}}</p>
 					</div>
 				</div>
@@ -24,7 +37,6 @@
 						<i class="icon ion-ios-information-outline"></i>
 					</div>
 				</div>
-
 			</div>
 			<div ng-show="pending" class="bubble system loading">
 				&nbsp;

@@ -4,16 +4,9 @@ angular.module('starter.controllers', [])
         {},
         {}
     ];
-    $rootScope.reloadTimeline = function(){ loadTimeline(); }
 
-    var loadTimeline = function(){
-        Timeline.get().then(function(result){
-            $scope.nutrition = result.data.data.body.nutrition
-        });
-    }
-    loadTimeline();
-    //$scope.desayuno = Timeline.desayuno();
-    console.log($scope.desayuno);
+    $scope.nutrition = Timeline.get();
+
     $scope.cardDestroyed = function (index) {
         $scope.cards.splice(index, 1);
     };
@@ -48,11 +41,7 @@ angular.module('starter.controllers', [])
     };
     //
 })
-    .controller('ChatDetailCtrl', function ($scope, $state, $stateParams, $interval, $ionicScrollDelegate, Chats) {
-        var localStoredShownMessages = [
-            { source: 'system', type: 'message', text: 'Bienvenido a Movistar Salud'},
-            { source: 'system', type: 'message', text: 'Vamos a ver en qué podemos ayudarte hoy'}
-        ];   // Ya mostrados
+    .controller('ChatDetailCtrl', function ($scope, $state, $stateParams, $interval, $timeout, $ionicScrollDelegate, Chats) {
         $scope.newMessages = [];
         $scope.pending = false;
 
@@ -62,8 +51,12 @@ angular.module('starter.controllers', [])
          * $interval interno.
          */
         $scope.$on('$ionicView.enter', function() {
-            $scope.shownMessages = localStoredShownMessages;
-            Chats.start($scope.newMessages, $scope.pending);
+            $scope.shownMessages = JSON.parse(window.localStorage.shownMessages);
+            console.log("SHOWN: ", $scope.shownMessages);
+            $scope.newMessages = [];
+            $timeout(function() {
+                Chats.start($scope.newMessages, $scope.pending);
+            }, 1000);
 
         });
         $scope.$on('$ionicView.leave', function() {
@@ -92,9 +85,9 @@ angular.module('starter.controllers', [])
                 if (child.tagName == 'DIV' && child != el)
                     child.style.display = 'none';
             });
-            el.parentNode.classList.remove('options');
             el.classList.remove('option');
             el.classList.add('user');
+            el.parentNode.classList.remove('options');
         }
     })
     .controller('AccountCtrl', function ($scope, $state) {
@@ -108,7 +101,7 @@ angular.module('starter.controllers', [])
             $state.go('signin');
         };
     })
-.controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, Food, $rootScope) {
+.controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, Food, Timeline) {
     $scope.data = {
         "plates": [],
         "search": ''
@@ -131,7 +124,7 @@ angular.module('starter.controllers', [])
         var mealId = $stateParams.mealId
         var plateData = {name: plate.fields.nombredieta[0], kcal: plate.fields.kcal[0], id: plate.fields.id[0]}
         Food.addPlate(mealId, plateData).then(function(result){
-            $scope.reloadTimeline();
+            Timeline.addPlate(mealId, plateData);
             $ionicHistory.goBack();
         })
     }

@@ -59,7 +59,8 @@ angular.module('starter', [
             
             .state('registro-datos', {
                 url: '/registro-datos',
-                templateUrl: 'templates/registro/datos.html'
+                templateUrl: 'templates/registro/datos.html',
+                controller: 'RegisterCtrl as vm'
             })
 
             .state('registro-numero', {

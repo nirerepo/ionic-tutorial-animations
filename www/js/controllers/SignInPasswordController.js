@@ -7,7 +7,7 @@
  */
 function SignInPasswordCtrl(Login, $state) {
     this.user = Login.credentials;
-    this.error = false;;
+    this.error = false;
     
     /**
      * Intenta loguear un usuario a la aplicación por medio de username & password.
