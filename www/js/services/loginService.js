@@ -3,8 +3,9 @@
  * sobre el usuario logueado.
  * 
  * @param {ConnectionService} Connection
+ * @param {angular.IQService} $q
  */
-function LoginService(Connection) {
+function LoginService(Connection, $q) {
     this.credentials = { 
         username: window.localStorage.username, 
         password: ""
@@ -13,18 +14,28 @@ function LoginService(Connection) {
     this.currentHash = window.userhash;
 
     /**
-     * Intenta loguearse utilizando las credenciales del servicio.
+     * Intenta loguearse utilizando las credenciales de usuario almacenadas en el servicio.
      */
     this.formLogin = function () {
         return Connection
             .request('login/login', this.credentials)
-            .then(function (result) {
-                if (result.data.hash) {
-                    this.currentUsername = result.data.assignedUsername;
-                    this.currentHash = result.data.hash;
+            .then(function (response) {
+                var result = $q.defer();
+
+                if (response.data.hash) {
+                    this.currentUsername = response.data.assignedUsername;
+                    this.currentHash = response.data.hash;
+
                     window.localStorage.username = this.currentUsername;
                     window.localStorage.userhash = this.currentHash;
+
+                    result.resolve(response);
                 }
+                else {
+                    result.reject(response);
+                }
+
+                return result.promise;
             });
     };
 }
