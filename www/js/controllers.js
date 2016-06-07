@@ -1,11 +1,16 @@
 angular.module('starter.controllers', [])
     .controller('DashCtrl', function ($scope, $ionicActionSheet, Timeline, $rootScope) {
+
+        // Cada vez que se muestra el Timeline le solicitamos al servicio
+        // la información actualizada.
+        $scope.$on("$ionicView.beforeEnter", function () {
+           $scope.nutrition = Timeline.get(); 
+        });
+
     $scope.cards = [
         {},
         {}
     ];
-
-    $scope.nutrition = Timeline.get();
 
     $scope.cardDestroyed = function (index) {
         $scope.cards.splice(index, 1);
