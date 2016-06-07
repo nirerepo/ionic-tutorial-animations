@@ -406,6 +406,11 @@ select[readonly] {
     padding-bottom: 100px;
 }
 
+.previousconversation {
+	display: block;
+	overflow: auto;
+}
+
 .bubble {
 	padding: 12px;
     max-width: 85%;

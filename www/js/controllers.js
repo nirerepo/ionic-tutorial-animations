@@ -41,11 +41,7 @@ angular.module('starter.controllers', [])
     };
     //
 })
-    .controller('ChatDetailCtrl', function ($scope, $state, $stateParams, $interval, $ionicScrollDelegate, Chats) {
-        var localStoredShownMessages = [
-            { source: 'system', type: 'message', text: 'Bienvenido a Movistar Salud'},
-            { source: 'system', type: 'message', text: 'Vamos a ver en qué podemos ayudarte hoy'}
-        ];   // Ya mostrados
+    .controller('ChatDetailCtrl', function ($scope, $state, $stateParams, $interval, $timeout, $ionicScrollDelegate, Chats) {
         $scope.newMessages = [];
         $scope.pending = false;
 
@@ -55,8 +51,12 @@ angular.module('starter.controllers', [])
          * $interval interno.
          */
         $scope.$on('$ionicView.enter', function() {
-            $scope.shownMessages = localStoredShownMessages;
-            Chats.start($scope.newMessages, $scope.pending);
+            $scope.shownMessages = JSON.parse(window.localStorage.shownMessages);
+            console.log("SHOWN: ", $scope.shownMessages);
+            $scope.newMessages = [];
+            $timeout(function() {
+                Chats.start($scope.newMessages, $scope.pending);
+            }, 1000);
 
         });
         $scope.$on('$ionicView.leave', function() {
@@ -85,9 +85,9 @@ angular.module('starter.controllers', [])
                 if (child.tagName == 'DIV' && child != el)
                     child.style.display = 'none';
             });
-            el.parentNode.classList.remove('options');
             el.classList.remove('option');
             el.classList.add('user');
+            el.parentNode.classList.remove('options');
         }
     })
     .controller('AccountCtrl', function ($scope, $state) {

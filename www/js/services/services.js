@@ -5,6 +5,7 @@ angular.module('starter.services', [])
 
         // Acumulamos los mensajes ya recibidos desde el monitor...
         // ...y se mostrarán suavemente cuando se vuelva a abrir el chat
+
         $rootScope.$on('nire.chat.messageReceived', function(event, msg) {
             // TODO: ¿Quizás en paralelo a esto, podemos almacenar los recibidos
             // en localstorage, e inicializar desde ahí al arrancar el servicio?
@@ -25,8 +26,9 @@ angular.module('starter.services', [])
                         msg = receivedMessages.shift();
                         console.log('Mensaje mostrado', msg);
                         messages.push(msg.message);
+                        window.localStorage.shownMessages = JSON.stringify(messages);
                     }
-                }, 100);
+                }, 1000);
             },
             stop: function() {
                 $interval.cancel(msgAnimator);
@@ -35,14 +37,16 @@ angular.module('starter.services', [])
     }])
     .factory('Monitor', ['$rootScope', '$interval', function($rootScope, $interval) {
         var externalMessages = [
-            { source: 'system', type: 'card', cardId: 'actividad', title: 'Actividad física. Recomendaciones'},
-            { source: 'system', type: 'message', text: 'Parece que tu ingesta de calorías está por debajo de lo normal.'},
-            { source: 'system', type: 'message', text: '¿Puedo ayudarte sugiriéndote alguna idea para completar bien el día?', options: ['No, gracias', '¡Cuéntame!']},
-            { source: 'user', type: 'message', text: '¡Cuéntame!'},
-            { source: 'system', type: 'message', text: 'Veamos...'},
-            { source: 'system', type: 'message', text: 'Ayer solamente hiciste dos tomas'},
-            { source: 'system', type: 'message', text: 'Hacer 5 tomas al día es importante para acelerar el metabolismo'},
-            { source: 'system', type: 'options', options: [
+            { id: '1', source: 'system', type: 'message', text: 'Bienvenido a Movistar Salud'},
+            { id: '2', source: 'system', type: 'message', text: 'Vamos a ver en qué podemos ayudarte hoy'},
+            { id: '3', source: 'system', type: 'card', cardId: 'actividad', title: 'Actividad física. Recomendaciones'},
+            { id: '4', source: 'system', type: 'message', text: 'Parece que tu ingesta de calorías está por debajo de lo normal.'},
+            { id: '5', source: 'system', type: 'message', text: '¿Puedo ayudarte sugiriéndote alguna idea para completar bien el día?', options: ['No, gracias', '¡Cuéntame!']},
+            { id: '6', source: 'user', type: 'message', text: '¡Cuéntame!'},
+            { id: '7', source: 'system', type: 'message', text: 'Veamos...'},
+            { id: '8', source: 'system', type: 'message', text: 'Ayer solamente hiciste dos tomas'},
+            { id: '9', source: 'system', type: 'message', text: 'Hacer 5 tomas al día es importante para acelerar el metabolismo'},
+            { id: '10', source: 'system', type: 'options', options: [
                     { text: '¡Lo tendré en cuenta!'},
                     { text: 'Comí algo más'},
                     { text: 'Necesito más ayuda'}
@@ -51,12 +55,16 @@ angular.module('starter.services', [])
 
         ];
         var i = 0;
+        var lastShownMessage = _.last(JSON.parse(window.localStorage.shownMessages));
         var msgMonitor = $interval(function() {
             if (i < externalMessages.length) {
-                console.log("Mensaje recibido...", externalMessages[i]);
-                $rootScope.$broadcast('nire.chat.messageIncoming', { value: true });
-                $rootScope.$broadcast('nire.chat.messageReceived', { message: externalMessages[i]})
-                i++;
+                var msg = externalMessages[i];
+                if (!lastShownMessage || (msg.id > lastShownMessage.id)) {
+                    console.log("Mensaje recibido...", externalMessages[i].id);
+                    $rootScope.$broadcast('nire.chat.messageIncoming', { value: true });
+                    $rootScope.$broadcast('nire.chat.messageReceived', { message: externalMessages[i]})
+                    i++;
+                }
             }
         }, 1000);
 
