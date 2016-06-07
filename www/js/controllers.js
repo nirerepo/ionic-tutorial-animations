@@ -4,16 +4,10 @@ angular.module('starter.controllers', [])
         {},
         {}
     ];
-    $rootScope.reloadTimeline = function(){ loadTimeline(); }
 
-    var loadTimeline = function(){
-        Timeline.get().then(function(result){
-            $scope.nutrition = result.data.data.body.nutrition
-        });
-    }
-    loadTimeline();
-    //$scope.desayuno = Timeline.desayuno();
-    console.log($scope.desayuno);
+    Timeline.get()
+    $scope.nutrition = Timeline.tracks;
+
     $scope.cardDestroyed = function (index) {
         $scope.cards.splice(index, 1);
     };
@@ -107,7 +101,7 @@ angular.module('starter.controllers', [])
             $state.go('signin');
         };
     })
-.controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, Food, $rootScope) {
+.controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, Food, Timeline) {
     $scope.data = {
         "plates": [],
         "search": ''
@@ -126,7 +120,7 @@ angular.module('starter.controllers', [])
         var mealId = $stateParams.mealId
         var plateData = {name: plate.fields.nombredieta[0], kcal: plate.fields.kcal[0], id: plate.fields.id[0]}
         Food.addPlate(mealId, plateData).then(function(result){
-            $scope.reloadTimeline();
+            Timeline.addPlate(mealId, plateData);
             $ionicHistory.goBack();
         })
     }
