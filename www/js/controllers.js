@@ -91,7 +91,8 @@ angular.module('starter.controllers', [])
             Array.prototype.forEach.call(el.parentNode.childNodes, function(child) {
                 if (child.tagName == 'DIV' && child != el)
                     child.style.display = 'none';
-            })
+            });
+            el.parentNode.classList.remove('options');
             el.classList.remove('option');
             el.classList.add('user');
         }
