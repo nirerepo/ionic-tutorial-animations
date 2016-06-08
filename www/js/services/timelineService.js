@@ -30,7 +30,7 @@ function TimelineService(Connection, $filter) {
 
         var track = $filter('filter')(self.tracks, {typeId: parseInt(mealId)}, true);
         if(track.length === 0) {
-            track.push({ type: key, typeId: mealId, items: [] });
+            track.push({ type: key, typeId: parseInt(mealId), items: [] });
             self.tracks.push( track[0] );
         }
 
@@ -47,7 +47,7 @@ function TimelineService(Connection, $filter) {
     this.calcularTotalCalorias = function(mealId){
         var track = $filter('filter')(self.tracks, {typeId: parseInt(mealId)}, true)[0];
         var calorias = 0;
-        track.items.forEach(function(item){ calorias += parseInt(item.quantity.split(' ')[0]); });
+        track.items.forEach(function(item){ calorias += parseFloat(item.quantity.split(' ')[0]); });
         return calorias
     }
 
