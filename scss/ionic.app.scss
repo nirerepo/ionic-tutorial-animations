@@ -112,11 +112,28 @@ p {
 }
 
 hr.light {
-	border: 1px solid rgba(255,255,255,.25);
+	border: 1px solid rgba(255,255,255,.15);
 }
 
 hr.dark {
 	border: 1px solid rgba(0,0,0,.15);
+}
+
+.separator {
+	display: flex;
+}
+
+.separator .left,
+.separator .right {
+	display: block;
+	float: left;
+	width: 35%;
+}
+
+.separator span {
+	display: block;
+	float: left;
+	margin: 0px 20px;
 }
 
 input {
