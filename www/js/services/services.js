@@ -69,7 +69,7 @@ angular.module('starter.services', [])
                     i++;
                 }
             }
-        }, 1000);
+        }, 10000);
 
         return {
 
