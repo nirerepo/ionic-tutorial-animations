@@ -7741,7 +7741,7 @@ input[type="color"] {
   padding-top: 2px;
   padding-left: 0;
   height: 34px;
-  color: #111;
+  color: #00344f;
   vertical-align: middle;
   font-size: 14px;
   line-height: 16px; }
@@ -7765,11 +7765,11 @@ input[type="color"] {
 textarea {
   padding-left: 0; }
   textarea::-moz-placeholder {
-    color: rgba(0, 52, 79, 0.7); }
+    color: rgba(0, 52, 79, 0.3); }
   textarea:-ms-input-placeholder {
-    color: rgba(0, 52, 79, 0.7); }
+    color: rgba(0, 52, 79, 0.3); }
   textarea::-webkit-input-placeholder {
-    color: rgba(0, 52, 79, 0.7);
+    color: rgba(0, 52, 79, 0.3);
     text-indent: -3px; }
 
 textarea {
@@ -7818,15 +7818,15 @@ input[type="file"] {
 
 input::-moz-placeholder,
 textarea::-moz-placeholder {
-  color: rgba(0, 52, 79, 0.7); }
+  color: rgba(0, 52, 79, 0.3); }
 
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
-  color: rgba(0, 52, 79, 0.7); }
+  color: rgba(0, 52, 79, 0.3); }
 
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-  color: rgba(0, 52, 79, 0.7);
+  color: rgba(0, 52, 79, 0.3);
   text-indent: 0; }
 
 input[disabled],
@@ -9824,6 +9824,12 @@ p, span, a, button, input {
 p {
   font-size: 16px; }
 
+input {
+  font-size: 18px !important; }
+
+input::-webkit-input-placeholder {
+  line-height: 24px; }
+
 .h1.title,
 .bar.bar-header {
   font-family: MovistarHeadline-Regular; }
@@ -9834,8 +9840,8 @@ p {
 .centered {
   text-align: center; }
 
-.button span {
-  font-weight: bold; }
+#welcome .button span {
+  font-family: MovistarText-Bold; }
 
 .button-light {
   color: #fff !important; }
@@ -9863,13 +9869,23 @@ button.button-facebook.activated {
 .list-inset {
   border-radius: 4px; }
 
-.list-inset.transparent .item input {
+.item.item-input {
+  border-radius: 4px;
+  border-color: none;
+  margin: 0px; }
+
+.combo .item.item-input {
+  border-radius: 0px;
+  border-color: #ddd;
+  margin: -1px; }
+
+.list-inset.combo .item input {
   font-size: 18px;
   color: #01344F;
   line-height: inherit; }
 
-.list-inset.transparent .item input::-webkit-input-placeholder {
-  color: rgba(0, 52, 79, 0.7); }
+.list-inset.combo .item input::-webkit-input-placeholder {
+  color: rgba(0, 52, 79, 0.3); }
 
 input[disabled],
 select[disabled],

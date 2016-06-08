@@ -76,8 +76,10 @@ $background-transparent:			rgba(255,255,255,0.20);
 	$card-background-transparent:	$background-transparent;
 
 	//	Forms
+	$input-font-size:				$base-font-size-large;
 	$input-radius:					$radius-default;
-	$input-color-placeholder:       rgba(0,52,79,0.70);
+	$input-color:       			rgba(0,52,79,1);
+	$input-color-placeholder:       rgba(0,52,79,0.30);
 
 	//	Buttons
 	$button-font-size:              18px !default;
@@ -109,6 +111,14 @@ p {
 	font-size: $base-font-size-default;
 }
 
+input {
+	font-size: $input-font-size!important;
+}
+
+input::-webkit-input-placeholder {
+	line-height: 24px;
+}
+
 .h1.title,
 .bar.bar-header {
 	font-family: $header-font-family-alt;
@@ -122,8 +132,8 @@ p {
 	text-align: center;
 }
 
-.button span {
-	font-weight: bold;
+#welcome .button span {
+	font-family: $base-font-family-bold;
 }
 
 .button-light {
@@ -152,25 +162,37 @@ button.button-facebook.activated {
 }
 
 .light-centered {
-color: $light;
-text-align: center;
+	color: $light;
+	text-align: center;
 }
 
 .list-inset {
 	border-radius: $radius-default;
 }
 
+.item.item-input {
+	border-radius: $radius-default;
+    border-color: none;
+	margin: 0px;
+}
+
+.combo .item.item-input {
+	border-radius: 0px;
+    border-color: #ddd;
+	margin: -1px;
+}
+
 .list-inset .item {
 	// padding: 8px 0 8px 16px;
 }
 
-.list-inset.transparent .item input {
+.list-inset.combo .item input {
 	font-size: $base-font-size-large;
 	color: $dark;
 	line-height: inherit;
 }
 
-.list-inset.transparent .item input::-webkit-input-placeholder  {
+.list-inset.combo .item input::-webkit-input-placeholder  {
 	color: $input-color-placeholder;
 }
 
