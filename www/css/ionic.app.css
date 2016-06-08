@@ -9891,7 +9891,7 @@ select[readonly] {
   background-size: cover; }
 
 #tracker.pane {
-  background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
+  background: #EDF2F5; }
 
 .list .item {
   font-family: MovistarText;
