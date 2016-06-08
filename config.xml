@@ -67,8 +67,8 @@
   </platform>
   <plugin name="cordova-plugin-x-toast" spec="~2.5.1"/>
   <plugin name="cordova-plugin-facebook4" spec="~1.7.1">
-    <variable name="APP_ID" value="1173888669289901"/>
-    <variable name="APP_NAME" value="nire-test"/>
+    <variable name="APP_ID" value="224019634634852"/>
+    <variable name="APP_NAME" value="NireApp"/>
   </plugin>
   <plugin name="phonegap-plugin-push" spec="~1.6.4">
     <variable name="SENDER_ID" value="606551403580"/>
