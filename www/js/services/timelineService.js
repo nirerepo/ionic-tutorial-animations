@@ -43,6 +43,22 @@ function TimelineService(Connection, $filter) {
             return false;
         return true;
     }
+
+    this.calcularTotalCalorias = function(mealId){
+        var track = $filter('filter')(self.tracks, {typeId: parseInt(mealId)}, true)[0];
+        var calorias = 0;
+        track.items.forEach(function(item){ calorias += parseInt(item.quantity.split(' ')[0]); });
+        return calorias
+    }
+
+    this.eliminarPlato = function(plato, mealType){
+        var day = moment().format("YYYYMMDD")
+        var data = { date: day, idMeal: mealType, idTrack: plato.id }
+        Connection.request("track/nutrition/delete", data).then(function(){
+            var track = $filter('filter')(self.tracks, {type: mealType}, true)[0];
+            track.items.splice(track.items.indexOf(plato), 1);
+        })
+    }
 }
 
 angular.module('starter.services')

@@ -19,28 +19,23 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
     $scope.trackBlock = function(mealId) {
         return !Timeline.trackBlockExists(mealId);
     }
+    $scope.calcularTotalCalorias = function(mealId) {
+        return Timeline.calcularTotalCalorias(mealId);
+    }
     //
-    $scope.showActionsheet = function (plato) {
+    $scope.showActionsheet = function (plato, mealType) {
         var title = '';
         if (plato)
             title = plato.name;
         $ionicActionSheet.show({
             titleText: title,
-            buttons: [
-                { text: '<i class="icon ion-arrow-move"></i>Cantidades' },
-                { text: '<i class="icon ion-arrow-move"></i>Sustituir' }
-            ],
             destructiveText: '<i class="icon ion-share"></i>Quitar',
             cancelText: 'Cancel',
             cancel: function () {
                 console.log('CANCELLED');
             },
-            buttonClicked: function (index) {
-                console.log('BUTTON CLICKED', index);
-                return true;
-            },
             destructiveButtonClicked: function () {
-                console.log('DESTRUCT');
+                Timeline.eliminarPlato(plato, mealType)
                 return true;
             }
         });
