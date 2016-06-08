@@ -55,8 +55,11 @@ function LoginService(Connection, $q) {
             window.localStorage.username = this.currentUsername;
             window.localStorage.userhash = this.currentHash;
 
+            if(response.firstTimeUser)
+                this.getUserDataFromFacebook();
+
             result.resolve(response);
-        };
+        }.bind(this);
 
         // Si facebook resonde que todo OK, lo intentamos loguear en Nire.
         // La promesa solo se resuelve si Nire también loguea sin error.
@@ -76,7 +79,15 @@ function LoginService(Connection, $q) {
     this.getUserDataFromFacebook = function() {
         var userId = window.localStorage.app_credentials_facebook_id;
         facebookConnectPlugin.api(userId + "/?fields=name,gender,email,birthday", [],
-            function success(userData) { console.log("TODO: Guardar datos del usuario", arguments); },
+            function success(userData) {
+                Connection
+                    .request("registry/facebookBiography", {
+                        name: userData.name, 
+                        gender:userData.gender, 
+                        email: userData.email, 
+                        birthday: userData.birthday
+                    });
+            },
             function onError (error) { console.error("TODO: Controlar error al recuperar datos de Facebook: ", error); }
         );
     };

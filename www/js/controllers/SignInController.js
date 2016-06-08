@@ -14,15 +14,6 @@ function SignInCtrl(push, Login, $state) {
     push.init().then(function(value) { 
         this.pushToken = value; 
     }.bind(this));
-
-    /**
-     * Intenta loguear un usuario utilizando autenticacion de Facebook.
-     */
-    this.facebookLogin = function () {
-        var success = function() { $state.go("tab.dash"); };
-        var error = function() { console.log("Error al autenticar con facebook."); }.bind(this);
-        Login.facebookLogin().then(success, error);
-    }.bind(this);
 }
 
 angular.module('starter.controllers')

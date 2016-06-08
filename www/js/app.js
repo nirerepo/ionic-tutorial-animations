@@ -9,6 +9,7 @@ angular.module('starter', [
     'starter.controllers',
     'ionic',
     'starter.services',
+    'starter.directives',
     'ksSwiper'
 ])
     .run(function (Monitor, $ionicPlatform) {
@@ -59,8 +60,7 @@ angular.module('starter', [
             
             .state('registro-datos', {
                 url: '/registro-datos',
-                templateUrl: 'templates/registro/datos.html',
-                controller: 'RegisterCtrl as vm'
+                templateUrl: 'templates/registro/datos.html'
             })
 
             .state('registro-numero', {
