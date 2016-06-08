@@ -5,12 +5,23 @@
 		</div>
 	</ion-content>
 	<div class="fix-to-bottom">
+		<div class="padding">
+			<button class="button button-block button-facebook icon-left ion-social-facebook" ng-click="vm.facebookLogin()">Continuar con Facebook
+		  </button>
+			<button class="button button-block button-outline button-light icon-left ion-ios-email-outline" ui-sref="registro-datos">Regístrate con tu email</button>
+		</div>
   		<div class="padding">
-    		<button class="button button-block button-positive" ui-sref="registro-datos">Regístrate</button>
     		<button class="button button-block button-clear button-light" ui-sref="signin">
     			¿Ya tienes una cuenta? <span>Iniciar sesión</span>
     		</button>
   		</div>
+
+  	<div class="padding conditions centered">
+	<p class="padding">
+		Al continuar, estás de acuerdo con nuestros <br><a href="#">Términos de servicio</a> y <a href="#">Política de privacidad</a>
+	</p>
+</div>
   	</div>
+
 </ion-view>
 

@@ -59,7 +59,8 @@ $header-font-size-smaller:			10px;
 //	Base colors
 
 //	Backgrounds
-$background-1:						url("../img/backgrounds/clouds.jpg"); //Image
+//$background-1:						url("../img/backgrounds/clouds.jpg"); //Image
+$background-1:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); //Gradient
 $background-2:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); //Gradient
 $background-3:						#EDF2F5; //Solid-color-1
 
