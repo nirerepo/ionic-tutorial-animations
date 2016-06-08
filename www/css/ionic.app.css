@@ -9834,6 +9834,9 @@ p {
 .centered {
   text-align: center; }
 
+.button span {
+  font-weight: bold; }
+
 .button-light {
   color: #fff !important; }
 
@@ -9859,9 +9862,6 @@ button.button-facebook.activated {
 
 .list-inset {
   border-radius: 4px; }
-
-.list-inset .item {
-  padding: 8px 0 8px 16px; }
 
 .list-inset.transparent .item input {
   font-size: 18px;
@@ -10151,7 +10151,7 @@ select[readonly] {
 /* FICHAS */
 .ficha-wrapper {
   position: relative;
-  overflow: auto; }
+  height: 170px; }
 
 .bubble.system.ficha {
   position: relative;
@@ -10160,7 +10160,9 @@ select[readonly] {
   vertical-align: bottom;
   background: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("http://i.imgur.com/r4BW1gr.png") no-repeat;
   background-size: cover;
-  background-position: center; }
+  background-position: center;
+  display: block;
+  float: left; }
 
 .bubble.system.ficha h2 {
   position: absolute;
@@ -10169,11 +10171,17 @@ select[readonly] {
   font-size: 18px !important; }
 
 .info {
-  position: absolute;
-  top: 40%;
-  margin-left: 90%;
+  position: relative;
   font-size: 25px;
-  color: #fff; }
+  height: 170px;
+  color: #fff;
+  float: left;
+  display: table;
+  margin-left: 20px; }
+
+.info i {
+  display: table-cell;
+  vertical-align: middle; }
 
 .box {
   height: 100%; }

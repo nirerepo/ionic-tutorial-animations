@@ -121,6 +121,10 @@ p {
 	text-align: center;
 }
 
+.button span {
+	font-weight: bold;
+}
+
 .button-light {
 	color: $light!important;
 }
@@ -156,7 +160,7 @@ text-align: center;
 }
 
 .list-inset .item {
-	padding: 8px 0 8px 16px;
+	// padding: 8px 0 8px 16px;
 }
 
 .list-inset.transparent .item input {
@@ -524,7 +528,7 @@ select[readonly] {
 
 .ficha-wrapper {
 	position: relative;
-	overflow: auto;
+	height: 170px;
 }
 
 .bubble.system.ficha {
@@ -535,6 +539,8 @@ select[readonly] {
 	background: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("http://i.imgur.com/r4BW1gr.png") no-repeat;
 	background-size: cover;
 	background-position: center;
+	display: block;
+	float: left;
 }
 
 .bubble.system.ficha h2 {
@@ -545,11 +551,18 @@ select[readonly] {
 }
 
 .info {
-	position: absolute;
-	top: 40%;
-	margin-left: 90%;
+	position: relative;
 	font-size: 25px;
+	height: 170px;
 	color: $light;
+	float: left;
+	display: table;
+	margin-left: 20px;
+}
+
+.info i {
+	display: table-cell;
+	vertical-align: middle;
 }
 
 // Swipes example
