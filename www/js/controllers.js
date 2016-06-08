@@ -18,6 +18,9 @@ angular.module('starter.controllers', [])
     $scope.cardSwiped = function (index) {
         var newCard = $scope.cards.push(newCard);
     };
+    $scope.trackBlock = function(mealId) {
+        return !Timeline.trackBlockExists(mealId);
+    }
     //
     $scope.showActionsheet = function (plato) {
         var title = '';
