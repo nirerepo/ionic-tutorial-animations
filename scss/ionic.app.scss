@@ -87,8 +87,8 @@ $background-transparent:			rgba(255,255,255,0.20);
 	//	Chat Elements
 	$bubble-shadow:					$shadow-default;
 	$bubbble-radius:				8px;
-	$bubble-font-size:				18px;
-	$bubble-line-height:			22px;
+	$bubble-font-size:				16px;
+	$bubble-line-height:			20px;
 	$bubble-background-system:		rgba(255,255,255,0.20);
 	$bubble-background-user:		rgba(0,52,79,0.60);
 
@@ -109,6 +109,14 @@ p, span, a, button, input {
 
 p {
 	font-size: $base-font-size-default;
+}
+
+hr.light {
+	border: 1px solid rgba(255,255,255,.25);
+}
+
+hr.dark {
+	border: 1px solid rgba(0,0,0,.15);
 }
 
 input {
@@ -140,9 +148,13 @@ input::-webkit-input-placeholder {
 	color: $light!important;
 }
 
-.button-light.button-outline.active,
-.button-light.button-outline.activated {
-	background-color: rgba(0, 0, 0, 0.1)!important;
+.button.button-light.button-outline {
+	border-color: #FFF;
+}
+
+.button.button-light.button-outline.active,
+.button.button-light.button-outline.activated {
+	background-color: rgba(0, 0, 0, 0.05)!important;
     border-color: #ddd!important;
 }
 
@@ -263,9 +275,15 @@ select[readonly] {
 	height: 50%;
 }
 
+.conditions {
+    border-top: 1px solid rgba(255,255,255,0.25);
+    padding-top: 5px;
+}
+
 .conditions p {
 	color: $light;
-	font-size: 13px!important;
+    font-size: 12px !important;
+    line-height: normal;
 }
 
 .conditions p a {
@@ -516,9 +534,11 @@ select[readonly] {
 
 .options .bubble.option {
 	background-color: #FFF;
-	margin: 5px 5px 5px 5px;
+	margin: 0px 4px 8px 4px;
 	box-shadow: $shadow-strong;
 	border: none;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .options .bubble.option p{
