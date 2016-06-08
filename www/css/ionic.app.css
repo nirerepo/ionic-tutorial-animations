@@ -9887,11 +9887,11 @@ select[readonly] {
   background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
 #welcome.pane {
-  background-image: url("../img/backgrounds/clouds.jpg");
+  background-image: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
   background-size: cover; }
 
 #tracker.pane {
-  background: url("../img/backgrounds/clouds.jpg"); }
+  background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
 .list .item {
   font-family: MovistarText;
