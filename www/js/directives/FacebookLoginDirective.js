@@ -1,8 +1,12 @@
 function FacebookLoginDirective(Login, $state) {
     this.facebookLogin = function() {
-        var success = function() { $state.go("tab.dash"); };
+        var success = function() { 
+            plugins.toast.show('Login por facebook', 10000, 'top');
+            $state.go("tab.dash"); 
+        };
+
         var error = function() { console.log("Error al autenticar con facebook."); };
-        Login.facebookLogin().then(success, error);        
+        Login.facebookLogin().then(success, error);      
     };
 
     function LinkFunction(scope, element, attrs, controller, transcludeFn) {
