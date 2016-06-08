@@ -9891,7 +9891,7 @@ select[readonly] {
   background-size: cover; }
 
 #tracker.pane {
-  background: #EDF2F5; }
+  background: url("../img/backgrounds/clouds.jpg"); }
 
 .list .item {
   font-family: MovistarText;
