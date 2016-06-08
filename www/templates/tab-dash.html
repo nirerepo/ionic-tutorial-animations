@@ -36,7 +36,7 @@
     <ion-item class="item item-button-right" ng-repeat="plato in nutritionSeccion.items" type="item-text-wrap">
     {{plato.title}}
     <span class="item-info">{{plato.quantity}}</span>
-    <button class="button button-icon" ng-click="showActionsheet()">
+    <button class="button button-icon" ng-click="showActionsheet(plato, nutritionSeccion.type)">
       <i class="icon ion-more"></i>
     </button>
   </ion-item>
