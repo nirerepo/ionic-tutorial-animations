@@ -19,6 +19,9 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
     $scope.trackBlock = function(mealId) {
         return !Timeline.trackBlockExists(mealId);
     }
+    $scope.calcularTotalCalorias = function(mealId) {
+        return Timeline.calcularTotalCalorias(mealId);
+    }
     //
     $scope.showActionsheet = function (plato) {
         var title = '';
