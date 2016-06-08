@@ -12,13 +12,15 @@ function TimelineService(Connection, $filter) {
     }
 
     this.get = function () {
-        var date = moment()
-        Connection.request("timeline/" + date.format("YYYYMMDD"))
-            .then(function(result){
-                result.data.data.body.nutrition.forEach(function(item){
-                    self.tracks.push(item);
-                })
-            });
+        if(self.tracks.length === 0){
+            var date = moment()
+            Connection.request("timeline/" + date.format("YYYYMMDD"))
+                .then(function(result){
+                    result.data.data.body.nutrition.forEach(function(item){
+                        self.tracks.push(item);
+                    })
+                });
+        }
         return self.tracks;
     }
 
@@ -26,7 +28,7 @@ function TimelineService(Connection, $filter) {
         var key = self.mealKey[mealId]
         var plate = {completed: true, id: plateData.id, quantity: plateData.kcal + " kcal", title: plateData.name}
 
-        var track = $filter('filter')(self.tracks, {typeId: mealId}, true);
+        var track = $filter('filter')(self.tracks, {typeId: parseInt(mealId)}, true);
         if(track.length === 0) {
             track.push({ type: key, typeId: mealId, items: [] });
             self.tracks.push( track[0] );
