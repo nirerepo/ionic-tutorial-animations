@@ -57,6 +57,8 @@ function TimelineService(Connection, $filter) {
         Connection.request("track/nutrition/delete", data).then(function(){
             var track = $filter('filter')(self.tracks, {type: mealType}, true)[0];
             track.items.splice(track.items.indexOf(plato), 1);
+            if(track.items.length === 0)
+                self.tracks.splice(track);
         })
     }
 }
