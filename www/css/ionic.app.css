@@ -9846,6 +9846,11 @@ input::-webkit-input-placeholder {
 .button-light {
   color: #fff !important; }
 
+.button-light.button-outline.active,
+.button-light.button-outline.activated {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  border-color: #ddd !important; }
+
 .activated {
   border-color: transparent !important; }
 
@@ -9885,7 +9890,8 @@ button.button-facebook.activated {
   line-height: inherit; }
 
 .list-inset.combo .item input::-webkit-input-placeholder {
-  color: rgba(0, 52, 79, 0.3); }
+  color: rgba(0, 52, 79, 0.3);
+  line-height: inherit !important; }
 
 input[disabled],
 select[disabled],
@@ -9927,9 +9933,9 @@ select[readonly] {
 #signin p.padding-vertical,
 #login p.padding-vertical,
 #login img.padding-vertical {
-  padding: 40px 20px; }
+  padding: 20px 20px; }
 
-#login img.padding-vertical {
+#login img {
   width: 50%;
   height: 50%; }
 

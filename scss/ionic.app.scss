@@ -140,6 +140,12 @@ input::-webkit-input-placeholder {
 	color: $light!important;
 }
 
+.button-light.button-outline.active,
+.button-light.button-outline.activated {
+	background-color: rgba(0, 0, 0, 0.1)!important;
+    border-color: #ddd!important;
+}
+
 .activated {
 	border-color: transparent!important;
 }
@@ -194,6 +200,7 @@ button.button-facebook.activated {
 
 .list-inset.combo .item input::-webkit-input-placeholder  {
 	color: $input-color-placeholder;
+	line-height: inherit!important;
 }
 
 input[disabled],
@@ -248,10 +255,10 @@ select[readonly] {
 #signin p.padding-vertical,
 #login p.padding-vertical,
 #login img.padding-vertical {
-	padding: 40px 20px;
+	padding: 20px 20px;
 }
 
-#login img.padding-vertical {
+#login img {
 	width: 50%;
 	height: 50%;
 }
