@@ -3,6 +3,15 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, Exerci
         "exercises": [],
         "search": ''
     };
+    $scope.$on('$ionicView.enter', function() {
+        $scope.data.search = '';
+    });
+
+    $scope.clear = function() {
+        $scope.data.search = '';
+        $scope.data.exercises = [];
+    }
+
     $scope.search = function() {
         console.log("Searching...", $scope.data.search);
         if ($scope.data.search.length >= 3)

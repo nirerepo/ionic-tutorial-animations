@@ -69,6 +69,10 @@ angular.module('starter.controllers', [])
     $scope.$on('$ionicView.enter', function() {
         $scope.data.search = '';
     });
+    $scope.clear = function() {
+        $scope.data.search = '';
+        $scope.data.plates = [];
+    }
     $scope.search = function() {
         console.log("Searching...", $scope.data.search);
         if ($scope.data.search.length >= 3)
