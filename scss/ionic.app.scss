@@ -36,7 +36,7 @@ $base-font-size-default:			16px;
 $base-font-size-large:				18px;
 $base-font-line-height:				1.4;
 $base-font-color-dark:				#01344F;
-$base-font-color-soft:				rgba(0,50,69,0.50);
+$base-font-color-soft:				#999999;
 
 $link-color:                      	$positive !default;
 $link-hover-color:                	darken($link-color, 15%) !default;
@@ -52,15 +52,14 @@ $icon-color-soft:					rgba(0,50,69,0.25);
 //	Headings
 $header-font-family-default:		MovistarHeadline-Bold;
 $header-font-family-alt:			MovistarHeadline-Regular;
-$header-font-size-bigger:			20px;
+$header-font-size-large:			20px;
 $header-font-size-default:			16px;
 $header-font-size-smaller:			10px;
 
 //	Base colors
 
-//	Backgrounds
-//$background-1:						url("../img/backgrounds/clouds.jpg"); //Image
-$background-1:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); //Gradient
+//	Backgrounds					
+$background-1:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); // url("../img/backgrounds/clouds.jpg"); //Image
 $background-2:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); //Gradient
 $background-3:						#EDF2F5; //Solid-color-1
 
@@ -103,6 +102,14 @@ h1,h2,h3,h4 {
 	font-family: $header-font-family-default;
 }
 
+h2 {
+	font-size: $header-font-size-default;
+}
+
+h2.large {
+	font-size: $header-font-size-large;
+}
+
 p, span, a, button, input {
 	font-family: $base-font-family;
 }
@@ -117,6 +124,11 @@ hr.light {
 
 hr.dark {
 	border: 1px solid rgba(0,0,0,.15);
+}
+
+#tracker .empty h2,
+#tracker .empty p {
+	color: $base-font-color-soft;
 }
 
 .separator {
@@ -350,7 +362,7 @@ img.padding-vertical {
 #diary .card.add .item h2 {
     margin:0 0 10px 0;
     color: $light;
-    font-size: $header-font-size-bigger;
+    font-size: $header-font-size-large;
 }
 
 #diary .card.add .item p {
@@ -457,6 +469,13 @@ img.padding-vertical {
 ///////////////////
 // - SEARCHBAR - //
 ///////////////////
+
+.frecuents-list {
+	padding-top: 10px;
+	color: $base-font-color-soft;
+	font-family: $base-font-family;
+	font-size: $base-font-size-default;
+}
 
 .item-input-inset a.back {
     padding-right: 15px;
@@ -689,6 +708,15 @@ $num-colors: 10;
 
 }
 
+.swiper-slide h2 {
+	margin-top: 0px!important;
+	font-size: 20px;
+}
+
+.swiper-slide .item p {
+	font-size: $base-font-size-default
+}
+
 .light.swiper-slide .item h2,
 .light.swiper-slide .item p {
 	color: $base-font-color-dark;
@@ -697,12 +725,4 @@ $num-colors: 10;
 .dark.swiper-slide .item h2,
 .dark.swiper-slide .item p {
 	color: $light;
-}
-
-.swiper-slide .item h2 {
-	font-size: 20px;
-}
-
-.swiper-slide .item p {
-	font-size: $base-font-size-default
 }

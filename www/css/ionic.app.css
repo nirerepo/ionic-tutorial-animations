@@ -9818,6 +9818,12 @@ a.button {
 h1, h2, h3, h4 {
   font-family: MovistarHeadline-Bold; }
 
+h2 {
+  font-size: 16px; }
+
+h2.large {
+  font-size: 20px; }
+
 p, span, a, button, input {
   font-family: MovistarText; }
 
@@ -9829,6 +9835,10 @@ hr.light {
 
 hr.dark {
   border: 1px solid rgba(0, 0, 0, 0.15); }
+
+#tracker .empty h2,
+#tracker .empty p {
+  color: #999999; }
 
 .separator {
   display: flex; }
@@ -10096,6 +10106,12 @@ img.padding-vertical {
   padding-left: 16px;
   padding-right: 16px; }
 
+.frecuents-list {
+  padding-top: 10px;
+  color: #999999;
+  font-family: MovistarText;
+  font-size: 16px; }
+
 .item-input-inset a.back {
   padding-right: 15px;
   color: #fff;
@@ -10303,6 +10319,13 @@ ion-slides {
   background-position: right !important;
   background-repeat: no-repeat !important; }
 
+.swiper-slide h2 {
+  margin-top: 0px !important;
+  font-size: 20px; }
+
+.swiper-slide .item p {
+  font-size: 16px; }
+
 .light.swiper-slide .item h2,
 .light.swiper-slide .item p {
   color: #01344F; }
@@ -10310,9 +10333,3 @@ ion-slides {
 .dark.swiper-slide .item h2,
 .dark.swiper-slide .item p {
   color: #fff; }
-
-.swiper-slide .item h2 {
-  font-size: 20px; }
-
-.swiper-slide .item p {
-  font-size: 16px; }
