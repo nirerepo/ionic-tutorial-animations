@@ -376,8 +376,9 @@ img.padding-vertical {
 #diary .card .item-divider.header {
 	color: $light;
 	background-color: rgba(0,52,79,0.50);
-	padding-top: 12px;
-	padding-bottom: 12px;
+	// padding-top: 12px;
+	// padding-bottom: 12px;
+	padding: 12px 15px 12px 15px;
 	border-bottom: 0px;
 }
 
@@ -412,7 +413,7 @@ img.padding-vertical {
 	font-family: $base-font-family;
 	color: $base-font-color-dark;
 	font-size: $base-font-size-default;
-	padding-right: 50px;
+	padding: 10px 50px 10px 15px;
 }
 
 #diary .card .item-body span.item-info {
@@ -453,7 +454,7 @@ img.padding-vertical {
 	font-size: $base-font-size-default;
 	font-family: $base-font-family-bold;
 	background-color: rgba(255,255,255,0.35);
-	padding: 20px 20px;
+	padding: 20px 15px;
 }
 
 .card .item-divider.footer i {
