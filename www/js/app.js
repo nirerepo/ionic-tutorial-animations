@@ -123,6 +123,10 @@ angular.module('starter', [
                 url: '/trackfood/:mealId',
                 templateUrl: 'templates/track-food.html',
                 controller: 'TrackCtrl'
+            }).state('trackexercise', {
+                url: '/trackexercise',
+                templateUrl: 'templates/track-exercise.html',
+                controller: 'ExerciseCtrl'
             })
             .state('help', {
                 url: '/help',

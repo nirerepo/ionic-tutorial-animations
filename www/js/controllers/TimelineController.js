@@ -2,7 +2,8 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
     // Cada vez que se muestra el Timeline le solicitamos al servicio
     // la información actualizada.
     $scope.$on("$ionicView.beforeEnter", function () {
-       $scope.nutrition = Timeline.get(); 
+       $scope.nutrition = Timeline.get().nutrition; 
+       $scope.exercises = Timeline.tracks.exercises; 
     });
 
     $scope.cards = [
@@ -18,6 +19,9 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
     };
     $scope.trackBlock = function(mealId) {
         return !Timeline.trackBlockExists(mealId);
+    }
+    $scope.hasExercises = function() {
+        return $scope.exercises.length > 0;
     }
     $scope.calcularTotalCalorias = function(mealId) {
         return Timeline.calcularTotalCalorias(mealId);

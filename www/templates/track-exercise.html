@@ -1,0 +1,63 @@
+<ion-view hide-nav-bar="true" id="tracker">
+<ion-header-bar class="bar bar-header bar-dark item-input-inset">
+<a ng-click="goBack()" class="back" nav-transition="none" nav-direction="exit"><i class="ion-close-round"></i></a>
+<label class="item-input-wrapper">
+  <i class="icon ion-android-search placeholder-icon"></i>
+  <input type="search" placeholder="Search" ng-change="search()" ng-model="data.search" ng-model-options='{ debounce: 200 }'>
+</label>
+<button class="button button-clear">
+  Cancel
+</button>
+</ion-header-bar>
+<ion-content>
+
+<!-- EMPTY SCREEN -->
+<div class="empty centered">
+  <div class="row padding-vertical">
+    <div class="col col-33 col-offset-33">
+      <img class="full-image" src="../img/others/illustrations/search.png">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-80 col-offset-10">
+      <h2 class="large">No hay  ejercicios recientes</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-80 col-offset-10">
+      <p>Aun no has introducido ningun ejercicio. Utiliza el buscador para encontrarlos.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FRECUENTS LIST -->
+<!-- <div class="frecuents-list">
+  <div class="row">
+    <div class="col">
+      <span>Frecuentes</span>
+    </div>
+  </div>
+  <ul class="list">
+    <li class="item">
+      <span class="item-title">Item</span><br>
+      <span class="item-info">Info // ¿Kcals o cantidad?</span>
+    </li>
+    <li class="item">
+      <span class="item-title">Item</span><br>
+      <span class="item-info">Info // ¿Kcals o cantidad?</span>
+    </li>
+    <li class="item">
+      <span class="item-title">Item</span><br>
+      <span class="item-info">Info // ¿Kcals o cantidad?</span>
+    </li>
+  </ul>
+</div> -->
+
+  <ul class="list">
+    <li class="item" ng-repeat="exercise in data.exercises" ng-click="addExercise(exercise)">
+      <span class="item-title">{{exercise.fields.nombre[0]}}</span><br>
+      <span class="item-info">{{getExerciseType(exercise.fields.tipo[0])}}&emsp;&emsp;{{exercise.fields.gruposmusculares[0]}}</span>
+    </li>
+  </ul>
+</ion-content>
+</ion-view>

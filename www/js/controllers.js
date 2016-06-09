@@ -89,7 +89,7 @@ angular.module('starter.controllers', [])
         var plateData = {name: fields.nombredieta[0], kcal: fields.kcal? fields.kcal[0] : 0, id: fields.id[0]}
         Food.addPlate(mealId, plateData).then(function(result){
             Timeline.addPlate(mealId, plateData);
-            $ionicHistory.goBack();
+            $state.go("tab.dash");
         })
     }
 /*
