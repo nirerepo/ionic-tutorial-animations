@@ -3335,7 +3335,7 @@ body,
   overflow: hidden;
   margin: 0;
   padding: 0;
-  color: #000;
+  color: #7AB800;
   word-wrap: break-word;
   font-size: 14px;
   font-family: -apple-system;
@@ -3593,7 +3593,7 @@ cite {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: #000;
+  color: #7AB800;
   font-weight: 500;
   font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   line-height: 1.2; }
@@ -9969,6 +9969,12 @@ select[readonly] {
 .list .item .item-info {
   font-size: 14px;
   color: rgba(0, 50, 69, 0.5); }
+
+.tab-item .badge {
+  top: 26%;
+  right: calc(54% - 26px);
+  background-color: #7AB800 !important;
+  color: #fff !important; }
 
 #welcome p,
 #signin p,

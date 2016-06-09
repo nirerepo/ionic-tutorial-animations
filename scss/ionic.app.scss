@@ -57,6 +57,7 @@ $header-font-size-default:			16px;
 $header-font-size-smaller:			10px;
 
 //	Base colors
+$base-color:						#7AB800;
 
 //	Backgrounds					
 $background-1:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); // url("../img/backgrounds/clouds.jpg"); //Image
@@ -292,6 +293,13 @@ select[readonly] {
 .list .item .item-info {
 	font-size: $small-font-size-default;
 	color: $small-font-color;
+}
+
+.tab-item .badge {
+    top: 26%;
+    right: calc(54% - 26px);
+	background-color: $base-color!important;
+	color: $light!important;
 }
 
 /////////////////////////////////////
