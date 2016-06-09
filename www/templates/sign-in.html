@@ -1,7 +1,7 @@
 <ion-view view-title="Ingresa" id="login">
 <ion-content class="has-header light centered" scroll="false">
 
-<div class="padding">
+<div class="padding transparent">
   <p class="padding-vertical">Si ya te has registrado, ingresa para disfrutar del plan que Salud Movistar ha creado para ti.</p>
   <label class="item item-input">
     <input type="text" placeholder="Username" ng-model="vm.user.username">
@@ -10,7 +10,11 @@
     Siguiente
   </button>
 </div>
-
+<div class="padding">
+    <div class="separator">
+        <hr class="light left"><span>O</span><hr class="light right">
+    </div>
+</div>
 <div class="padding">
   <nire-facebook-login>Iniciar sesión con Facebook</nire-facebook-login>
 </div>
