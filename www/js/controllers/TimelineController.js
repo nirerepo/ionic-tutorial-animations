@@ -29,8 +29,8 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
             title = plato.name;
         $ionicActionSheet.show({
             titleText: title,
-            destructiveText: '<i class="icon ion-share"></i>Quitar',
-            cancelText: 'Cancel',
+            destructiveText: '<i class="icon ion-trash-b"></i>Eliminar',
+            cancelText: 'Cancelar',
             cancel: function () {
                 console.log('CANCELLED');
             },

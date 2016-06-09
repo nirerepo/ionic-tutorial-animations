@@ -9860,7 +9860,7 @@ input::-webkit-input-placeholder {
 .centered {
   text-align: center; }
 
-#welcome .button span {
+#welcome .button span.strong {
   font-family: MovistarText-Bold; }
 
 .button-light {
@@ -9899,13 +9899,7 @@ button.button-facebook.activated {
 
 .item.item-input {
   border-radius: 4px;
-  border-color: none;
-  margin: 0px; }
-
-.combo .item.item-input {
-  border-radius: 0px;
-  border-color: #ddd;
-  margin: -1px; }
+  border: 0px; }
 
 .list-inset.combo .item input {
   font-size: 18px;
@@ -9915,6 +9909,25 @@ button.button-facebook.activated {
 .list-inset.combo .item input::-webkit-input-placeholder {
   color: rgba(0, 52, 79, 0.3);
   line-height: inherit !important; }
+
+.list-inset.combo .item.item-input {
+  border-radius: 0px; }
+
+.transparent.list-inset {
+  background: none; }
+
+.transparent .item.item-input,
+.transparent.list-inset .item.item-input {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0); }
+
+.transparent .item.item-input input,
+.transparent.list-inset .item.item-input input {
+  color: #fff; }
+
+.transparent .item.item-input input::-webkit-input-placeholder,
+.transparent.list-inset .item.item-input input::-webkit-input-placeholder {
+  color: rgba(0, 51, 79, 0.5); }
 
 input[disabled],
 select[disabled],
@@ -9952,11 +9965,11 @@ select[readonly] {
 #login p {
   font-size: 18px; }
 
-#welcome p.padding-vertical,
-#signin p.padding-vertical,
-#login p.padding-vertical,
-#login img.padding-vertical {
-  padding: 20px 20px; }
+.padding-vertical,
+p.padding-vertical,
+img.padding-vertical {
+  padding-top: 30px;
+  padding-bottom: 20px; }
 
 #login img {
   width: 50%;
