@@ -9860,7 +9860,7 @@ input::-webkit-input-placeholder {
 .centered {
   text-align: center; }
 
-#welcome .button span {
+#welcome .button span.strong {
   font-family: MovistarText-Bold; }
 
 .button-light {
