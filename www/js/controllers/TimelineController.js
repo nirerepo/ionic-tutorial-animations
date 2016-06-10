@@ -31,31 +31,6 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
     $scope.caloriasConsumidas = function() {
         return Timeline.caloriasConsumidas()
     }
-
-    $scope.showActionsheetPlate = function (plato, mealType){
-        var deleteAction = function(){ Timeline.eliminarPlato(plato, mealType); }
-        self.showActionsheet(deleteAction, plato.title)
-    }
-
-    $scope.showActionsheetExercise = function (exercise){
-        var deleteAction = function(){ Timeline.eliminarEjercicio(exercise); }
-        self.showActionsheet(deleteAction, exercise.title)
-    }
-
-    this.showActionsheet = function (deleteAction, title) {
-        $ionicActionSheet.show({
-            titleText: title,
-            destructiveText: '<i class="icon ion-trash-b"></i>Eliminar',
-            cancelText: 'Cancelar',
-            cancel: function () {
-                console.log('CANCELLED');
-            },
-            destructiveButtonClicked: function () {
-                deleteAction()
-                return true;
-            }
-        });
-    };
 }
 
 angular.module('starter.controllers')
