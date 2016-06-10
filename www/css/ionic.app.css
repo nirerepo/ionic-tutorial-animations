@@ -10053,6 +10053,9 @@ img.padding-vertical {
   font-family: MovistarText;
   text-align: right; }
 
+#diary .card .item-divider.header .resume i {
+  margin-left: 5px; }
+
 #diary .card .item-body.content {
   margin: 0px;
   text-overflow: ellipsis;
@@ -10139,6 +10142,17 @@ img.padding-vertical {
 
 .item-input-inset input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.3); }
+
+.item img.thumbnail {
+  float: left;
+  height: 70px;
+  width: 70px;
+  margin-right: 10px;
+  /* border-radius: 25px; */
+  margin-left: -15px;
+  margin-top: -15px;
+  margin-bottom: -15px;
+  background: red; }
 
 .conversation {
   display: block;
