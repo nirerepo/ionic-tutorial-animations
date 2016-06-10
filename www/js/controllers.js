@@ -74,7 +74,6 @@ angular.module('starter.controllers', [])
         $scope.data.plates = [];
     }
     $scope.search = function() {
-        console.log("Searching...", $scope.data.search);
         if ($scope.data.search.length >= 3)
             Food.plateByName($scope.data.search).then(function(matches) {
                 $scope.data.plates = matches.data.hits.hits;
@@ -96,13 +95,6 @@ angular.module('starter.controllers', [])
             $state.go("tab.dash");
         })
     }
-/*
-    $scope.search().promise.then(function(rest) {
-      console.log("HITS: ", rest.data.hits.hits);
-      $scope.data.plates = rest.data.hits.hits;
-      console.log("PLATES: ", $scope.data.plates);
-    });
-*/
 })
 
 .controller('HelpCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, Help) {

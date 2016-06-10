@@ -7,6 +7,7 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
     };
     $scope.$on('$ionicView.enter', function() {
         $scope.data.search = '';
+        $scope.data.exercises = [];
     });
 
     $scope.clear = function() {
@@ -55,7 +56,8 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
 
         },
         decreaseTime: function() {
-            $scope.data.exerciseTime -= 5;
+            if ($scope.data.exerciseTime > 5)
+                $scope.data.exerciseTime -= 5;
         }
 
 
