@@ -11,6 +11,8 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
         {}
     ];
 
+    var self = this;
+
     $scope.cardDestroyed = function (index) {
         $scope.cards.splice(index, 1);
     };
@@ -29,24 +31,6 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
     $scope.caloriasConsumidas = function() {
         return Timeline.caloriasConsumidas()
     }
-    //
-    $scope.showActionsheet = function (plato, mealType) {
-        var title = '';
-        if (plato)
-            title = plato.name;
-        $ionicActionSheet.show({
-            titleText: title,
-            destructiveText: '<i class="icon ion-trash-b"></i>Eliminar',
-            cancelText: 'Cancelar',
-            cancel: function () {
-                console.log('CANCELLED');
-            },
-            destructiveButtonClicked: function () {
-                Timeline.eliminarPlato(plato, mealType)
-                return true;
-            }
-        });
-    };
 }
 
 angular.module('starter.controllers')
