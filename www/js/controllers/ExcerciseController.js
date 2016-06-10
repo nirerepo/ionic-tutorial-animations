@@ -3,7 +3,7 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
         "exercises": [],
         "search": '',
         "selectedExercise": null,
-        "exerciseTime": "0.5"
+        "exerciseTime": 0
     };
     $scope.$on('$ionicView.enter', function() {
         $scope.data.search = '';
@@ -15,10 +15,12 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
     }
 
     $scope.search = function() {
-        console.log("Searching...", $scope.data.search);
         if ($scope.data.search.length >= 3)
             Exercise.exerciseByName($scope.data.search).then(function(matches) {
-                $scope.data.exercises = matches.data.hits.hits;
+                $scope.data.exercises = _.filter(matches.data.hits.hits,
+                                                    function(h) {
+                                                        return h._score > 1;
+                                                    });
             });
         else
             $scope.data.exercises = [];
@@ -27,44 +29,47 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
     $scope.goBack = function() {
       $ionicHistory.goBack();
     };
-    $scope.addExercise = function(exercise) {
-        $scope.openExerciseDetails(exercise);
-    }
 
-    $scope.getExerciseType = function(type) {
-        return Exercise.type[type];
+    $scope.exerciseModal = {
+        addExercise : function(exercise) {
+            $scope.data.exerciseTime = 5;
+            $scope.data.selectedExercise = exercise;
+            $scope.modal.show();
+        },
+        saveDetails : function() {
+            $scope.modal.hide();
+            var fields = $scope.data.selectedExercise.fields;
+            var time = $scope.data.exerciseTime;
+
+            var exerciseData = {name: fields.nombre[0], mets: fields.mets[0], id: fields.id[0], tipo: fields.tipo[0], time: time }
+            Exercise.add(exerciseData).then(function(result){
+                Timeline.addExercise(exerciseData);
+                $state.go("tab.dash");
+            });
+          },
+        closeExerciseDetails : function() {
+            $scope.modal.hide();
+        },
+        increaseTime: function() {
+            $scope.data.exerciseTime += 5;
+
+        },
+        decreaseTime: function() {
+            $scope.data.exerciseTime -= 5;
+        }
+
+
+
     }
 
   $ionicModal.fromTemplateUrl('templates/exercises/track-details.html', {
     scope: $scope,
     animation: 'slide-in-up',
-    focusFirstInput: true
+    focusFirstInput: false
   }).then(function(modal) {
     $scope.modal = modal;
-    console.log("Asignada", $scope.modal);
   });
-  $scope.openExerciseDetails = function(exercise) {
-    console.log("Modal...");
-    $scope.data.selectedExercise = exercise;
-    $scope.modal.show();
-    console.log("open!");
-  };
- $scope.saveDetails = function() {
-    var fields = $scope.data.selectedExercise.fields;
-    var time = $scope.data.exerciseTime;
 
-    var exerciseData = {name: fields.nombre[0], mets: fields.mets[0], id: fields.id[0], tipo: fields.tipo[0], time: time }
-    console.log("exerciseData: ", exerciseData);
-    Exercise.add(exerciseData).then(function(result){
-        Timeline.addExercise(exerciseData);
-        $state.go("tab.dash");
-    });
-    $scope.modal.hide();
-
-  }
-  $scope.closeExerciseDetails = function() {
-    $scope.modal.hide();
-  };
   // Cleanup the modal when we're done with it!
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
@@ -76,7 +81,7 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
   // Execute action on remove modal
   $scope.$on('modal.removed', function() {
     // Execute action
-  });    
+  });
 }
 
 angular.module('starter.controllers')

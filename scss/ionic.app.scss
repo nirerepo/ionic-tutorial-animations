@@ -29,6 +29,9 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #01344F !default;
 
+//	Brand colors
+$base-color:						#7AB800;
+
 //	Base Font
 $base-font-family:					MovistarText;
 $base-font-family-bold:				MovistarText-Bold;
@@ -55,9 +58,6 @@ $header-font-family-alt:			MovistarHeadline-Regular;
 $header-font-size-large:			20px;
 $header-font-size-default:			16px;
 $header-font-size-smaller:			10px;
-
-//	Base colors
-$base-color:						#7AB800;
 
 //	Backgrounds					
 $background-1:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); // url("../img/backgrounds/clouds.jpg"); //Image
@@ -527,7 +527,6 @@ img.padding-vertical {
     margin-left: -15px;
     margin-top: -15px;
     margin-bottom: -15px;
-    background: red;
 }
 
 ///////////////////
@@ -539,12 +538,70 @@ img.padding-vertical {
 }
 
 .modal {
-    top: 20%;
+	top: 20%;
     right: 10%;
-    bottom: 20%;
+    bottom: 40%;
     left: 10%;
-    min-height: 240px;
+    min-height: 260px;
     width: 80%;
+	box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
+	border-radius: $radius-default;
+}
+
+.modal input {
+	background: rgba(0,52,79,0.05);
+    width: 100%;
+    text-align: center;
+    font-size: 20px!important;
+    height: 46px;
+    color: $base-color;
+    font-family: $base-font-family-bold;
+    font-size: 24px!important;
+}
+
+.modal button {
+	width: 50%;
+    border: 0px;
+    font-size: $base-font-size-default;
+    text-transform: uppercase;
+}
+
+.modal .up,
+.modal .down {
+	display: block;
+	float: none;
+	clear: both;
+    background-repeat: no-repeat;
+    height: 40px;
+    background-position: center;
+}
+
+.modal .up:active,
+.modal .down:active {
+	opacity: 0.5;
+}
+
+.modal .up {
+    background-image: url("../img/others/controllers/up.svg");
+    margin-bottom: 10px;
+}
+
+.modal .down {
+    background-image: url("../img/others/controllers/down.svg");
+    margin-top: 10px;
+}
+
+.modal .bar-footer {
+	background: rgba(0,52,79,0.05);
+}
+
+.modal .bar-footer .cancel {
+	color: #7F8C8D;
+}
+
+.modal .bar-footer .action {
+	color: $base-color;
+	font-family: $base-font-family-bold;
 }
 
 //////////////////

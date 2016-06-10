@@ -2,17 +2,23 @@
 <ion-header-bar>
 <h1 class="title">My Modal title</h1>
 </ion-header-bar>
-<ion-content>
+
+<ion-content scroll="false">
 
 <div class="row padding centered">
-  <div class="col col-50 col-offset-25"><input ng-model="data.exerciseTime" type="tel" /></div>
+  <div class="col col-50 col-offset-25">
+  	<div class="up" ng-click="exerciseModal.increaseTime()"></div>
+  	<input ng-model="data.exerciseTime" type="tel" />
+  	<div class="down" ng-click="exerciseModal.decreaseTime()"></div>
+  </div>
 </div>
+
 
 </ion-content>
 
-<div class="bar bar-footer bar-balanced">
-  <button class="button " ng-click="closeExerciseDetails()">Cancelar</button>
-  <button class="button" ng-click="saveDetails()">Guardar</button>  
+<div class="bar bar-footer">
+  <button class="button button-clear cancel" ng-click="exerciseModal.closeExerciseDetails()">Cancelar</button>  
+  <button class="button button-clear action" ng-click="exerciseModal.saveDetails()">Guardar</button>  
 </div>
 
 </ion-modal-view>
