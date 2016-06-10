@@ -17,7 +17,7 @@ function ExerciseService($q, $http, Connection) {
 
     this.add = function(exercise) {
         var date = moment().format("YYYYMMDD")
-        var data = { date: date, exercise: exercise, time: exercise.time }
+        var data = { date: date, exercise: exercise, time: exercise.tiempo }
         console.log("DATA", data);
         return Connection.request("track/physicalActivity/new", data, "application/json");
     }

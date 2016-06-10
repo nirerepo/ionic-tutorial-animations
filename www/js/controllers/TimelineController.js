@@ -26,14 +26,14 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
         return $scope.exercises.length > 0;
     }
     $scope.calcularTotalCalorias = function(mealId) {
-        return Timeline.calcularTotalCalorias(mealId);
+        return Math.round(Timeline.calcularTotalCalorias(mealId) * 100) / 100;
     }
     $scope.caloriasConsumidas = function() {
-        return Timeline.caloriasConsumidas();
+        return Math.round(Timeline.caloriasConsumidas() * 100) / 100;
     }
 
     $scope.tiempoEjercicio = function() {
-        return Timeline.tiempoEjercicio();
+        return Math.round(Timeline.tiempoEjercicio() * 100) / 100;
     }
 }
 

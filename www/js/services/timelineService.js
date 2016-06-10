@@ -44,7 +44,13 @@ function TimelineService(Connection, $filter) {
     }
 
     this.addExercise = function (exerciseData){
-        var exercise = {completed: true, id: exerciseData.id, gastoCalorico: exerciseData.mets * 70 * 0.5, title: exerciseData.name}
+        var exercise = {
+            completed: true, 
+            id: exerciseData.id, 
+            gastoCalorico: Math.round((exerciseData.mets / 60) * 70 * exerciseData.tiempo * 100)/100, 
+            title: exerciseData.name,
+            tiempo: exerciseData.tiempo
+        }
 
         self.tracks.exercises.push( exercise );
         console.log(self.tracks.exercises)
@@ -73,7 +79,7 @@ function TimelineService(Connection, $filter) {
     this.tiempoEjercicio = function() {
         var tiempo = 0;
         self.tracks.exercises.forEach(function(item){tiempo += parseFloat(item.tiempo)});
-        return tiempo * 60;
+        return tiempo;
     }
 
     this.eliminarPlato = function(plato, mealType){
