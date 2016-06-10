@@ -80,6 +80,14 @@ function TimelineService(Connection, $filter) {
                 self.tracks.nutrition.splice(track);
         })
     }
+
+    this.eliminarEjercicio = function(exercise) {
+        var day = moment().format("YYYYMMDD")
+        var data = { date: day, idTrack: exercise.id }
+        Connection.request("track/physicalActivity/delete", data).then(function(){
+            self.tracks.exercises.splice(exercise);
+        })
+    }
 }
 
 angular.module('starter.services')

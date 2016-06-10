@@ -36,7 +36,7 @@
     <ion-item class="item item-button-right" ng-repeat="plato in nutritionSeccion.items" type="item-text-wrap">
     {{plato.title}}
     <span class="item-info">{{plato.quantity}}</span>
-    <button class="button button-icon" ng-click="showActionsheet(plato, nutritionSeccion.type)">
+    <button class="button button-icon" ng-click="showActionsheetPlate(plato, nutritionSeccion.type)">
       <i class="icon ion-more"></i>
     </button>
   </ion-item>
@@ -58,9 +58,9 @@
         <ion-item class="item item-button-right" ng-repeat="exercise in exercises" type="item-text-wrap">
         {{exercise.title}}
         <span class="item-info">{{exercise.gastoCalorico}} Kcal</span>
-        <!--<button class="button button-icon" ng-click="showActionsheet(plato, nutritionSeccion.type)">
+        <button class="button button-icon" ng-click="showActionsheetExercise(exercise)">
           <i class="icon ion-more"></i>
-        </button>-->
+        </button>
       </ion-item>
     </ion-list>
 </div>

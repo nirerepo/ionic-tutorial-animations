@@ -11,6 +11,8 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
         {}
     ];
 
+    var self = this;
+
     $scope.cardDestroyed = function (index) {
         $scope.cards.splice(index, 1);
     };
@@ -29,11 +31,18 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
     $scope.caloriasConsumidas = function() {
         return Timeline.caloriasConsumidas()
     }
-    //
-    $scope.showActionsheet = function (plato, mealType) {
-        var title = '';
-        if (plato)
-            title = plato.name;
+
+    $scope.showActionsheetPlate = function (plato, mealType){
+        var deleteAction = function(){ Timeline.eliminarPlato(plato, mealType); }
+        self.showActionsheet(deleteAction, plato.title)
+    }
+
+    $scope.showActionsheetExercise = function (exercise){
+        var deleteAction = function(){ Timeline.eliminarEjercicio(exercise); }
+        self.showActionsheet(deleteAction, exercise.title)
+    }
+
+    this.showActionsheet = function (deleteAction, title) {
         $ionicActionSheet.show({
             titleText: title,
             destructiveText: '<i class="icon ion-trash-b"></i>Eliminar',
@@ -42,7 +51,7 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
                 console.log('CANCELLED');
             },
             destructiveButtonClicked: function () {
-                Timeline.eliminarPlato(plato, mealType)
+                deleteAction()
                 return true;
             }
         });
