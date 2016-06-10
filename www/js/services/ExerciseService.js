@@ -7,7 +7,7 @@ function ExerciseService($q, $http, Connection) {
             console.log("RES: ", res);
             rdo.resolve(res);
         }).catch(function (data, status) {
-            console.error('Gists error', response.status, response.data);
+            console.error('Gists error', status, data);
         })
             .finally(function () {
             console.log("finally finished gists");
