@@ -1,7 +1,7 @@
 function ExerciseService($q, $http, Connection) {
     this.exerciseByName = function(queryText) {
         var rdo = $q.defer();
-        var query = "http://nire0.gailen.es:9200/ejercicios_es_co/_search?q=nombre:*" + queryText + "**&fields=id,nombre,mets,tipo,gruposmusculares&sort=_score:asc";
+        var query = "http://nire0.gailen.es:9200/ejercicios_es_co/_search?q=nombre:" + queryText + "&fields=id,nombre,mets,tipo,gruposmusculares&sort=_score:desc";
         $http.get(query)
             .then(function (res) {
             console.log("RES: ", res);
