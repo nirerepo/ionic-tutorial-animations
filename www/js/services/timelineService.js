@@ -70,6 +70,12 @@ function TimelineService(Connection, $filter) {
         return calorias;
     }
 
+    this.tiempoEjercicio = function() {
+        var tiempo = 0;
+        self.tracks.exercises.forEach(function(item){tiempo += parseFloat(item.tiempo)});
+        return tiempo * 60;
+    }
+
     this.eliminarPlato = function(plato, mealType){
         var day = moment().format("YYYYMMDD")
         var data = { date: day, idMeal: mealType, idTrack: plato.id }
@@ -77,7 +83,7 @@ function TimelineService(Connection, $filter) {
             var track = $filter('filter')(self.tracks.nutrition, {type: mealType}, true)[0];
             track.items.splice(track.items.indexOf(plato), 1);
             if(track.items.length === 0)
-                self.tracks.nutrition.splice(track);
+                self.tracks.nutrition.splice(self.tracks.nutrition.indexOf(track));
         })
     }
 
@@ -85,7 +91,7 @@ function TimelineService(Connection, $filter) {
         var day = moment().format("YYYYMMDD")
         var data = { date: day, idTrack: exercise.id }
         Connection.request("track/physicalActivity/delete", data).then(function(){
-            self.tracks.exercises.splice(exercise);
+            self.tracks.exercises.splice(self.tracks.exercises.indexOf(exercise), 1);
         })
     }
 }
