@@ -3,7 +3,7 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
         "exercises": [],
         "search": '',
         "selectedExercise": null,
-        "exerciseTime": "0.5"
+        "exerciseTime": ""
     };
     $scope.$on('$ionicView.enter', function() {
         $scope.data.search = '';
@@ -15,10 +15,12 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
     }
 
     $scope.search = function() {
-        console.log("Searching...", $scope.data.search);
         if ($scope.data.search.length >= 3)
             Exercise.exerciseByName($scope.data.search).then(function(matches) {
-                $scope.data.exercises = matches.data.hits.hits;
+                $scope.data.exercises = _.filter(matches.data.hits.hits,
+                                                    function(h) {
+                                                        return h._score > 1;
+                                                    });
             });
         else
             $scope.data.exercises = [];
@@ -31,6 +33,7 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
     $scope.exerciseModal = {
         addExercise : function(exercise) {
             console.log("Modal...");
+            $scope.data.exerciseTime = "";
             $scope.data.selectedExercise = exercise;
             $scope.modal.show();
             console.log("open!");
