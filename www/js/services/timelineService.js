@@ -64,6 +64,12 @@ function TimelineService(Connection, $filter) {
         return calorias
     }
 
+    this.caloriasConsumidas = function() {
+        var calorias = 0;
+        self.tracks.exercises.forEach(function(item){calorias += parseFloat(item.gastoCalorico)});
+        return calorias;
+    }
+
     this.eliminarPlato = function(plato, mealType){
         var day = moment().format("YYYYMMDD")
         var data = { date: day, idMeal: mealType, idTrack: plato.id }
