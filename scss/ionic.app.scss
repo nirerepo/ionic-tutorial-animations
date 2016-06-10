@@ -520,20 +520,31 @@ img.padding-vertical {
 }
 
 .item img.thumbnail {
- //	   float: left;
- //    height: 40px;
- //    width: 40px;
- //    margin-right: 10px;
- //    border-radius: 25px;
     float: left;
     height: 70px;
     width: 70px;
     margin-right: 10px;
-    /* border-radius: 25px; */
     margin-left: -15px;
     margin-top: -15px;
     margin-bottom: -15px;
     background: red;
+}
+
+///////////////////
+// --- MODAL --- //
+///////////////////
+
+.modal-backdrop-bg {
+	background: rgba(0,52,79,0.90);
+}
+
+.modal {
+    top: 20%;
+    right: 10%;
+    bottom: 20%;
+    left: 10%;
+    min-height: 240px;
+    width: 80%;
 }
 
 //////////////////

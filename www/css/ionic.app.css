@@ -10148,11 +10148,21 @@ img.padding-vertical {
   height: 70px;
   width: 70px;
   margin-right: 10px;
-  /* border-radius: 25px; */
   margin-left: -15px;
   margin-top: -15px;
   margin-bottom: -15px;
   background: red; }
+
+.modal-backdrop-bg {
+  background: rgba(0, 52, 79, 0.9); }
+
+.modal {
+  top: 20%;
+  right: 10%;
+  bottom: 20%;
+  left: 10%;
+  min-height: 240px;
+  width: 80%; }
 
 .conversation {
   display: block;
