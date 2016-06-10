@@ -55,7 +55,7 @@
 </div> -->
 
   <ul class="list">
-    <li class="item" ng-repeat="exercise in data.exercises" ng-click="addExercise(exercise)">
+    <li class="item" ng-repeat="exercise in data.exercises" ng-click="openExerciseDetails(exercise)">
       <span class="item-title">{{exercise.fields.nombre[0]}}</span><br>
       <span class="item-info">{{getExerciseType(exercise.fields.tipo[0])}}&emsp;&emsp;{{exercise.fields.gruposmusculares[0]}}</span>
     </li>
