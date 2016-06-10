@@ -8,7 +8,7 @@
 <div class="row padding centered">
   <div class="col col-50 col-offset-25">
   	<div class="up" ng-click="exerciseModal.increaseTime()"></div>
-  	<input ng-model="data.exerciseTime" type="tel" />
+  	<input ng-change="exerciseModal.keepOnlyNumbers()" ng-model="data.exerciseTime" type="tel" />
   	<div class="down" ng-click="exerciseModal.decreaseTime()"></div>
   </div>
 </div>
@@ -18,7 +18,7 @@
 
 <div class="bar bar-footer">
   <button class="button button-clear cancel" ng-click="exerciseModal.closeExerciseDetails()">Cancelar</button>  
-  <button class="button button-clear action" ng-click="exerciseModal.saveDetails()">Guardar</button>  
+  <button class="button button-clear action" ng-click="exerciseModal.saveDetails()">Guardar</button>
 </div>
 
 </ion-modal-view>

@@ -58,10 +58,10 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
         decreaseTime: function() {
             if ($scope.data.exerciseTime > 5)
                 $scope.data.exerciseTime -= 5;
+        },
+        keepOnlyNumbers: function() {
+            $scope.data.exerciseTime = $scope.data.exerciseTime.replace(/\D/, '');
         }
-
-
-
     }
 
   $ionicModal.fromTemplateUrl('templates/exercises/track-details.html', {
