@@ -41,8 +41,9 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
             $scope.modal.hide();
             var fields = $scope.data.selectedExercise.fields;
             var time = $scope.data.exerciseTime;
+            var mets = fields.mets? fields.mets[0] : 0
 
-            var exerciseData = {name: fields.nombre[0], mets: fields.mets[0], id: fields.id[0], tipo: fields.tipo[0], tiempo: time }
+            var exerciseData = {name: fields.nombre[0], mets: mets, id: fields.id[0], tipo: fields.tipo[0], tiempo: time }
             Exercise.add(exerciseData).then(function(result){
                 Timeline.addExercise(exerciseData);
                 $state.go("tab.dash");
