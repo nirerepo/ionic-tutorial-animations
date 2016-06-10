@@ -26,6 +26,9 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
     $scope.calcularTotalCalorias = function(mealId) {
         return Timeline.calcularTotalCalorias(mealId);
     }
+    $scope.caloriasConsumidas = function() {
+        return Timeline.caloriasConsumidas()
+    }
     //
     $scope.showActionsheet = function (plato, mealType) {
         var title = '';
