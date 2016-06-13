@@ -15,8 +15,7 @@ function ExerciseService($q, $http, Connection) {
         return rdo.promise;
     };
 
-    this.add = function(exercise) {
-        var date = moment().format("YYYYMMDD")
+    this.add = function(exercise, date) {
         var data = { date: date, exercise: exercise, time: exercise.tiempo }
         console.log("DATA", data);
         return Connection.request("track/physicalActivity/new", data, "application/json");

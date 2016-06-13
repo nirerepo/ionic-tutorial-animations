@@ -1,10 +1,8 @@
 /// <reference path="../../typings/index.d.ts" />
 function TimelineService(Connection, $filter) {
     var self = this;
-    this.tracks = {
-        nutrition: [],
-        exercises:[]
-    };
+    this.daysToFetch = 5;
+    this.tracks = {};
 
     this.mealKey = {
         1: "desayuno",
@@ -15,35 +13,44 @@ function TimelineService(Connection, $filter) {
     }
 
     this.get = function () {
-        if(self.tracks.nutrition.length === 0 && self.tracks.exercises.length === 0){
-            var date = moment()
-            Connection.request("timeline/" + date.format("YYYYMMDD"))
-                .then(function(result){
-                    result.data.data.body.nutrition.forEach(function(item){
-                        self.tracks.nutrition.push(item);
-                    })
-                    result.data.data.body.physicalActivity.forEach(function(item){
-                        self.tracks.exercises.push(item);
-                    })
-                });
+        for(var i = 0; i < self.daysToFetch; i++ ){
+            var date = moment().subtract(i, 'days').format("YYYYMMDD");
+            if(!self.tracks[date]){
+                self.tracks[date] = {
+                    day: date,
+                    nutrition: [],
+                    exercises: []
+                }
+                Connection.request("timeline/" + date)
+                    .then(
+                        function(date, result){
+                            result.data.data.body.nutrition.forEach(function(item){
+                                self.tracks[date].nutrition.push(item);
+                            })
+                            result.data.data.body.physicalActivity.forEach(function(item){
+                                self.tracks[date].exercises.push(item);
+                            })
+                        }.bind(this, date)
+                    );
+            }
         }
         return self.tracks;
     }
 
-    this.addPlate = function (mealId, plateData){
+    this.addPlate = function (mealId, plateData, day){
         var key = self.mealKey[mealId]
         var plate = {completed: true, id: plateData.id, quantity: plateData.kcal + " kcal", title: plateData.name}
 
-        var track = $filter('filter')(self.tracks.nutrition, {typeId: parseInt(mealId)}, true);
+        var track = $filter('filter')(self.tracks[day].nutrition, {typeId: parseInt(mealId)}, true);
         if(track.length === 0) {
             track.push({ type: key, typeId: parseInt(mealId), items: [] });
-            self.tracks.nutrition.push( track[0] );
+            self.tracks[day].nutrition.push( track[0] );
         }
 
         track[0].items.push(plate)
     }
 
-    this.addExercise = function (exerciseData){
+    this.addExercise = function (exerciseData, day){
         var exercise = {
             completed: true, 
             id: exerciseData.id, 
@@ -52,52 +59,53 @@ function TimelineService(Connection, $filter) {
             tiempo: exerciseData.tiempo
         }
 
-        self.tracks.exercises.push( exercise );
-        console.log(self.tracks.exercises)
+        self.tracks[day].exercises.push( exercise );
     }
 
-    this.trackBlockExists = function(mealId){
-        var track = $filter('filter')(self.tracks.nutrition, {typeId: mealId}, true);
+    this.trackBlockExists = function(mealId, day){
+        var track = $filter('filter')(self.tracks[day].nutrition, {typeId: mealId}, true);
         if(track.length === 0)
             return false;
         return true;
     }
 
-    this.calcularTotalCalorias = function(mealId){
-        var track = $filter('filter')(self.tracks.nutrition, {typeId: parseInt(mealId)}, true)[0];
+    this.calcularTotalCalorias = function(mealId, day){
+        var track = $filter('filter')(self.tracks[day].nutrition, {typeId: parseInt(mealId)}, true)[0];
         var calorias = 0;
         track.items.forEach(function(item){ calorias += parseFloat(item.quantity.split(' ')[0]); });
         return calorias
     }
 
-    this.caloriasConsumidas = function() {
+    this.caloriasConsumidas = function(day) {
         var calorias = 0;
-        self.tracks.exercises.forEach(function(item){calorias += parseFloat(item.gastoCalorico)});
+        self.tracks[day].exercises.forEach(function(item){calorias += parseFloat(item.gastoCalorico)});
         return calorias;
     }
 
-    this.tiempoEjercicio = function() {
+    this.tiempoEjercicio = function(day) {
         var tiempo = 0;
-        self.tracks.exercises.forEach(function(item){tiempo += parseFloat(item.tiempo)});
+        self.tracks[day].exercises.forEach(function(item){tiempo += parseFloat(item.tiempo)});
         return tiempo;
     }
 
-    this.eliminarPlato = function(plato, mealType){
-        var day = moment().format("YYYYMMDD")
+    this.hasExercises = function(day) {
+        return self.tracks[day].exercises.length > 0;
+    }
+
+    this.eliminarPlato = function(plato, mealType, day){
         var data = { date: day, idMeal: mealType, idTrack: plato.id }
         Connection.request("track/nutrition/delete", data).then(function(){
-            var track = $filter('filter')(self.tracks.nutrition, {type: mealType}, true)[0];
+            var track = $filter('filter')(self.tracks[day].nutrition, {type: mealType}, true)[0];
             track.items.splice(track.items.indexOf(plato), 1);
             if(track.items.length === 0)
-                self.tracks.nutrition.splice(self.tracks.nutrition.indexOf(track));
+                self.tracks[day].nutrition.splice(self.tracks[day].nutrition.indexOf(track));
         })
     }
 
-    this.eliminarEjercicio = function(exercise) {
-        var day = moment().format("YYYYMMDD")
+    this.eliminarEjercicio = function(exercise, day) {
         var data = { date: day, idTrack: exercise.id }
         Connection.request("track/physicalActivity/delete", data).then(function(){
-            self.tracks.exercises.splice(self.tracks.exercises.indexOf(exercise), 1);
+            self.tracks[day].exercises.splice(self.tracks[day].exercises.indexOf(exercise), 1);
         })
     }
 }

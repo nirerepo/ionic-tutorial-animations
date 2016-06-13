@@ -116,10 +116,11 @@ angular.module('starter.controllers', [])
     $scope.addPlate = function(plate) {
         console.log(plate.fields);
         var mealId = $stateParams.mealId;
+        var date = $stateParams.day;
         var fields = plate.fields;
         var plateData = {name: fields.nombredieta[0], kcal: fields.kcal? fields.kcal[0] : 0, id: fields.id[0]}
-        Food.addPlate(mealId, plateData).then(function(result){
-            Timeline.addPlate(mealId, plateData);
+        Food.addPlate(mealId, plateData, date).then(function(result){
+            Timeline.addPlate(mealId, plateData, date);
             $state.go("tab.dash");
         })
     }

@@ -120,11 +120,11 @@ angular.module('starter', [
                 }
             })
             .state('trackfood', {
-                url: '/trackfood/:mealId',
+                url: '/trackfood/:mealId/:day',
                 templateUrl: 'templates/track-food.html',
                 controller: 'TrackCtrl'
             }).state('trackexercise', {
-                url: '/trackexercise',
+                url: '/trackexercise/:day',
                 templateUrl: 'templates/track-exercise.html',
                 controller: 'ExerciseCtrl'
             })

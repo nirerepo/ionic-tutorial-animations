@@ -42,10 +42,11 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
             var fields = $scope.data.selectedExercise.fields;
             var time = $scope.data.exerciseTime;
             var mets = fields.mets? fields.mets[0] : 0
+            var date = $stateParams.day;
 
             var exerciseData = {name: fields.nombre[0], mets: mets, id: fields.id[0], tipo: fields.tipo[0], tiempo: time }
-            Exercise.add(exerciseData).then(function(result){
-                Timeline.addExercise(exerciseData);
+            Exercise.add(exerciseData, date).then(function(result){
+                Timeline.addExercise(exerciseData, date);
                 $state.go("tab.dash");
             });
           },

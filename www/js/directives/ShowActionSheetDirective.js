@@ -1,6 +1,6 @@
 function PlateActionSheetDirective(Timeline, $ionicActionSheet) {
     function LinkFunction(scope, element, attrs, controller, transcludeFn) {
-        var deleteAction = function(){ Timeline.eliminarPlato(scope.plate, scope.meal); }
+        var deleteAction = function(){ Timeline.eliminarPlato(scope.plate, scope.meal, scope.day); }
         scope.showActionsheet = ShowActionSheet.bind(null, $ionicActionSheet, deleteAction, scope.plate.title)
     }
 
@@ -10,14 +10,15 @@ function PlateActionSheetDirective(Timeline, $ionicActionSheet) {
         link: LinkFunction,
         scope: {
             plate: "=plate",
-            meal: "=meal"
+            meal: "=meal",
+            day: "=day"
         }
     }
 }
 
 function ExerciseActionSheetDirective(Timeline, $ionicActionSheet) {
     function LinkFunction(scope, element, attrs, controller, transcludeFn) {
-        var deleteAction = function(){ Timeline.eliminarEjercicio(scope.exercise); }
+        var deleteAction = function(){ Timeline.eliminarEjercicio(scope.exercise, scope.day); }
         scope.showActionsheet = ShowActionSheet.bind(null, $ionicActionSheet, deleteAction, scope.exercise.title)
     }
 
@@ -26,7 +27,8 @@ function ExerciseActionSheetDirective(Timeline, $ionicActionSheet) {
         template: '<button class="button button-icon" ng-click="showActionsheet()"><i class="icon ion-more"></i></button>',
         link: LinkFunction,
         scope: {
-            exercise: "=exercise"
+            exercise: "=exercise",
+            day: "=day"
         }
     }
 }
