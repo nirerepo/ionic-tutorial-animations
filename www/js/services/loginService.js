@@ -54,9 +54,7 @@ function LoginService(Connection, $q) {
 
             window.localStorage.username = this.currentUsername;
             window.localStorage.userhash = this.currentHash;
-
-            if(response.data.firstTimeUser)
-                this.getUserDataFromFacebook();
+            this.getUserDataFromFacebook();
 
             result.resolve(response);
         }.bind(this);
