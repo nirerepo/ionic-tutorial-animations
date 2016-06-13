@@ -19,14 +19,12 @@
   </div>
 </div>
 </ks-swiper-slide>
-</ks-swiper-slide>
 <ks-swiper-slide class="swiper-slide light">
 <div class="card">
   <div class="item item-body no-padding">
     <img src="img/others/mockups/widget_activate_notifications.jpg">
   </div>
 </div>
-</ks-swiper-slide>
 </ks-swiper-slide>
 <ks-swiper-slide class="swiper-slide light">
 <div class="card">
@@ -35,15 +33,38 @@
   </div>
 </div>
 </ks-swiper-slide>
+<ks-swiper-slide class="swiper-slide light">
+<div class="card">
+  <div class="item item-body no-padding">
+    <img src="img/others/mockups/widget_resume_activity.jpg">
+  </div>
+</div>
+</ks-swiper-slide>
+<ks-swiper-slide class="swiper-slide light">
+<div class="card">
+  <div class="item item-body no-padding">
+    <img src="img/others/mockups/widget_reto_activity.jpg">
+  </div>
+</div>
+</ks-swiper-slide>
+<ks-swiper-slide class="swiper-slide light">
+<div class="card">
+  <div class="item item-body no-padding">
+    <img src="img/others/mockups/widget_resume_steps.jpg">
+  </div>
+</div>
+</ks-swiper-slide>
 </ks-swiper-container>
 <div class="card add" ng-show="trackBlock(1)">
   <div class="item item-body" nav-direction="enter" ui-sref="trackfood({mealId:1})">
+    <span class="plus-circle-icon"></span>
     <h2>Añadir desayuno</h2>
     <p>Mantén pulsado para repetir tu desayuno de ayer</p>
   </div>
 </div>
 <div class="card add" ng-show="trackBlock(2)">
   <item class="item item-body" nav-direction="enter" ui-sref="trackfood({mealId:2})">
+    <span class="plus-circle-icon"></span>
     <h2 class="title">Añadir mediamañana</h2>
     <p>No olvides tomar algo entre el desayuno y tu comida</p>
   </item>
@@ -96,24 +117,28 @@
 
 <div class="card add" ng-show="!hasExercises()">
   <div class="item item-body" ui-sref="trackexercise()">
+    <span class="plus-circle-icon"></span>
     <h2>Añadir ejercicio físico</h2>
     <p>Esta semana no has realizado ningún ejercicio físico, ¡Empieza hoy!</p>
   </div>
 </div>
 <div class="card add" ng-show="trackBlock(3)">
   <div class="item item-body" nav-direction="enter" ui-sref="trackfood({mealId:3})">
+    <span class="plus-circle-icon"></span>
     <h2>Añadir comida</h2>
     <p>Repon tus fuerzas por la tarde</p>
   </div>
 </div>
 <div class="card add" ng-show="trackBlock(4)">
   <div class="item item-body" nav-transition="none" nav-direction="enter" ui-sref="trackfood({mealId:4})">
+    <span class="plus-circle-icon"></span>
     <h2>Añadir merienda</h2>
     <p>Repon tus fuerzas por la tarde</p>
   </div>
 </div>
 <div class="card add" ng-show="trackBlock(5)">
   <div class="item item-body" nav-transition="none" nav-direction="enter" ui-sref="trackfood({mealId:5})">
+    <span class="plus-circle-icon"></span>
     <h2>Añadir cena</h2>
     <p>Cenar limpio y ligero te ayudará a no tener una digestión lenta y pesada</p>
   </div>

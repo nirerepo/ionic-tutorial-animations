@@ -386,6 +386,7 @@ img.padding-vertical {
 /* CARD WITHOUT CONTENTS */
 
 #diary .card.add .item {
+	padding: 15px 0px 15px 10px;
 	background: $card-background-transparent;
 	-webkit-transition: opacity .1s linear;
 	-moz-transition: opacity .1s linear;
@@ -402,12 +403,25 @@ img.padding-vertical {
     margin:0 0 10px 0;
     color: $light;
     font-size: $header-font-size-large;
+    padding-top: 3px;
+}
+
+#diary .card.add .item span.plus-circle-icon {
+    clear: none;
+    display: block;
+    float: left;
+    margin-right: 5px;
+    background-image: url(../img/icons/plus_circle.png);
+    width: 30px;
+    height: 30px;
+    background-size: cover;
 }
 
 #diary .card.add .item p {
 	margin-top: 0px;
 	color: $light;
 	font-size: $base-font-size-default;
+	padding-left: 35px;
 }
 
 /* CARD WITH CONTENTS */
