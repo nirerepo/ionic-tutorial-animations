@@ -38,8 +38,23 @@ angular.module('starter.controllers', [])
             $state.go('help' + tipo, { startpage: 2 });
         };
 
+        // TODO: ESTO NO PINTA NADA AQUÍ, ES SOLO UNA PRUEBA!!
+        $scope.initHealthTracking = function() {
+            if (navigator.health) {
+                navigator.health.isAvailable(function() {
+                    alert('Vamos a intentar conectar... danos permiso!');
+                    navigator.health.requestAuthorization(['activity'], function() {
+                        alert('Autorizado');
+                        navigator.health.query({startDate:  new Date(new Date().getTime() - 1 * 24 * 60 * 60 * 1000),endDate: new Date(), dataType:'activity'}, alert, alert);
+                    }, alert);
+                });
+            }
+        };
+
         $scope.pressOption = function($event, opt) {
             var el = $event.currentTarget;
+            if (opt.script)
+                eval(opt.script);
             var elementDisplay = el.style.display;
             Array.prototype.forEach.call(el.parentNode.childNodes, function(child) {
                 if (child.tagName == 'DIV' && child != el)
@@ -59,6 +74,19 @@ angular.module('starter.controllers', [])
         $scope.signOut = function () {
             console.log("Sign-Out");
             $state.go('signin');
+        };
+        // TODO: ESTO NO PINTA NADA AQUÍ, ES SOLO UNA PRUEBA!!
+        $scope.initHealthTracking = function() {
+            if (navigator.health) {
+                navigator.health.isAvailable(function() {
+                    alert('Vamos a intentar conectar al plugin... danos permiso!');
+                    navigator.health.requestAuthorization(['activity', 'steps', 'calories', 'height', 'weight', 'gender', 'date_of_birth'], function() {
+                        alert("OK!");
+                    }, function(e) {
+                        alert("NOK!");
+                    });
+                });
+            }
         };
     })
 .controller('TrackCtrl', function($scope, $state, $stateParams, $ionicHistory, Food, Timeline) {
