@@ -43,10 +43,10 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $io
         return Timeline.hasExercises(day);
     }
     $scope.calcularTotalCalorias = function(mealId, day) {
-        return Math.round(Timeline.calcularTotalCalorias(mealId, day) * 100) / 100;
+        return Math.round(Timeline.calcularTotalCalorias(mealId, day));
     }
     $scope.caloriasConsumidas = function(day) {
-        return Math.round(Timeline.caloriasConsumidas(day) * 100) / 100;
+        return Math.round(Timeline.caloriasConsumidas(day));
     }
 
     $scope.tiempoEjercicio = function(day) {
