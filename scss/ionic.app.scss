@@ -271,6 +271,10 @@ select[readonly] {
 	font-family: -apple-system, 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif!important;
 }
 
+.action-sheet .button.destructive {
+	color: red;
+}
+
 .pane {
 	background: $background-2;
 }
@@ -295,11 +299,34 @@ select[readonly] {
 	color: $small-font-color;
 }
 
-.tab-item .badge {
+.tab-item {
+	opacity: inherit;
+}
+
+.tab-item.tab-item-active i.icon, .tab-item.tab-item-active .tab-title, 
+.tab-item.active i.icon, .tab-item.active .tab-title, 
+.tab-item.activated i.icon, .tab-item.activated .tab-title {
+	opacity: 1;
+}
+
+.tab-item i.icon, .tab-item .tab-title {
+	opacity: 0.5;
+}
+
+.tabs-striped.tabs-dark .tab-item {
+	color: rgb(255,255,255);
+}
+
+.tab-item .badge,
+.tabs-striped.tabs-dark .tab-item .badge {
     top: 26%;
     right: calc(54% - 26px);
 	background-color: $base-color!important;
 	color: $light!important;
+}
+
+.tabs-striped.tabs-dark .tab-item .badge {
+	opacity: 1;
 }
 
 /////////////////////////////////////
@@ -400,6 +427,7 @@ img.padding-vertical {
 
 #diary .card .item-divider.header .title {
 	font-family: $header-font-family-default;
+	text-transform: capitalize;
 }
 
 #diary .card .item-divider.header .resume {
