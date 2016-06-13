@@ -98,7 +98,7 @@ function TimelineService(Connection, $filter) {
             var track = $filter('filter')(self.tracks[day].nutrition, {type: mealType}, true)[0];
             track.items.splice(track.items.indexOf(plato), 1);
             if(track.items.length === 0)
-                self.tracks[day].nutrition.splice(self.tracks[day].nutrition.indexOf(track));
+                self.tracks[day].nutrition.splice(self.tracks[day].nutrition.indexOf(track), 1);
         })
     }
 
