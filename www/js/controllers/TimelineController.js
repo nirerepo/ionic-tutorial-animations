@@ -1,4 +1,4 @@
-function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
+function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $ionicNavBarDelegate){
     // Cada vez que se muestra el Timeline le solicitamos al servicio
     // la información actualizada.
     $scope.$on("$ionicView.beforeEnter", function () {
@@ -21,14 +21,13 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope){
     }
 
     var self = this;
-
     $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
         if(data.slider.activeIndex == Timeline.daysToFetch -1)
-            $scope.pageTitle = "Hoy";
+            $ionicNavBarDelegate.title("Hoy");
         else if(data.slider.activeIndex == Timeline.daysToFetch -2)
-            $scope.pageTitle = "Ayer";
+            $ionicNavBarDelegate.title("Ayer");
         else 
-            $scope.pageTitle = moment().subtract(4 - data.slider.activeIndex, 'days').format("DD MMM");
+            $ionicNavBarDelegate.title(moment().subtract(4 - data.slider.activeIndex, 'days').format("DD MMM"));
     });
 
     $scope.cardDestroyed = function (index) {
