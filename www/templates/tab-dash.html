@@ -33,7 +33,7 @@
   </div>
   <div class="item item-body content">
     <ion-list>
-    <ion-item class="item item-button-right" ng-repeat="plato in nutritionSeccion.items" type="item-text-wrap">
+    <ion-item class="item item-button-right item-remove-animate" ng-repeat="plato in nutritionSeccion.items" type="item-text-wrap">
     {{plato.title}}
     <span class="item-info">{{plato.quantity}}</span>
     <nire-plate-action-sheet plate="plato" meal="nutritionSeccion.type" />
@@ -53,7 +53,7 @@
   </div>
   <div class="item item-body content">
     <ion-list>
-        <ion-item class="item item-button-right" ng-repeat="exercise in exercises" type="item-text-wrap">
+        <ion-item class="item item-button-right item-remove-animate" ng-repeat="exercise in exercises" type="item-text-wrap">
         {{exercise.title}}
         <span class="item-info">{{exercise.gastoCalorico}} Kcal</span>
         <nire-exercise-action-sheet exercise="exercise" />
@@ -90,7 +90,7 @@
     <p>Cenar limpio y ligero te ayudará a no tener una digestión lenta y pesada</p>
   </div>
 </div>
-<ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}">
+<!-- <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}">
 <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
 <div class="card add">
   <div class="item item-body">
@@ -99,7 +99,7 @@
   </div>
 </div>
 </ks-swiper-slide>
-</ks-swiper-container>
+</ks-swiper-container> -->
 </ion-content>
 </ion-slide-page>
 <ion-slide-page>
