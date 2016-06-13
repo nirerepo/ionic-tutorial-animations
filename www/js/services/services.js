@@ -35,53 +35,35 @@ angular.module('starter.services', [])
             }
         }
     }])
-    .factory('Monitor', ['$rootScope', '$interval', function($rootScope, $interval) {
-        var externalMessages = [
-            { id: '1', source: 'system', type: 'message', text: 'Bienvenido a Movistar Salud'},
-            { id: '2', source: 'system', type: 'message', text: 'Vamos a ver en qué podemos ayudarte hoy'},
-            { id: '3', source: 'system', type: 'card', cardId: 'actividad', title: 'Actividad física. Recomendaciones'},
-            { id: '4', source: 'system', type: 'message', text: 'Ahora vamos a solicitarte permisos para acceder a tu teléfono para analizar tu actividad física.'},
-            { id: '5', source: 'system', type: 'options', options: [
-                    {text: 'De acuerdo', script: '$scope.initHealthTracking()'}
-                ]
-            },
-            { id: '6', source: 'system', type: 'message', text: 'Parece que tu ingesta de calorías está por debajo de lo normal.'},
-            { id: '7', source: 'system', type: 'message', text: '¿Puedo ayudarte sugiriéndote alguna idea para completar bien el día?', options: ['No, gracias', '¡Cuéntame!']},
-            { id: '8', source: 'user', type: 'message', text: '¡Cuéntame!'},
-            { id: '9', source: 'system', type: 'message', text: 'Veamos...'},
-            { id: '10', source: 'system', type: 'message', text: 'Ayer solamente hiciste dos tomas'},
-            { id: '11', source: 'system', type: 'message', text: 'Hacer 5 tomas al día es importante para acelerar el metabolismo'},
-            { id: '12', source: 'system', type: 'options', options: [
-                    { text: '¡Lo tendré en cuenta!'},
-                    { text: 'Comí algo más'},
-                    { text: 'Necesito más ayuda'}
-                ]
-            },
-            { id: '13', source: 'system', type: 'options', options: [
-                    {text: 'De acuerdo', script: '$scope.initHealthTracking()'}
-                ]
-            },
-        ];
-        var i = 0;
-        var lastShownMessage = null;
-        if (window.localStorage.shownMessages != null) {
-            lastShownMessage = _.last(JSON.parse(window.localStorage.shownMessages));    
-        }
-        var msgMonitor = $interval(function() {
-            if (i < externalMessages.length) {
-                var msg = externalMessages[i];
-                if (!lastShownMessage || (msg.id > lastShownMessage.id)) {
-                    console.log("Mensaje recibido...", externalMessages[i].id);
-                    $rootScope.$broadcast('nire.chat.messageIncoming', { value: true });
-                    $rootScope.$broadcast('nire.chat.messageReceived', { message: externalMessages[i]})
-                    i++;
-                }
-            }
-        }, 2000);
+    .factory('Monitor', ['$rootScope', '$interval', 'Connection', function($rootScope, $interval, Connection) {
+        var lastMessage = null;
+        if (window.localStorage.shownMessages != null)
+            lastMessage = _.last(JSON.parse(window.localStorage.shownMessages));    
 
-        return {
+        $interval(getServerMessages, 10000);
 
+        function getServerMessages() {
+            Connection.request("notification/pending", { id: lastMessage })
+                .then(function(response) {
+                    response.data.data.notifications.forEach(function(element) {
+                        $rootScope.$broadcast('nire.chat.messageIncoming', { value: true });
+                        $rootScope.$broadcast('nire.chat.messageReceived', { message: adaptMessage(element) });
+
+                        lastMessage = element.id;
+                    }, this);
+                });
         }
+
+        function adaptMessage(serverMessage) {
+            return {
+                id: serverMessage.id,
+                source: serverMessage.source,
+                type: 'message',
+                text: serverMessage.message
+            };
+        }
+
+        return {};
     }])
     .factory('Help', function () {
     return {
