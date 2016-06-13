@@ -192,6 +192,10 @@ input::-webkit-input-placeholder {
 	border-color: transparent!important;
 }
 
+.no-padding {
+	padding: 0px!important;
+}
+
 // FACEBOOK BUTTON //
 button.button-facebook {
 	background-color: #3B5998;
@@ -382,6 +386,7 @@ img.padding-vertical {
 /* CARD WITHOUT CONTENTS */
 
 #diary .card.add .item {
+	padding: 15px 0px 15px 10px;
 	background: $card-background-transparent;
 	-webkit-transition: opacity .1s linear;
 	-moz-transition: opacity .1s linear;
@@ -398,12 +403,25 @@ img.padding-vertical {
     margin:0 0 10px 0;
     color: $light;
     font-size: $header-font-size-large;
+    padding-top: 3px;
+}
+
+#diary .card.add .item span.plus-circle-icon {
+    clear: none;
+    display: block;
+    float: left;
+    margin-right: 5px;
+    background-image: url(../img/icons/plus_circle.png);
+    width: 30px;
+    height: 30px;
+    background-size: cover;
 }
 
 #diary .card.add .item p {
 	margin-top: 0px;
 	color: $light;
 	font-size: $base-font-size-default;
+	padding-left: 35px;
 }
 
 /* CARD WITH CONTENTS */
@@ -435,8 +453,13 @@ img.padding-vertical {
 	text-align: right;
 }
 
+#diary .card .item-divider.header .resume span.info {
+	vertical-align: top;
+}
+
 #diary .card .item-divider.header .resume i {
 	margin-left: 5px;
+	font-size: 20px;
 }
 
 #diary .card .item-body.content {
@@ -850,4 +873,8 @@ $num-colors: 10;
 .dark.swiper-slide .item h2,
 .dark.swiper-slide .item p {
 	color: $light;
+}
+
+.swiper-slide img {
+	margin-bottom: -4px; //(FIX BOTTOM WHITE SPACE)
 }

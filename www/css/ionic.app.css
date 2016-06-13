@@ -9887,6 +9887,9 @@ input::-webkit-input-placeholder {
 .activated {
   border-color: transparent !important; }
 
+.no-padding {
+  padding: 0px !important; }
+
 button.button-facebook {
   background-color: #3B5998;
   color: #fff !important; }
@@ -10034,6 +10037,7 @@ img.padding-vertical {
 
 /* CARD WITHOUT CONTENTS */
 #diary .card.add .item {
+  padding: 15px 0px 15px 10px;
   background: rgba(255, 255, 255, 0.2);
   -webkit-transition: opacity .1s linear;
   -moz-transition: opacity .1s linear;
@@ -10047,12 +10051,24 @@ img.padding-vertical {
 #diary .card.add .item h2 {
   margin: 0 0 10px 0;
   color: #fff;
-  font-size: 20px; }
+  font-size: 20px;
+  padding-top: 3px; }
+
+#diary .card.add .item span.plus-circle-icon {
+  clear: none;
+  display: block;
+  float: left;
+  margin-right: 5px;
+  background-image: url(../img/icons/plus_circle.png);
+  width: 30px;
+  height: 30px;
+  background-size: cover; }
 
 #diary .card.add .item p {
   margin-top: 0px;
   color: #fff;
-  font-size: 16px; }
+  font-size: 16px;
+  padding-left: 35px; }
 
 /* CARD WITH CONTENTS */
 #diary .card .item-divider.header {
@@ -10075,8 +10091,12 @@ img.padding-vertical {
   font-family: MovistarText;
   text-align: right; }
 
+#diary .card .item-divider.header .resume span.info {
+  vertical-align: top; }
+
 #diary .card .item-divider.header .resume i {
-  margin-left: 5px; }
+  margin-left: 5px;
+  font-size: 20px; }
 
 #diary .card .item-body.content {
   margin: 0px;
@@ -10432,3 +10452,6 @@ ion-slides {
 .dark.swiper-slide .item h2,
 .dark.swiper-slide .item p {
   color: #fff; }
+
+.swiper-slide img {
+  margin-bottom: -4px; }

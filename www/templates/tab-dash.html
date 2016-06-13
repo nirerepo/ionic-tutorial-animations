@@ -8,23 +8,66 @@
 
 <ion-content class="padding">
 <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}">
-<ks-swiper-slide class="swiper-slide light" ng-repeat="s in [1,2,3,4,5,6,7,8]">
+<ks-swiper-slide class="swiper-slide light">
 <div class="card">
-  <div class="item item-body">
-    <h2>Consejo del día {{s}}</h2>
-    <p>Al que madruga, buen arbol le cobija</p>
+  <div class="item item-body no-padding">
+    <img src="img/others/mockups/widget_resume_nutrition.jpg">
+  </div>
+</div>
+</ks-swiper-slide>
+<ks-swiper-slide class="swiper-slide light">
+<div class="card">
+  <div class="item item-body no-padding">
+    <img src="img/others/mockups/widget_reto_verdura.jpg">
+  </div>
+</div>
+</ks-swiper-slide>
+<ks-swiper-slide class="swiper-slide light">
+<div class="card">
+  <div class="item item-body no-padding">
+    <img src="img/others/mockups/widget_activate_notifications.jpg">
+  </div>
+</div>
+</ks-swiper-slide>
+<ks-swiper-slide class="swiper-slide light">
+<div class="card">
+  <div class="item item-body no-padding">
+    <img src="img/others/mockups/widget_reto_breakfast.jpg">
+  </div>
+</div>
+</ks-swiper-slide>
+<ks-swiper-slide class="swiper-slide light">
+<div class="card">
+  <div class="item item-body no-padding">
+    <img src="img/others/mockups/widget_resume_activity.jpg">
+  </div>
+</div>
+</ks-swiper-slide>
+<ks-swiper-slide class="swiper-slide light">
+<div class="card">
+  <div class="item item-body no-padding">
+    <img src="img/others/mockups/widget_reto_activity.jpg">
+  </div>
+</div>
+</ks-swiper-slide>
+<ks-swiper-slide class="swiper-slide light">
+<div class="card">
+  <div class="item item-body no-padding">
+    <img src="img/others/mockups/widget_resume_steps.jpg">
   </div>
 </div>
 </ks-swiper-slide>
 </ks-swiper-container>
 <div class="card add" ng-show="trackBlock(1, day.day)">
   <div class="item item-body" nav-direction="enter" ui-sref="trackfood({mealId:1, day: day.day})">
+    <span class="plus-circle-icon"></span>
     <h2>Añadir desayuno</h2>
     <p>Mantén pulsado para repetir tu desayuno de ayer</p>
   </div>
 </div>
 <div class="card add" ng-show="trackBlock(2, day.day)">
   <item class="item item-body" nav-direction="enter" ui-sref="trackfood({mealId:2, day: day.day})">
+    <span class="plus-circle-icon"></span>
     <h2 class="title">Añadir mediamañana</h2>
     <p>No olvides tomar algo entre el desayuno y tu comida</p>
   </item>
@@ -68,41 +111,39 @@
   <i class="icon ion-plus-round"></i>
 </a>
 </div>
-
+<div class="card add">
+  <div class="item item-body no-padding">
+    <img src="img/others/mockups/widget_water.png">
+  </div>
+</div>
 <div class="card add" ng-show="!hasExercises(day.day)">
   <div class="item item-body" ui-sref="trackexercise({day: day.day})">
+    <span class="plus-circle-icon"></span>
     <h2>Añadir ejercicio físico</h2>
     <p>Esta semana no has realizado ningún ejercicio físico, ¡Empieza hoy!</p>
   </div>
 </div>
 <div class="card add" ng-show="trackBlock(3, day.day)">
   <div class="item item-body" nav-direction="enter" ui-sref="trackfood({mealId:3, day: day.day})">
+    <span class="plus-circle-icon"></span>
     <h2>Añadir comida</h2>
     <p>Repon tus fuerzas por la tarde</p>
   </div>
 </div>
 <div class="card add" ng-show="trackBlock(4, day.day)">
   <div class="item item-body" nav-transition="none" nav-direction="enter" ui-sref="trackfood({mealId:4, day: day.day})">
+    <span class="plus-circle-icon"></span>
     <h2>Añadir merienda</h2>
     <p>Repon tus fuerzas por la tarde</p>
   </div>
 </div>
 <div class="card add" ng-show="trackBlock(5, day.day)">
   <div class="item item-body" nav-transition="none" nav-direction="enter" ui-sref="trackfood({mealId:5, day: day.day})">
+    <span class="plus-circle-icon"></span>
     <h2>Añadir cena</h2>
     <p>Cenar limpio y ligero te ayudará a no tener una digestión lenta y pesada</p>
   </div>
 </div>
-<!-- <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}">
-<ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8]">
-<div class="card add">
-  <div class="item item-body">
-    <h2>Mensaje {{s}}</h2>
-    <p>Tenemos una propuesta que no podrás rechazar...</p>
-  </div>
-</div>
-</ks-swiper-slide>
-</ks-swiper-container> -->
 </ion-content>
 </ion-slide-page>
 </ion-slides>
