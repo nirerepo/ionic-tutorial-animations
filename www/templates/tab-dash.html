@@ -33,7 +33,7 @@
   </div>
   <div class="item item-body content">
     <ion-list>
-    <ion-item class="item item-button-right" ng-repeat="plato in nutritionSeccion.items" type="item-text-wrap">
+    <ion-item class="item item-button-right item-remove-animate" ng-repeat="plato in nutritionSeccion.items" type="item-text-wrap">
     {{plato.title}}
     <span class="item-info">{{plato.quantity}}</span>
     <nire-plate-action-sheet plate="plato" meal="nutritionSeccion.type" />
@@ -53,7 +53,7 @@
   </div>
   <div class="item item-body content">
     <ion-list>
-        <ion-item class="item item-button-right" ng-repeat="exercise in exercises" type="item-text-wrap">
+        <ion-item class="item item-button-right item-remove-animate" ng-repeat="exercise in exercises" type="item-text-wrap">
         {{exercise.title}}
         <span class="item-info">{{exercise.gastoCalorico}} Kcal</span>
         <nire-exercise-action-sheet exercise="exercise" />
