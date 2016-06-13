@@ -9887,6 +9887,9 @@ input::-webkit-input-placeholder {
 .activated {
   border-color: transparent !important; }
 
+.no-padding {
+  padding: 0px !important; }
+
 button.button-facebook {
   background-color: #3B5998;
   color: #fff !important; }
@@ -10432,3 +10435,6 @@ ion-slides {
 .dark.swiper-slide .item h2,
 .dark.swiper-slide .item p {
   color: #fff; }
+
+.swiper-slide img {
+  margin-bottom: -4px; }

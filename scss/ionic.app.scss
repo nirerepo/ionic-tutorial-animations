@@ -192,6 +192,10 @@ input::-webkit-input-placeholder {
 	border-color: transparent!important;
 }
 
+.no-padding {
+	padding: 0px!important;
+}
+
 // FACEBOOK BUTTON //
 button.button-facebook {
 	background-color: #3B5998;
@@ -850,4 +854,8 @@ $num-colors: 10;
 .dark.swiper-slide .item h2,
 .dark.swiper-slide .item p {
 	color: $light;
+}
+
+.swiper-slide img {
+	margin-bottom: -4px; //(FIX BOTTOM WHITE SPACE)
 }
