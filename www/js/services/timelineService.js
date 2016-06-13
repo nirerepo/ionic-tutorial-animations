@@ -54,7 +54,7 @@ function TimelineService(Connection, $filter) {
         var exercise = {
             completed: true, 
             id: exerciseData.id, 
-            gastoCalorico: Math.round((exerciseData.mets / 60) * 70 * exerciseData.tiempo * 100)/100, 
+            gastoCalorico: Math.floor((exerciseData.mets / 60) * 70 * exerciseData.tiempo), 
             title: exerciseData.name,
             tiempo: exerciseData.tiempo
         }
