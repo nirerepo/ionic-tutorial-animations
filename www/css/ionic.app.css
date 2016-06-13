@@ -9951,6 +9951,9 @@ select[readonly] {
 .action-sheet-wrapper button {
   font-family: -apple-system, "Helvetica Neue", Roboto, "Segoe UI", sans-serif !important; }
 
+.action-sheet .button.destructive {
+  color: red; }
+
 .pane {
   background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
@@ -9970,11 +9973,29 @@ select[readonly] {
   font-size: 14px;
   color: rgba(0, 50, 69, 0.5); }
 
-.tab-item .badge {
+.tab-item {
+  opacity: inherit; }
+
+.tab-item.tab-item-active i.icon, .tab-item.tab-item-active .tab-title,
+.tab-item.active i.icon, .tab-item.active .tab-title,
+.tab-item.activated i.icon, .tab-item.activated .tab-title {
+  opacity: 1; }
+
+.tab-item i.icon, .tab-item .tab-title {
+  opacity: 0.5; }
+
+.tabs-striped.tabs-dark .tab-item {
+  color: white; }
+
+.tab-item .badge,
+.tabs-striped.tabs-dark .tab-item .badge {
   top: 26%;
   right: calc(54% - 26px);
   background-color: #7AB800 !important;
   color: #fff !important; }
+
+.tabs-striped.tabs-dark .tab-item .badge {
+  opacity: 1; }
 
 #welcome p,
 #signin p,
@@ -10047,7 +10068,8 @@ img.padding-vertical {
   clear: none; }
 
 #diary .card .item-divider.header .title {
-  font-family: MovistarHeadline-Bold; }
+  font-family: MovistarHeadline-Bold;
+  text-transform: capitalize; }
 
 #diary .card .item-divider.header .resume {
   font-family: MovistarText;
