@@ -439,8 +439,13 @@ img.padding-vertical {
 	text-align: right;
 }
 
+#diary .card .item-divider.header .resume span.info {
+	vertical-align: top;
+}
+
 #diary .card .item-divider.header .resume i {
 	margin-left: 5px;
+	font-size: 20px;
 }
 
 #diary .card .item-body.content {
