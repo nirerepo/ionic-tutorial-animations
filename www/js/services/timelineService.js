@@ -39,7 +39,7 @@ function TimelineService(Connection, $filter) {
 
     this.addPlate = function (mealId, plateData, day){
         var key = self.mealKey[mealId]
-        var plate = {completed: true, id: plateData.id, quantity: plateData.kcal + " kcal", title: plateData.name}
+        var plate = {completed: true, id: plateData.id, quantity: Math.floor(plateData.kcal) + " kcal", title: plateData.name}
 
         var track = $filter('filter')(self.tracks[day].nutrition, {typeId: parseInt(mealId)}, true);
         if(track.length === 0) {
