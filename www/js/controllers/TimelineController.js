@@ -2,8 +2,14 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $io
     // Cada vez que se muestra el Timeline le solicitamos al servicio
     // la información actualizada.
     $scope.$on("$ionicView.beforeEnter", function () {
-       $scope.timelineDays = Timeline.get();
+       var hoy = moment().format('YYYYMMDD');
+       // Decoramos el timeline con una clase en función del día
+       $scope.timelineDays = _(Timeline.get()).map(function(v) {
+        v.timelineClass = (hoy==v.day?'today':'pastDay')
+        return v
+       }).value();
     });
+
 
     $scope.cards = [
         {},
