@@ -1,8 +1,13 @@
 
 <ion-view id="diary">
 <ion-nav-title>
-    {{pageTitle}}
+  <div class="bar bar-header bar-light">
+    <button class="button button-icon icon ion-ios-arrow-back"></button>
+      <h1 class="title">{{pageTitle}}</h1>
+    <button class="button button-icon ion-ios-arrow-forward"></button>
+  </div>
 </ion-nav-title>
+
 <ion-slides (ionDidChange)="onSlideChanged()" options="data.sliderOptions" slider="data.sliderDelegate">
 <ion-slide-page ng-repeat="day in timelineDays" class="{{day.timelineClass}}">
 
@@ -54,6 +59,20 @@
 <div class="card">
   <div class="item item-body no-padding">
     <img src="img/others/mockups/widget_resume_steps.jpg">
+  </div>
+</div>
+</ks-swiper-slide>
+<ks-swiper-slide class="swiper-slide light">
+<div class="card">
+  <div class="item item-body no-padding">
+    <div class="row">
+      <div class="col"><h2>Title</h2></div>
+    </div>
+    <div class="row">
+      <div class="col" style="border: 1px dashed #ccc;">COL1</div>
+      <div class="col" style="border: 1px dashed #ccc;">COL2</div>
+      <div class="col" style="border: 1px dashed #ccc;">COL3</div>
+    </div>
   </div>
 </div>
 </ks-swiper-slide>
