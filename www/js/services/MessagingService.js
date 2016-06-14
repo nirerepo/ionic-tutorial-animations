@@ -5,10 +5,8 @@ function MessagingService($rootScope) {
     var lastMessage = 0;
 
     if (window.localStorage.shownMessages !== null && window.localStorage.shownMessages !== undefined)
-        lastMessage = _.last(JSON.parse(window.localStorage.shownMessages));    
-
-
-
+        lastMessage = _.last(JSON.parse(window.localStorage.shownMessages));
+        
     /**
      * Recibir desde el servidor un mensaje, adaptarlo para las estructuras utilizadas en el cliente
      * y notificar a los interesados de los eventos.
@@ -33,15 +31,33 @@ function MessagingService($rootScope) {
 
     /**
      * Cambia la estructura de las notificaciones del servidor, por las notificaciones que el cliente entiende.
-     * @param {{id: number, source: string, message: string}} serverMessage
+     * @param {{id: number, source: string, message: string, button: string}} serverMessage
+     * @return {{id: number, source: string, type: string, text: string, options: [{text: string, value: string}]}}
      */
     function adaptMessage(serverMessage) {
-        return {
+        var result = {
             id: serverMessage.id,
             source: serverMessage.source,
             type: 'message',
             text: serverMessage.message
         };
+
+        if(serverMessage.button) {
+            result.type = 'options';
+            result.options = toButtonStructure(serverMessage.button);
+        }
+
+        return result;
+    }
+
+    function toButtonStructure(buttons) {
+        return buttons.split("@@").map(function(element) {
+            var parts = element.split("##");
+            return {
+                text: parts[0],
+                value: parts[1]
+            };
+        });
     }
 
     /**
@@ -52,15 +68,19 @@ function MessagingService($rootScope) {
      * mensajes diferentes. Este es el método que dado un mensaje, retorna varios que son simplemente texto,
      * excepto el último que tendrá las demás opciones y botones.
      * 
-     * @param {{id: number, source: string, message: string}} message
+     * @param {{id: number, source: string, message: string, button: string}} message
      */
     function splitMessage(message) {
         var text = message.message.split(/-{5,}/);
 
         var result = [];
         for(var i = 0; i < text.length; i++) {
-            result.push({id: message.id, source: message.source, message: text[i]})
+            result.push({id: message.id, source: message.source, message: text[i]});
         }
+
+        // Si hay botones, los botones apareceran unicamente en el último mensaje.
+        if(message.button)
+            result[result.length-1].button = message.button;
 
         return result;
     }
