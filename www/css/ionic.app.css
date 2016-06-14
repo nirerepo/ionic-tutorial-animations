@@ -9964,7 +9964,8 @@ select[readonly] {
   background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
 .pastday {
-  background: linear-gradient(-180deg, #6B7478 0%, #9EA8A9 50%, #B9C3C3 100%); }
+  background-image: linear-gradient(-179deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
+  background: rgba(170, 170, 170, 0.65); }
 
 #welcome.pane {
   background-image: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
