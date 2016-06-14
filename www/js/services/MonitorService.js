@@ -4,7 +4,7 @@
  */
 function MonitorService(Connection, $interval, $rootScope) {
     /** @type number */
-    var delay = 10000;
+    var delay = 5000;
 
     /** @type ng.IPromise<any> */
     var intervalPromise = null;
