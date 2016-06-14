@@ -9,6 +9,11 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
         $scope.data.search = '';
         $scope.data.exercises = [];
     });
+    $scope.$on("$ionicView.beforeEnter", function () {
+       Exercise.getLastUsed().then(function(result){
+            $scope.lastUsed = result.data.data.body.most_used
+       });
+    });
 
     $scope.clear = function() {
         $scope.data.search = '';
@@ -31,20 +36,33 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
       $ionicHistory.goBack();
     };
 
+    $scope.getExerciseType = function(type) {
+        if(!type) return "";
+        var types = type.split(",");
+        return types.map(function(t){return Exercise.type[t]}).join();
+    }
+
     $scope.exerciseModal = {
         addExercise : function(exercise) {
             $scope.data.exerciseTime = 5;
-            $scope.data.selectedExercise = exercise;
+            var fields = exercise.fields;
+            var mets = fields.mets? fields.mets[0] : 0
+            $scope.data.selectedExercise = {name: fields.nombre[0], mets: mets, id: fields.id[0], tipo: fields.tipo[0] };
+            $scope.modal.show();
+        },
+        addFrecuentExercise : function(exercise) {
+            $scope.data.exerciseTime = 5;
+            $scope.data.selectedExercise = {name: exercise.title, mets: exercise.mets, id: exercise.id, tipo: exercise.tipo };
             $scope.modal.show();
         },
         saveDetails : function() {
             $scope.modal.hide();
-            var fields = $scope.data.selectedExercise.fields;
+
+            var exerciseData = $scope.data.selectedExercise;
             var time = $scope.data.exerciseTime;
-            var mets = fields.mets? fields.mets[0] : 0
             var date = $stateParams.day;
 
-            var exerciseData = {name: fields.nombre[0], mets: mets, id: fields.id[0], tipo: fields.tipo[0], tiempo: time }
+            exerciseData.tiempo = time;
             Exercise.add(exerciseData, date).then(function(result){
                 Timeline.addExercise(exerciseData, date);
                 $state.go("tab.dash");

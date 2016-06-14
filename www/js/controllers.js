@@ -99,7 +99,6 @@ angular.module('nire.controllers', [])
     });
     $scope.$on("$ionicView.beforeEnter", function () {
        Food.getLastUsed().then(function(result){
-            console.log(result);
             $scope.lastUsed = result.data.data.body.most_used
        });
     });

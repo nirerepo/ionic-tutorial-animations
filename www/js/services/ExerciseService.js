@@ -21,6 +21,10 @@ function ExerciseService($q, $http, Connection) {
         return Connection.request("track/physicalActivity/new", data, "application/json");
     }
 
+    this.getLastUsed = function() {
+        return Connection.request("newTrack/physicalActivity/id/newTrackPhysicalActivity.json");
+    }
+
     this.type = {
         '1': 'Fuerza',
         '2': 'Calistenico',

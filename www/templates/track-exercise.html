@@ -13,7 +13,7 @@
 <ion-content>
 
 <!-- EMPTY SCREEN -->
-<div ng-hide="data.exercises.length > 0" class="empty centered">
+<div ng-hide="data.exercises.length > 0 || lastUsed.length > 0" class="empty centered">
   <div class="row padding-vertical">
     <div class="col col-33 col-offset-33">
       <img class="full-image" src="img/others/illustrations/search.png">
@@ -32,27 +32,19 @@
 </div>
 
 <!-- FRECUENTS LIST -->
-<!-- <div class="frecuents-list">
+<div class="frecuents-list" ng-hide="data.exercises.length > 0 || lastUsed.length == 0">
   <div class="row">
     <div class="col">
       <span>Frecuentes</span>
     </div>
   </div>
   <ul class="list">
-    <li class="item">
-      <span class="item-title">Item</span><br>
-      <span class="item-info">Info // ¿Kcals o cantidad?</span>
-    </li>
-    <li class="item">
-      <span class="item-title">Item</span><br>
-      <span class="item-info">Info // ¿Kcals o cantidad?</span>
-    </li>
-    <li class="item">
-      <span class="item-title">Item</span><br>
-      <span class="item-info">Info // ¿Kcals o cantidad?</span>
+    <li class="item" ng-repeat="exercise in lastUsed" ng-click="exerciseModal.addFrecuentExercise(exercise)">
+      <span class="item-title">{{exercise.title}}</span><br>
+      <span class="item-info">{{getExerciseType(exercise.tipo)}}&emsp;&emsp;{{exercise.exercised}}</span>
     </li>
   </ul>
-</div> -->
+</div>
 
   <ul class="list">
     <li class="item" ng-repeat="exercise in data.exercises" ng-click="exerciseModal.addExercise(exercise)">
