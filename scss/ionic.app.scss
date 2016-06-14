@@ -63,6 +63,8 @@ $header-font-size-smaller:			10px;
 $background-1:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); // url("../img/backgrounds/clouds.jpg"); //Image
 $background-2:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); //Gradient
 $background-3:						#EDF2F5; //Solid-color-1
+$background-pastday:				linear-gradient(-180deg, #6B7478 0%, #9EA8A9 50%, #B9C3C3 100%);
+
 
 //	Element default details
 $shadow-default:                   	0px 1px 2px 0px rgba(0,0,0,0.20); 
@@ -283,12 +285,12 @@ select[readonly] {
 	background: $background-2;	
 }
 
-.today.pane {
+.today {
 	background: $background-2;
 }
 
-.pastday.pane {
-	background: red;
+.pastday {
+	background: $background-pastday;
 }
 
 #welcome.pane {
@@ -861,7 +863,6 @@ $num-colors: 10;
 	background-size: 100px!important;
     background-position: right!important;
     background-repeat: no-repeat!important;
-
 }
 
 .swiper-slide h2 {
