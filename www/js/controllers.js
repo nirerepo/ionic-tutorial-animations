@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('nire.controllers', [])
     .controller('ChatDetailCtrl', function ($scope, $state, $stateParams, $interval, $timeout, $ionicScrollDelegate, Chats) {
         $scope.newMessages = [];
         $scope.pending = false;

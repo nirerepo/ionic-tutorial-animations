@@ -25,5 +25,5 @@ function FoodService($q, $http, Connection) {
     }
 }
 
-angular.module('starter.services')
+angular.module('nire.services')
     .service('Food', FoodService);

@@ -36,5 +36,5 @@ function LoginInterceptor($injector) {
     };
 }
 
-angular.module('starter.services')
+angular.module('nire.services')
     .service('LoginInterceptor', LoginInterceptor);

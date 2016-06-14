@@ -1,5 +1,5 @@
 /// <reference path="../../typings/index.d.ts" />
-angular.module('starter.services', [])
+angular.module('nire.services', [])
     .factory('Chats', ['$rootScope', '$interval', '$timeout', function($rootScope, $interval, $timeout) {
         var receivedMessages = [];  // Recibidos, aún sin mostrar
 

@@ -88,5 +88,5 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
   });
 }
 
-angular.module('starter.controllers')
+angular.module('nire.controllers')
     .controller('ExerciseCtrl', ExcerciseController);
