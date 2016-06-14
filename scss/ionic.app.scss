@@ -859,10 +859,7 @@ $num-colors: 10;
 }
 
 .light.swiper-slide .item {
-	background-image: url('http://pngimg.com/upload/tree_PNG3498.png')!important;
-	background-size: 100px!important;
-    background-position: right!important;
-    background-repeat: no-repeat!important;
+	min-height: 155px;
 }
 
 .swiper-slide h2 {
@@ -877,6 +874,9 @@ $num-colors: 10;
 .light.swiper-slide .item h2,
 .light.swiper-slide .item p {
 	color: $base-font-color-dark;
+	font-family: $header-font-family-default;
+	font-size: $small-font-size-default;
+	color: $base-font-color-soft;
 }
 
 .dark.swiper-slide .item h2,
