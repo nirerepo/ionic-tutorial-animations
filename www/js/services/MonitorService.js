@@ -12,7 +12,7 @@ function MonitorService(Connection, $interval, $rootScope) {
     /** @type number */
     var lastMessage = 0;
 
-    if (window.localStorage.shownMessages !== null)
+    if (window.localStorage.shownMessages !== null && window.localStorage.shownMessages !== undefined)
         lastMessage = _.last(JSON.parse(window.localStorage.shownMessages));    
 
     function intervalFunction() {
