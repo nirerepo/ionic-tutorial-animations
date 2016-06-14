@@ -35,36 +35,6 @@ angular.module('starter.services', [])
             }
         }
     }])
-    .factory('Monitor', ['$rootScope', '$interval', 'Connection', function($rootScope, $interval, Connection) {
-        var lastMessage = null;
-        if (window.localStorage.shownMessages != null)
-            lastMessage = _.last(JSON.parse(window.localStorage.shownMessages));    
-
-        $interval(getServerMessages, 10000);
-
-        function getServerMessages() {
-            Connection.request("notification/pending", { id: lastMessage })
-                .then(function(response) {
-                    response.data.data.notifications.forEach(function(element) {
-                        $rootScope.$broadcast('nire.chat.messageIncoming', { value: true });
-                        $rootScope.$broadcast('nire.chat.messageReceived', { message: adaptMessage(element) });
-
-                        lastMessage = element.id;
-                    }, this);
-                });
-        }
-
-        function adaptMessage(serverMessage) {
-            return {
-                id: serverMessage.id,
-                source: serverMessage.source,
-                type: 'message',
-                text: serverMessage.message
-            };
-        }
-
-        return {};
-    }])
     .factory('Help', function () {
     return {
         loadPages: function ($scope, $ionicNavBarDelegate) {

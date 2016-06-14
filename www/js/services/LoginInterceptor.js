@@ -12,17 +12,27 @@
  * @param {angular.auto.IInjectorService} $injector
  */
 function LoginInterceptor($injector) {
+    this.response = function(response) {
+        // Si la solicitud exitosa corresponde al servidor reiniciamos el monitor
+        if(response.config.url.indexOf("http") === 0) {
+            console.log("Usuario logueado. Iniciando monitoreo");
+            $injector.get("Monitor").start();
+        }
+        return response;
+    };
+
     /**
      * Intercepta los request que retornan 401 para redirigir al usuario a la página de login.
      * @param {{status: number}} response
      */
     this.responseError = function(response) {
-        // TODO: Dependiendo que datos estan cacheados deberíamos redirigir
         // a diferentes paginas.
         if(response.status === 401) {
             console.log("El usuario se encuentra deslogueado. Redirigiendo al login.");
+            $injector.get("Monitor").stop();
             $injector.get("$state").go("welcome");
         }
+        return response;
     };
 }
 
