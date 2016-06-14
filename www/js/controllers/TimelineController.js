@@ -60,5 +60,5 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $io
     }
 }
 
-angular.module('starter.controllers')
+angular.module('nire.controllers')
     .controller('DashCtrl', TimelineController);

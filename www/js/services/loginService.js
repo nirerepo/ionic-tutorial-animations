@@ -3,15 +3,26 @@
  * sobre el usuario logueado.
  * 
  * @param {ConnectionService} Connection
+ * @param {MonitorService} Monitor
  * @param {angular.IQService} $q
  */
-function LoginService(Connection, $q) {
+function LoginService(Connection, Monitor, $q) {
     this.credentials = { 
         username: window.localStorage.username, 
         password: ""
     };
     this.currentUsername = "";
     this.currentHash = window.userhash;
+
+    /**
+     * Desloguea al usuario actual de la aplicación.
+     */
+    this.logout = function() {
+        this.currentHash = "";
+        window.localStorage.userhash = this.currentHash;
+        this.credentials.password = "";
+        Monitor.stop();
+    };
 
     /**
      * Intenta loguearse utilizando las credenciales de usuario almacenadas en el servicio.
@@ -91,5 +102,5 @@ function LoginService(Connection, $q) {
     };
 }
 
-angular.module('starter.services')
+angular.module('nire.services')
     .service('Login', LoginService);

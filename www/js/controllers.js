@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('nire.controllers', [])
     .controller('ChatDetailCtrl', function ($scope, $state, $stateParams, $interval, $timeout, $ionicScrollDelegate, Chats) {
         $scope.newMessages = [];
         $scope.pending = false;
@@ -97,6 +97,13 @@ angular.module('starter.controllers', [])
     $scope.$on('$ionicView.enter', function() {
         $scope.data.search = '';
     });
+    $scope.$on("$ionicView.beforeEnter", function () {
+       Food.getLastUsed().then(function(result){
+            console.log(result);
+            $scope.lastUsed = result.data.data.body.most_used
+       });
+    });
+
     $scope.clear = function() {
         $scope.data.search = '';
         $scope.data.plates = [];
@@ -114,11 +121,19 @@ angular.module('starter.controllers', [])
       $ionicHistory.goBack();
     };
     $scope.addPlate = function(plate) {
-        console.log(plate.fields);
-        var mealId = $stateParams.mealId;
-        var date = $stateParams.day;
         var fields = plate.fields;
         var plateData = {name: fields.nombredieta[0], kcal: fields.kcal? fields.kcal[0] : 0, id: fields.id[0]}
+        savePlate(plateData);
+    }
+
+    $scope.addFrecuentPlate = function(plate) {
+        var plateData = {name: plate.title, kcal: plate.calories, id: plate.id};
+        savePlate(plateData);
+    }
+
+    var savePlate = function(plateData) {
+        var mealId = $stateParams.mealId;
+        var date = $stateParams.day;
         Food.addPlate(mealId, plateData, date).then(function(result){
             Timeline.addPlate(mealId, plateData, date);
             $state.go("tab.dash");

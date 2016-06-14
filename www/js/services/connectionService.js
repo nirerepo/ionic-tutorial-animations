@@ -41,5 +41,5 @@ function ConnectionService($http) {
     }
 }
 
-angular.module('starter.services')
+angular.module('nire.services')
     .service('Connection', ConnectionService);

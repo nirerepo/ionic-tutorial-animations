@@ -21,5 +21,5 @@ function FacebookLoginDirective(Login, $state) {
     }
 }
 
-angular.module("starter.directives", [])
+angular.module("nire.directives", [])
     .directive("nireFacebookLogin", FacebookLoginDirective);

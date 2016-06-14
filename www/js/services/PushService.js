@@ -32,5 +32,5 @@ function PushService($q, $state) {
     };
 }
 
-angular.module('starter.services')
+angular.module('nire.services')
     .service('push', PushService);

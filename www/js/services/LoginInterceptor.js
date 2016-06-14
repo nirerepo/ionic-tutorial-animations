@@ -15,7 +15,6 @@ function LoginInterceptor($injector) {
     this.response = function(response) {
         // Si la solicitud exitosa corresponde al servidor reiniciamos el monitor
         if(response.config.url.indexOf("http") === 0) {
-            console.log("Usuario logueado. Iniciando monitoreo");
             $injector.get("Monitor").start();
         }
         return response;
@@ -36,5 +35,5 @@ function LoginInterceptor($injector) {
     };
 }
 
-angular.module('starter.services')
+angular.module('nire.services')
     .service('LoginInterceptor', LoginInterceptor);

@@ -19,5 +19,5 @@ function SignInPasswordCtrl(Login, $state) {
     }.bind(this);
 }
 
-angular.module('starter.controllers')
+angular.module('nire.controllers')
     .controller('SignInPasswordCtrl', SignInPasswordCtrl);

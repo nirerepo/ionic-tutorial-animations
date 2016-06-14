@@ -16,5 +16,5 @@ function SignInCtrl(push, Login, $state) {
     }.bind(this));
 }
 
-angular.module('starter.controllers')
+angular.module('nire.controllers')
     .controller('SignInCtrl', SignInCtrl);

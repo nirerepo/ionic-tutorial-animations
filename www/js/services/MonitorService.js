@@ -52,5 +52,5 @@ function MonitorService(Connection, $interval, $rootScope) {
     };
 }
 
-angular.module("starter.services")
+angular.module("nire.services")
     .service("Monitor", MonitorService);

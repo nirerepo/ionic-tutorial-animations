@@ -110,5 +110,5 @@ function TimelineService(Connection, $filter) {
     }
 }
 
-angular.module('starter.services')
+angular.module('nire.services')
     .service('Timeline', TimelineService);

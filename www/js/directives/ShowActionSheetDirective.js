@@ -48,6 +48,6 @@ function ShowActionSheet($ionicActionSheet, deleteAction, title){
     });
 }
 
-angular.module("starter.directives")
+angular.module("nire.directives")
     .directive("nirePlateActionSheet", PlateActionSheetDirective)
     .directive("nireExerciseActionSheet", ExerciseActionSheetDirective);

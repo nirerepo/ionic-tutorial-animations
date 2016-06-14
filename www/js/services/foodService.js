@@ -19,7 +19,11 @@ function FoodService($q, $http, Connection) {
         var data = { date: date, plates: [plate], idMeal: parseInt(mealId) }
         return Connection.request("track/nutrition/add", data, "application/json");
     }
+
+    this.getLastUsed = function() {
+        return Connection.request("newTrack/nutrition/id/newTrackNutrition.json");
+    }
 }
 
-angular.module('starter.services')
+angular.module('nire.services')
     .service('Food', FoodService);
