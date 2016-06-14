@@ -5,7 +5,7 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $io
        var hoy = moment().format('YYYYMMDD');
        // Decoramos el timeline con una clase en función del día
        $scope.timelineDays = _(Timeline.get()).map(function(v) {
-        v.timelineClass = (hoy==v.day?'today':'pastDay')
+        v.timelineClass = (hoy==v.day?'today':'pastday')
         return v
        }).value();
     });

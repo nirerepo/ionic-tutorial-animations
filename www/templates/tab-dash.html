@@ -4,9 +4,9 @@
     {{pageTitle}}
 </ion-nav-title>
 <ion-slides (ionDidChange)="onSlideChanged()" options="data.sliderOptions" slider="data.sliderDelegate">
-<ion-slide-page ng-repeat="day in timelineDays">
+<ion-slide-page ng-repeat="day in timelineDays" class="{{day.timelineClass}}">
 
-<ion-content class="padding {{day.timelineClass}}">
+<ion-content class="padding">
 <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}">
 <ks-swiper-slide class="swiper-slide light">
 <div class="card">
