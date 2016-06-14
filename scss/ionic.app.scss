@@ -280,7 +280,15 @@ select[readonly] {
 }
 
 .pane {
+	background: $background-2;	
+}
+
+.today.pane {
 	background: $background-2;
+}
+
+.pastday.pane {
+	background: red;
 }
 
 #welcome.pane {

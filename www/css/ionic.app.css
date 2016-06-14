@@ -9960,6 +9960,12 @@ select[readonly] {
 .pane {
   background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
+.today.pane {
+  background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
+
+.pastday.pane {
+  background: red; }
+
 #welcome.pane {
   background-image: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
   background-size: cover; }
