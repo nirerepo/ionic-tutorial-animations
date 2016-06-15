@@ -115,7 +115,7 @@ angular.module('nire', [
             .state('trackfood', {
                 url: '/trackfood/:mealId/:day',
                 templateUrl: 'templates/track-food.html',
-                controller: 'TrackCtrl'
+                controller: 'FoodCtrl'
             }).state('trackexercise', {
                 url: '/trackexercise/:day',
                 templateUrl: 'templates/track-exercise.html',
