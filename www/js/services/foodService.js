@@ -1,7 +1,7 @@
 function FoodService($q, $http, Connection) {
     this.plateByName = function(queryText) {
         var rdo = $q.defer();
-        var query = "http://search.nire.co/platos_es_co/_search?q=nombredieta:" + queryText + "&fields=id,nombredieta,kcal&sort=_score:desc";
+        var query = "http://nire0.gailen.es:9200/platos_es_co/_search?q=nombredieta:" + queryText + "&fields=id,nombredieta,kcal&sort=_score:desc";
         $http.get(query)
             .then(function (res) {
             console.log("RES: ", res);

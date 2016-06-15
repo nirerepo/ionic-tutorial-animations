@@ -45,6 +45,10 @@ function TimelineService(Connection, $filter) {
         if(track.length === 0) {
             track.push({ type: key, typeId: parseInt(mealId), items: [] });
             self.tracks[day].nutrition.push( track[0] );
+            // Ordeno las comidas por si el elemento que se agrego no va ultimo
+            self.tracks[day].nutrition.sort(function(a, b){
+                return a.typeId - b.typeId
+            })
         }
 
         track[0].items.push(plate)

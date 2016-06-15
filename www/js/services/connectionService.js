@@ -9,7 +9,6 @@ function ConnectionService($http) {
     self.currentUsername = null;
 
     self.getHeaders = function(contentType){
-        console.log("HEADERS", self.currentUsername, self.currentHash);
         return { 
             "security-token": window.localStorage['userhash'], 
             "security-user": window.localStorage['username'],

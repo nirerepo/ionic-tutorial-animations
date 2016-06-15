@@ -1,4 +1,3 @@
-/// <reference path="../../typings/index.d.ts" />
 angular.module('nire.services', [])
     .factory('Chats', ['$rootScope', '$interval', '$timeout', function($rootScope, $interval, $timeout) {
         var receivedMessages = [];  // Recibidos, aún sin mostrar
@@ -24,7 +23,6 @@ angular.module('nire.services', [])
                     var msg = '';
                     if (receivedMessages.length > 0) {
                         msg = receivedMessages.shift();
-                        console.log('Mensaje mostrado', msg);
                         messages.push(msg.message);
                         window.localStorage.shownMessages = JSON.stringify(messages);
                     }
