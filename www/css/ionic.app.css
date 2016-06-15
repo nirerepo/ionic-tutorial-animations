@@ -3335,7 +3335,7 @@ body,
   overflow: hidden;
   margin: 0;
   padding: 0;
-  color: #7AB800;
+  color: #005C84;
   word-wrap: break-word;
   font-size: 14px;
   font-family: -apple-system;
@@ -3593,7 +3593,7 @@ cite {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: #7AB800;
+  color: #005C84;
   font-weight: 500;
   font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   line-height: 1.2; }
@@ -10066,7 +10066,7 @@ img.padding-vertical {
   display: block;
   float: left;
   margin-right: 5px;
-  background-image: url(../img/icons/plus_circle.png);
+  background-image: url("../img/icons/plus_circle.png");
   width: 30px;
   height: 30px;
   background-size: cover; }
@@ -10397,34 +10397,34 @@ ion-slides {
   height: 100vh !important; }
 
 .bgColor_0 {
-  background-color: #cc2244; }
+  background-color: #005c84; }
 
 .bgColor_1 {
-  background-color: #cc6622; }
+  background-color: #000d84; }
 
 .bgColor_2 {
-  background-color: #cccc22; }
+  background-color: #420084; }
 
 .bgColor_3 {
-  background-color: #66cc22; }
+  background-color: #840076; }
 
 .bgColor_4 {
-  background-color: #22cc44; }
+  background-color: #840027; }
 
 .bgColor_5 {
-  background-color: #22ccaa; }
+  background-color: #842800; }
 
 .bgColor_6 {
-  background-color: #2288cc; }
+  background-color: #847700; }
 
 .bgColor_7 {
-  background-color: #2222cc; }
+  background-color: #428400; }
 
 .bgColor_8 {
-  background-color: #8822cc; }
+  background-color: #00840e; }
 
 .bgColor_9 {
-  background-color: #cc22aa; }
+  background-color: #00845d; }
 
 .swiper-container {
   height: inherit !important;
@@ -10439,8 +10439,13 @@ ion-slides {
 .swiper-pagination-bullet-active {
   background: #fff !important; }
 
-.light.swiper-slide .item {
-  min-height: 155px; }
+.swiper-pagination-bullet {
+  background: #fff !important;
+  opacity: 0.25; }
+
+.top-widget.swiper-slide .card {
+  max-height: 165px;
+  height: 165px; }
 
 .swiper-slide h2 {
   margin-top: 0px !important;
@@ -10449,12 +10454,34 @@ ion-slides {
 .swiper-slide .item p {
   font-size: 16px; }
 
-.light.swiper-slide .item h2,
-.light.swiper-slide .item p {
-  color: #01344F;
+.challenge-widget.light.swiper-slide h2.objetive {
   font-family: MovistarHeadline-Bold;
   font-size: 14px;
-  color: #999999; }
+  color: #999999;
+  margin-top: 5px;
+  margin-bottom: 10px; }
+
+.challenge-widget.light.swiper-slide span.challenge-title {
+  color: #005C84;
+  font-size: 18px;
+  margin-bottom: 10px; }
+
+.challenge-widget.swiper-slide .card .item.background {
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  height: 160px; }
+
+.challenge-widget .check {
+  background-color: green;
+  -moz-border-radius: 70px;
+  -webkit-border-radius: 70px;
+  border-radius: 70px;
+  padding-top: auto;
+  margin: 2px;
+  background: rgba(122, 184, 0, 0.15);
+  position: relative;
+  text-align: center; }
 
 .dark.swiper-slide .item h2,
 .dark.swiper-slide .item p {
@@ -10462,3 +10489,6 @@ ion-slides {
 
 .swiper-slide img {
   margin-bottom: -4px; }
+
+.test-border {
+  border: 1px dashed red !important; }
