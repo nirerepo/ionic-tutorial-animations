@@ -65,7 +65,7 @@ angular.module('nire.controllers', [])
             el.parentNode.classList.remove('options');
         }
     })
-    .controller('AccountCtrl', function ($scope, $state) {
+    .controller('AccountCtrl', function ($scope, $state, messagingService) {
         $scope.settings = {
             enableFriends: true,
             enableOtrascosas: true,
@@ -88,6 +88,11 @@ angular.module('nire.controllers', [])
                 });
             }
         };
+
+        $scope.restartMessages = function() {
+            window.localStorage.removeItem("shownMessages");
+            messagingService.setLastMessage(0);
+        }
     })
 
 .controller('HelpCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, Help) {

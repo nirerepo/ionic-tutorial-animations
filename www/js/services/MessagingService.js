@@ -30,6 +30,14 @@ function MessagingService($rootScope) {
     };
 
     /**
+     * setear el id del ultimo mensaje
+     */
+    this.setLastMessage = function(id) {
+        lastMessage = id;
+        console.log(lastMessage);
+    };
+
+    /**
      * Cambia la estructura de las notificaciones del servidor, por las notificaciones que el cliente entiende.
      * @param {{id: number, source: string, message: string, button: string}} serverMessage
      * @return {{id: number, source: string, type: string, text: string, options: [{text: string, value: string}]}}
