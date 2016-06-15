@@ -82,6 +82,16 @@ angular.module('nire.controllers', [])
                     alert('Vamos a intentar conectar al plugin... danos permiso!');
                     navigator.health.requestAuthorization(['activity', 'steps', 'calories', 'height', 'weight', 'gender', 'date_of_birth'], function() {
                         alert("OK!");
+
+                        var successCallback = function(response) { alert("Estuviste caminando..." + response.value); console.log(arguments); };
+                        var errorCallback = function() { alert("Google malo."); console.log(arguments); };
+
+                        navigator.health.queryAggregated({
+                            startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // three days ago
+                            endDate: new Date(), // now
+                            dataType: 'steps'
+                        }, successCallback, errorCallback)
+                        
                     }, function(e) {
                         alert("NOK!");
                     });
