@@ -4,7 +4,7 @@
         "**/.git": true,
         "**/.svn": true,
         "**/.DS_Store": true,
-        "plugins": true,
-        "platforms": true
+        "**/plugins": true,
+        "**/platforms": true
     }
 }
