@@ -1,12 +1,15 @@
-function FoodController($scope, $state, $stateParams, $ionicHistory, Food, Timeline) {
+function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal, Food, Timeline) {
     $scope.data = {
         "plates": [],
-        "search": ''
+        "search": '',
+        "selectedFood": null,
+        "foodAmount": 1
     };
     $scope.$on('$ionicView.enter', function() {
-        $scope.data.search = '';
     });
     $scope.$on("$ionicView.beforeEnter", function () {
+       $scope.clear();
+       $scope.data.search = '';
        Food.getLastUsed().then(function(result){
             $scope.lastUsed = result.data.data.body.most_used
        });
@@ -28,18 +31,10 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, Food, Timel
     $scope.goBack = function() {
       $ionicHistory.goBack();
     };
-    $scope.addPlate = function(plate) {
-        var fields = plate.fields;
-        var plateData = {name: fields.nombredieta[0], kcal: fields.kcal? fields.kcal[0] : 0, id: fields.id[0]}
-        savePlate(plateData);
-    }
 
-    $scope.addFrecuentPlate = function(plate) {
-        var plateData = {name: plate.title, kcal: plate.calories, id: plate.id};
-        savePlate(plateData);
-    }
 
     var savePlate = function(plateData) {
+        console.log("mealId", mealId);
         var mealId = $stateParams.mealId;
         var date = $stateParams.day;
         Food.addPlate(mealId, plateData, date).then(function(result){
@@ -47,6 +42,52 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, Food, Timel
             $state.go("tab.dash");
         })
     }
+
+    $scope.foodTracker = {
+        addPlate : function(plate) {
+            var fields = plate.fields;
+            var plateData = {id: fields.id[0],
+                            name: fields.nombredieta[0],
+                            kcal: fields.kcal? fields.kcal[0] : 0,
+                            cantidad: fields.cantidad? fields.cantidad[0]:null,
+                            medida_casera: fields.medida_casera? fields.medida_casera[0]:null,
+                            cantidad_medida_casera: fields.cantidad_medida_casera? fields.cantidad_medida_casera[0]:null
+                            };
+            $scope.data.selectedFood = plateData;
+            $scope.foodTrackModal.show();
+        },
+        addFrecuentPlate : function(plate) {
+            var plateData = {name: plate.title, kcal: plate.calories, id: plate.id};
+            savePlate(plateData);
+        },
+        saveDetails : function() {
+            $scope.foodTrackModal.hide();
+            savePlate($scope.data.selectedFood, $scope.data.foodAmount);
+          },
+        closeFoodDetails : function() {
+            $scope.foodTrackModal.hide();
+        },
+        increaseAmount: function() {
+            $scope.data.foodAmount += 1;
+
+        },
+        decreaseAmount: function() {
+            if ($scope.data.foodAmount > 1)
+                $scope.data.foodAmount -= 1;
+        },
+        keepOnlyNumbers: function() {
+            $scope.data.foodAmount = $scope.data.foodAmount.replace(/\D/, '');
+        }
+    }
+
+    $ionicModal.fromTemplateUrl('templates/food/track-details.html', {
+        scope: $scope,
+        animation: 'slide-in-up',
+        focusFirstInput: false
+    }).then(function(modal) {
+        $scope.foodTrackModal = modal;
+    });
+
 }
 
 angular.module('nire.controllers')

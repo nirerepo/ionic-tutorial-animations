@@ -1,0 +1,24 @@
+<ion-modal-view class="has-footer">
+<ion-header-bar>
+<h1 class="title">Cantidad</h1>
+</ion-header-bar>
+
+<ion-content scroll="false">
+
+<div class="row padding centered">
+  <div class="col col-50 col-offset-25">
+  	<div class="up" ng-click="foodTracker.increaseAmount()"></div>
+  	<input ng-change="foodTracker.keepOnlyNumbers()" ng-model="data.foodAmount" type="tel" />
+  	<div class="down" ng-click="foodModal.decreaseAmount()"></div>
+  </div>
+</div>
+
+
+</ion-content>
+
+<div class="bar bar-footer">
+  <button class="button button-clear cancel" ng-click="foodTracker.closeFoodDetails()">Cancelar</button>  
+  <button class="button button-clear action" ng-click="foodTracker.saveDetails()">Guardar</button>
+</div>
+
+</ion-modal-view>
