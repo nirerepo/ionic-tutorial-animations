@@ -9,7 +9,7 @@
 					<div class="bubble {{m.source}} animated fadeIn">
 						<p>{{m.text}}</p>
 					</div>
-					<div id="{{opt.id}}" ng-repeat="opt in m.options" class="item bubble option" ng-click="pressOption($event, opt, msg.id)">
+					<div id="{{opt.id}}" ng-repeat="opt in m.options" class="item bubble option" ng-click="pressOption($event, opt, m.id)">
 						<p>{{opt.text}}</p>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 						<p>{{m.text}}</p>
 					</div>
 					<div id="{{opt.id}}" ng-repeat="opt in msg.options" class="item bubble option" ng-click="pressOption($event, opt, msg.id)">
-						<p>{{opt.text}}</p>
+						<p>h{{msg.id}}{{opt.text}}</p>
 					</div>
 				</div>
 				<div ng-show="msg.type=='card'" class="ficha-wrapper" ng-click="showHelp(msg.cardId)">
