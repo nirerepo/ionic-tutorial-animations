@@ -1,5 +1,11 @@
 angular.module('nire.controllers', [])
     .controller('ChatDetailCtrl', function ($scope, $state, $stateParams, $interval, $timeout, $ionicScrollDelegate, Chats) {
+        $scope.$on('$ionicView.enter', function() {
+            $scope.shownMessages = Chats.getReadedMessages();
+            $scope.newMessages = Chats.getNewMessages();
+        });
+
+
         $scope.newMessages = [];
         $scope.pending = false;
 
@@ -7,7 +13,6 @@ angular.module('nire.controllers', [])
          * Sincronizams con la vista el arrancar y detener el servicio
          * de presentación de mensajes ya recibidos, para controlar su
          * $interval interno.
-         */
         $scope.$on('$ionicView.enter', function() {
             if (window.localStorage.shownMessages)
                 $scope.shownMessages = JSON.parse(window.localStorage.shownMessages);
@@ -19,6 +24,8 @@ angular.module('nire.controllers', [])
             }, 1000);
 
         });
+
+
         $scope.$on('$ionicView.leave', function() {
             Chats.stop();
         });
@@ -38,6 +45,7 @@ angular.module('nire.controllers', [])
             $state.go('help' + tipo, { startpage: 2 });
         };
 
+        */
         $scope.pressOption = function($event, opt, msgId) {
             console.log($event)
             console.log(opt)
@@ -55,7 +63,7 @@ angular.module('nire.controllers', [])
             Chats.replyMessage(opt, msgId);
         }
     })
-    .controller('AccountCtrl', function ($scope, $state, messagingService, HealthStore, Monitor) {
+    .controller('AccountCtrl', function ($scope, $state, HealthStore, Monitor, $localStorage) {
         $scope.$on("$ionicView.beforeEnter", function () {
             $scope.settings = {
                 serverMonitor: Monitor.isEnabled()
@@ -77,8 +85,7 @@ angular.module('nire.controllers', [])
         };
 
         $scope.restartMessages = function() {
-            window.localStorage.removeItem("shownMessages");
-            messagingService.setLastMessage(0);
+            delete $localStorage.messages;
         }
     })
 

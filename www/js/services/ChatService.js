@@ -1,17 +1,29 @@
-function ChatService($rootScope, $interval, $timeout, Connection) {
-    var receivedMessages = [];  // Recibidos, aún sin mostrar
+function ChatService($rootScope, $interval, $timeout, Connection, $localStorage) {
+    var self = this;
 
-    // Acumulamos los mensajes ya recibidos desde el monitor...
-    // ...y se mostrarán suavemente cuando se vuelva a abrir el chat
+    this.getLastReadedMessage = function() {
+        return $localStorage.lastReadedMessage;
+    };
+
+    var receivedMessages = _.dropWhile($localStorage.messages, function(element) {
+        return element.id <= self.getLastReadedMessage();
+    });
+
+    this.getReadedMessages = function() {
+        return _.takeWhile($localStorage.messages, function(element) {
+            return element.id <= self.getLastReadedMessage();
+        });
+    };
+
+    this.getNewMessages = function() {
+        return receivedMessages;
+    };
 
     $rootScope.$on('nire.chat.messageReceived', function(event, msg) {
-        // TODO: ¿Quizás en paralelo a esto, podemos almacenar los recibidos
-        // en localstorage, e inicializar desde ahí al arrancar el servicio?
-        $timeout(function() {
-            $rootScope.$broadcast('nire.chat.messageIncoming', { value: false });
-            receivedMessages.push(msg);
-        }, 700);
+        receivedMessages.push(msg);
     });
+
+    /*
 
     var msgAnimator;
 
@@ -22,19 +34,19 @@ function ChatService($rootScope, $interval, $timeout, Connection) {
             if (receivedMessages.length > 0) {
                 msg = receivedMessages.shift();
                 messages.push(msg.message);
-                window.localStorage.shownMessages = JSON.stringify(messages);
             }
         }, 1000);
-    }
+    };
     
     this.stop = function() {
         $interval.cancel(msgAnimator);
-    }
+    };
+    */
     
     this.replyMessage = function(opt, msgId) {
-        var data = {answer: opt.value, text: opt.text, notificationId: msgId}
-        Connection.request("notification/reply", data)
-    }
+        var data = {answer: opt.value, text: opt.text, notificationId: msgId};
+        Connection.request("notification/reply", data);
+    };
 }
 
 angular.module('nire.services')

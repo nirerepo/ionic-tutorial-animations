@@ -1,12 +1,12 @@
 /**
- * Manejar los mensajes a los usuarios
+ * Manejar los mensajes a los usuarios.
  */
-function MessagingService($rootScope) {
-    var lastMessage = 0;
+function MessagingService($rootScope, $localStorage) {
+    if(!$localStorage.messages) {
+        console.log("Inicializando messages storage.")
+        $localStorage.messages = [];
+    }
 
-    if (window.localStorage.shownMessages !== null && window.localStorage.shownMessages !== undefined)
-        lastMessage = _.last(JSON.parse(window.localStorage.shownMessages));
-        
     /**
      * Recibir desde el servidor un mensaje, adaptarlo para las estructuras utilizadas en el cliente
      * y notificar a los interesados de los eventos.
@@ -15,10 +15,11 @@ function MessagingService($rootScope) {
      */
     this.receive = function(message) {
         splitMessage(message).forEach(function(element) {
-            $rootScope.$broadcast('nire.chat.messageIncoming', { value: true });
-            $rootScope.$broadcast('nire.chat.messageReceived', { message: adaptMessage(element) });
+            var adaptedMessage = adaptMessage(element);
+            $localStorage.messages.push(adaptedMessage);
 
-            lastMessage = element.id;
+            $rootScope.$broadcast('nire.chat.messageIncoming', { value: true });
+            $rootScope.$broadcast('nire.chat.messageReceived', { message: adaptedMessage });
         });
     };
 
@@ -26,15 +27,8 @@ function MessagingService($rootScope) {
      * Obtener el id del ultimo mensaje
      */
     this.getLastMessage = function() {
-        return lastMessage;
-    };
-
-    /**
-     * setear el id del ultimo mensaje
-     */
-    this.setLastMessage = function(id) {
-        lastMessage = id;
-        console.log(lastMessage);
+        var last = _.last($localStorage.messages);
+        return last ? last.id : 0;
     };
 
     /**
