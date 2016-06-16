@@ -6,17 +6,9 @@
 </ion-header-bar>
   <ion-content class="has-header">
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    <ion-toggle  ng-model="settings.enableOtrascosas">
-        Enable Otracosas
-    </ion-toggle>    
-    <ion-toggle  ng-model="settings.enableYotramastodavia">
-        Enable Yotramástodavía
-    </ion-toggle>
+      <ion-toggle ng-model="settings.serverMonitor">Enable Server Monitor</ion-toggle>
+    </ion-list>
     <button ng-click="initHealthTracking()">Health Store</button>
     <button ng-click="restartMessages()">Limpiar mensajes del chat</button>
-    </ion-list>
   </ion-content>
 </ion-view>

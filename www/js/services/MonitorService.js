@@ -16,18 +16,25 @@ function MonitorService(Connection, $interval, messagingService) {
                     messagingService.receive(element);
                 }, this);
             });
-            
+    }
+
+    /**
+     * Saber si se esta realizando periodicamente la llamada al monitor
+     * @return {boolean} True si se esta llamando, false en caso contrario
+     */
+    this.isEnabled = function() {
+        return !!intervalPromise;
     }
 
     this.start = function() {
-        if(!intervalPromise) {
+        if(!this.isEnabled()) {
             intervalPromise = $interval(intervalFunction, delay);
             console.log("Iniciando Monitor Interval");
         }
     };
 
     this.stop = function() {
-        if(intervalPromise) {
+        if(this.isEnabled()) {
             $interval.cancel(intervalPromise);
             console.log("Deteniendo Monitor Interval");
         }

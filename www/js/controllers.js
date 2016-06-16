@@ -55,12 +55,18 @@ angular.module('nire.controllers', [])
             Chats.replyMessage(opt, msgId);
         }
     })
-    .controller('AccountCtrl', function ($scope, $state, messagingService, HealthStore) {
-        $scope.settings = {
-            enableFriends: true,
-            enableOtrascosas: true,
-            enableYotramastodavia: true
-        };
+    .controller('AccountCtrl', function ($scope, $state, messagingService, HealthStore, Monitor) {
+        $scope.$on("$ionicView.beforeEnter", function () {
+            $scope.settings = {
+                serverMonitor: Monitor.isEnabled()
+            };
+        });
+
+        $scope.$watch("settings.serverMonitor", function(current) {
+            if(current) Monitor.start();
+            else Monitor.stop();
+        });
+
         $scope.signOut = function () {
             console.log("Sign-Out");
             $state.go('signin');
