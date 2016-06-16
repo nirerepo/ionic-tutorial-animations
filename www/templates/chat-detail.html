@@ -5,12 +5,14 @@
 				<div ng-show="m.type=='message'" class="bubble {{m.source}} animated fadeIn">
 					<p>{{m.text}}</p>
 				</div>
-				<div ng-show="m.type=='options'" class="options">
+				<div ng-show="m.type=='options'">
 					<div class="bubble {{m.source}} animated fadeIn">
 						<p>{{m.text}}</p>
 					</div>
-					<div id="{{opt.id}}" ng-repeat="opt in m.options" class="item bubble option" ng-click="pressOption($event, opt, m.id)">
-						<p>{{opt.text}}</p>
+					<div class="options">
+						<div id="{{opt.id}}" ng-repeat="opt in m.options" class="item bubble option" ng-click="pressOption($event, opt, m.id)">
+							<p>{{opt.text}}</p>
+						</div>
 					</div>
 				</div>
 				<div ng-show="m.type=='card'" class="ficha-wrapper">
