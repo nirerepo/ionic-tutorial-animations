@@ -38,7 +38,9 @@ angular.module('nire.controllers', [])
             $state.go('help' + tipo, { startpage: 2 });
         };
 
-        $scope.pressOption = function($event, opt) {
+        $scope.pressOption = function($event, opt, msgId) {
+            console.log($event)
+            console.log(opt)
             var el = $event.currentTarget;
             if (opt.script)
                 eval(opt.script);
@@ -50,6 +52,7 @@ angular.module('nire.controllers', [])
             el.classList.remove('option');
             el.classList.add('user');
             el.parentNode.classList.remove('options');
+            Chats.replyMessage(opt, msgId);
         }
     })
     .controller('AccountCtrl', function ($scope, $state, messagingService, HealthStore) {
