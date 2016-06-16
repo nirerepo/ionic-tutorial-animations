@@ -840,18 +840,23 @@ $num-colors: 10;
     }
 }
 
-//SWIPER
+//TOP WIDGET SWIPER
 
-.swiper-container {
+.top-widget .swiper-container {
 	height: inherit!important;
 	display: block;
 }
 
-.swiper-slide > .card {
+.top-widget .swiper-slide > .card {
 	margin: 0px 0px 20px 0px!important;
+    height: 160px;
+    background-color: #FFF!important;
+	background-size: contain!important;
+    background-position: right!important;
+    background-repeat: no-repeat!important;
 }
 
-.swiper-container-horizontal>.swiper-pagination {
+.top-widget .swiper-container-horizontal>.swiper-pagination {
 	bottom: 0px!important;
 }
 
@@ -864,60 +869,47 @@ $num-colors: 10;
 	opacity: 0.25;
 }
 
-.top-widget.swiper-slide .card {
-	max-height: 165px;
-	height: 165px;
-}
-
-.swiper-slide h2 {
-	margin-top: 0px!important;
-	font-size: 20px;
-}
-
-.swiper-slide .item p {
-	font-size: $base-font-size-default
-}
-
-.challenge-widget.light.swiper-slide h2.objetive {
-	font-family: $header-font-family-default;
+.top-widget .challenge-widget h2.objetive {
+	font-family: $header-font-family-alt;
 	font-size: $small-font-size-default;
 	color: $base-font-color-soft;
-	margin-top: 5px;
 	margin-bottom: 10px;
 }
 
-.challenge-widget.light.swiper-slide span.challenge-title {
+.top-widget .challenge-widget span.challenge-title {
 	color: $base-color;
 	font-size: $base-font-size-large;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 }
 
-.challenge-widget.swiper-slide .card .item.background {
-	background-size: contain;
-    background-position: right;
-    background-repeat: no-repeat;
-    height: 160px;
+.top-widget .challenge-widget .check-progress {
+	height: 40px;
 }
 
-.challenge-widget .check {
-	background-color: green;
-	-moz-border-radius: 70px; 
-	-webkit-border-radius: 70px; 
-	border-radius: 70px;
-	padding-top: auto;
-	margin: 2px;
-	background: rgba(122,184,0,0.15);
-	position: relative;
-	text-align: center;
+.top-widget .challenge-widget .check-progress .checked,
+.top-widget .challenge-widget .check-progress .unchecked {
+	margin-right: 10px;
+	max-width: 40px;
+	height: 40px;
+	float: left;
+	clear: none;
+	display: block;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
-.dark.swiper-slide .item h2,
-.dark.swiper-slide .item p {
-	color: $light;
+.top-widget .challenge-widget .check-progress .checked {
+	background-image: url("../img/others/cards/challenges/checkbox-checked.png");
 }
 
-.swiper-slide img {
-	margin-bottom: -4px; //(FIX BOTTOM WHITE SPACE)
+.top-widget .challenge-widget .check-progress .unchecked {
+	background-image: url("../img/others/cards/challenges/checkbox-empty.png");
+}
+
+.top-widget .challenge-widget i.icon-info {
+	float: right;
+	color: $dark;
+	font-size: 25px;
 }
 
 // TEST
