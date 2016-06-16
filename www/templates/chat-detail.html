@@ -31,7 +31,7 @@
 
 				<div ng-show="msg.type=='options'" class="options">
 					<div class="bubble {{m.source}} animated fadeIn">
-						<p>{{m.text}}</p>
+						<p>{{msg.text}}</p>
 					</div>
 					<div id="{{opt.id}}" ng-repeat="opt in msg.options" class="item bubble option" ng-click="pressOption($event, opt, msg.id)">
 						<p>{{opt.text}}</p>
