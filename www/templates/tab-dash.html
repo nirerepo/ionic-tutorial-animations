@@ -15,7 +15,7 @@
 <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}" class="top-widget">
 
 <ks-swiper-slide class="swiper-slide challenge-widget" ng-repeat="challenge in day.challenges">
-<div class="card" style="background-image: url(img/others/cards/challenges/fruit.jpg);">
+<div class="card" style="background-image: url({{challenge.background}});">
   <div class="row">
     <div class="col col-60">
       <div class="row">
