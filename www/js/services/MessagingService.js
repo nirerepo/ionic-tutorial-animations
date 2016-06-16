@@ -5,6 +5,7 @@ function MessagingService($rootScope, $localStorage) {
     if(!$localStorage.messages) {
         console.log("Inicializando messages storage.")
         $localStorage.messages = [];
+        $localStorage.responses = {};
     }
 
     /**
@@ -22,6 +23,16 @@ function MessagingService($rootScope, $localStorage) {
             $rootScope.$broadcast('nire.chat.messageReceived', { message: adaptedMessage });
         });
     };
+
+    /**
+     * Recibir desde el servidor las respuestas a las notificaciones
+     */
+    this.receiveReply = function(reply){
+        console.log(reply)
+        for (var attrname in reply) { 
+            $localStorage.responses[attrname] = reply[attrname];
+        }
+    }
 
     /**
      * Obtener el id del ultimo mensaje

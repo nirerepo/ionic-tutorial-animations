@@ -19,6 +19,10 @@ function ChatService($rootScope, $interval, $timeout, Connection, $localStorage)
         return receivedMessages;
     };
 
+    this.notificationResponded = function(id){
+        return $localStorage.responses[id];
+    }
+
     $rootScope.$on('nire.chat.messageReceived', function(event, msg) {
         receivedMessages.push(msg);
     });

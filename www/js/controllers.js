@@ -46,9 +46,16 @@ angular.module('nire.controllers', [])
         };
 
         */
+
+        $scope.notificationResponded = function(id) {
+            return Chats.notificationResponded(id);
+        }
+
+        $scope.getResponseText = function(id) {
+            return Chats.notificationResponded(id).message;
+        }
+
         $scope.pressOption = function($event, opt, msgId) {
-            console.log($event)
-            console.log(opt)
             var el = $event.currentTarget;
             if (opt.script)
                 eval(opt.script);
@@ -86,6 +93,9 @@ angular.module('nire.controllers', [])
 
         $scope.restartMessages = function() {
             delete $localStorage.messages;
+            delete $localStorage.responses;
+            $localStorage.messages = [];
+            $localStorage.responses = {};
         }
     })
 
