@@ -1,6 +1,6 @@
 <ion-modal-view class="has-footer">
 <ion-header-bar>
-<h1 class="title">Cantidad</h1>
+<h1 class="title">{{data.unidades}}</h1>
 </ion-header-bar>
 
 <ion-content scroll="false">
@@ -9,7 +9,7 @@
   <div class="col col-50 col-offset-25">
   	<div class="up" ng-click="foodTracker.increaseAmount()"></div>
   	<input ng-change="foodTracker.keepOnlyNumbers()" ng-model="data.foodAmount" type="tel" />
-  	<div class="down" ng-click="foodModal.decreaseAmount()"></div>
+  	<div class="down" ng-click="foodTracker.decreaseAmount()"></div>
   </div>
 </div>
 

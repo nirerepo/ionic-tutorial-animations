@@ -54,6 +54,7 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
                             cantidad_medida_casera: fields.cantidad_medida_casera? fields.cantidad_medida_casera[0]:null
                             };
             $scope.data.selectedFood = plateData;
+            $scope.data.unidades = _(plateData.medida_casera).upperFirst();
             $scope.foodTrackModal.show();
         },
         addFrecuentPlate : function(plate) {
