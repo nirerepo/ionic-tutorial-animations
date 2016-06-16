@@ -38,19 +38,6 @@ angular.module('nire.controllers', [])
             $state.go('help' + tipo, { startpage: 2 });
         };
 
-        // TODO: ESTO NO PINTA NADA AQUÍ, ES SOLO UNA PRUEBA!!
-        $scope.initHealthTracking = function() {
-            if (navigator.health) {
-                navigator.health.isAvailable(function() {
-                    alert('Vamos a intentar conectar... danos permiso!');
-                    navigator.health.requestAuthorization(['activity'], function() {
-                        alert('Autorizado');
-                        navigator.health.query({startDate:  new Date(new Date().getTime() - 1 * 24 * 60 * 60 * 1000),endDate: new Date(), dataType:'activity'}, alert, alert);
-                    }, alert);
-                });
-            }
-        };
-
         $scope.pressOption = function($event, opt) {
             var el = $event.currentTarget;
             if (opt.script)
@@ -65,7 +52,7 @@ angular.module('nire.controllers', [])
             el.parentNode.classList.remove('options');
         }
     })
-    .controller('AccountCtrl', function ($scope, $state, messagingService) {
+    .controller('AccountCtrl', function ($scope, $state, messagingService, HealthStore) {
         $scope.settings = {
             enableFriends: true,
             enableOtrascosas: true,
@@ -77,26 +64,7 @@ angular.module('nire.controllers', [])
         };
         // TODO: ESTO NO PINTA NADA AQUÍ, ES SOLO UNA PRUEBA!!
         $scope.initHealthTracking = function() {
-            if (navigator.health) {
-                navigator.health.isAvailable(function() {
-                    alert('Vamos a intentar conectar al plugin... danos permiso!');
-                    navigator.health.requestAuthorization(['activity', 'steps', 'calories', 'height', 'weight', 'gender', 'date_of_birth'], function() {
-                        alert("OK!");
-
-                        var successCallback = function(response) { alert("Estuviste caminando..." + response.value); console.log(arguments); };
-                        var errorCallback = function() { alert("Google malo."); console.log(arguments); };
-
-                        navigator.health.queryAggregated({
-                            startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // three days ago
-                            endDate: new Date(), // now
-                            dataType: 'steps'
-                        }, successCallback, errorCallback)
-                        
-                    }, function(e) {
-                        alert("NOK!");
-                    });
-                });
-            }
+            HealthStore.alertData();
         };
 
         $scope.restartMessages = function() {
