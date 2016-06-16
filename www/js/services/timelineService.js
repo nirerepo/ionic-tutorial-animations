@@ -19,7 +19,8 @@ function TimelineService(Connection, $filter) {
                 self.tracks[date] = {
                     day: date,
                     nutrition: [],
-                    exercises: []
+                    exercises: [],
+                    challenges: []
                 }
                 Connection.request("timeline/" + date)
                     .then(
@@ -29,6 +30,9 @@ function TimelineService(Connection, $filter) {
                             })
                             result.data.data.body.physicalActivity.forEach(function(item){
                                 self.tracks[date].exercises.push(item);
+                            })
+                            result.data.data.body.challenges.forEach(function(item){
+                                self.tracks[date].challenges.push(item);
                             })
                         }.bind(this, date)
                     );
