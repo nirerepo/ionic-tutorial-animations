@@ -7,8 +7,8 @@ function HealthStoreService($q, $http, Connection) {
         if (navigator.health) {
             navigator.health.isAvailable(function() {
                 alert('Vamos a intentar conectar al plugin... danos permiso!');
-                var permAggregated = ['steps','calories', 'calories.active', 'calories.basal'];
-                var permUnit = ['height', 'weight', 'gender', 'date_of_birth'];
+                var permAggregated = ['steps'];
+                var permUnit = [];
                 var successCallbackUnit = function(response) {
                     console.log(response);
                     if (response.length>0)
