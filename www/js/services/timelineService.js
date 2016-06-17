@@ -19,7 +19,8 @@ function TimelineService(Connection, $filter) {
                 self.tracks[date] = {
                     day: date,
                     nutrition: [],
-                    exercises: []
+                    exercises: [],
+                    challenges: []
                 }
                 Connection.request("timeline/" + date)
                     .then(
@@ -29,6 +30,16 @@ function TimelineService(Connection, $filter) {
                             })
                             result.data.data.body.physicalActivity.forEach(function(item){
                                 self.tracks[date].exercises.push(item);
+                            })
+                            result.data.data.body.challenges.forEach(function(item){
+                                if (item.areaId == 'nutrition')
+                                    item.background = "img/others/cards/challenges/fruit.jpg";
+                                else if (item.areaId == 'activity')
+                                    item.background = "img/others/mockups/widget_resume_steps.jpg";
+                                else
+                                    item.background = "img/others/cards/challenges/fruit.jpg";
+
+                                self.tracks[date].challenges.push(item);
                             })
                         }.bind(this, date)
                     );

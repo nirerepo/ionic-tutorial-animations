@@ -15,6 +15,7 @@ function MonitorService(Connection, $interval, messagingService) {
                 response.data.data.notifications.forEach(function(element) {
                     messagingService.receive(element);
                 }, this);
+                messagingService.receiveReply(response.data.data.responses)
             });
     }
 

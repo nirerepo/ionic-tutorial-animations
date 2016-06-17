@@ -1,7 +1,7 @@
 <ion-view view-title="Chat" class="has-footer">
 	<ion-content class="padding">
 		<div class="conversation">
-			<div ng-repeat="m in shownMessages track by $index">
+			<div ng-repeat="m in messages track by $index">
 				<div ng-show="m.type=='message'" class="bubble {{m.source}} animated fadeIn">
 					<p>{{m.text}}</p>
 				</div>
@@ -9,7 +9,10 @@
 					<div class="bubble {{m.source}} animated fadeIn">
 						<p>{{m.text}}</p>
 					</div>
-					<div class="options">
+					<div class="item bubble user" ng-if="notificationResponded(m.id)">
+						<p>{{getResponseText(m.id)}}</p>
+					</div>
+					<div class="options" ng-if="!notificationResponded(m.id)">
 						<div id="{{opt.id}}" ng-repeat="opt in m.options" class="item bubble option" ng-click="pressOption($event, opt, m.id)">
 							<p>{{opt.text}}</p>
 						</div>
@@ -26,17 +29,22 @@
 			</div>
 		</div>
 		<div class="previousconversation">
-			<div ng-repeat="msg in newMessages track by $index">
+			<div ng-repeat="msg in recentMessages track by $index">
 				<div ng-show="msg.type=='message'" class="bubble {{msg.source}} animated fadeIn">
 					<p>{{msg.text}}</p>
 				</div>
 
-				<div ng-show="msg.type=='options'" class="options">
-					<div class="bubble {{m.source}} animated fadeIn">
+				<div ng-show="msg.type=='options'">
+					<div class="bubble {{msg.source}} animated fadeIn">
 						<p>{{msg.text}}</p>
 					</div>
-					<div id="{{opt.id}}" ng-repeat="opt in msg.options" class="item bubble option" ng-click="pressOption($event, opt, msg.id)">
-						<p>{{opt.text}}</p>
+					<div class="item bubble user" ng-if="notificationResponded(msg.id)">
+						<p>{{getResponseText(msg.id)}}</p>
+					</div>
+					<div class="options" ng-if="!notificationResponded(msg.id)">
+						<div id="{{opt.id}}" ng-repeat="opt in msg.options" class="item bubble option" ng-click="pressOption($event, opt, msg.id)">
+							<p>{{opt.text}}</p>
+						</div>
 					</div>
 				</div>
 				<div ng-show="msg.type=='card'" class="ficha-wrapper" ng-click="showHelp(msg.cardId)">

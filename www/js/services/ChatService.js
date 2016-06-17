@@ -1,40 +1,65 @@
-function ChatService($rootScope, $interval, $timeout, Connection) {
-    var receivedMessages = [];  // Recibidos, aún sin mostrar
+function ChatService($rootScope, Connection, $localStorage) {
+    var self = this;
 
-    // Acumulamos los mensajes ya recibidos desde el monitor...
-    // ...y se mostrarán suavemente cuando se vuelva a abrir el chat
-
-    $rootScope.$on('nire.chat.messageReceived', function(event, msg) {
-        // TODO: ¿Quizás en paralelo a esto, podemos almacenar los recibidos
-        // en localstorage, e inicializar desde ahí al arrancar el servicio?
-        $timeout(function() {
-            $rootScope.$broadcast('nire.chat.messageIncoming', { value: false });
-            receivedMessages.push(msg);
-        }, 700);
+    // Lista de los mensajes leidos. Esta lista se inicializa desde
+    // localStorage y se agregan elementos a travez de getNewMessage
+    var readedMessages = _.takeWhile($localStorage.messages, function(element) {
+        return element.id <= $localStorage.lastReadedMessage || 0;
     });
 
-    var msgAnimator;
+    // Lista con los mensajes que aún no fueron leidos. Esta lista se inicializa
+    // desde localStorage y se van quitando elementos a medida que se llama
+    // a getNewMessage
+    var receivedMessages = _.dropWhile($localStorage.messages, function(element) {
+        return element.id <= $localStorage.lastReadedMessage || 0;
+    });
 
-    this.start = function(messages, pending) {
-        console.log("Chat animator START");
-        msgAnimator = $interval(function() {
-            var msg = '';
-            if (receivedMessages.length > 0) {
-                msg = receivedMessages.shift();
-                messages.push(msg.message);
-                window.localStorage.shownMessages = JSON.stringify(messages);
-            }
-        }, 1000);
-    }
-    
-    this.stop = function() {
-        $interval.cancel(msgAnimator);
-    }
-    
+    /**
+     * Retorna la lista de mensajes que ya fueron leidos. Esta es una lista viva
+     * a la cual se van agregando elementos a medida que se van leyendo mensajes.
+     */
+    this.getReadedMessages = function() {
+        return readedMessages;
+    };
+
+    /**
+     * Si hay un mensaje no leido, lo pasa a la lista de mensajes leidos y retorna
+     * el mensaje.
+     * 
+     * @return {{id: number}} Nuevo mensaje o null si no hay ningun mensaje nuevo.
+     */
+    this.getNewMessage = function() {
+        var message = receivedMessages.shift();
+        if(!message) return null; // Si no hay mensaje nuevo no hacemos nada.
+
+        readedMessages.push(message);
+        $localStorage.lastReadedMessage = message.id;
+        return message;
+    };
+
+    /**
+     * Olvidar el estado de todo y reiniciar el modelo de datos
+     */
+    this.clear = function() {
+        delete $localStorage.lastReadedMessage;
+
+        readedMessages.length = 0;
+        receivedMessages.length = 0;
+    };
+
+    // Cuando se recibe un nuevo mensaje agregarlo a la lista de mensajes no leidos.
+    $rootScope.$on('nire.chat.messageReceived', function(event, msg) {
+        receivedMessages.push(msg.message);
+    });
+
+    this.notificationResponded = function(id){
+        return $localStorage.responses[id];
+    };
+
     this.replyMessage = function(opt, msgId) {
-        var data = {answer: opt.value, text: opt.text, notificationId: msgId}
-        Connection.request("notification/reply", data)
-    }
+        var data = {answer: opt.value, text: opt.text, notificationId: msgId};
+        Connection.request("notification/reply", data);
+    };
 }
 
 angular.module('nire.services')

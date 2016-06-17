@@ -1,46 +1,33 @@
 angular.module('nire.controllers', [])
     .controller('ChatDetailCtrl', function ($scope, $state, $stateParams, $interval, $timeout, $ionicScrollDelegate, Chats) {
-        $scope.newMessages = [];
-        $scope.pending = false;
+        var INTERVALO_NUEVO_MENSAJE = 3000;
+        var cancelInterval = null;
 
-        /* 
-         * Sincronizams con la vista el arrancar y detener el servicio
-         * de presentación de mensajes ya recibidos, para controlar su
-         * $interval interno.
-         */
+        function showNewMessage() {
+            var message = Chats.getNewMessage();
+            if(message) $ionicScrollDelegate.scrollBottom(true);
+        }
+
         $scope.$on('$ionicView.enter', function() {
-            if (window.localStorage.shownMessages)
-                $scope.shownMessages = JSON.parse(window.localStorage.shownMessages);
-            else
-                $scope.shownMessages = [];
-            $scope.newMessages = [];
-            $timeout(function() {
-                Chats.start($scope.newMessages, $scope.pending);
-            }, 1000);
-
+            $scope.messages = Chats.getReadedMessages();
+            cancelInterval = $interval(showNewMessage, INTERVALO_NUEVO_MENSAJE);
+            $ionicScrollDelegate.scrollBottom(false);
         });
+
         $scope.$on('$ionicView.leave', function() {
-            Chats.stop();
+            $interval.cancel(cancelInterval);
+            cancelInterval = null;
         });
-        $scope.$on('nire.chat.messageIncoming', function(e, msg) {
-            $scope.pending = msg.value;
-        });
-        $scope.$watch('shownMessages', function(newValue, oldValue) {
-            $ionicScrollDelegate.scrollBottom(false);
-        }, true);
-        $scope.$watch('newMessages', function(newValue, oldValue) {
-            $ionicScrollDelegate.scrollBottom(false);
-        }, true);
 
-        $scope.showHelp = function (tipo) {
-            if (!tipo)
-                tipo = '';
-            $state.go('help' + tipo, { startpage: 2 });
+        $scope.notificationResponded = function(id) {
+            return Chats.notificationResponded(id);
+        };
+
+        $scope.getResponseText = function(id) {
+            return Chats.notificationResponded(id).message;
         };
 
         $scope.pressOption = function($event, opt, msgId) {
-            console.log($event)
-            console.log(opt)
             var el = $event.currentTarget;
             if (opt.script)
                 eval(opt.script);
@@ -55,7 +42,7 @@ angular.module('nire.controllers', [])
             Chats.replyMessage(opt, msgId);
         }
     })
-    .controller('AccountCtrl', function ($scope, $state, messagingService, HealthStore, Monitor) {
+    .controller('AccountCtrl', function ($scope, $state, HealthStore, Monitor, $localStorage, Chats) {
         $scope.$on("$ionicView.beforeEnter", function () {
             $scope.settings = {
                 serverMonitor: Monitor.isEnabled()
@@ -77,9 +64,10 @@ angular.module('nire.controllers', [])
         };
 
         $scope.restartMessages = function() {
-            window.localStorage.removeItem("shownMessages");
-            messagingService.setLastMessage(0);
-        }
+            Chats.clear();
+            $localStorage.messages.length = 0;
+            $localStorage.responses = {};
+        };
     })
 
 .controller('HelpCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, Help) {

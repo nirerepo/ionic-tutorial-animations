@@ -3,7 +3,8 @@ angular.module('nire', [
     'ionic',
     'nire.services',
     'nire.directives',
-    'ksSwiper'
+    'ksSwiper',
+    'ngStorage'
 ])
     .run(function (Monitor, $ionicPlatform) {
         $ionicPlatform.ready(function () {
