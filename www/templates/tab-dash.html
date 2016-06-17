@@ -59,7 +59,8 @@
 </ks-swiper-slide>
 
 <ks-swiper-slide class="swiper-slide challenge-widget" ng-repeat="challenge in day.challenges">
-<div class="card" style="background-image: url({{challenge.background}});">
+<!-- Card para retos con 'milestones' -->
+<div ng-show="challenge.milestones" class="card" style="background-image: url({{challenge.background}});">
   <div class="row">
     <div class="col col-80"><h2 class="objetive">{{challenge.area}}</h2></div>
     <div class="col col-20"><i class="icon-info ion-ios-information-outline"></i></div>
@@ -71,9 +72,51 @@
   </div>
   <div class="row">
     <div class="col">
-      <div class="row check-progress" ng-show="challenge.milestones">
+      <div class="row check-progress">
         <div class="col {{m==true?'checked':'unchecked'}}" ng-repeat="m in challenge.milestones track by $index"></div>
       </div>
+    </div>
+  </div>
+</div>
+<!-- Card para 'targets' (ejemplo, pasos, por ahora) -->
+<div ng-show="challenge.target" class="card" style="background-image: url({{challenge.background}});">
+  <div class="item item-body no-padding">
+  <div class="row">
+    <div class="col col-80">
+      <h2 class="objetive">{{challenge.challenge}}</h2>
+    </div>
+    <div class="col col-20">
+      <i class="icon-info ion-ios-information-outline"></i>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col col-10"></div>
+      <div class="col col-33 padding-bottom donut-chart">
+        <div class="progress">
+          <div class="current">{{challenge.current}}</div>
+          <div class="max">de {{challenge.target}}</div>
+        </div>
+        <round-progress
+          max="challenge.target"
+          current="challenge.current"
+          color="#F39C12"
+          bgcolor="#F4F7F6"
+          radius="100"
+          stroke="15"
+          semi="false"
+          rounded="true"
+          clockwise="true"
+          responsive="true"
+          duration="800"
+          animation="easeInOutQuart"
+          animation-delay="0" />
+        </round-progress>
+      </div>
+
+<!--       <div class="col col-60 col-center">
+        <span class="challenge-title">¿Eres capaz de dar más de 10.000 pasos?</span>
+      </div> -->
+
     </div>
   </div>
 </div>
