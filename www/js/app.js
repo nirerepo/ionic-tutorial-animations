@@ -4,7 +4,8 @@ angular.module('nire', [
     'nire.services',
     'nire.directives',
     'ksSwiper',
-    'ngStorage'
+    'ngStorage',
+    'angular-svg-round-progressbar'
 ])
     .run(function (Monitor, $ionicPlatform) {
         $ionicPlatform.ready(function () {
