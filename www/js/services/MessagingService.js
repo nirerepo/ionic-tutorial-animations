@@ -3,7 +3,7 @@
  */
 function MessagingService($rootScope, $localStorage) {
     if(!$localStorage.messages) {
-        console.log("Inicializando messages storage.")
+        console.log("Inicializando messages storage.");
         $localStorage.messages = [];
         $localStorage.responses = {};
     }
@@ -19,7 +19,6 @@ function MessagingService($rootScope, $localStorage) {
             var adaptedMessage = adaptMessage(element);
             $localStorage.messages.push(adaptedMessage);
 
-            $rootScope.$broadcast('nire.chat.messageIncoming', { value: true });
             $rootScope.$broadcast('nire.chat.messageReceived', { message: adaptedMessage });
         });
     };
@@ -28,7 +27,6 @@ function MessagingService($rootScope, $localStorage) {
      * Recibir desde el servidor las respuestas a las notificaciones
      */
     this.receiveReply = function(reply){
-        console.log(reply)
         for (var attrname in reply) { 
             $localStorage.responses[attrname] = reply[attrname];
         }

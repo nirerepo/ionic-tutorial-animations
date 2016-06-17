@@ -1,7 +1,7 @@
 <ion-view view-title="Chat" class="has-footer">
 	<ion-content class="padding">
 		<div class="conversation">
-			<div ng-repeat="m in shownMessages track by $index">
+			<div ng-repeat="m in messages track by $index">
 				<div ng-show="m.type=='message'" class="bubble {{m.source}} animated fadeIn">
 					<p>{{m.text}}</p>
 				</div>
@@ -29,7 +29,7 @@
 			</div>
 		</div>
 		<div class="previousconversation">
-			<div ng-repeat="msg in newMessages track by $index">
+			<div ng-repeat="msg in recentMessages track by $index">
 				<div ng-show="msg.type=='message'" class="bubble {{msg.source}} animated fadeIn">
 					<p>{{msg.text}}</p>
 				</div>
