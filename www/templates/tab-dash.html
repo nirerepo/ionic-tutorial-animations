@@ -14,48 +14,71 @@
 <ion-content class="padding">
 <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}" class="top-widget">
 
-<ks-swiper-slide class="swiper-slide challenge-widget" ng-repeat="challenge in day.challenges">
+<ks-swiper-slide class="swiper-slide light">
 <div class="card" style="background-image: url({{challenge.background}});">
+  <div class="item item-body no-padding">
   <div class="row">
-    <div class="col col-60">
-      <div class="row">
-        <h2 class="objetive">{{challenge.area}}</h2>
-      </div>
-      <div class="row">
-        <span class="challenge-title">{{challenge.challenge}}</span>
-      </div>
-      <div class="row check-progress" ng-show="challenge.milestones">
-        <div class="col {{m==true?'checked':'unchecked'}}" ng-repeat="m in challenge.milestones track by $index"></div>
-      </div>
+    <div class="col col-80">
+      <h2 class="objetive">Sé más activo</h2>
     </div>
-    <div class="col col-40">
+    <div class="col col-20">
       <i class="icon-info ion-ios-information-outline"></i>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col col-10"></div>
+      <div class="col col-33 padding-bottom donut-chart">
+        <div class="progress">
+          <div class="current">4065</div>
+          <div class="max">de 10.000</div>
+        </div>
+        <round-progress
+          max="10000"
+          current="4064"
+          color="#F39C12"
+          bgcolor="#F4F7F6"
+          radius="100"
+          stroke="15"
+          semi="false"
+          rounded="true"
+          clockwise="true"
+          responsive="true"
+          duration="800"
+          animation="easeInOutQuart"
+          animation-delay="0" />
+        </round-progress>
+      </div>
+
+<!--       <div class="col col-60 col-center">
+        <span class="challenge-title">¿Eres capaz de dar más de 10.000 pasos?</span>
+      </div> -->
+
     </div>
   </div>
 </div>
 </ks-swiper-slide>
 
-<ks-swiper-slide class="swiper-slide light">
-<div class="card">
-  <div class="item item-body no-padding">
-  <round-progress
-      max="10000"
-      current="3564"
-      color="green"
-      bgcolor="#eaeaea"
-      radius="100"
-      stroke="20"
-      semi="true"
-      rounded="true"
-      clockwise="false"
-      responsive="false"
-      duration="800"
-      animation="easeInOutQuart"
-      animation-delay="0" />
-    <img src="img/others/mockups/1.jpg">
+<ks-swiper-slide class="swiper-slide challenge-widget" ng-repeat="challenge in day.challenges">
+<div class="card" style="background-image: url({{challenge.background}});">
+  <div class="row">
+    <div class="col col-80"><h2 class="objetive">{{challenge.area}}</h2></div>
+    <div class="col col-20"><i class="icon-info ion-ios-information-outline"></i></div>
+  </div>
+  <div class="row">
+    <div class="col col-50">
+      <span class="challenge-title">{{challenge.challenge}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="row check-progress" ng-show="challenge.milestones">
+        <div class="col {{m==true?'checked':'unchecked'}}" ng-repeat="m in challenge.milestones track by $index"></div>
+      </div>
+    </div>
   </div>
 </div>
 </ks-swiper-slide>
+
 <ks-swiper-slide class="swiper-slide light">
 <div class="card">
   <div class="item item-body no-padding">
@@ -95,34 +118,6 @@
 <div class="card">
   <div class="item item-body no-padding">
     <img src="img/others/mockups/widget_activate_notifications.jpg">
-  </div>
-</div>
-</ks-swiper-slide>
-<ks-swiper-slide class="swiper-slide light">
-<div class="card">
-  <div class="item item-body no-padding">
-    <img src="img/others/mockups/widget_reto_breakfast.jpg">
-  </div>
-</div>
-</ks-swiper-slide>
-<ks-swiper-slide class="swiper-slide light">
-<div class="card">
-  <div class="item item-body no-padding">
-    <img src="img/others/mockups/widget_resume_activity.jpg">
-  </div>
-</div>
-</ks-swiper-slide>
-<ks-swiper-slide class="swiper-slide light">
-<div class="card">
-  <div class="item item-body no-padding">
-    <img src="img/others/mockups/widget_reto_activity.jpg">
-  </div>
-</div>
-</ks-swiper-slide>
-<ks-swiper-slide class="swiper-slide light">
-<div class="card">
-  <div class="item item-body no-padding">
-    <img src="img/others/mockups/widget_resume_steps.jpg">
   </div>
 </div>
 </ks-swiper-slide>

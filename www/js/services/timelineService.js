@@ -35,7 +35,7 @@ function TimelineService(Connection, $filter) {
                                 if (item.areaId == 'nutrition')
                                     item.background = "img/others/cards/challenges/fruit.jpg";
                                 else if (item.areaId == 'activity')
-                                    item.background = "img/others/mockups/widget_resume_steps.jpg";
+                                    item.background = "img/others/cards/challenges/activity.jpg";
                                 else
                                     item.background = "img/others/cards/challenges/fruit.jpg";
 

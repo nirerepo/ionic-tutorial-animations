@@ -849,7 +849,7 @@ $num-colors: 10;
 
 .top-widget .swiper-slide > .card {
 	margin: 0px 0px 20px 0px!important;
-    height: 160px;
+    height: 170px;
     background-color: #FFF!important;
 	background-size: contain!important;
     background-position: right!important;
@@ -869,17 +869,20 @@ $num-colors: 10;
 	opacity: 0.25;
 }
 
+.top-widget h2,
 .top-widget .challenge-widget h2.objetive {
 	font-family: $header-font-family-alt;
 	font-size: $small-font-size-default;
 	color: $base-font-color-soft;
-	margin-bottom: 10px;
+	margin: 5px 0 0 0px;
 }
 
+.top-widget span.challenge-title,
 .top-widget .challenge-widget span.challenge-title {
 	color: $base-color;
 	font-size: $base-font-size-large;
 	margin-bottom: 15px;
+	width: 100px!important;
 }
 
 .top-widget .challenge-widget .check-progress {
@@ -906,10 +909,41 @@ $num-colors: 10;
 	background-image: url("../img/others/cards/challenges/checkbox-empty.png");
 }
 
-.top-widget .challenge-widget i.icon-info {
+.top-widget i.icon-info {
 	float: right;
 	color: $dark;
 	font-size: 25px;
+}
+
+.top-widget .donut-chart {
+	position: relative;
+	max-width: 125px;
+	min-width: 125px
+}
+
+.top-widget .donut-chart .progress {
+	top: 50%;
+    bottom: auto;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    position: absolute;
+}
+
+.top-widget .donut-chart .progress .current,
+.top-widget .donut-chart .progress .max {
+	text-align: center;
+}
+
+.top-widget .donut-chart .progress .current {
+	font-family: $base-font-family-bold;
+	font-size: 24px;
+	color: #F39C12;
+}
+
+.top-widget .donut-chart .progress .max {
+	font-family: $base-font-family;
+	font-size: 12px;
+	color: #999999;
 }
 
 // TEST
