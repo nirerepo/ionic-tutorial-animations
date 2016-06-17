@@ -6,6 +6,7 @@ angular.module('nire.controllers', [])
         function showNewMessage() {
             var message = Chats.getNewMessage();
             if(message) $ionicScrollDelegate.scrollBottom(true);
+            $scope.writing = Chats.isWritingMessage();
         }
 
         $scope.$on('$ionicView.enter', function() {
