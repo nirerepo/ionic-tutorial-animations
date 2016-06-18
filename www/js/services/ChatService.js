@@ -26,7 +26,7 @@ function ChatService($rootScope, Connection, $localStorage) {
      * Devuelve true si el sistema tiene mensajes ya recibidos para mostrar
      */
     this.isWritingMessage = function() {
-        return receivedMessages != undefined && receivedMessages.length > 0;
+        return (receivedMessages != undefined) && (receivedMessages.length > 0);
     }
     /**
      * Si hay un mensaje no leido, lo pasa a la lista de mensajes leidos y retorna

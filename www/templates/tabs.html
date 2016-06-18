@@ -8,7 +8,7 @@ navigation history that also transitions its views in and out.
 <ion-tabs class="tabs-icon-top tabs-dark">
 
   <!-- Chats Tab -->
-  <ion-tab title="Chat" badge="1" icon-off="ion-ios-chatbubble-outline" icon-on="ion-ios-chatbubble" href="#/tab/chats/1">
+  <ion-tab title="Chat" ng-controller="ChatDetailCtrl" badge="chatBadge()" icon-off="ion-ios-chatbubble-outline" icon-on="ion-ios-chatbubble" href="#/tab/chats/1">
     <ion-nav-view name="tab-chats"></ion-nav-view>
   </ion-tab> 
 

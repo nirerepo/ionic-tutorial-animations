@@ -3,6 +3,10 @@ angular.module('nire.controllers', [])
         var INTERVALO_NUEVO_MENSAJE = 3000;
         var cancelInterval = null;
 
+        $scope.chatBadge = function() {
+            return (Chats.isWritingMessage()===true)?"!!":"";
+        }
+
         function showNewMessage() {
             var message = Chats.getNewMessage();
             if(message) $ionicScrollDelegate.scrollBottom(true);
