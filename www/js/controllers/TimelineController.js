@@ -6,7 +6,7 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $io
        // Decoramos el timeline con una clase en función del día
        $scope.timelineDays = _(Timeline.get()).map(function(v) {
         v.timelineClass = (hoy==v.day?'today':'pastday');
-        return v
+        return v;
        }).value();
     });
 
@@ -15,16 +15,16 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $io
         {},
         {}
     ];
-    $scope.pageTitle = "Hoy"
+    $scope.pageTitle = "Hoy";
     $scope.day = function(){
         
-    }
+    };
 
     $scope.data = {
         sliderOptions: {
             initialSlide: Timeline.daysToFetch -1
         }
-    }
+    };
 
     var self = this;
     $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
@@ -44,20 +44,20 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $io
     };
     $scope.trackBlock = function(mealId, day) {
         return !Timeline.trackBlockExists(mealId, day);
-    }
+    };
     $scope.hasExercises = function(day) {
         return Timeline.hasExercises(day);
-    }
+    };
     $scope.calcularTotalCalorias = function(mealId, day) {
         return Math.round(Timeline.calcularTotalCalorias(mealId, day));
-    }
+    };
     $scope.caloriasConsumidas = function(day) {
         return Math.round(Timeline.caloriasConsumidas(day));
-    }
+    };
 
     $scope.tiempoEjercicio = function(day) {
         return Math.round(Timeline.tiempoEjercicio(day) * 100) / 100;
-    }
+    };
 }
 
 angular.module('nire.controllers')
