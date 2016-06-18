@@ -1,12 +1,13 @@
 
 <ion-view id="diary">
-<ion-nav-title>
-  <div class="bar bar-header bar-light">
+
+<ion-nav-buttons side="left">
     <button class="button button-icon icon ion-ios-arrow-back"></button>
-      <h1 class="title">{{pageTitle}}</h1>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
     <button class="button button-icon ion-ios-arrow-forward"></button>
-  </div>
-</ion-nav-title>
+</ion-nav-buttons>
+<ion-nav-title>Hoy</ion-nav-title>
 
 <ion-slides (ionDidChange)="onSlideChanged()" options="data.sliderOptions" slider="data.sliderDelegate">
 <ion-slide-page ng-repeat="day in timelineDays" class="{{day.timelineClass}}">

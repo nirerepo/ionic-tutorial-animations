@@ -1,4 +1,6 @@
 function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $ionicNavBarDelegate){
+    var self = this;
+
     // Cada vez que se muestra el Timeline le solicitamos al servicio
     // la información actualizada.
     $scope.$on("$ionicView.beforeEnter", function () {
@@ -10,16 +12,12 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $io
        }).value();
     });
 
-
-    $scope.pageTitle = "Hoy";
-
     $scope.data = {
         sliderOptions: {
             initialSlide: Timeline.daysToFetch -1
         }
     };
 
-    var self = this;
     $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
         if(data.slider.activeIndex == Timeline.daysToFetch -1)
             $ionicNavBarDelegate.title("Hoy");
