@@ -36,12 +36,6 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $io
             $ionicNavBarDelegate.title(moment().subtract(4 - data.slider.activeIndex, 'days').format("DD MMM"));
     });
 
-    $scope.cardDestroyed = function (index) {
-        $scope.cards.splice(index, 1);
-    };
-    $scope.cardSwiped = function (index) {
-        var newCard = $scope.cards.push(newCard);
-    };
     $scope.trackBlock = function(mealId, day) {
         return !Timeline.trackBlockExists(mealId, day);
     };
