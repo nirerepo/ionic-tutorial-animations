@@ -11,14 +11,7 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $io
     });
 
 
-    $scope.cards = [
-        {},
-        {}
-    ];
     $scope.pageTitle = "Hoy";
-    $scope.day = function(){
-        
-    };
 
     $scope.data = {
         sliderOptions: {
