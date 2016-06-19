@@ -1,5 +1,12 @@
-function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $ionicNavBarDelegate){
+function TimelineController($scope, Timeline, $ionicNavBarDelegate){
     var self = this;
+
+    // Inicialización del slider
+    $scope.data = {
+        sliderOptions: {
+            initialSlide: Timeline.daysToFetch -1
+        }
+    };
 
     // Cada vez que se muestra el Timeline le solicitamos al servicio
     // la información actualizada.
@@ -12,12 +19,7 @@ function TimelineController($scope, $ionicActionSheet, Timeline, $rootScope, $io
        }).value();
     });
 
-    $scope.data = {
-        sliderOptions: {
-            initialSlide: Timeline.daysToFetch -1
-        }
-    };
-
+    // Cuando cambia el slide actual, actualizamos el título de la ventana
     $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
         if(data.slider.activeIndex == Timeline.daysToFetch -1)
             $ionicNavBarDelegate.title("Hoy");
