@@ -10438,6 +10438,10 @@ ion-slides {
   background-position: right !important;
   background-repeat: no-repeat !important; }
 
+@media (max-width: 350px) {
+  .top-widget .swiper-slide > .card {
+    background-position-x: 160px !important; } }
+
 .top-widget .swiper-container-horizontal > .swiper-pagination {
   bottom: 0px !important; }
 
