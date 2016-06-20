@@ -1,6 +1,6 @@
 <ion-view view-title="Chat" class="has-footer">
 	<ion-content class="padding">
-		<div class="conversation">
+		<div class="previousconversation" style="border: 1px solid green;">
 			<div ng-repeat="m in messages track by $index">
 				<div ng-show="m.type=='message'" class="bubble {{m.source}} animated fadeIn">
 					<p>{{m.text}}</p>
@@ -28,7 +28,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="previousconversation">
+		<div class="conversation" style="border: 1px solid red;">
 			<div ng-repeat="msg in recentMessages track by $index">
 				<div ng-show="msg.type=='message'" class="bubble {{msg.source}} animated fadeIn">
 					<p>{{msg.text}}</p>
@@ -59,6 +59,7 @@
 			<div ng-show="writing" class="bubble system loading">
 				&nbsp;
 			</div>
+			<div style="padding-bottom: 100px;">&nbsp;</div>
 		</div>
 <!--
 		<div class="conversation">
