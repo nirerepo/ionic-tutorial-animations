@@ -1,7 +1,7 @@
 function FacebookLoginDirective(Login, $state) {
     this.facebookLogin = function() {
         var success = function() { 
-            plugins.toast.show('Login por facebook', 10000, 'top');
+            plugins.toast.show('Conectado mediante Facebook', 5000, 'top');
             $state.go("tab.dash"); 
         };
 
