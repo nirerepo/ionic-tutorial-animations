@@ -51,7 +51,8 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
                             kcal: fields.kcal? fields.kcal[0] : 0,
                             cantidad: fields.cantidad? fields.cantidad[0]:null,
                             medida_casera: fields.medida_casera? fields.medida_casera[0]:null,
-                            cantidad_medida_casera: fields.cantidad_medida_casera? fields.cantidad_medida_casera[0]:null
+                            cantidad_medida_casera: fields.cantidad_medida_casera? fields.cantidad_medida_casera[0]:null,
+                            grupo: fields.grupo? fields.grupo[0]:null
                             };
             $scope.data.selectedFood = plateData;
             $scope.data.unidades = _(plateData.medida_casera).upperFirst();
