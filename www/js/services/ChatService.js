@@ -1,6 +1,12 @@
 function ChatService($rootScope, Connection, $localStorage) {
     var self = this;
 
+    // Registramos en el rootScope una funcion para recuperar la cantidad
+    // de mensajes pendientes de leer
+    $rootScope.chatBadge = function() {
+        return (self.isWritingMessage() === true) ? "!!" : "";
+    };
+
     // Lista de los mensajes leidos. Esta lista se inicializa desde
     // localStorage y se agregan elementos a travez de getNewMessage
     var readedMessages = _.takeWhile($localStorage.messages, function(element) {
