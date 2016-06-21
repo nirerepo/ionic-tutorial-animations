@@ -5,7 +5,7 @@ angular.module('nire.controllers', [])
 
         $scope.chatBadge = function() {
             return (Chats.isWritingMessage()===true)?"!!":"";
-        }
+        };
 
         function showNewMessage() {
             var message = Chats.getNewMessage();
