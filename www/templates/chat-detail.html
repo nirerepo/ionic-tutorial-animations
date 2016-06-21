@@ -1,6 +1,6 @@
 <ion-view view-title="Chat" class="has-footer">
 	<ion-content class="padding">
-		<div class="previousconversation" style="border: 1px solid green;">
+		<div class="previousconversation">
 			<div ng-repeat="m in messages track by $index">
 				<div ng-show="m.type=='message'" class="bubble {{m.source}} animated fadeIn">
 					<p>{{m.text}}</p>
@@ -31,5 +31,6 @@
 				&nbsp;
 			</div>
 		</div>
+		<div style="padding-bottom: 100px;">&nbsp;</div>
 	</ion-content>
 </ion-view>
