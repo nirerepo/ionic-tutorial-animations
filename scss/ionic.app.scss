@@ -68,8 +68,9 @@ $background-3:						#EDF2F5; //Solid-color-1
 $background-pastday:				linear-gradient(-179deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
 
 //	Element default details
-$shadow-default:                   	0px 1px 2px 0px rgba(0,0,0,0.20); 
-$shadow-strong:						0px 1px 4px 0px rgba(0,0,0,0.30); 
+$shadow-default:                   	0px 1px 4px 0px rgba(0,0,0,0.20); 
+$shadow-strong:						0px 1px 6px 0px rgba(0,0,0,0.30);
+$shadow-soft-large:					0px 1px 8px 0px rgba(0,0,0,0.10); 
 $radius-default:                  	4px;
 $background-transparent:			rgba(255,255,255,0.20);
 
@@ -408,15 +409,25 @@ img.padding-vertical {
 #diary .card.add .item {
 	padding: 15px 0px 15px 10px;
 	background: $card-background-transparent;
-	-webkit-transition: opacity .1s linear;
-	-moz-transition: opacity .1s linear;
-	-o-transition: opacity .1s linear;
-	-ms-transition: opacity .1s linear;
-	transition: opacity .1s linear;
+	-webkit-transition: all .1s linear;
+	-moz-transition: all .1s linear;
+	-o-transition: all .1s linear;
+	-ms-transition: all .1s linear;
+	transition: all .1s linear;
 }
 
-#diary .card.add .item:active {
+#diary .card.add {
+	box-shadow: $shadow-soft-large;
+	-webkit-transition: all .1s linear;
+	-moz-transition: all .1s linear;
+	-o-transition: all .1s linear;
+	-ms-transition: all .1s linear;
+	transition: all .1s linear;
+}
+
+#diary .card.add:active {
 	opacity: 0.6;
+	box-shadow: $shadow-default;
 }
 
 #diary .card.add .item h2 {
@@ -785,11 +796,14 @@ img.padding-vertical {
 /* LOADING */
 
 .bubble.system.loading {
-	background-image: url('../img/others/chat/chatloading.gif');
-	background-size: 35px;
-	background-repeat: no-repeat;
-	background-position: center;
-	width: 70px!important;
+    width: 70px;
+    text-align: center;
+    padding: 0px;
+}
+
+.bubble.system.loading .spinner svg {
+	width: 40px;
+	height: 40px;
 }
 
 /* FICHAS */
@@ -898,7 +912,6 @@ $num-colors: 10;
 	color: $base-color;
 	font-size: $base-font-size-large;
 	margin-bottom: 15px;
-	width: 100px!important;
 }
 
 .top-widget .challenge-widget .check-progress {

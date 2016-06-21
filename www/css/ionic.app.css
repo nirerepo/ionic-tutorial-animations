@@ -10037,7 +10037,7 @@ img.padding-vertical {
 
 #diary .card {
   background: transparent;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   padding-bottom: 0px;
   margin: 10px 0px 5px 0px; }
@@ -10052,14 +10052,23 @@ img.padding-vertical {
 #diary .card.add .item {
   padding: 15px 0px 15px 10px;
   background: rgba(255, 255, 255, 0.2);
-  -webkit-transition: opacity .1s linear;
-  -moz-transition: opacity .1s linear;
-  -o-transition: opacity .1s linear;
-  -ms-transition: opacity .1s linear;
-  transition: opacity .1s linear; }
+  -webkit-transition: all .1s linear;
+  -moz-transition: all .1s linear;
+  -o-transition: all .1s linear;
+  -ms-transition: all .1s linear;
+  transition: all .1s linear; }
 
-#diary .card.add .item:active {
-  opacity: 0.6; }
+#diary .card.add {
+  box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all .1s linear;
+  -moz-transition: all .1s linear;
+  -o-transition: all .1s linear;
+  -ms-transition: all .1s linear;
+  transition: all .1s linear; }
+
+#diary .card.add:active {
+  opacity: 0.6;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2); }
 
 #diary .card.add .item h2 {
   margin: 0 0 10px 0;
@@ -10282,7 +10291,7 @@ img.padding-vertical {
   clear: both;
   display: block;
   font-size: 16px;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
   border-radius: 8px; }
 
 .bubble p {
@@ -10329,7 +10338,7 @@ img.padding-vertical {
 .options .bubble.option {
   background-color: #FFF;
   margin: 0px 4px 8px 4px;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
   border: none;
   padding-left: 10px;
   padding-right: 10px; }
@@ -10356,11 +10365,13 @@ img.padding-vertical {
 
 /* LOADING */
 .bubble.system.loading {
-  background-image: url("../img/others/chat/chatloading.gif");
-  background-size: 35px;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 70px !important; }
+  width: 70px;
+  text-align: center;
+  padding: 0px; }
+
+.bubble.system.loading .spinner svg {
+  width: 40px;
+  height: 40px; }
 
 /* FICHAS */
 .ficha-wrapper {
@@ -10470,8 +10481,7 @@ ion-slides {
 .top-widget .challenge-widget span.challenge-title {
   color: #005C84;
   font-size: 18px;
-  margin-bottom: 15px;
-  width: 100px !important; }
+  margin-bottom: 15px; }
 
 .top-widget .challenge-widget .check-progress {
   height: 40px; }
