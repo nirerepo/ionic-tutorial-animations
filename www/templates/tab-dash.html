@@ -1,4 +1,3 @@
-
 <ion-view id="diary">
 
 <ion-nav-buttons side="left">
@@ -17,7 +16,7 @@
 
 <ks-swiper-slide class="swiper-slide light">
 <div class="card" style="background-image: url({{challenge.background}});">
-  <div class="item item-body no-padding">
+  <div class="no-padding">
   <div class="row">
     <div class="col col-80">
       <h2 class="objetive">Sé más activo</h2>
@@ -81,7 +80,7 @@
 </div>
 <!-- Card para 'targets' (ejemplo, pasos, por ahora) -->
 <div ng-show="challenge.target" class="card" style="background-image: url({{challenge.background}});">
-  <div class="item item-body no-padding">
+  <div class="no-padding">
   <div class="row">
     <div class="col col-80">
       <h2 class="objetive">{{challenge.challenge}}</h2>
@@ -125,42 +124,42 @@
 
 <ks-swiper-slide class="swiper-slide light">
 <div class="card">
-  <div class="item item-body no-padding">
+  <div class="no-padding">
     <img src="img/others/mockups/2.jpg">
   </div>
 </div>
 </ks-swiper-slide>
 <ks-swiper-slide class="swiper-slide light">
 <div class="card">
-  <div class="item item-body no-padding">
+  <div class="no-padding">
     <img src="img/others/mockups/3.jpg">
   </div>
 </div>
 </ks-swiper-slide>
 <ks-swiper-slide class="swiper-slide light">
 <div class="card">
-  <div class="item item-body no-padding">
+  <div class="no-padding">
     <img src="img/others/mockups/4.jpg">
   </div>
 </div>
 </ks-swiper-slide>
 <ks-swiper-slide class="swiper-slide light">
 <div class="card">
-  <div class="item item-body no-padding">
+  <div class="no-padding">
     <img src="img/others/mockups/5.jpg">
   </div>
 </div>
 </ks-swiper-slide>
 <ks-swiper-slide class="swiper-slide light">
 <div class="card">
-  <div class="item item-body no-padding">
+  <div class="no-padding">
     <img src="img/others/mockups/widget_reto_verdura.jpg">
   </div>
 </div>
 </ks-swiper-slide>
 <ks-swiper-slide class="swiper-slide light">
 <div class="card">
-  <div class="item item-body no-padding">
+  <div class="no-padding">
     <img src="img/others/mockups/widget_activate_notifications.jpg">
   </div>
 </div>
@@ -180,6 +179,7 @@
     <p>No olvides tomar algo entre el desayuno y tu comida</p>
   </item>
 </div>
+
 <div ng-repeat="nutritionSeccion in day.nutrition" class="card">
   <div class="item item-divider header">
     <div class="title">{{nutritionSeccion.type}}</div>
@@ -219,6 +219,7 @@
   <i class="icon ion-plus-round"></i>
 </a>
 </div>
+
 <div class="card add">
   <div class="item item-body no-padding">
     <img src="img/others/mockups/widget_water.png">

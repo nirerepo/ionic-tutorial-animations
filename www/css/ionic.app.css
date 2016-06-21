@@ -9981,7 +9981,7 @@ select[readonly] {
 
 .list .item .item-info {
   font-size: 14px;
-  color: rgba(0, 50, 69, 0.5); }
+  color: rgba(1, 52, 79, 0.5); }
 
 .tab-item {
   opacity: inherit; }
@@ -10041,6 +10041,12 @@ img.padding-vertical {
   border-radius: 4px;
   padding-bottom: 0px;
   margin: 10px 0px 5px 0px; }
+
+.card .item {
+  border-color: rgba(1, 52, 79, 0.1); }
+
+.card .item.item-body.content {
+  border-color: transparent; }
 
 /* CARD WITHOUT CONTENTS */
 #diary .card.add .item {
@@ -10122,7 +10128,7 @@ img.padding-vertical {
 
 #diary .card .item-body span.item-info {
   font-family: MovistarText;
-  color: rgba(0, 50, 69, 0.5);
+  color: rgba(1, 52, 79, 0.5);
   margin: 0px;
   display: block; }
 
@@ -10140,7 +10146,7 @@ img.padding-vertical {
   height: 100%; }
 
 #diary .card .item-body .item button i {
-  color: rgba(0, 50, 69, 0.25) !important; }
+  color: rgba(1, 52, 79, 0.25) !important; }
 
 #diary .card .item-button-right > .button {
   right: 10px; }
@@ -10153,7 +10159,8 @@ img.padding-vertical {
   font-size: 16px;
   font-family: MovistarText-Bold;
   background-color: rgba(255, 255, 255, 0.35);
-  padding: 20px 15px; }
+  padding: 20px 15px;
+  border-width: 0px; }
 
 .card .item-divider.footer i {
   font-size: 25px; }

@@ -32,6 +32,7 @@ $dark:                            #01344F !default;
 //	Brand colors
 $base-color:						#005C84; // Dark Blue
 $accent-color:						#7AB800; // Green
+$neutral-ui-soft-color:				rgba($dark, .5);
 
 //	Base Font
 $base-font-family:					MovistarText;
@@ -48,10 +49,10 @@ $link-hover-color:                	darken($link-color, 15%) !default;
 //	Small Font
 $small-font-family:					MovistarText;
 $small-font-size-default:			14px;
-$small-font-color:					rgba(0,50,69,0.50);
+$small-font-color:					$neutral-ui-soft-color;
 
 //	Icons
-$icon-color-soft:					rgba(0,50,69,0.25);
+$icon-color-soft:					rgba($neutral-ui-soft-color, 0.25);
 
 //	Headings
 $header-font-family-default:		MovistarHeadline-Bold;
@@ -394,6 +395,14 @@ img.padding-vertical {
 	margin: 10px 0px 5px 0px
 }
 
+.card .item {
+	border-color: rgba($neutral-ui-soft-color, 0.1);
+}
+
+.card .item.item-body.content {
+	border-color: transparent;
+}
+
 /* CARD WITHOUT CONTENTS */
 
 #diary .card.add .item {
@@ -529,6 +538,7 @@ img.padding-vertical {
 	font-family: $base-font-family-bold;
 	background-color: rgba(255,255,255,0.35);
 	padding: 20px 15px;
+	border-width: 0px;
 }
 
 .card .item-divider.footer i {
