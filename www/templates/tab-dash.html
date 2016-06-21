@@ -15,9 +15,8 @@
 <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}" class="top-widget">
 
 <ks-swiper-slide class="swiper-slide light">
-<div class="card" style="background-image: url({{challenge.background}});">
-  <div class="no-padding">
-  <div class="row">
+<div class="card">
+  <div class="row padding-horizontal">
     <div class="col col-80">
       <h2 class="objetive">Sé más activo</h2>
     </div>
@@ -25,34 +24,30 @@
       <i class="icon-info ion-ios-information-outline"></i>
     </div>
   </div>
-    <div class="row">
-      <div class="col col-10"></div>
-      <div class="col col-33 padding-bottom donut-chart">
-        <div class="progress">
-          <div class="current">4065</div>
-          <div class="max">de 10.000</div>
-        </div>
-        <round-progress
-          max="10000"
-          current="4064"
-          color="#F39C12"
-          bgcolor="#F4F7F6"
-          radius="100"
-          stroke="15"
-          semi="false"
-          rounded="true"
-          clockwise="true"
-          responsive="true"
-          duration="800"
-          animation="easeInOutQuart"
-          animation-delay="0" />
-        </round-progress>
+  <div class="row padding-horizontal">
+    <div class="col col-50 col-center">
+      <span class="challenge-title">Consigue andar más de 10.000 pasos para superar tu reto</span>
+    </div>
+    <div class="col col-50 donut-chart" style="margin: 0 auto;">
+      <div class="progress">
+        <div class="current">4065</div>
+        <div class="max">de 10.000</div>
       </div>
-
-<!--       <div class="col col-60 col-center">
-        <span class="challenge-title">¿Eres capaz de dar más de 10.000 pasos?</span>
-      </div> -->
-
+      <round-progress
+      max="10000"
+      current="4064"
+      color="#F39C12"
+      bgcolor="#F4F7F6"
+      radius="200"
+      stroke="15"
+      semi="false"
+      rounded="true"
+      clockwise="true"
+      responsive="true"
+      duration="800"
+      animation="easeInOutQuart"
+      animation-delay="0" />
+      </round-progress>
     </div>
   </div>
 </div>
@@ -221,7 +216,7 @@
 </div>
 
 <div class="card add">
-  <div class="item item-body no-padding">
+  <div class="item no-padding">
     <img src="img/others/mockups/widget_water.png">
   </div>
 </div>
