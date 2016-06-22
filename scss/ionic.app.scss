@@ -153,8 +153,9 @@ hr.dark {
 	margin: 0px 20px;
 }
 
-input {
+input, select {
 	font-size: $input-font-size!important;
+	font-family: $base-font-family;
 }
 
 input::-webkit-input-placeholder {
@@ -356,13 +357,6 @@ select[readonly] {
 	font-size: $base-font-size-large;
 }
 
-.padding-vertical,
-p.padding-vertical,
-img.padding-vertical {
-	padding-top: 30px;
-	padding-bottom: 20px;
-}
-
 #login img {
 	width: 50%;
 	height: 50%;
@@ -388,7 +382,7 @@ img.padding-vertical {
 // -- DIARIO -- //
 //////////////////
 
-#diary .card {
+.card {
 	background: transparent;
 	box-shadow: $card-shadow;
 	border-radius: $card-radius;
@@ -640,6 +634,7 @@ img.padding-vertical {
     color: $accent-color;
     font-family: $base-font-family-bold;
     font-size: 24px!important;
+    border-radius: $radius-default;
 }
 
 .modal button {
@@ -674,8 +669,50 @@ img.padding-vertical {
     margin-top: 10px;
 }
 
+.modal select {
+	margin: 50px 0px;
+	background: none;
+}
+
+.modal .ion-input-select,
+.modal select {
+  -webkit-appearance: none;
+  background-repeat: no-repeat; 
+  border: thin solid rgba(0,52,79,0.05);
+  display: inline;
+  vertical-align: middle;
+  padding: 0 10px;
+  color: $neutral-ui-soft-color;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.modal .ion-input-select {
+  width:100%;
+  background-image: url(http://i.imgur.com/nA9xx1X.png);
+  background-position: right;
+  height: 46px;
+}
+
+.modal option {
+  background:#444;
+}
+
+.modal select::-ms-expand {
+  display: none;
+}
+
+.modal:focus {
+  outline:none;
+}
+
 .modal .bar-footer {
 	background: rgba(0,52,79,0.05);
+}
+
+.modal .bar-footer .cancel,
+.modal .bar-footer .action {
+	font-size: 16px!important;
 }
 
 .modal .bar-footer .cancel {
@@ -793,6 +830,7 @@ img.padding-vertical {
 .options .item{
 	border-color: transparent;
 }
+
 /* LOADING */
 
 .bubble.system.loading {
@@ -871,19 +909,13 @@ $num-colors: 10;
 	display: block;
 }
 
-.top-widget .swiper-slide > .card {
+.card.widget {
 	margin: 0px 0px 20px 0px!important;
     height: 170px;
-    background-color: #FFF!important;
-	background-size: contain!important;
-    background-position: right!important;
-    background-repeat: no-repeat!important;
-	}
-	
-	@media (max-width: 350px) {
- 	.top-widget .swiper-slide > .card {
-    background-position-x: 160px!important;
-  }
+}
+
+.card.dark-transparent {
+	background: $neutral-ui-soft-color;
 }
 
 .top-widget .swiper-container-horizontal>.swiper-pagination {
@@ -899,80 +931,94 @@ $num-colors: 10;
 	opacity: 0.25;
 }
 
-.top-widget h2,
-.top-widget .challenge-widget h2.objetive {
+.card.widget h2 {
 	font-family: $header-font-family-alt;
 	font-size: $small-font-size-default;
-	color: $base-font-color-soft;
-	margin: 5px 0 0 0px;
+	color: $light;
+	margin: 5px 0 0 5px;
 }
 
-.top-widget span.challenge-title,
-.top-widget .challenge-widget span.challenge-title {
-	color: $base-color;
+.card.widget i.icon-info {
+	float: right;
+	color: $light;
+	font-size: 25px;
+}
+
+// Challenges
+.card.widget span.challenge-title {
+	color: $light;
 	font-size: $base-font-size-large;
 	margin-bottom: 15px;
 }
 
+.card.widget .challenge-image {
+	height: 115px;
+	text-align: center;
+}
+
+.card.widget .challenge-image img {
+	width: 100%;
+	height: auto;
+	padding: 15%;
+	background-color: rgba(0,0,0,.2);
+	border-radius: 50px;
+}
+
+// Challenge Milestones
 .top-widget .challenge-widget .check-progress {
 	height: 40px;
 }
-
 .top-widget .challenge-widget .check-progress .checked,
 .top-widget .challenge-widget .check-progress .unchecked {
 	margin-right: 10px;
 	max-width: 40px;
 	height: 40px;
-	float: left;
-	clear: none;
-	display: block;
-	background-size: cover;
-	background-repeat: no-repeat;
+	background-color: rgba(255,255,255,.25);
+	border-radius: 20px;
 }
 
 .top-widget .challenge-widget .check-progress .checked {
-	background-image: url("../img/others/cards/challenges/checkbox-checked.png");
-}
-
-.top-widget .challenge-widget .check-progress .unchecked {
-	background-image: url("../img/others/cards/challenges/checkbox-empty.png");
-}
-
-.top-widget i.icon-info {
-	float: right;
-	color: $dark;
-	font-size: 25px;
+    background-image: url("../img/others/cards/challenges/checkbox-checked.png");
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .top-widget .donut-chart {
 	position: relative;
-	max-width: 125px;
-	min-width: 125px
+	max-width: 110px;
+	min-width: 110px
 }
-
-.top-widget .donut-chart .progress {
+.top-widget .donut-chart .challenge-image {
 	top: 50%;
-    bottom: auto;
     left: 50%;
+    bottom: auto;
     transform: translateY(-50%) translateX(-50%);
     position: absolute;
+    text-align: center;
+    height: 50px;
+    width: 50px;
+	background-position: center center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.top-widget .progress .current,
+.top-widget .progress .max {
+	display: block!important;
+	width: 100%;
 }
 
-.top-widget .donut-chart .progress .current,
-.top-widget .donut-chart .progress .max {
-	text-align: center;
-}
-
-.top-widget .donut-chart .progress .current {
-	font-family: $base-font-family-bold;
-	font-size: 24px;
-	color: #F39C12;
-}
-
-.top-widget .donut-chart .progress .max {
+.top-widget .progress .current {
 	font-family: $base-font-family;
-	font-size: 12px;
-	color: #999999;
+	font-size: 24px;
+	color: $light;
+	margin-bottom: 5px;
+}
+
+.top-widget .progress .max {
+	font-family: $base-font-family;
+	font-size: 14px;
+	color: rgba(255,255,255,0.50);
 }
 
 // TEST
