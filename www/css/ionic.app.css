@@ -10475,6 +10475,9 @@ ion-slides {
 .bgColor_9 {
   background-color: #00845d; }
 
+.card.demo img {
+  height: 170px; }
+
 .top-widget .swiper-container {
   height: inherit !important;
   display: block; }
@@ -10517,9 +10520,9 @@ ion-slides {
   text-align: center; }
 
 .card.widget .challenge-image img {
-  width: 100%;
+  width: auto;
   height: auto;
-  padding: 15%;
+  padding: 20px;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 50px; }
 

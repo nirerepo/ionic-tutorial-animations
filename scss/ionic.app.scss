@@ -904,6 +904,10 @@ $num-colors: 10;
 
 //TOP WIDGET SWIPER
 
+.card.demo img {
+	height: 170px;
+}
+
 .top-widget .swiper-container {
 	height: inherit!important;
 	display: block;
@@ -957,9 +961,9 @@ $num-colors: 10;
 }
 
 .card.widget .challenge-image img {
-	width: 100%;
+	width: auto;
 	height: auto;
-	padding: 15%;
+	padding: 20px;
 	background-color: rgba(0,0,0,.2);
 	border-radius: 50px;
 }
