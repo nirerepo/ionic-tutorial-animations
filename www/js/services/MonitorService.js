@@ -2,12 +2,13 @@
  * Consulta periodicamente al servidor en busca de notificaciones u otras operaciones.
  * @param {angular.IIntervalService} $interval
  */
-function MonitorService(Connection, $interval, messagingService) {
+function MonitorService(Connection, $interval, messagingService, Timeline) {
     /** @type number */
     var delay = 5000;
 
     /** @type ng.IPromise<any> */
     var intervalPromise = null;
+    var userSerial = 0;
 
     function intervalFunction() {
         Connection.request("notification/pending", { id: messagingService.getLastMessage() })
@@ -15,6 +16,13 @@ function MonitorService(Connection, $interval, messagingService) {
                 response.data.data.notifications.forEach(function(element) {
                     messagingService.receive(element);
                 }, this);
+                if (response.data.meta.serial > userSerial) {
+                    console.log("REFRESH!!");
+                    Timeline.get(true);
+                    userSerial = response.data.meta.serial;
+                }
+
+                console.log(response);
                 messagingService.receiveReply(response.data.data.responses)
             });
     }

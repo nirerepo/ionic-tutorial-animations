@@ -12,10 +12,11 @@ function TimelineService(Connection, $filter) {
         5: "cena"
     }
 
-    this.get = function () {
+    this.get = function (force) {
+        force = ((typeof force !== 'undefined') ? force : false);
         for(var i = 0; i < self.daysToFetch; i++ ){
             var date = moment().subtract(i, 'days').format("YYYYMMDD");
-            if(!self.tracks[date]){
+            if(force || !self.tracks[date]){
                 self.tracks[date] = {
                     day: date,
                     nutrition: [],
