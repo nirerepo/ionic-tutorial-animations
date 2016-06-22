@@ -16,22 +16,28 @@ function TimelineService(Connection, $filter) {
         force = ((typeof force !== 'undefined') ? force : false);
         for(var i = 0; i < self.daysToFetch; i++ ){
             var date = moment().subtract(i, 'days').format("YYYYMMDD");
-            if(force || !self.tracks[date]){
-                self.tracks[date] = {
-                    day: date,
-                    nutrition: [],
-                    exercises: [],
-                    challenges: []
-                }
+            if(force || !self.tracks[date]) {
+                if (!self.tracks[date])
+                    self.tracks[date] = {
+                        day: date,
+                        nutrition: [],
+                        exercises: [],
+                        challenges: []
+                    }
                 Connection.request("timeline/" + date)
                     .then(
                         function(date, result){
+                            var tmpNutri = [];
                             result.data.data.body.nutrition.forEach(function(item){
-                                self.tracks[date].nutrition.push(item);
-                            })
+                                tmpNutri.push(item);
+                            });
+                            self.tracks[date].nutrition = tmpNutri;
+                            var tmpPhysi = [];
                             result.data.data.body.physicalActivity.forEach(function(item){
-                                self.tracks[date].exercises.push(item);
-                            })
+                                tmpPhysi.push(item);
+                            });
+                            self.tracks[date].exercises = tmpPhysi;
+                            var tmpChalle = [];
                             result.data.data.body.challenges.forEach(function(item){
                                 if (item.areaId == 'nutrition')
                                     item.background = "img/others/cards/challenges/fruit.jpg";
@@ -40,8 +46,9 @@ function TimelineService(Connection, $filter) {
                                 else
                                     item.background = "img/others/cards/challenges/fruit.jpg";
 
-                                self.tracks[date].challenges.push(item);
-                            })
+                                tmpChalle.push(item);
+                            });
+                            self.tracks[date].challenges = tmpChalle;
                         }.bind(this, date)
                     );
             }
