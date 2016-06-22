@@ -51,7 +51,7 @@ function TimelineService(Connection, $filter) {
 
     this.addPlate = function (mealId, plateData, day){
         var key = self.mealKey[mealId]
-        var plate = {completed: true, id: plateData.id, quantity: Math.floor(plateData.kcal) + " kcal", title: plateData.name}
+        var plate = {id: plateData.id, title: plateData.name}
 
         var track = $filter('filter')(self.tracks[day].nutrition, {typeId: parseInt(mealId)}, true);
         if(track.length === 0) {
@@ -64,6 +64,13 @@ function TimelineService(Connection, $filter) {
         }
 
         track[0].items.push(plate)
+    }
+
+    this.updatePlateKcal = function(mealId, plateId, day, data) {
+        //quantity
+        var track = $filter('filter')(self.tracks[day].nutrition, {typeId: parseInt(mealId)}, true)[0];
+        var meal = $filter('filter')(track.items, {id: plateId}, true)[0];
+        meal.quantity = data.kcal + " kcal";
     }
 
     this.addExercise = function (exerciseData, day){
