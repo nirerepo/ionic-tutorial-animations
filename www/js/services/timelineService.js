@@ -101,9 +101,14 @@ function TimelineService(Connection, $filter) {
 
     this.calcularTotalCalorias = function(mealId, day){
         var track = $filter('filter')(self.tracks[day].nutrition, {typeId: parseInt(mealId)}, true)[0];
-        var calorias = 0;
-        track.items.forEach(function(item){ calorias += parseFloat(item.quantity.split(' ')[0]); });
-        return calorias
+        if(track) {
+            var calorias = 0;
+            track.items.forEach(function(item) { 
+                if(item.quantity)
+                    calorias += parseFloat(item.quantity.split(' ')[0]); 
+            });
+            return calorias;
+        } return 0;
     }
 
     this.caloriasConsumidas = function(day) {
