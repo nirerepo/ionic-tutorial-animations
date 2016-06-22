@@ -42,15 +42,16 @@ function MessagingService($rootScope, $localStorage) {
 
     /**
      * Cambia la estructura de las notificaciones del servidor, por las notificaciones que el cliente entiende.
-     * @param {{id: number, source: string, message: string, button: string, type: string}} serverMessage
-     * @return {{id: number, source: string, type: string, text: string, options: [{text: string, value: string}]}}
+     * @param {{id: number, source: string, message: string, button: string, type: string, event: string}} serverMessage
+     * @return {{id: number, source: string, type: string, text: string, event: string options: [{text: string, value: string}]}}
      */
     function adaptMessage(serverMessage) {
         var result = {
             id: serverMessage.id,
             source: serverMessage.source,
             type: 'message',
-            text: serverMessage.message
+            text: serverMessage.message,
+            event: serverMessage.event
         };
 
         if(serverMessage.type) {
@@ -91,7 +92,7 @@ function MessagingService($rootScope, $localStorage) {
         var result = [];
         for(var i = 0; i < text.length; i++) {
             // TODO: En lugar de los parametros, preservarlos y modificar unicamente los necesarios
-            result.push({id: message.id, source: message.source, type: message.type, message: text[i]});
+            result.push({id: message.id, source: message.source, type: message.type, message: text[i], event: message.event});
         }
 
         // Si hay botones, los botones apareceran unicamente en el último mensaje.

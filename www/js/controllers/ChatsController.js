@@ -39,7 +39,19 @@ function ChatController($scope, $state, $stateParams, $interval, $timeout, $ioni
         el.classList.remove('option');
         el.classList.add('user');
         el.parentNode.classList.remove('options');
+
+        opt.answer = opt.value;
         Chats.replyMessage(opt, msgId);
+    };
+
+    $scope.respond = function($event, message) {
+        // TODO: Esto debería mejorarse utilizando directivas. Cada tipo de mensaje debería ser una directiva
+        // y tener un método value desde el cual poder obtener el valor elegido
+        var el = $event.currentTarget;
+        var value = el.parentNode.childNodes[0].value;
+    
+        var response = { value: value, event: message.event };
+        Chats.replyMessage(response, message.id);
     };
 }
 

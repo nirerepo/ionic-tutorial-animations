@@ -68,9 +68,9 @@ function ChatService($rootScope, Connection, $localStorage) {
         return $localStorage.responses[id];
     };
 
-    this.replyMessage = function(opt, msgId) {
-        var data = {answer: opt.value, text: opt.text, notificationId: msgId};
-        Connection.request("notification/reply", data);
+    this.replyMessage = function(reply, msgId) {
+        reply.notificationId = msgId;
+        Connection.request("notification/answer", reply, "application/json");
     };
 }
 
