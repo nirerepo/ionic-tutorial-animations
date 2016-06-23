@@ -140,14 +140,14 @@
   </item>
 </div>
 
-<div ng-repeat="nutritionSeccion in day.nutrition" class="card">
+<div ng-repeat="nutritionSeccion in day.nutrition " class="card">
   <div class="item item-divider header">
     <div class="title">{{nutritionSeccion.type}}</div>
     <div class="resume">{{ calcularTotalCalorias(nutritionSeccion.typeId, day.day) }} Kcal <i class="ion-ios-information-outline"></i></div>
   </div>
   <div class="item item-body content">
     <ion-list>
-    <ion-item class="item item-button-right item-remove-animate" ng-repeat="plato in nutritionSeccion.items" type="item-text-wrap">
+    <ion-item class="item item-button-right item-remove-animate" ng-repeat="plato in nutritionSeccion.items | orderBy:'title'" type="item-text-wrap">
     {{plato.title}}
     <span ng-if="plato.quantity" class="item-info">{{plato.quantity}}</span>
     <nire-plate-action-sheet plate="plato" meal="nutritionSeccion.type" day="day.day" />
@@ -167,7 +167,7 @@
   </div>
   <div class="item item-body content">
     <ion-list>
-        <ion-item class="item item-button-right item-remove-animate" ng-repeat="exercise in day.exercises" type="item-text-wrap">
+        <ion-item class="item item-button-right item-remove-animate" ng-repeat="exercise in day.exercises | orderBy:'title'" type="item-text-wrap">
         {{exercise.title}}
         <span class="item-info">{{exercise.gastoCalorico}} Kcal</span>
         <nire-exercise-action-sheet exercise="exercise" day="day.day" />
