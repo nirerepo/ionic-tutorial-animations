@@ -33,8 +33,11 @@
 					<div class="bubble {{m.source}} animated fadeIn">
 						<p>{{m.text}}</p>
 					</div>
-					<div class="item bubble user animated fadeIn">
+					<div class="item bubble user animated fadeIn" ng-if="!notificationResponded(m.id)">
 						<p><input type="text" /><button ng-click="respond($event, m)">Send</button></p>
+					</div>
+					<div class="item bubble user animated fadeIn" ng-if="notificationResponded(m.id)">
+						<p>{{getResponseText(m.id)}}</p>
 					</div>
 				</div>
 			</div>
