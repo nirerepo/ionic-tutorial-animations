@@ -10032,7 +10032,7 @@ select[readonly] {
 
 .card {
   background: transparent;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   padding-bottom: 0px;
   margin: 10px 0px 5px 0px; }
@@ -10063,7 +10063,7 @@ select[readonly] {
 
 #diary .card.add:active {
   opacity: 0.6;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2); }
 
 #diary .card.add .item h2 {
   margin: 0 0 10px 0;
@@ -10090,7 +10090,7 @@ select[readonly] {
 /* CARD WITH CONTENTS */
 #diary .card .item-divider.header {
   color: #fff;
-  background-color: rgba(0, 52, 79, 0.5);
+  background-color: rgba(1, 52, 79, 0.5);
   padding: 12px 15px 12px 15px;
   border-bottom: 0px; }
 
@@ -10322,7 +10322,7 @@ select[readonly] {
   clear: both;
   display: block;
   font-size: 16px;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
   border-radius: 8px; }
 
 .bubble p {
@@ -10369,7 +10369,7 @@ select[readonly] {
 .options .bubble.option {
   background-color: #FFF;
   margin: 0px 4px 8px 4px;
-  box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.3);
   border: none;
   padding-left: 10px;
   padding-right: 10px; }
@@ -10502,7 +10502,7 @@ ion-slides {
 .card.widget h2 {
   font-family: MovistarHeadline-Regular;
   font-size: 14px;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.75);
   margin: 5px 0 0 5px; }
 
 .card.widget i.icon-info {
@@ -10513,18 +10513,7 @@ ion-slides {
 .card.widget span.challenge-title {
   color: #fff;
   font-size: 18px;
-  margin-bottom: 15px; }
-
-.card.widget .challenge-image {
-  height: 115px;
-  text-align: center; }
-
-.card.widget .challenge-image img {
-  width: auto;
-  height: auto;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 50px; }
+  margin: 20px 0 15px 5px; }
 
 .top-widget .challenge-widget .check-progress {
   height: 40px; }
@@ -10534,7 +10523,7 @@ ion-slides {
   margin-right: 10px;
   max-width: 40px;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(1, 52, 79, 0.25);
   border-radius: 20px; }
 
 .top-widget .challenge-widget .check-progress .checked {
@@ -10543,12 +10532,23 @@ ion-slides {
   background-repeat: no-repeat;
   background-position: center center; }
 
-.top-widget .donut-chart {
+.card.widget.milestones .challenge-image-area {
+  height: 170px;
+  text-align: center;
+  background-color: rgba(1, 52, 79, 0.25); }
+
+.card.widget.milestones .challenge-image-area .image {
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%; }
+
+.card.widget .donut-chart {
   position: relative;
   max-width: 110px;
   min-width: 110px; }
 
-.top-widget .donut-chart .challenge-image {
+.card.widget .donut-chart .challenge-image {
   top: 50%;
   left: 50%;
   bottom: auto;
@@ -10561,18 +10561,18 @@ ion-slides {
   background-size: 100%;
   background-repeat: no-repeat; }
 
-.top-widget .progress .current,
-.top-widget .progress .max {
+.card.widget .progress .current,
+.card.widget .progress .max {
   display: block !important;
   width: 100%; }
 
-.top-widget .progress .current {
+.card.widget .progress .current {
   font-family: MovistarText;
   font-size: 24px;
   color: #fff;
   margin-bottom: 5px; }
 
-.top-widget .progress .max {
+.card.widget .progress .max {
   font-family: MovistarText;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.5); }

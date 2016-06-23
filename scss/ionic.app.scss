@@ -32,7 +32,7 @@ $dark:                            #01344F !default;
 //	Brand colors
 $base-color:						#005C84; // Dark Blue
 $accent-color:						#7AB800; // Green
-$neutral-ui-soft-color:				rgba($dark, .5);
+$dark-transparent-color:			rgba($dark, .5);
 
 //	Base Font
 $base-font-family:					MovistarText;
@@ -49,10 +49,10 @@ $link-hover-color:                	darken($link-color, 15%) !default;
 //	Small Font
 $small-font-family:					MovistarText;
 $small-font-size-default:			14px;
-$small-font-color:					$neutral-ui-soft-color;
+$small-font-color:					$dark-transparent-color;
 
 //	Icons
-$icon-color-soft:					rgba($neutral-ui-soft-color, 0.25);
+$icon-color-soft:					rgba($dark-transparent-color, 0.25);
 
 //	Headings
 $header-font-family-default:		MovistarHeadline-Bold;
@@ -68,8 +68,8 @@ $background-3:						#EDF2F5; //Solid-color-1
 $background-pastday:				linear-gradient(-179deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
 
 //	Element default details
-$shadow-default:                   	0px 1px 4px 0px rgba(0,0,0,0.20); 
-$shadow-strong:						0px 1px 6px 0px rgba(0,0,0,0.30);
+$shadow-default:                   	0px 1px 2px 0px rgba(0,0,0,0.20); 
+$shadow-strong:						0px 1px 4px 0px rgba(0,0,0,0.30);
 $shadow-soft-large:					0px 1px 8px 0px rgba(0,0,0,0.10); 
 $radius-default:                  	4px;
 $background-transparent:			rgba(255,255,255,0.20);
@@ -391,7 +391,7 @@ select[readonly] {
 }
 
 .card .item {
-	border-color: rgba($neutral-ui-soft-color, 0.1);
+	border-color: rgba($dark-transparent-color, 0.1);
 }
 
 .card .item.item-body.content {
@@ -453,9 +453,7 @@ select[readonly] {
 
 #diary .card .item-divider.header {
 	color: $light;
-	background-color: rgba(0,52,79,0.50);
-	// padding-top: 12px;
-	// padding-bottom: 12px;
+	background-color: $dark-transparent-color;
 	padding: 12px 15px 12px 15px;
 	border-bottom: 0px;
 }
@@ -541,7 +539,7 @@ select[readonly] {
 	color: $light;
 	font-size: $base-font-size-default;
 	font-family: $base-font-family-bold;
-	background-color: rgba(255,255,255,0.35);
+	background-color: rgba($light, 0.35);
 	padding: 20px 15px;
 	border-width: 0px;
 }
@@ -682,7 +680,7 @@ select[readonly] {
   display: inline;
   vertical-align: middle;
   padding: 0 10px;
-  color: $neutral-ui-soft-color;
+  color: $dark-transparent-color;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -919,7 +917,7 @@ $num-colors: 10;
 }
 
 .card.dark-transparent {
-	background: $neutral-ui-soft-color;
+	background: $dark-transparent-color;
 }
 
 .top-widget .swiper-container-horizontal>.swiper-pagination {
@@ -938,7 +936,7 @@ $num-colors: 10;
 .card.widget h2 {
 	font-family: $header-font-family-alt;
 	font-size: $small-font-size-default;
-	color: $light;
+	color: rgba($light, 0.75);
 	margin: 5px 0 0 5px;
 }
 
@@ -952,21 +950,9 @@ $num-colors: 10;
 .card.widget span.challenge-title {
 	color: $light;
 	font-size: $base-font-size-large;
-	margin-bottom: 15px;
+	margin: 20px 0 15px 5px;
 }
 
-.card.widget .challenge-image {
-	height: 115px;
-	text-align: center;
-}
-
-.card.widget .challenge-image img {
-	width: auto;
-	height: auto;
-	padding: 20px;
-	background-color: rgba(0,0,0,.2);
-	border-radius: 50px;
-}
 
 // Challenge Milestones
 .top-widget .challenge-widget .check-progress {
@@ -977,7 +963,7 @@ $num-colors: 10;
 	margin-right: 10px;
 	max-width: 40px;
 	height: 40px;
-	background-color: rgba(255,255,255,.25);
+	background-color: rgba($dark,.25);
 	border-radius: 20px;
 }
 
@@ -988,12 +974,27 @@ $num-colors: 10;
     background-position: center center;
 }
 
-.top-widget .donut-chart {
+.card.widget.milestones .challenge-image-area {
+	height: 170px;
+	text-align: center;
+	background-color: rgba($dark,.25);
+}
+
+.card.widget.milestones .challenge-image-area .image {
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+//Challenge target - chart
+.card.widget .donut-chart {
 	position: relative;
 	max-width: 110px;
 	min-width: 110px
 }
-.top-widget .donut-chart .challenge-image {
+
+.card.widget .donut-chart .challenge-image {
 	top: 50%;
     left: 50%;
     bottom: auto;
@@ -1006,20 +1007,20 @@ $num-colors: 10;
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
-.top-widget .progress .current,
-.top-widget .progress .max {
+.card.widget .progress .current,
+.card.widget .progress .max {
 	display: block!important;
 	width: 100%;
 }
 
-.top-widget .progress .current {
+.card.widget .progress .current {
 	font-family: $base-font-family;
 	font-size: 24px;
 	color: $light;
 	margin-bottom: 5px;
 }
 
-.top-widget .progress .max {
+.card.widget .progress .max {
 	font-family: $base-font-family;
 	font-size: 14px;
 	color: rgba(255,255,255,0.50);
