@@ -65,6 +65,9 @@ function HealthStoreService(Connection, $rootScope, $localStorage) {
                     console.log("No se pudo acceder: ", arguments);
                 };
                 navigator.health.requestAuthorization(permAggregated.concat(permUnit), function() {
+                    // Autorizo al proceso de obtencion de pasos, y lo lanzo para que actualize
+                    $localStorage.fitAutorized = true;
+                    $rootScope.$broadcast('onResume');
                     permAggregated.forEach(function(item) {
                         navigator.health.queryAggregated({
                             startDate: new Date(new Date().getTime() - 15 * 24 * 60 * 60 * 1000), // three days ago
