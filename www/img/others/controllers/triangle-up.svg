@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="39px" height="31px" viewBox="0 0 39 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>Triangle 34</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="SCREENS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="3-input-nutricion/1-buscar-copy" transform="translate(-173.000000, -79.000000)" fill="#FFFFFF">
+            <g id="UI-Elements/segmented-control-/-day" transform="translate(0.000000, 55.000000)">
+                <g id="segmented-control-/-day">
+                    <g id="filter-time" filter="url(#filter-1)" transform="translate(142.000000, 18.000000)">
+                        <polygon id="Triangle-34" points="50.5 15 61 27.1428571 40 27.1428571"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

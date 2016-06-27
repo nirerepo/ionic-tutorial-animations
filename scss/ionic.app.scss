@@ -20,7 +20,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 //	Colors
 $light:                           #fff!default;
-$stable:                          #01344F !default;
+$stable:                          #EDF2F5 !default;
 $positive:                        #7AB800 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
@@ -115,7 +115,7 @@ h2.large {
 	font-size: $header-font-size-large;
 }
 
-p, span, a, button, input {
+p, span, a, button, input, .bar-footer {
 	font-family: $base-font-family;
 }
 
@@ -183,6 +183,10 @@ input::-webkit-input-placeholder {
 	color: $light!important;
 }
 
+.button.button-stable {
+	color: #7F8C8D;
+}
+
 .button.button-light.button-outline {
 	border-color: #FFF;
 }
@@ -190,7 +194,6 @@ input::-webkit-input-placeholder {
 .button.button-light.button-outline.active,
 .button.button-light.button-outline.activated {
 	background-color: rgba(0, 0, 0, 0.05)!important;
-    border-color: #ddd!important;
 }
 
 .activated {
@@ -465,7 +468,6 @@ select[readonly] {
 	clear: none;
 }
 
-
 #diary .card .item-divider.header .title {
 	font-family: $header-font-family-default;
 	text-transform: capitalize;
@@ -565,10 +567,13 @@ select[readonly] {
 	font-size: $base-font-size-default;
 }
 
-.item-input-inset a.back {
-    padding-right: 15px;
+a i {
     color: $light;
-	font-size: $base-font-size-large;
+	font-size: 22px;
+}
+
+a.left i {
+    padding-right: 15px;
 }
 
 .item-input-wrapper {
@@ -615,31 +620,31 @@ select[readonly] {
 .modal {
 	top: 20%;
     right: 10%;
-    bottom: 40%;
+    bottom: 35%;
     left: 10%;
-    min-height: 260px;
+    min-height: 370px;
     width: 80%;
 	box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
 	border-radius: $radius-default;
+}
+
+.modal {
+	background: transparent;
+}
+
+.modal ion-content {
+	background: $light;
 }
 
 .modal input {
 	background: rgba(0,52,79,0.05);
     width: 100%;
     text-align: center;
-    font-size: 20px!important;
     height: 46px;
     color: $accent-color;
     font-family: $base-font-family-bold;
     font-size: 24px!important;
     border-radius: $radius-default;
-}
-
-.modal button {
-	width: 50%;
-    border: 0px;
-    font-size: $base-font-size-default;
-    text-transform: uppercase;
 }
 
 .modal .up,
@@ -660,20 +665,16 @@ select[readonly] {
 .modal .up {
     background-image: url("../img/others/controllers/up.svg");
     margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .modal .down {
     background-image: url("../img/others/controllers/down.svg");
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 
-.modal select {
-	margin: 50px 0px;
-	background: none;
-}
-
-.modal .ion-input-select,
-.modal select {
+.modal .ion-input-select {
   -webkit-appearance: none;
   background-repeat: no-repeat; 
   border: thin solid rgba(0,52,79,0.05);
@@ -696,31 +697,39 @@ select[readonly] {
   background:#444;
 }
 
-.modal select::-ms-expand {
-  display: none;
-}
-
 .modal:focus {
   outline:none;
 }
 
-.modal .bar-footer {
-	background: rgba(0,52,79,0.05);
+.modal .bar-header {
+	background-color: $dark;
+    border-bottom-width: 0px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
 }
 
-.modal .bar-footer .cancel,
-.modal .bar-footer .action {
-	font-size: 16px!important;
+.modal h1 {
+	color: $light;
 }
 
-.modal .bar-footer .cancel {
-	color: #7F8C8D;
+.units {
+	background-color: $dark;
+	padding: 0px;
 }
 
-.modal .bar-footer .action {
-	color: $accent-color;
-	font-family: $base-font-family-bold;
+.button-bar > .button{
+	background-color: transparent;
+    color: rgba($light, .5);
 }
+
+.button-bar .button.selected {
+    background-image: url("../img/others/controllers/triangle-up.svg");
+    background-position: center 24px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: $light;
+}
+
 
 //////////////////
 // --- CHAT --- //

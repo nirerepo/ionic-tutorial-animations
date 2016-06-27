@@ -1,24 +1,47 @@
 <ion-modal-view class="has-footer">
-<ion-header-bar>
-<h1 class="title">{{data.unidades}}</h1>
+<ion-header-bar class="bar bar-header bar-dark">
+  <h1 class="title">Nombre del alimento</h1>
 </ion-header-bar>
 
 <ion-content scroll="false">
 
+<div class="row units">
+<div class="button-bar">
+  <a class="button">Piezas</i></a>
+  <a class="button">Gramos</a>
+  <a class="button selected">Rodajas</a>
+</div>
+</div>
+
 <div class="row padding centered">
-  <div class="col col-50 col-offset-25">
+  <div class="col col-33 col-offset-33 padding-vertical">
   	<div class="up" ng-click="foodTracker.increaseAmount()"></div>
   	<input ng-change="foodTracker.keepOnlyNumbers()" ng-model="data.foodAmount" type="tel" />
   	<div class="down" ng-click="foodTracker.decreaseAmount()"></div>
   </div>
 </div>
 
+{{data.unidades}}
+
+<!-- <ion-footer-bar>
+  <button class="button button-positive" ng-click="foodTracker.saveDetails()">
+    Guardar
+  </button>
+</ion-footer-bar> -->
+
+<div class="row padding footer">
+  <div class="col">
+    <button class="button button-block button-stable" ng-click="foodTracker.closeFoodDetails()">
+      Cancelar
+    </button>
+  </div>
+  <div class="col">
+    <button class="button button-block button-positive" ng-click="foodTracker.saveDetails()">
+      Guardar
+    </button>
+  </div>
+</div>
 
 </ion-content>
-
-<div class="bar bar-footer">
-  <button class="button button-clear cancel" ng-click="foodTracker.closeFoodDetails()">Cancelar</button>  
-  <button class="button button-clear action" ng-click="foodTracker.saveDetails()">Guardar</button>
-</div>
 
 </ion-modal-view>
