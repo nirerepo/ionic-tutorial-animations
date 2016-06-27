@@ -1,4 +1,4 @@
-function ChatController($scope, $state, $stateParams, $interval, $timeout, $ionicScrollDelegate, Chats) {
+function ChatController($scope, $interval, $timeout, $ionicScrollDelegate, Chats, HealthStore) {
     var INTERVALO_NUEVO_MENSAJE = 3000;
     var cancelInterval = null;
 
@@ -43,6 +43,11 @@ function ChatController($scope, $state, $stateParams, $interval, $timeout, $ioni
         opt.answer = opt.value;
         Chats.replyMessage(opt, msgId);
     };
+
+    $scope.initHealthTracking = function(){
+        console.log("pedido de inicializacion de fit :D");
+        HealthStore.autorizeHealthService();
+    }
 
     $scope.respond = function($event, message) {
         // TODO: Esto debería mejorarse utilizando directivas. Cada tipo de mensaje debería ser una directiva

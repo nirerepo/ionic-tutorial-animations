@@ -46,6 +46,17 @@ function HealthStoreService(Connection, $rootScope, $localStorage) {
         }
     }
 
+    this.autorizeHealthService = function() {
+        navigator.health.isAvailable(function() {
+            navigator.health.requestAuthorization(['steps'], function() {
+                $localStorage.fitAutorized = true;
+                getSteptData();
+            }, function(e) {
+                console.log("No se ha obtenido autorización.", e);
+            });                
+        });
+    }
+
     this.alertData = function() {
         console.log("HealthStore: alertData");
         if (navigator.health) {

@@ -71,7 +71,8 @@ function MessagingService($rootScope, $localStorage) {
             var parts = element.split("##");
             return {
                 text: parts[0],
-                value: parts[1]
+                value: parts[1],
+                script: parts[2]
             };
         });
     }
