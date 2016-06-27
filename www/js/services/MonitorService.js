@@ -19,7 +19,7 @@ function MonitorService(Connection, $interval, messagingService, Timeline, $loca
                 if (response.data.meta.serial > userSerial) {
                     console.log("REFRESH!!");
                     Timeline.get(true);
-                    userSerial = response.data.meta.serial;
+                    userSerial = _(response.data.meta.serial).toInteger();
                     $localStorage.userSerial = userSerial;
                 }
 
