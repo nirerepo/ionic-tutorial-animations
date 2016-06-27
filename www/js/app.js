@@ -7,8 +7,7 @@ angular.module('nire', [
     'ngStorage',
     'angular-svg-round-progressbar'
 ])
-// Agrego HealthStore al run para que se inicialice y escuche el broadcast
-    .run(function ($ionicPlatform, $rootScope, HealthStore) {
+    .run(function ($ionicPlatform, $rootScope, $localStorage) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -25,9 +24,9 @@ angular.module('nire', [
         // Agrego un broadcast cada vez que se vuelve al la app y cuando se inicializa
         // para actualizar los datos de fit
         $ionicPlatform.on('resume', function(){
-            $rootScope.$broadcast('onResume');
+            $localStorage.appResumed = true;
         });
-        $rootScope.$broadcast('onResume');
+        $localStorage.appResumed = true;
     })
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         // Agregamos un Interceptor para que si el servidor responde

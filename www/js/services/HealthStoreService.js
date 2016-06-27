@@ -3,8 +3,6 @@ function HealthStoreService(Connection, $rootScope, $localStorage) {
     this.saveInformation = function(queryText) {
     }
 
-    $rootScope.$on("onResume", function(event, data) { getSteptData(); });
-
     var saveSteps = function(response) {
         var date = moment(response.startDate).format('YYYYMMDD')
         var data = { date: date, steps: response.value }
@@ -20,7 +18,7 @@ function HealthStoreService(Connection, $rootScope, $localStorage) {
         console.log("No se pudo acceder: ", arguments);
     };
 
-    var getSteptData = function() {
+    this.getSteptData = function() {
         // Obtengo la ultima fecha de actualizacion, si no existe, propongo un maximo de 5 dis en el pasado para pedir
         var lastUpdate = $localStorage.lastFitUpdate? moment($localStorage.lastFitUpdate) : moment().startOf('day').subtract(5, 'days');
         var autorized = $localStorage.fitAutorized? $localStorage.fitAutorized : false;

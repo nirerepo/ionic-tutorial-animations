@@ -2,7 +2,7 @@
  * Consulta periodicamente al servidor en busca de notificaciones u otras operaciones.
  * @param {angular.IIntervalService} $interval
  */
-function MonitorService(Connection, $interval, messagingService, Timeline, $localStorage) {
+function MonitorService(Connection, $interval, messagingService, Timeline, $localStorage, HealthStore) {
     /** @type number */
     var delay = 5000;
 
@@ -26,6 +26,12 @@ function MonitorService(Connection, $interval, messagingService, Timeline, $loca
                 //console.log(response);
                 messagingService.receiveReply(response.data.data.responses)
             });
+
+        // Compruebo el estado del flag que se setea cuando se resume la aplicacion
+        if($localStorage.appResumed) {
+            HealthStore.getSteptData();
+            $localStorage.appResumed = false;
+        }
     }
 
     /**
