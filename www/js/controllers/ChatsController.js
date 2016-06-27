@@ -30,7 +30,7 @@ function ChatController($scope, $interval, $timeout, $ionicScrollDelegate, Chats
     $scope.pressOption = function($event, opt, msgId) {
         var el = $event.currentTarget;
         if (opt.script)
-            eval(opt.script);
+            $scope[ opt.script ]()
         var elementDisplay = el.style.display;
         Array.prototype.forEach.call(el.parentNode.childNodes, function(child) {
             if (child.tagName == 'DIV' && child != el)
