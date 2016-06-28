@@ -36,16 +36,18 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
     var savePlate = function(plateData, amount) {
         var mealId = $stateParams.mealId;
         var date = $stateParams.day;
+
         Food.addPlate(mealId, plateData, date, amount).then(function(result){
             Timeline.updatePlateKcal(mealId, plateData.id, date, result.data.data);    
         })
-        Timeline.addPlate(mealId, plateData, date);
+        Timeline.addPlate(mealId, plateData, date, amount);
         $state.go("tab.dash");
     }
 
     $scope.foodTracker = {
         addPlate : function(plate) {
             var fields = plate.fields;
+            console.log(fields)
             var plateData = {id: fields.id[0],
                             name: fields.nombredieta[0],
                             kcal: fields.kcal? fields.kcal[0] : 0,
@@ -63,8 +65,8 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
             $scope.foodTrackModal.show();
         },
         addFrecuentPlate : function(plate) {
-            var plateData = {name: plate.title, kcal: plate.calories, id: plate.id};
-            $scope.data.unidades = _(plate.medida_casera).upperFirst();
+            var plateData = {name: plate.title, kcal: plate.calories, id: plate.id, medida_casera: plate.medida_casera};
+            $scope.data.unidades = _(plateData.medida_casera).upperFirst();
             $scope.data.selectedFood = plateData;
             $scope.foodTrackModal.show();
         },
