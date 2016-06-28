@@ -69,8 +69,8 @@ function TimelineService(Connection, $filter) {
                 return a.typeId - b.typeId
             })
         }
-
-        track[0].items.push(plate)
+        if($filter('filter')(track[0].items, {id: plate.id}, true) == 0)
+            track[0].items.push(plate)
     }
 
     this.updatePlateKcal = function(mealId, plateId, day, data) {
