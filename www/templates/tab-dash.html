@@ -112,7 +112,7 @@
     <ion-list>
     <ion-item class="item item-button-right item-remove-animate" ng-repeat="plato in nutritionSeccion.items | orderBy:'title'" type="item-text-wrap">
     {{plato.title}}
-    <span ng-if="plato.quantity" class="item-info">{{plato.quantity}}</span>
+    <span ng-if="plato.quantity" class="item-info">{{plato.quantity}} ({{plato.id}})</span>
     <nire-plate-action-sheet plate="plato" meal="nutritionSeccion.type" day="day.day" />
   </ion-item>
 </ion-list>
