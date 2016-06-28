@@ -16,7 +16,7 @@ function MonitorService(Connection, $interval, messagingService, Timeline, $loca
                 response.data.data.notifications.forEach(function(element) {
                     messagingService.receive(element);
                 }, this);
-                if (response.data.meta.serial > userSerial) {
+                if (response.data.meta.serial != userSerial) {
                     console.log("REFRESH!!");
                     Timeline.get(true);
                     userSerial = _(response.data.meta.serial).toInteger();
