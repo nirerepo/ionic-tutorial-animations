@@ -22,7 +22,7 @@ function TimelineService(Connection, $filter) {
                         day: date,
                         nutrition: [],
                         exercises: [],
-                        challenges: []
+                        challenges: [[],[]]
                     }
                 Connection.request("timeline/" + date)
                     .then(
