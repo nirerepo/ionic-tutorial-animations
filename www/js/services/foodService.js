@@ -18,8 +18,8 @@ function FoodService($q, $http, Connection) {
         return Connection.request("track/nutrition/add", data, "application/json");
     }
 
-    this.getLastUsed = function() {
-        return Connection.request("newTrack/nutrition/id/newTrackNutrition.json");
+    this.getLastUsed = function(mealId) {
+        return Connection.request("newTrack/nutrition/id/newTrackNutrition.json", {mealId: mealId});
     }
 }
 

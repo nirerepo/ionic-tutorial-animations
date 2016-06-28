@@ -10,7 +10,7 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
     $scope.$on("$ionicView.beforeEnter", function () {
        $scope.clear();
        $scope.data.search = '';
-       Food.getLastUsed().then(function(result){
+       Food.getLastUsed($stateParams.mealId).then(function(result){
             $scope.lastUsed = result.data.data.body.most_used
        });
     });
