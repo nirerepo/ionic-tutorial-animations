@@ -40,14 +40,14 @@
   <ul class="list">
     <li class="item" ng-repeat="plate in lastUsed" ng-click="foodTracker.addFrecuentPlate(plate)" >
       <span class="item-title">{{plate.title}}</span><br>
-      <span class="item-info">{{plate.calories | number : 0}} Kcal</span>
+      <span class="item-info">{{plate.calories | number : 0}} Kcal ({{plate.id}})</span>
     </li>
   </ul>
 </div>
   <ul class="list">
     <li class="item" ng-repeat="plate in data.plates" ng-click="foodTracker.addPlate(plate)">
       <span class="item-title">{{plate.fields.nombredieta[0]}}</span><br>
-      <span class="item-info">{{plate.fields.kcal?plate.fields.kcal[0]:"0" | number : 0}} Kcal</span>
+      <span class="item-info">{{plate.fields.kcal?plate.fields.kcal[0]:"0" | number : 0}} Kcal ({{plate.fields.id[0]}})</span>
     </li>
   </ul>
 </ion-content>
