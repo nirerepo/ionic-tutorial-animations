@@ -10293,9 +10293,7 @@ a.left i {
 
 .modal .bar-header {
   background-color: #01344F;
-  border-bottom-width: 0px;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px; }
+  border-bottom-width: 0px; }
 
 .modal h1 {
   color: #fff; }

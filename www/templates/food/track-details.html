@@ -1,6 +1,6 @@
 <ion-modal-view class="has-footer">
-<ion-header-bar class="bar bar-header bar-dark">
-  <h1 class="title">{{data.selectedFood.name}}</h1>
+<ion-header-bar class="bar bar-header bar-dark" style="height: 45px">
+  <h1 class="title" style=="margin-top:0px;">{{data.selectedFood.name}}</h1>
 </ion-header-bar>
 
 <ion-content scroll="false">
@@ -15,18 +15,12 @@
 </div>
 
 <div class="row padding centered">
-  <div class="col col-33 col-offset-33 padding-vertical">
+  <div class="col col-50 col-offset-25 padding-vertical">
   	<div class="up" ng-click="foodTracker.increaseAmount()"></div>
   	<input ng-change="foodTracker.keepOnlyNumbers()" ng-model="data.foodAmount" type="tel" />
   	<div class="down" ng-click="foodTracker.decreaseAmount()"></div>
   </div>
 </div>
-
-<!-- <ion-footer-bar>
-  <button class="button button-positive" ng-click="foodTracker.saveDetails()">
-    Guardar
-  </button>
-</ion-footer-bar> -->
 
 <div class="row padding footer">
   <div class="col">
