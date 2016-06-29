@@ -76,6 +76,6 @@
     <plugin name="phonegap-plugin-push" spec="https://github.com/nirerepo/phonegap-plugin-push">
         <variable name="SENDER_ID" value="606551403580" />
     </plugin>
-    <plugin name="cordova-plugin-device" spec="~1.1.2" />
+    <plugin name="cordova-plugin-device" />
     
 </widget>
