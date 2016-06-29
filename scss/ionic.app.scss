@@ -572,8 +572,10 @@ a i {
 	font-size: 22px;
 }
 
-a.left i {
-    padding-right: 15px;
+a.left {
+    margin-left: -15px;
+    padding: 10px 15px;
+    cursor: pointer;
 }
 
 .item-input-wrapper {
@@ -584,6 +586,8 @@ a.left i {
 	color: $light;
 	font-size: $base-font-size-large;
 	line-height: inherit;
+	padding: 0px 0px 0px 5px;
+	height: 32px;
 }
 
 .button-clear.button-clear {
@@ -645,6 +649,7 @@ a.left i {
     font-family: $base-font-family-bold;
     font-size: 24px!important;
     border-radius: $radius-default;
+    padding: 0px!important;
 }
 
 .modal .up,
