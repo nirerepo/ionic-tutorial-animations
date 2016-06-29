@@ -569,11 +569,13 @@ select[readonly] {
 
 a i {
     color: $light;
-	font-size: 22px;
+	font-size: 24px;
 }
 
 a.left i {
-    padding-right: 15px;
+	padding-right: 15px;
+    padding-left: 10px;
+    margin-left: -10px;
 }
 
 .item-input-wrapper {
