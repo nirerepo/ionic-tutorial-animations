@@ -41,7 +41,7 @@
   <ul class="list">
     <li class="item" ng-repeat="exercise in lastUsed" ng-click="exerciseModal.addFrecuentExercise(exercise)">
       <span class="item-title">{{exercise.title}}</span><br>
-      <span class="item-info">{{getExerciseType(exercise.tipo)}}&emsp;&emsp;{{exercise.exercised}}</span>
+      <span class="info">{{getExerciseType(exercise.tipo)}}&emsp;&emsp;{{exercise.exercised}}</span>
     </li>
   </ul>
 </div>
@@ -50,7 +50,7 @@
     <li class="item" ng-repeat="exercise in data.exercises" ng-click="exerciseModal.addExercise(exercise)">
       <img class="thumbnail" src="img/others/thumbnail-exercise-empty.jpg">
       <span class="item-title">{{exercise.fields.nombre[0]}}</span><br>
-      <span class="item-info">{{getExerciseType(exercise.fields.tipo[0])}}&emsp;&emsp;{{exercise.fields.gruposmusculares[0]}}</span>
+      <span class="info">{{getExerciseType(exercise.fields.tipo[0])}}&emsp;&emsp;{{exercise.fields.gruposmusculares[0]}}</span>
     </li>
   </ul>
 </ion-content>

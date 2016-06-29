@@ -9830,6 +9830,12 @@ p, span, a, button, input, .bar-footer {
 p {
   font-size: 16px; }
 
+p.info,
+span.info {
+  font-size: 14px;
+  color: rgba(1, 52, 79, 0.5);
+  font-family: MovistarText; }
+
 hr.light {
   border: 1px solid rgba(255, 255, 255, 0.15); }
 
@@ -9982,10 +9988,6 @@ select[readonly] {
   font-size: 16px;
   color: #01344F; }
 
-.list .item .item-info {
-  font-size: 14px;
-  color: rgba(1, 52, 79, 0.5); }
-
 .tab-item {
   opacity: inherit; }
 
@@ -10132,9 +10134,7 @@ select[readonly] {
   font-size: 16px;
   padding: 10px 50px 10px 15px; }
 
-#diary .card .item-body span.item-info {
-  font-family: MovistarText;
-  color: rgba(1, 52, 79, 0.5);
+.card .item-body.content .info {
   margin: 0px;
   display: block; }
 
@@ -10436,7 +10436,7 @@ a.left {
   color: #fff;
   font-size: 18px !important; }
 
-.info {
+.more-info {
   position: relative;
   font-size: 25px;
   height: 170px;
@@ -10445,7 +10445,7 @@ a.left {
   display: table;
   margin-left: 20px; }
 
-.info i {
+.more-info i {
   display: table-cell;
   vertical-align: middle; }
 
