@@ -2,42 +2,13 @@
 	<ion-content class="padding">
 		<div class="previousconversation">
 			<div ng-repeat="m in messages track by $index">
-				<div ng-show="m.type=='message'" class="bubble {{m.source}} animated fadeIn">
-					<p>{{m.text}}</p>
-				</div>
-
-				<div ng-show="m.type=='options'">
-					<div class="bubble {{m.source}} animated fadeIn">
-						<p>{{m.text}}</p>
-					</div>
-					<div class="item bubble user" ng-if="notificationResponded(m.id)">
-						<p>{{getResponseText(m.id)}}</p>
-					</div>
-					<div class="options" ng-if="!notificationResponded(m.id)">
-						<div id="{{opt.id}}" ng-repeat="opt in m.options" class="item bubble option" ng-click="pressOption($event, opt, m.id)">
-							<p>{{opt.text}}</p>
-						</div>
-					</div>
-				</div>
-
+				<nire-message message="m"></nire-message>
 				<div ng-show="m.type=='card'" class="ficha-wrapper">
 					<div class="bubble system img-background ficha" ng-click="showHelp(m.cardId)">
 						<h2>{{m.title}}</h2>
 					</div>
 					<div class="info animated fadeIn">
 						<i class="icon ion-ios-information-outline"></i>
-					</div>
-				</div>
-
-				<div ng-show="m.type=='number' || m.type=='date' || m.type == 'text'">
-					<div class="bubble {{m.source}} animated fadeIn">
-						<p>{{m.text}}</p>
-					</div>
-					<div class="item bubble user animated fadeIn" ng-if="!notificationResponded(m.id)">
-						<p><input type="text" /><button ng-click="respond($event, m)">Send</button></p>
-					</div>
-					<div class="item bubble user animated fadeIn" ng-if="notificationResponded(m.id)">
-						<p>{{getResponseText(m.id)}}</p>
 					</div>
 				</div>
 			</div>

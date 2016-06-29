@@ -64,12 +64,26 @@ function ChatService($rootScope, Connection, $localStorage) {
         receivedMessages.push(msg.message);
     });
 
-    this.notificationResponded = function(id){
+    /**
+     * Recuperar la respuesta a una notificación.
+     */
+    this.getResponse = function(id){
         return $localStorage.responses[id];
     };
 
+    /**
+     * Response una notificación.
+     */
     this.replyMessage = function(reply, msgId) {
+        console.log("Respondiendo mensaje", msgId, reply);
         reply.notificationId = msgId;
+
+        // Guardamos inmediatamente la respuesta para dar un feedback rapido al usuario
+        $localStorage.responses[msgId] = {
+            message: reply.text ? reply.text : reply.value,
+            notification: msgId
+        };
+
         Connection.request("notification/answer", reply, "application/json");
     };
 }

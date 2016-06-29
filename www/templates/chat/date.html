@@ -1,0 +1,9 @@
+<div class="bubble {{message.source}} animated fadeIn">
+    <p>{{message.text}}</p>
+</div>
+<div class="item bubble user animated fadeIn" ng-if="!getResponse()">
+    <p><input type="date" ng-model="message.value" /><button ng-click="sendResponse()">Send</button></p>
+</div>
+<div class="item bubble user animated fadeIn" ng-if="getResponse()">
+    <p>{{ getResponse().message }}</p>
+</div>
