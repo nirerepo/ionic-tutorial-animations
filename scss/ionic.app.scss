@@ -586,6 +586,8 @@ a.left {
 	color: $light;
 	font-size: $base-font-size-large;
 	line-height: inherit;
+	padding: 0px 0px 0px 5px;
+	height: 32px;
 }
 
 .button-clear.button-clear {
@@ -647,6 +649,7 @@ a.left {
     font-family: $base-font-family-bold;
     font-size: 24px!important;
     border-radius: $radius-default;
+    padding: 0px!important;
 }
 
 .modal .up,
