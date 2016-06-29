@@ -9,11 +9,15 @@ function ConnectionService($http) {
     self.currentUsername = null;
 
     self.getHeaders = function(contentType){
+        var deviceId = "web"
+        if(typeof device != "undefined")
+            deviceId = device.uuid
         return { 
             "security-token": window.localStorage['userhash'], 
             "security-user": window.localStorage['username'],
             "Accept-Language": "es-ES",
             "App-Domain": "movistar",
+            "security-device": deviceId,
             "App-TimezoneOffset": new Date().getTimezoneOffset(),
             "Content-Type": contentType ? contentType : 'application/x-www-form-urlencoded'
         };
