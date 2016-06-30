@@ -19,7 +19,7 @@ function FoodService($q, $http, Connection) {
     }
 
     this.getLastUsed = function(mealId) {
-        return Connection.request("newTrack/nutrition/id/newTrackNutrition.json", {mealId: mealId});
+        return Connection.request("newTrack/nutrition/" + mealId + "/newTrackNutrition.json");
     }
 }
 

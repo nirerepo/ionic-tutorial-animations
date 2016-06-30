@@ -3,7 +3,7 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
         "plates": [],
         "search": '',
         "selectedFood": null,
-        "foodAmount": 1
+        "foodAmounts" : {}
     };
     $scope.$on('$ionicView.enter', function() {
     });
@@ -60,33 +60,48 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
                             hc: fields.hc? fields.hc[0]:null,
                             tipoitem: fields.tipoitem? fields.tipoitem[0]:null
                             };
+            $scope.data.measures = [$scope.data.unidades, 'Gramos'];
+            $scope.data.foodAmounts[$scope.data.unidades] = 1;
             $scope.data.selectedFood = plateData;
-            $scope.data.unidades = _(plateData.medida_casera).upperFirst();
+            this.updateEquivalences();
             $scope.foodTrackModal.show();
         },
         addFrecuentPlate : function(plate) {
-            var plateData = {name: plate.title, kcal: plate.calories, id: plate.id, medida_casera: plate.medida_casera};
-            $scope.data.unidades = _(plateData.medida_casera).upperFirst();
+            var plateData = {name: plate.title, kcal: plate.calories, id: plate.id, medida_casera: plate.medida_casera, cantidad_medida_casera: plate.cantidad_medida_casera};
+            $scope.data.unidades = _(plateData.medida_casera).upperFirst() || 'Ración';
+            $scope.data.measures = [$scope.data.unidades, 'Gramos'];
+            $scope.data.foodAmounts[$scope.data.unidades] = 1;
             $scope.data.selectedFood = plateData;
+            this.updateEquivalences();
             $scope.foodTrackModal.show();
         },
         saveDetails : function() {
             $scope.foodTrackModal.hide();
-            savePlate($scope.data.selectedFood, $scope.data.foodAmount);
+            savePlate($scope.data.selectedFood, $scope.data.foodAmounts[$scope.data.unidades]);
           },
         closeFoodDetails : function() {
             $scope.foodTrackModal.hide();
         },
         increaseAmount: function() {
-            $scope.data.foodAmount += 1;
-
+            $scope.data.foodAmounts[$scope.data.unidades] += 1;
+            this.updateEquivalences();
         },
         decreaseAmount: function() {
-            if ($scope.data.foodAmount > 1)
-                $scope.data.foodAmount -= 1;
+            if ($scope.data.foodAmounts[$scope.data.unidades] > 1)
+                $scope.data.foodAmounts[$scope.data.unidades] -= 1;
+            this.updateEquivalences();
         },
         keepOnlyNumbers: function() {
-            $scope.data.foodAmount = $scope.data.foodAmount.replace(/\D/, '');
+            $scope.data.foodAmounts[$scope.data.unidades] = $scope.data.foodAmounts[$scope.data.unidades].replace(/\D/, '');
+            this.updateEquivalences();
+        },
+        updateEquivalences: function() {
+            _($scope.data.measures).each(function(m) {
+                if (m != $scope.data.unidades) {
+                    console.log($scope.data.selectedFood);
+                    $scope.data.foodAmounts[m] = $scope.data.foodAmounts[$scope.data.unidades] * $scope.data.selectedFood.cantidad_medida_casera;
+                }
+            });
         }
     }
 

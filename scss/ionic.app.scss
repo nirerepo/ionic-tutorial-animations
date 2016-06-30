@@ -123,6 +123,13 @@ p {
 	font-size: $base-font-size-default;
 }
 
+p.info,
+span.info {
+	font-size: $small-font-size-default;
+	color: $small-font-color;
+	font-family: $small-font-family;
+}
+
 hr.light {
 	border: 1px solid rgba(255,255,255,.15);
 }
@@ -315,11 +322,6 @@ select[readonly] {
 	color: $base-font-color-dark;
 }
 
-.list .item .item-info {
-	font-size: $small-font-size-default;
-	color: $small-font-color;
-}
-
 .tab-item {
 	opacity: inherit;
 }
@@ -504,9 +506,7 @@ select[readonly] {
 	padding: 10px 50px 10px 15px;
 }
 
-#diary .card .item-body span.item-info {
-	font-family: $small-font-family;
-	color: $small-font-color;
+.card .item-body.content .info {
     margin: 0px;
     display: block;
 }
@@ -880,7 +880,7 @@ a.left {
 	font-size: 18px!important;
 }
 
-.info {
+.more-info {
 	position: relative;
 	font-size: 25px;
 	height: 170px;
@@ -890,7 +890,7 @@ a.left {
 	margin-left: 20px;
 }
 
-.info i {
+.more-info i {
 	display: table-cell;
 	vertical-align: middle;
 }

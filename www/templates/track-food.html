@@ -12,7 +12,7 @@
 <ion-content>
 
 <!-- EMPTY SCREEN -->
-<div ng-hide="data.plates.length > 0 || lastUsed.length > 0" class="empty centered">
+<div ng-show="data.plates.length == 0 && lastUsed.length == 0" class="empty centered">
   <div class="row padding-vertical">
     <div class="col col-33 col-offset-33">
       <img class="full-image" src="img/others/illustrations/search.png">
@@ -31,7 +31,7 @@
 </div>
 
 <!-- FRECUENTS LIST -->
-<div class="frecuents-list" ng-hide="data.plates.length > 0 || lastUsed.length == 0">
+<div class="frecuents-list" ng-show="data.plates.length == 0 && lastUsed.length > 0">
   <div class="row">
     <div class="col">
       <span>Frecuentes</span>
@@ -40,14 +40,14 @@
   <ul class="list">
     <li class="item" ng-repeat="plate in lastUsed" ng-click="foodTracker.addFrecuentPlate(plate)" >
       <span class="item-title">{{plate.title}}</span><br>
-      <span class="item-info">{{plate.calories | number : 0}} Kcal ({{plate.id}})</span>
+      <span class="info">{{plate.calories | number : 0}} Kcal ({{plate.id}})</span>
     </li>
   </ul>
 </div>
   <ul class="list">
     <li class="item" ng-repeat="plate in data.plates" ng-click="foodTracker.addPlate(plate)">
       <span class="item-title">{{plate.fields.nombredieta[0]}}</span><br>
-      <span class="item-info">{{plate.fields.kcal?plate.fields.kcal[0]:"0" | number : 0}} Kcal ({{plate.fields.id[0]}})</span>
+      <span class="info">{{plate.fields.kcal?plate.fields.kcal[0]:"0" | number : 0}} Kcal ({{plate.fields.id[0]}})</span>
     </li>
   </ul>
 </ion-content>
