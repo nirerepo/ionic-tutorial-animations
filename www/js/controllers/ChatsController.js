@@ -1,4 +1,4 @@
-function ChatController($scope, $interval, $timeout, $ionicScrollDelegate, Chats, HealthStore) {
+function ChatController($scope, $interval, $timeout, $ionicScrollDelegate, Chats) {
     var INTERVALO_NUEVO_MENSAJE = 3000;
     var cancelInterval = null;
 
@@ -18,11 +18,6 @@ function ChatController($scope, $interval, $timeout, $ionicScrollDelegate, Chats
         $interval.cancel(cancelInterval);
         cancelInterval = null;
     });
-
-    $scope.initHealthTracking = function(){
-        console.log("pedido de inicializacion de fit :D");
-        HealthStore.autorizeHealthService();
-    };
 }
 
 angular.module('nire.controllers')

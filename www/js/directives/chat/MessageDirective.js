@@ -1,4 +1,4 @@
-function MessageDirective(Login, $state, Chats) {
+function MessageDirective(Login, $state, Chats, HealthStore) {
     function LinkFunction(scope) {
         scope.template = "templates/chat/" + scope.message.type + ".html";
     }
@@ -6,6 +6,10 @@ function MessageDirective(Login, $state, Chats) {
     function ControllerFunction($scope) {
         // Aca se envian los option buttons
         $scope.sendResponseOption = function(opt) {
+            // TODO: Este no es el lugar de esto
+            if(opt.script)
+                $scope[opt.script]();
+
             opt.answer = opt.value;
             Chats.replyMessage(opt, $scope.message.id);
         };
@@ -18,6 +22,11 @@ function MessageDirective(Login, $state, Chats) {
 
         $scope.getResponse = function() {
             return Chats.getResponse($scope.message.id);
+        };
+
+        $scope.initHealthTracking = function(){
+            console.log("pedido de inicializacion de fit :D");
+            HealthStore.autorizeHealthService();
         };
     }
 
