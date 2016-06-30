@@ -2,13 +2,23 @@
  * Consulta periodicamente al servidor en busca de notificaciones u otras operaciones.
  * @param {angular.IIntervalService} $interval
  */
-function MonitorService(Connection, $interval, messagingService, Timeline, $localStorage, HealthStore) {
+function MonitorService(Connection, $interval, messagingService, Timeline, $localStorage, HealthStore, push) {
     /** @type number */
     var delay = 5000;
 
     /** @type ng.IPromise<any> */
     var intervalPromise = null;
     var userSerial = $localStorage.userSerial?$localStorage.userSerial:0;
+
+    this.pushToken = "This is the push token in a device.";
+    
+    // Cuando se instancia este controller, aprovechamos para inicializar
+    // las notificaciones push
+    push.init().then(function(value) { 
+        this.pushToken = value; 
+        console.log(this.pushToken)
+        Connection.request("registry/device", { deviceToken: value, platform: device.platform, deviceId: device.uuid })
+    }.bind(this));
 
     function intervalFunction() {
         Connection.request("notification/pending", { id: messagingService.getLastMessage() })

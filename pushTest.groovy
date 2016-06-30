@@ -26,6 +26,8 @@ def msgBody = [
         title: options.a,
         redirect: "tab.${options.r}".toString(),
         bigview: true,
+        "content-available": "1",
+        id: new Date().getTime()
     ]
 ]
 if(options.c)
