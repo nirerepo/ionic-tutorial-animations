@@ -65,7 +65,7 @@ $header-font-size-smaller:			10px;
 $background-1:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); // url("../img/backgrounds/clouds.jpg"); //Image
 $background-2:						linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); //Gradient
 $background-3:						#EDF2F5; //Solid-color-1
-$background-pastday:				linear-gradient(-179deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
+$background-pastday:				linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
 
 //	Element default details
 $shadow-default:                   	0px 1px 2px 0px rgba(0,0,0,0.20); 
@@ -437,13 +437,7 @@ select[readonly] {
 }
 
 #diary .card.add .item span.plus-circle-icon {
-    clear: none;
-    display: block;
-    float: left;
-    margin-right: 5px;
-    background-image: url("../img/icons/plus_circle.png");
-    width: 30px;
-    height: 30px;
+	background-image: url("../img/icons/plus_circle.png");
     background-size: cover;
 }
 
@@ -554,6 +548,23 @@ select[readonly] {
 .card .item-complex.item-icon-right .item-content {
 	padding-left: 16px;
 	padding-right: 16px;
+}
+
+.card span.title-icon {
+	clear: none;
+    display: block;
+    float: left;
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.card span.title-icon i {
+	font-size: 20px;
+	line-height: 30px;
+	text-align: center;
+
 }
 
 ///////////////////
@@ -923,7 +934,7 @@ $num-colors: 10;
 	display: block;
 }
 
-.card.widget {
+.widget .card {
 	margin: 0px 0px 20px 0px!important;
     height: 170px;
 }
@@ -945,21 +956,21 @@ $num-colors: 10;
 	opacity: 0.25;
 }
 
-.card.widget h2 {
+.widget .card h2 {
 	font-family: $header-font-family-alt;
 	font-size: $small-font-size-default;
 	color: rgba($light, 0.75);
 	margin: 5px 0 0 5px;
 }
 
-.card.widget i.icon-info {
+.card i.icon-info {
 	float: right;
 	color: $light;
 	font-size: 25px;
 }
 
 // Challenges
-.card.widget span.challenge-title {
+.widget .card span.challenge-title {
 	color: $light;
 	font-size: $base-font-size-large;
 	margin: 20px 0 15px 5px;
@@ -986,13 +997,13 @@ $num-colors: 10;
     background-position: center center;
 }
 
-.card.widget.milestones .challenge-image-area {
+.widget .card.milestones .challenge-image-area {
 	height: 170px;
 	text-align: center;
 	background-color: rgba($dark,.25);
 }
 
-.card.widget.milestones .challenge-image-area .image {
+.widget .card.milestones .challenge-image-area .image {
     height: 100px;
     background-repeat: no-repeat;
     background-position: center;
@@ -1000,13 +1011,13 @@ $num-colors: 10;
 }
 
 //Challenge target - chart
-.card.widget .donut-chart {
+.widget .card .donut-chart {
 	position: relative;
 	max-width: 110px;
 	min-width: 110px
 }
 
-.card.widget .donut-chart .challenge-image {
+.widget .card .donut-chart .challenge-image {
 	top: 50%;
     left: 50%;
     bottom: auto;
@@ -1019,26 +1030,84 @@ $num-colors: 10;
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
-.card.widget .progress .current,
-.card.widget .progress .max {
+.widget .card .progress .current,
+.widget .card .progress .max {
 	display: block!important;
 	width: 100%;
 }
 
-.card.widget .progress .current {
+.widget .card .progress .current {
 	font-family: $base-font-family;
 	font-size: 24px;
 	color: $light;
 	margin-bottom: 5px;
 }
 
-.card.widget .progress .max {
+.widget .card .progress .max {
 	font-family: $base-font-family;
 	font-size: 14px;
 	color: rgba(255,255,255,0.50);
 }
 
+// WATER WIDGET
+.card.water {
+	background: $dark-transparent-color;
+	height: 170px;
+    color: $light;
+    position: relative;
+}
+
+.card.water .progress,
+.card.water .inner-wrapper {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+}
+
+.card.water .progress {
+    background-color: #7ED5FC;
+    bottom: 0;
+}
+
+.card.water h2 {
+    margin:0;
+    color: $light;
+    font-size: $header-font-size-large;
+    line-height: 30px;
+}
+
+.card.water .current {
+	font-family: MovistarText;
+	font-size: 72px;
+	color: #FFFFFF;
+	text-align: center;
+	height: 80px;
+	line-height: 60px;
+}
+
+.card.water .controller {
+	text-align: center;
+	padding-top: 12px;
+}
+
+.card.water .button {
+    border-radius: 55px;
+    height: 55px;
+    width: 55px;
+    font-size: 26px;
+    line-height: 52px;
+    color: $dark;
+}
+
+.card.water .target {
+	text-align: center;
+	font-family: $base-font-family-bold;
+	font-size: $base-font-size-default;
+	color: $light;
+}
+
 // TEST
-.test-border {
+.test {
 	border: 1px dashed red!important;
 }

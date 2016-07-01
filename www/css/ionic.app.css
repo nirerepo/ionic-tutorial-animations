@@ -9973,7 +9973,7 @@ select[readonly] {
   background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
 .pastday {
-  background-image: linear-gradient(-179deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
+  background-image: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%);
   background: rgba(170, 170, 170, 0.65); }
 
 #welcome.pane {
@@ -10076,13 +10076,7 @@ select[readonly] {
   padding-top: 3px; }
 
 #diary .card.add .item span.plus-circle-icon {
-  clear: none;
-  display: block;
-  float: left;
-  margin-right: 5px;
   background-image: url("../img/icons/plus_circle.png");
-  width: 30px;
-  height: 30px;
   background-size: cover; }
 
 #diary .card.add .item p {
@@ -10175,6 +10169,20 @@ select[readonly] {
 .card .item-complex.item-icon-right .item-content {
   padding-left: 16px;
   padding-right: 16px; }
+
+.card span.title-icon {
+  clear: none;
+  display: block;
+  float: left;
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  text-align: center; }
+
+.card span.title-icon i {
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center; }
 
 .frecuents-list {
   padding-top: 10px;
@@ -10492,7 +10500,7 @@ ion-slides {
   height: inherit !important;
   display: block; }
 
-.card.widget {
+.widget .card {
   margin: 0px 0px 20px 0px !important;
   height: 170px; }
 
@@ -10509,18 +10517,18 @@ ion-slides {
   background: #fff !important;
   opacity: 0.25; }
 
-.card.widget h2 {
+.widget .card h2 {
   font-family: MovistarHeadline-Regular;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
   margin: 5px 0 0 5px; }
 
-.card.widget i.icon-info {
+.card i.icon-info {
   float: right;
   color: #fff;
   font-size: 25px; }
 
-.card.widget span.challenge-title {
+.widget .card span.challenge-title {
   color: #fff;
   font-size: 18px;
   margin: 20px 0 15px 5px; }
@@ -10542,23 +10550,23 @@ ion-slides {
   background-repeat: no-repeat;
   background-position: center center; }
 
-.card.widget.milestones .challenge-image-area {
+.widget .card.milestones .challenge-image-area {
   height: 170px;
   text-align: center;
   background-color: rgba(1, 52, 79, 0.25); }
 
-.card.widget.milestones .challenge-image-area .image {
+.widget .card.milestones .challenge-image-area .image {
   height: 100px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%; }
 
-.card.widget .donut-chart {
+.widget .card .donut-chart {
   position: relative;
   max-width: 110px;
   min-width: 110px; }
 
-.card.widget .donut-chart .challenge-image {
+.widget .card .donut-chart .challenge-image {
   top: 50%;
   left: 50%;
   bottom: auto;
@@ -10571,21 +10579,70 @@ ion-slides {
   background-size: 100%;
   background-repeat: no-repeat; }
 
-.card.widget .progress .current,
-.card.widget .progress .max {
+.widget .card .progress .current,
+.widget .card .progress .max {
   display: block !important;
   width: 100%; }
 
-.card.widget .progress .current {
+.widget .card .progress .current {
   font-family: MovistarText;
   font-size: 24px;
   color: #fff;
   margin-bottom: 5px; }
 
-.card.widget .progress .max {
+.widget .card .progress .max {
   font-family: MovistarText;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.5); }
 
-.test-border {
+.card.water {
+  background: rgba(1, 52, 79, 0.5);
+  height: 170px;
+  color: #fff;
+  position: relative; }
+
+.card.water .progress,
+.card.water .inner-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0; }
+
+.card.water .progress {
+  background-color: #7ED5FC;
+  bottom: 0; }
+
+.card.water h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 30px; }
+
+.card.water .current {
+  font-family: MovistarText;
+  font-size: 72px;
+  color: #FFFFFF;
+  text-align: center;
+  height: 80px;
+  line-height: 60px; }
+
+.card.water .controller {
+  text-align: center;
+  padding-top: 12px; }
+
+.card.water .button {
+  border-radius: 55px;
+  height: 55px;
+  width: 55px;
+  font-size: 26px;
+  line-height: 52px;
+  color: #01344F; }
+
+.card.water .target {
+  text-align: center;
+  font-family: MovistarText-Bold;
+  font-size: 16px;
+  color: #fff; }
+
+.test {
   border: 1px dashed red !important; }
