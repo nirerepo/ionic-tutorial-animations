@@ -40,14 +40,16 @@
   <ul class="list">
     <li class="item" ng-repeat="plate in lastUsed" ng-click="foodTracker.addFrecuentPlate(plate)" >
       <span class="item-title">{{plate.title}}</span><br>
-      <span class="info">{{plate.calories | number : 0}} Kcal ({{plate.id}})</span>
+      <span class="info">1 {{plate.medida_casera? plate.medida_casera: "Ración"}} {{plate.cantidad_medida_casera? plate.cantidad_medida_casera : "100"}}gr - {{calcularCalorias(plate.calories, plate.cantidad_medida_casera)}}Kcal ({{plate.id}})</span>
     </li>
   </ul>
 </div>
   <ul class="list">
     <li class="item" ng-repeat="plate in data.plates" ng-click="foodTracker.addPlate(plate)">
       <span class="item-title">{{plate.fields.nombredieta[0]}}</span><br>
-      <span class="info">{{plate.fields.kcal?plate.fields.kcal[0]:"0" | number : 0}} Kcal ({{plate.fields.id[0]}})</span>
+      <span class="info">
+        1 {{plate.fields.medida_casera? plate.fields.medida_casera[0]: "Ración"}} {{plate.fields.cantidad_medida_casera? plate.fields.cantidad_medida_casera[0] : "100"}}gr - {{calcularCalorias(plate.fields.kcal[0], plate.fields.cantidad_medida_casera[0])}}Kcal ({{plate.fields.id[0]}})
+      </span>
     </li>
   </ul>
 </ion-content>

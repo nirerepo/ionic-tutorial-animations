@@ -1,4 +1,4 @@
-function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal, Food, Timeline) {
+function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal, Food, Timeline, $filter) {
     $scope.data = {
         "plates": [],
         "search": '',
@@ -42,6 +42,11 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
         })
         Timeline.addPlate(mealId, plateData, date, amount);
         $state.go("tab.dash");
+    }
+
+    $scope.calcularCalorias = function(calorias, medidaCasera) {
+        if(!medidaCasera) return $filter('number')(calorias, 0)
+        return $filter('number')(medidaCasera * calorias / 100, 0)
     }
 
     $scope.foodTracker = {
