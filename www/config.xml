@@ -83,7 +83,7 @@
         <param name="APP_ID" value="224019634634852" />
         <param name="APP_NAME" value="NireApp" />
     </gap:plugin>
-    <gap:plugin name="phonegap-plugin-push" spec="~1.6.4" source="npm">
+    <gap:plugin name="phonegap-plugin-push" version="1.6.1" source="npm">
         <param name="SENDER_ID" value="606551403580" />
     </gap:plugin>
     <gap:plugin name="cordova-plugin-sms" version="1.0.5" source="npm" />
