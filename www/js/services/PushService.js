@@ -16,7 +16,12 @@ function PushService($q, $state, Connection) {
         }
 
         this.push = PushNotification.init({
-            android: { senderID: "606551403580" }
+            android: { senderID: "606551403580" },
+            ios: {
+                alert: "true",
+                badge: "true",
+                sound: "true"
+            }
         });
         
         this.push.on('registration', function(data) { 
