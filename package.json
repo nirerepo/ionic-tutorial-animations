@@ -27,6 +27,12 @@
     {
       "locator": "https://github.com/nirerepo/cordova-plugin-health",
       "id": "cordova-plugin-facebook4"
+    },
+    {
+      "variables": {
+        "SENDER_ID": "606551403580"
+      },
+      "locator": "phonegap-plugin-push"
     }
   ],
   "cordovaPlatforms": [
