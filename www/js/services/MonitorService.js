@@ -2,13 +2,13 @@
  * Consulta periodicamente al servidor en busca de notificaciones u otras operaciones.
  * @param {angular.IIntervalService} $interval
  */
-function MonitorService(Connection, $interval, messagingService, Timeline, $localStorage, HealthStore, push) {
+function MonitorService(Connection, $interval, messagingService, Timeline, userStorage, $localStorage, HealthStore, push) {
     /** @type number */
     var delay = 5000;
 
     /** @type ng.IPromise<any> */
     var intervalPromise = null;
-    var userSerial = $localStorage.userSerial?$localStorage.userSerial:0;
+    var userSerial = userStorage.userSerial?userStorage.userSerial:0;
 
     this.pushToken = "This is the push token in a device.";
     
@@ -30,7 +30,7 @@ function MonitorService(Connection, $interval, messagingService, Timeline, $loca
                     console.log("REFRESH!!");
                     Timeline.get(true);
                     userSerial = _(response.data.meta.serial).toInteger();
-                    $localStorage.userSerial = userSerial;
+                    userStorage.userSerial = userSerial;
                 }
 
                 //console.log(response);

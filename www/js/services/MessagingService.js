@@ -1,11 +1,11 @@
 /**
  * Manejar los mensajes a los usuarios.
  */
-function MessagingService($rootScope, $localStorage) {
-    if(!$localStorage.messages) {
+function MessagingService($rootScope, userStorage) {
+    if(!userStorage.messages) {
         console.log("Inicializando messages storage.");
-        $localStorage.messages = [];
-        $localStorage.responses = {};
+        userStorage.messages = [];
+        userStorage.responses = {};
     }
 
     /**
@@ -17,7 +17,7 @@ function MessagingService($rootScope, $localStorage) {
     this.receive = function(message) {
         splitMessage(message).forEach(function(element) {
             var adaptedMessage = adaptMessage(element);
-            $localStorage.messages.push(adaptedMessage);
+            userStorage.messages.push(adaptedMessage);
 
             $rootScope.$broadcast('nire.chat.messageReceived', { message: adaptedMessage });
         });
@@ -28,7 +28,7 @@ function MessagingService($rootScope, $localStorage) {
      */
     this.receiveReply = function(reply){
         for (var attrname in reply) { 
-            $localStorage.responses[attrname] = reply[attrname];
+            userStorage.responses[attrname] = reply[attrname];
         }
     }
 
@@ -36,7 +36,7 @@ function MessagingService($rootScope, $localStorage) {
      * Obtener el id del ultimo mensaje
      */
     this.getLastMessage = function() {
-        var last = _.last($localStorage.messages);
+        var last = _.last(userStorage.messages);
         return last ? last.id : 0;
     };
 

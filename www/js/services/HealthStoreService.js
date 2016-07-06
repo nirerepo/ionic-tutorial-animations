@@ -1,4 +1,4 @@
-function HealthStoreService(Connection, $rootScope, $localStorage) {
+function HealthStoreService(Connection, $rootScope, userStorage) {
     
     this.saveInformation = function(queryText) {
     }
@@ -7,10 +7,10 @@ function HealthStoreService(Connection, $rootScope, $localStorage) {
         var date = moment(response.startDate).format('YYYYMMDD')
         var data = { date: date, steps: response.value }
         Connection.request("track/addSteps", data).then(function(){
-            var lastUpdate = $localStorage.lastFitUpdate? moment($localStorage.lastFitUpdate):null;
+            var lastUpdate = userStorage.lastFitUpdate? moment(userStorage.lastFitUpdate):null;
             var currentUpdate = moment(response.startDate); 
             if(!lastUpdate || lastUpdate.isBefore(currentUpdate))
-                $localStorage.lastFitUpdate = currentUpdate;
+                userStorage.lastFitUpdate = currentUpdate;
         });
     };
 
@@ -20,8 +20,8 @@ function HealthStoreService(Connection, $rootScope, $localStorage) {
 
     this.getSteptData = function() {
         // Obtengo la ultima fecha de actualizacion, si no existe, propongo un maximo de 5 dis en el pasado para pedir
-        var lastUpdate = $localStorage.lastFitUpdate? moment($localStorage.lastFitUpdate) : moment().startOf('day').subtract(5, 'days');
-        var autorized = $localStorage.fitAutorized? $localStorage.fitAutorized : false;
+        var lastUpdate = userStorage.lastFitUpdate? moment(userStorage.lastFitUpdate) : moment().startOf('day').subtract(5, 'days');
+        var autorized = userStorage.fitAutorized? userStorage.fitAutorized : false;
 
         if (navigator.health && autorized != false) {
             navigator.health.isAvailable(function() {
@@ -47,7 +47,7 @@ function HealthStoreService(Connection, $rootScope, $localStorage) {
     this.autorizeHealthService = function() {
         navigator.health.isAvailable(function() {
             navigator.health.requestAuthorization(['steps'], function() {
-                $localStorage.fitAutorized = true;
+                userStorage.fitAutorized = true;
                 getSteptData();
             }, function(e) {
                 console.log("No se ha obtenido autorización.", e);
@@ -75,7 +75,7 @@ function HealthStoreService(Connection, $rootScope, $localStorage) {
                 };
                 navigator.health.requestAuthorization(permAggregated.concat(permUnit), function() {
                     // Autorizo al proceso de obtencion de pasos, y lo lanzo para que actualize
-                    $localStorage.fitAutorized = true;
+                    userStorage.fitAutorized = true;
                     $rootScope.$broadcast('onResume');
                     permAggregated.forEach(function(item) {
                         navigator.health.queryAggregated({

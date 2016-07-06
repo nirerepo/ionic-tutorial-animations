@@ -1,4 +1,4 @@
-function ChatService($rootScope, Connection, $localStorage) {
+function ChatService($rootScope, Connection, userStorage) {
     var self = this;
 
     // Registramos en el rootScope una funcion para recuperar la cantidad
@@ -9,15 +9,15 @@ function ChatService($rootScope, Connection, $localStorage) {
 
     // Lista de los mensajes leidos. Esta lista se inicializa desde
     // localStorage y se agregan elementos a travez de getNewMessage
-    var readedMessages = _.takeWhile($localStorage.messages, function(element) {
-        return element.id <= $localStorage.lastReadedMessage || 0;
+    var readedMessages = _.takeWhile(userStorage.messages, function(element) {
+        return element.id <= userStorage.lastReadedMessage || 0;
     });
 
     // Lista con los mensajes que aún no fueron leidos. Esta lista se inicializa
     // desde localStorage y se van quitando elementos a medida que se llama
     // a getNewMessage
-    var receivedMessages = _.dropWhile($localStorage.messages, function(element) {
-        return element.id <= $localStorage.lastReadedMessage || 0;
+    var receivedMessages = _.dropWhile(userStorage.messages, function(element) {
+        return element.id <= userStorage.lastReadedMessage || 0;
     });
 
     /**
@@ -45,7 +45,7 @@ function ChatService($rootScope, Connection, $localStorage) {
         if(!message) return null; // Si no hay mensaje nuevo no hacemos nada.
 
         readedMessages.push(message);
-        $localStorage.lastReadedMessage = message.id;
+        userStorage.lastReadedMessage = message.id;
         return message;
     };
 
@@ -53,7 +53,7 @@ function ChatService($rootScope, Connection, $localStorage) {
      * Olvidar el estado de todo y reiniciar el modelo de datos
      */
     this.clear = function() {
-        delete $localStorage.lastReadedMessage;
+        delete userStorage.lastReadedMessage;
 
         readedMessages.length = 0;
         receivedMessages.length = 0;
@@ -68,7 +68,7 @@ function ChatService($rootScope, Connection, $localStorage) {
      * Recuperar la respuesta a una notificación.
      */
     this.getResponse = function(id){
-        return $localStorage.responses[id];
+        return userStorage.responses[id];
     };
 
     /**
@@ -79,7 +79,7 @@ function ChatService($rootScope, Connection, $localStorage) {
         reply.notificationId = msgId;
 
         // Guardamos inmediatamente la respuesta para dar un feedback rapido al usuario
-        $localStorage.responses[msgId] = {
+        userStorage.responses[msgId] = {
             message: reply.text ? reply.text : reply.value,
             notification: msgId
         };

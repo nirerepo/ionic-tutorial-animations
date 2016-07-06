@@ -1,5 +1,5 @@
 angular.module('nire.controllers', [])
-    .controller('AccountCtrl', function ($scope, $state, HealthStore, Monitor, $localStorage, Chats) {
+    .controller('AccountCtrl', function ($scope, $state, HealthStore, Monitor, userStorage, Chats) {
         $scope.$on("$ionicView.beforeEnter", function () {
             $scope.settings = {
                 serverMonitor: Monitor.isEnabled()
@@ -22,8 +22,8 @@ angular.module('nire.controllers', [])
 
         $scope.restartMessages = function() {
             Chats.clear();
-            $localStorage.messages.length = 0;
-            $localStorage.responses = {};
+            userStorage.messages.length = 0;
+            userStorage.responses = {};
         };
     })
 
