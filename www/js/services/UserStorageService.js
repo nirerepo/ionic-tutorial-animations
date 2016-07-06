@@ -17,7 +17,7 @@ function UserStorageService($localStorage, $rootScope, $timeout) {
     // Copia los valores del servicio al $localStorage
     function apply() {
         var username = window.localStorage.username;
-        if(username === null) return;
+        if(!username) return;
 
         // Copiamos los valores de la clase al $localStorage
         // Mientras borramos de _lastStorage los datos que ya fueron copiados
@@ -30,7 +30,6 @@ function UserStorageService($localStorage, $rootScope, $timeout) {
         }
 
         for(var toDelete in _lastStorage) {
-            console.log("Borrando", toDelete)
             delete $localStorage[username][toDelete];
         }
 
@@ -42,9 +41,12 @@ function UserStorageService($localStorage, $rootScope, $timeout) {
     // Copia los atributos del $localStorage al servicio
     function sync() {
         var username = window.localStorage.username;
-        if(username === null) return;
-        
-        console.log("Syncing", username);
+        if(!username) return;
+
+        for(var toDelete in self) {
+            delete self[toDelete];
+        }
+
         for (var k in $localStorage[username]) {
             self[k] = $localStorage[username][k];
         }
@@ -54,6 +56,11 @@ function UserStorageService($localStorage, $rootScope, $timeout) {
 
     $rootScope.$watch(function() {
         _debounce || (_debounce = $timeout(apply, 100, false));
+    });
+
+    // Si se cambia el usuario se debe hacer un sync
+    $rootScope.$on("login", function(event, username) {
+        sync();
     });
 
     sync();

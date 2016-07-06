@@ -7,18 +7,8 @@ function ChatService($rootScope, Connection, userStorage) {
         return (self.isWritingMessage() === true) ? "!!" : "";
     };
 
-    // Lista de los mensajes leidos. Esta lista se inicializa desde
-    // localStorage y se agregan elementos a travez de getNewMessage
-    var readedMessages = _.takeWhile(userStorage.messages, function(element) {
-        return element.id <= userStorage.lastReadedMessage || 0;
-    });
-
-    // Lista con los mensajes que aún no fueron leidos. Esta lista se inicializa
-    // desde localStorage y se van quitando elementos a medida que se llama
-    // a getNewMessage
-    var receivedMessages = _.dropWhile(userStorage.messages, function(element) {
-        return element.id <= userStorage.lastReadedMessage || 0;
-    });
+    var readedMessages = [];
+    var receivedMessages = [];
 
     /**
      * Retorna la lista de mensajes que ya fueron leidos. Esta es una lista viva
@@ -59,6 +49,29 @@ function ChatService($rootScope, Connection, userStorage) {
         receivedMessages.length = 0;
     };
 
+    this.initMessages = function() {
+        // Lista de los mensajes leidos. Esta lista se inicializa desde
+        // localStorage y se agregan elementos a travez de getNewMessage
+        var readedMessagesTemp = _.takeWhile(userStorage.messages, function(element) {
+            return element.id <= userStorage.lastReadedMessage || 0;
+        });
+
+        // Lista con los mensajes que aún no fueron leidos. Esta lista se inicializa
+        // desde localStorage y se van quitando elementos a medida que se llama
+        // a getNewMessage
+        var receivedMessagesTemp = _.dropWhile(userStorage.messages, function(element) {
+            return element.id <= userStorage.lastReadedMessage || 0;
+        });
+
+        readedMessages.push.apply(readedMessages, readedMessagesTemp);
+        receivedMessages.push.apply(receivedMessages, receivedMessagesTemp);
+    };
+
+    $rootScope.$on("login", function() {
+        self.clear();
+        self.initMessages();
+    });
+
     // Cuando se recibe un nuevo mensaje agregarlo a la lista de mensajes no leidos.
     $rootScope.$on('nire.chat.messageReceived', function(event, msg) {
         receivedMessages.push(msg.message);
@@ -86,6 +99,8 @@ function ChatService($rootScope, Connection, userStorage) {
 
         Connection.request("notification/answer", reply, "application/json");
     };
+
+    this.initMessages();
 }
 
 angular.module('nire.services')

@@ -2,11 +2,16 @@
  * Manejar los mensajes a los usuarios.
  */
 function MessagingService($rootScope, userStorage) {
-    if(!userStorage.messages) {
-        console.log("Inicializando messages storage.");
-        userStorage.messages = [];
-        userStorage.responses = {};
-    }
+    /**
+     * Inicializa las estructuras donde se guardan los mensajes del usuario si es necesario
+     */
+    this.init = function() {
+        if(!userStorage.messages) {
+            console.log("Inicializando messages storage.");
+            userStorage.messages = [];
+            userStorage.responses = {};
+        }
+    };
 
     /**
      * Recibir desde el servidor un mensaje, adaptarlo para las estructuras utilizadas en el cliente
@@ -102,6 +107,9 @@ function MessagingService($rootScope, userStorage) {
 
         return result;
     }
+
+     this.init();
+     $rootScope.$on("login", this.init);
 }
 
 angular.module("nire.services")
