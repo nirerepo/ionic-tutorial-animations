@@ -17,7 +17,7 @@
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="*" />
-    <preference name="phonegap-version" value="cli-6.0.0" />
+    <preference name="phonegap-version" value="cli-6.1.0" />
     
     <preference name="webviewbounce" value="false"/>
     <preference name="UIWebViewBounce" value="false"/>
