@@ -68,6 +68,10 @@ function MessagingService($rootScope, userStorage) {
             result.options = toButtonStructure(serverMessage.button);
         }
 
+        if(serverMessage.value) {
+            result.value = serverMessage.value;
+        }
+
         return result;
     }
 
@@ -98,7 +102,7 @@ function MessagingService($rootScope, userStorage) {
         var result = [];
         for(var i = 0; i < text.length; i++) {
             // TODO: En lugar de los parametros, preservarlos y modificar unicamente los necesarios
-            result.push({id: message.id, source: message.source, type: message.type, message: text[i], event: message.event});
+            result.push({id: message.id, source: message.source, type: message.type, message: text[i], event: message.event, value:message.value});
         }
 
         // Si hay botones, los botones apareceran unicamente en el último mensaje.

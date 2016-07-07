@@ -28,6 +28,10 @@ function MessageDirective(Login, $state, Chats, HealthStore) {
             console.log("pedido de inicializacion de fit :D");
             HealthStore.autorizeHealthService();
         };
+
+        $scope.redirect = function(page) {
+            $state.go(page);
+        }
     }
 
     return {
