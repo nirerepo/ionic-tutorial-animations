@@ -8,7 +8,10 @@
     <ion-list>
       <ion-toggle ng-model="settings.serverMonitor">Enable Server Monitor</ion-toggle>
     </ion-list>
-    <button ng-click="initHealthTracking()">Health Store</button>
-    <button ng-click="restartMessages()">Limpiar mensajes del chat</button>
+    <ul>
+      <li><button ng-click="initHealthTracking()" class="button button-full button-stable">Health Store</button></li>
+      <li><button ng-click="restartMessages()" class="button button-full button-positive">Limpiar mensajes del chat</button></li>
+      <li><button ng-click="restartConversation()"" class="button button-full button-calm">Reiniciar conversación Movistar</button></li>
+    </ul>
   </ion-content>
 </ion-view>

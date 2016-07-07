@@ -1,5 +1,5 @@
 angular.module('nire.controllers', [])
-    .controller('AccountCtrl', function ($scope, $state, HealthStore, Monitor, userStorage, Chats) {
+    .controller('AccountCtrl', function ($scope, $state, HealthStore, Monitor, userStorage, Chats, Connection) {
         $scope.$on("$ionicView.beforeEnter", function () {
             $scope.settings = {
                 serverMonitor: Monitor.isEnabled()
@@ -15,15 +15,30 @@ angular.module('nire.controllers', [])
             console.log("Sign-Out");
             $state.go('signin');
         };
+
         // TODO: ESTO NO PINTA NADA AQUÍ, ES SOLO UNA PRUEBA!!
         $scope.initHealthTracking = function() {
             HealthStore.alertData();
         };
 
+        // TODO: Reiniciar mensajes para testing.
         $scope.restartMessages = function() {
+            console.log("Borrando estado");
+
             Chats.clear();
             userStorage.messages.length = 0;
             userStorage.responses = {};
+        };
+
+        // TODO: Reiniciar conversacion para testing.
+        $scope.restartConversation = function() {
+            var username = window.localStorage.username;
+            Connection.request("debug/debugNotifications/restartMovistarConversation", { username: username })
+                    .then(function(response) {
+                        console.log("Reciviendo respuesta", response);
+                        if(response.data.status == "ok")
+                            $scope.restartMessages();
+                    });
         };
     })
 
