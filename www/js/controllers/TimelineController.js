@@ -49,6 +49,10 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate){
         var date = moment().subtract(4 - $scope.data.slider.activeIndex, 'days').format("YYYYMMDD");
         Timeline.incrWater(date);
     }
+    $scope.decrWater = function() {
+        var date = moment().subtract(4 - $scope.data.slider.activeIndex, 'days').format("YYYYMMDD");
+        Timeline.decrWater(date);
+    }
 }
 
 angular.module('nire.controllers')
