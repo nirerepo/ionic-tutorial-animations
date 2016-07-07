@@ -40,6 +40,10 @@ angular.module('nire.controllers', [])
                             $scope.restartMessages();
                     });
         };
+
+        $scope.showHelp = function() {
+            $state.go('review');
+        }
     })
 
 .controller('HelpCtrl', function($scope, $state, $stateParams, $ionicNavBarDelegate, Help) {

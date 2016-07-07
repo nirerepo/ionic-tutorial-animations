@@ -127,10 +127,10 @@ angular.module('nire', [
                 templateUrl: 'templates/help.html',
                 controller: 'HelpCtrl'
             })
-            .state('helpactividad', {
-                url: '/helpactividad',
+            .state('review', {
+                url: '/review',
                 params: { startpage: { dynamic: true } },
-                templateUrl: 'templates/help-actividad.html',
+                templateUrl: 'templates/content/diet-daily-review.html',
                 controller: 'HelpCtrl'
             });
 
