@@ -151,15 +151,17 @@ function TimelineService(Connection, $filter) {
 
     this.incrWater = function(day) {
         var data = { a: 1 };
-        Connection.request("track/counter/water/"+day+"/incr", data).then(function(ret){
+        return Connection.request("track/counter/water/"+day+"/incr", data).then(function(ret){
             console.log("INCR", ret);
+            return ret;
         })
     }
 
     this.decrWater = function(day) {
         var data = { a: 1 };
-        Connection.request("track/counter/water/"+day+"/decr", data).then(function(ret){
+        return Connection.request("track/counter/water/"+day+"/decr", data).then(function(ret){
             console.log("DECR", ret);
+            return ret;
         })
     }
 }
