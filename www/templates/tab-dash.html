@@ -13,42 +13,10 @@
 <ion-content class="padding">
 <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}" class="top-widget">
 
-<!-- Card para agua -->
-<ks-swiper-slide class="swiper-slide water-widget widget">
-<div class="card water dark-transparent">
-  <div class="progress" style="height: 50%;"></div>
-  <div class="inner-wrapper">
-    <div class="row">
-      <div class="col col-80">
-        <span class="title-icon">
-          <i class="ion-waterdrop"></i>
-        </span>
-        <h2>Agua</h2>
-      </div>
-      <div class="col col-20">
-        <i class="icon-info ion-ios-information-outline"></i>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col col-33 controller">
-        <div class="button decrease"><i class="ion-minus-round"></i></div>
-      </div>
-      <div class="col col-33 current">5</div>
-      <div class="col col-33 controller">
-        <div class="button increase"><i class="ion-plus-round"></i></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col col-80 col-offset-10 target">de 10 vasos recomendados</div>
-    </div>
-  </div>
-</div>
-</ks-swiper-slide>
-
 <ks-swiper-slide class="swiper-slide challenge-widget widget" ng-repeat="challenge in day.challenges">
 
 <!-- Card para retos con 'milestones' -->
-<div ng-show="challenge.milestones" class="card  milestones dark-transparent">
+<div ng-show="challenge.type=='checks'" class="card milestones dark-transparent">
   <div class="row no-padding">
 
     <div class="col col-80 padding-horizontal">
@@ -75,7 +43,7 @@
 </div>
 
 <!-- Card para 'targets' (ejemplo, pasos, por ahora) -->
-<div ng-show="challenge.target" class="card dark-transparent">
+<div ng-show="challenge.type=='counter'" class="card dark-transparent">
   <div class="row padding-horizontal">
     <div class="col col-80">
       <h2>Objetivo: {{challenge.challenge}}</h2>
@@ -111,6 +79,36 @@
       <div class="max">
         Objetivo: {{challenge.target}}
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card para agua -->
+<div ng-show="challenge.type=='water'" class="card water dark-transparent">
+  <div class="progress" style="height: {{100*challenge.current/challenge.target}}%;"></div>
+  <div class="inner-wrapper">
+    <div class="row">
+      <div class="col col-80">
+        <span class="title-icon">
+          <i class="ion-waterdrop"></i>
+        </span>
+        <h2>Agua</h2>
+      </div>
+      <div class="col col-20">
+        <i class="icon-info ion-ios-information-outline"></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-33 controller">
+        <div ng-click="decr()" class="button decrease"><i class="ion-minus-round"></i></div>
+      </div>
+      <div class="col col-33 current">{{challenge.current}}</div>
+      <div class="col col-33 controller">
+        <div ng-click="incrWater()" class="button increase"><i class="ion-plus-round"></i></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-80 col-offset-10 target">de {{challenge.target}} vasos recomendados</div>
     </div>
   </div>
 </div>

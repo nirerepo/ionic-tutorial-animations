@@ -148,6 +148,20 @@ function TimelineService(Connection, $filter) {
             self.tracks[day].exercises.splice(self.tracks[day].exercises.indexOf(exercise), 1);
         })
     }
+
+    this.incrWater = function(day) {
+        var data = { a: 1 };
+        Connection.request("track/counter/water/"+day+"/incr", data).then(function(ret){
+            console.log("INCR", ret);
+        })
+    }
+
+    this.decrWater = function(day) {
+        var data = { a: 1 };
+        Connection.request("track/counter/water/"+day+"/decr", data).then(function(ret){
+            console.log("DECR", ret);
+        })
+    }
 }
 
 angular.module('nire.services')
