@@ -48,15 +48,20 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate){
     $scope.incrWater = function() {
         var date = moment().subtract(4 - $scope.data.slider.activeIndex, 'days').format("YYYYMMDD");
         Timeline.incrWater(date).then(function(count) {
-            _.find(_.find($scope.timelineDays, function(o) { return (o.day === date);}).challenges, function(c) { return c.type == "water"; }).current = count.data.data.water;
+            self.updateDailyWater(date, count.data.data.water);
         });
     }
     $scope.decrWater = function() {
         var date = moment().subtract(4 - $scope.data.slider.activeIndex, 'days').format("YYYYMMDD");
         Timeline.decrWater(date).then(function(count) {
-            _.find(_.find($scope.timelineDays, function(o) { return (o.day === date);}).challenges, function(c) { return c.type == "water"; }).current = count.data.data.water;
+            self.updateDailyWater(date, count.data.data.water);
         });
     }
+
+    this.updateDailyWater = function(date, amount) {
+        _.find(_.find($scope.timelineDays, function(o) { return (o.day === date);}).challenges, function(c) { return c.type == "water"; }).current = amount;
+    }
+
 }
 
 angular.module('nire.controllers')
