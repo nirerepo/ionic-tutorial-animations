@@ -85,7 +85,7 @@
 
 <!-- Card para agua -->
 <div ng-show="challenge.type=='water'" class="card water dark-transparent">
-  <div class="progress" style="height: {{100*challenge.current/challenge.target}}%;"></div>
+  <div class="progress" style="height: {{100*challenge.current/challenge.target}}%; transition: height 1.5s;"></div>
   <div class="inner-wrapper">
     <div class="row">
       <div class="col col-80">
