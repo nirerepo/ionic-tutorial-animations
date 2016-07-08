@@ -14,7 +14,7 @@ function FoodService($q, $http, Connection) {
     };
 
     this.addPlate = function(mealId, plate, date, amount) {
-        var data = { date: date, plates: [plate], idMeal: parseInt(mealId), amount: amount }
+        var data = { date: date, plates: [plate], idMeal: parseInt(mealId), amount: parseInt(amount) }
         return Connection.request("track/nutrition/add", data, "application/json");
     }
 
