@@ -29,6 +29,9 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate){
         else 
             $ionicNavBarDelegate.title(moment().subtract(4 - data.slider.activeIndex, 'days').format("DD MMM"));
     });
+    $scope.onReadySwiper = function(swiper){
+            swiper.initObservers();
+    };
 
     $scope.trackBlock = function(mealId, day) {
         return !Timeline.trackBlockExists(mealId, day);
