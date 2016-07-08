@@ -5,7 +5,8 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate){
     $scope.data = {
         sliderOptions: {
             initialSlide: Timeline.daysToFetch -1
-        }
+        },
+        timelineDays: null
     };
 
     // Cada vez que se muestra el Timeline le solicitamos al servicio
@@ -13,7 +14,7 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate){
     $scope.$on("$ionicView.beforeEnter", function () {
        var hoy = moment().format('YYYYMMDD');
        // Decoramos el timeline con una clase en función del día
-       $scope.timelineDays = _(Timeline.get()).map(function(v) {
+       $scope.data.timelineDays = _(Timeline.get()).map(function(v) {
         v.timelineClass = (hoy==v.day?'today':'pastday');
         return v;
        }).value();
@@ -59,7 +60,7 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate){
     }
 
     this.updateDailyWater = function(date, amount) {
-        _.find(_.find($scope.timelineDays, function(o) { return (o.day === date);}).challenges, function(c) { return c.type == "water"; }).current = amount;
+        _.find(_.find($scope.data.timelineDays, function(o) { return (o.day === date);}).challenges, function(c) { return c.type == "water"; }).current = amount;
     }
 
 }

@@ -20,9 +20,9 @@ function TimelineService(Connection, $filter) {
                 if (!self.tracks[date])
                     self.tracks[date] = {
                         day: date,
-                        nutrition: [],
-                        exercises: [],
-                        challenges: [[],[]]
+                        nutrition: null,
+                        exercises: null,
+                        challenges: null
                     }
                 Connection.request("timeline/" + date)
                     .then(
@@ -49,10 +49,12 @@ function TimelineService(Connection, $filter) {
                                 tmpChalle.push(item);
                             });
                             self.tracks[date].challenges = tmpChalle;
+                            //console.log("CHALLENGES: ", date, self.tracks[date].challenges);
                         }.bind(this, date)
                     );
             }
         }
+        console.log("Timeline", self.tracks);
         return self.tracks;
     }
 
@@ -99,7 +101,7 @@ function TimelineService(Connection, $filter) {
 
     this.trackBlockExists = function(mealId, day){
         var track = $filter('filter')(self.tracks[day].nutrition, {typeId: mealId}, true);
-        if(track.length === 0)
+        if(!track || track.length === 0)
             return false;
         return true;
     }
@@ -118,18 +120,18 @@ function TimelineService(Connection, $filter) {
 
     this.caloriasConsumidas = function(day) {
         var calorias = 0;
-        self.tracks[day].exercises.forEach(function(item){calorias += parseFloat(item.gastoCalorico)});
+        _(self.tracks[day].exercises).forEach(function(item){calorias += parseFloat(item.gastoCalorico)});
         return calorias;
     }
 
     this.tiempoEjercicio = function(day) {
         var tiempo = 0;
-        self.tracks[day].exercises.forEach(function(item){tiempo += parseFloat(item.tiempo)});
+        _(self.tracks[day].exercises).forEach(function(item){tiempo += parseFloat(item.tiempo)});
         return tiempo;
     }
 
     this.hasExercises = function(day) {
-        return self.tracks[day].exercises.length > 0;
+        return _(self.tracks[day].exercises).size() > 0;
     }
 
     this.eliminarPlato = function(plato, mealType, day){

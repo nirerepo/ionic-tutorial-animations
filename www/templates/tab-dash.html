@@ -8,7 +8,7 @@
 </ion-nav-buttons>
 
 <ion-slides options="data.sliderOptions" slider="data.slider">
-<ion-slide-page ng-repeat="day in timelineDays" class="{{day.timelineClass}}">
+<ion-slide-page ng-repeat="day in data.timelineDays" class="{{day.timelineClass}}">
 
 <ion-content class="padding">
 <ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}" class="top-widget">
