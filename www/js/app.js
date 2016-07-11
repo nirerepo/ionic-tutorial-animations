@@ -5,7 +5,9 @@ angular.module('nire', [
     'nire.directives',
     'ksSwiper',
     'ngStorage',
-    'angular-svg-round-progressbar'
+    'angular-svg-round-progressbar',
+    'angulartics',
+    'angulartics.google.tagmanager'
 ])
     .run(function ($ionicPlatform, $rootScope, $localStorage) {
         $ionicPlatform.ready(function () {
