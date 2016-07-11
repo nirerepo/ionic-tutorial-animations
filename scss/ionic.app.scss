@@ -32,6 +32,7 @@ $dark:                            #01344F !default;
 //	Brand colors
 $base-color:						#005C84; // Dark Blue
 $accent-color:						#7AB800; // Green
+$neutral-color:						#7F8C8D; // Dark Gray
 $dark-transparent-color:			rgba($dark, .5);
 
 //	Base Font
@@ -57,6 +58,7 @@ $icon-color-soft:					rgba($dark-transparent-color, 0.25);
 //	Headings
 $header-font-family-default:		MovistarHeadline-Bold;
 $header-font-family-alt:			MovistarHeadline-Regular;
+$header-font-size-extralarge:		24px;
 $header-font-size-large:			20px;
 $header-font-size-default:			16px;
 $header-font-size-smaller:			10px;
@@ -172,10 +174,6 @@ input::-webkit-input-placeholder {
 .h1.title,
 .bar.bar-header {
 	font-family: $header-font-family-alt;
-}
-
-.light h2 {
-	color: #FFF;
 }
 
 .centered {
@@ -383,37 +381,49 @@ select[readonly] {
 	text-decoration: underline;
 }
 
-//////////////////
-// -- DIARIO -- //
-//////////////////
-
 .card {
 	background: transparent;
 	box-shadow: $card-shadow;
 	border-radius: $card-radius;
 	padding-bottom: 0px;
-	margin: 10px 0px 5px 0px
+	margin: 10px 0px 5px 0px;
+
+	.item {
+		font-family: $base-font-family;
+		color: $neutral-color;
+
+		h2 {
+			font-family: $header-font-family-alt;
+			font-size: $header-font-size-extralarge;
+			color: $base-color;
+		}
+		
+		h2.review-title {
+			font-family: $header-font-family-default;
+			font-size: $header-font-size-large;
+			color: $base-color;
+			margin-bottom: 10px;
+		}
+
+		span.remaining {
+			font-family: $base-font-family-bold;
+		}
+	}
 }
 
 .card .item {
 	border-color: rgba($dark-transparent-color, 0.1);
 }
 
-.card .item.item-body.content {
+.item.item-body.content {
 	border-color: transparent;
 }
 
-/* CARD WITHOUT CONTENTS */
+//////////////////
+// -- DIARIO -- //
+//////////////////
 
-#diary .card.add .item {
-	padding: 15px 0px 15px 10px;
-	background: $card-background-transparent;
-	-webkit-transition: all .1s linear;
-	-moz-transition: all .1s linear;
-	-o-transition: all .1s linear;
-	-ms-transition: all .1s linear;
-	transition: all .1s linear;
-}
+/* CARD WITHOUT CONTENTS */
 
 #diary .card.add {
 	box-shadow: $shadow-soft-large;
@@ -422,30 +432,41 @@ select[readonly] {
 	-o-transition: all .1s linear;
 	-ms-transition: all .1s linear;
 	transition: all .1s linear;
+
+	h2 {
+		margin:0 0 10px 0;
+		color: $light;
+		font-family: $header-font-family-default;
+		font-size: $header-font-size-large;
+		padding-top: 3px;
+	}
+
+	p {
+		margin-top: 0px;
+		color: $light;
+		font-size: $base-font-size-default;
+		padding-left: 35px;
+	}
+
+	.item {
+		padding: 10px 10px 15px 10px;
+		background: $card-background-transparent;
+		-webkit-transition: all .1s linear;
+		-moz-transition: all .1s linear;
+		-o-transition: all .1s linear;
+		-ms-transition: all .1s linear;
+		transition: all .1s linear;
+
+		span.plus-circle-icon {
+			background-image: url("../img/icons/plus_circle.png");
+			background-size: cover;
+		}
+	}
 }
 
 #diary .card.add:active {
 	opacity: 0.6;
 	box-shadow: $shadow-default;
-}
-
-#diary .card.add .item h2 {
-    margin:0 0 10px 0;
-    color: $light;
-    font-size: $header-font-size-large;
-    padding-top: 3px;
-}
-
-#diary .card.add .item span.plus-circle-icon {
-	background-image: url("../img/icons/plus_circle.png");
-    background-size: cover;
-}
-
-#diary .card.add .item p {
-	margin-top: 0px;
-	color: $light;
-	font-size: $base-font-size-default;
-	padding-left: 35px;
 }
 
 /* CARD WITH CONTENTS */
@@ -1014,10 +1035,10 @@ $num-colors: 10;
 .widget .card .donut-chart {
 	position: relative;
 	max-width: 110px;
-	min-width: 110px
+	min-width: 110px;
 }
 
-.widget .card .donut-chart .challenge-image {
+.card .donut-chart .image-content {
 	top: 50%;
     left: 50%;
     bottom: auto;
@@ -1030,20 +1051,66 @@ $num-colors: 10;
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
-.widget .card .progress .current,
-.widget .card .progress .max {
+
+.data-content {
+	top: 50%;
+    left: 50%;
+    bottom: auto;
+    transform: translateY(-50%) translateX(-50%);
+    position: absolute;
+    text-align: center;
+    background-position: center center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+	font-family: $base-font-family;
+	color: $base-color;
+	width: 100%;
+
+	.current {
+		font-size: 32px;
+		padding-bottom: 5px;
+	}
+
+	.current.small {
+		font-size: 24px;
+		padding-bottom: 2px;
+	}
+
+	.max {
+		font-size: 16px;
+	}
+
+	.max.small {
+		font-size: 12px;
+	}
+}
+
+.macro-title {
+	padding-top: 5px;
+	color: $neutral-color;
+	margin: 0!important;
+}
+
+.macro-quantity-difference {
+	font-size: 14px;
+	color: $neutral-color;
+}
+
+
+.card .progress .current,
+.card .progress .max {
 	display: block!important;
 	width: 100%;
 }
 
-.widget .card .progress .current {
+.card .progress .current {
 	font-family: $base-font-family;
 	font-size: 24px;
 	color: $light;
 	margin-bottom: 5px;
 }
 
-.widget .card .progress .max {
+.card .progress .max {
 	font-family: $base-font-family;
 	font-size: 14px;
 	color: rgba(255,255,255,0.50);
@@ -1078,7 +1145,7 @@ $num-colors: 10;
 }
 
 .card.water .current {
-	font-family: MovistarText;
+	font-family: $base-font-family;
 	font-size: 72px;
 	color: #FFFFFF;
 	text-align: center;
