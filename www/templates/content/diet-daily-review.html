@@ -1,4 +1,4 @@
-<ion-view title="Daily Review" hide-nav-bar="false" class="has-header">
+<ion-view hide-nav-bar="false" class="has-header">
 <ion-content class="has-header light">
 <div class="padding">
 	<div class="card">
@@ -17,15 +17,15 @@
 				<div class="donut-chart" style="margin: 0 auto;">
 					<div class="data-content">
 						<div class="current">
-							783
+							{{data.review.kcal.current}}
 						</div>
 						<div class="max">
-							de 2100 Kcal
+							de {{data.review.kcal.target}} Kcal
 						</div>
 					</div>
 					<round-progress
-					max="2100"
-					current="783"
+					max="data.review.kcal.target"
+					current="data.review.kcal.current"
 					color="#E74C3C"
 					bgcolor="#ECF0F1"
 					radius="200"
@@ -36,12 +36,18 @@
 					responsive="true"
 					duration="2500"
 					animation="easeInOutQuart"
-					animation-delay="0" /></round-progress>
+					animation-delay="2000" /></round-progress>
 				</div>
 			</div>
 			<br>
-			Te faltaron consumir <span class="remaining">1217</span> calorías, <br>
+			<span ng-show="data.review.kcal.target > data.review.kcal.current">
+			Te faltaron consumir <span class="remaining">{{data.review.kcal.target - data.review.kcal.current}}</span> calorías, <br>
 			¿te olvidaste de introducir algún alimento?
+			</span>
+			<span ng-show="data.review.kcal.target < data.review.kcal.current">
+			Te has pasado tres pueblos! Has consumido <span class="remaining">{{data.review.kcal.current - data.review.kcal.target}}</span> calorías de más. <br>
+			¿Has pensado en ponerte a dieta?
+			</span>
 		</div>
 	</div>
 
@@ -54,15 +60,15 @@
 					<div class="donut-chart" style="margin: 0 auto; position: relative!important;">
 						<div class="data-content">
 							<div class="current small">
-								73
+								{{data.review.macros.hc.current}}
 							</div>
 							<div class="max small">
-								de 210 gr
+								de {{data.review.macros.hc.target}} gr
 							</div>
 						</div>
 						<round-progress
-						max="210"
-						current="73"
+						max="data.review.macros.hc.target"
+						current="data.review.macros.hc.current"
 						color="#E74C3C"
 						bgcolor="#7AB800"
 						radius="200"
@@ -137,11 +143,9 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					¡Enhorabuena! Llegaste a la cantidad recomendada de grasa. Opta por el aceite de oliva.
-					<br>
-					Añade alimentos con proteínas como pescado, legumbres o pollo.
-					<br>
-					Vigila el exceso de hidratos. Evita las bebidas azucaradas y opta por tomar agua o jugos naturales sin azucar.
+					<div ng-repeat="msg in data.review.macros.messages">
+					{{msg}}
+					</div>
 				</div>
 			</div>
 		</div>

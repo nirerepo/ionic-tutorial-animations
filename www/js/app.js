@@ -133,7 +133,7 @@ angular.module('nire', [
                 url: '/review',
                 params: { startpage: { dynamic: true } },
                 templateUrl: 'templates/content/diet-daily-review.html',
-                controller: 'HelpCtrl'
+                controller: 'ReviewCtrl'
             });
 
             // La URL default es el Timeline. Si cuando se intenta mostrar el timeline o hacer
