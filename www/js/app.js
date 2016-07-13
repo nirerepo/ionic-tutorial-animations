@@ -7,9 +7,9 @@ angular.module('nire', [
     'ngStorage',
     'angular-svg-round-progressbar',
     'angulartics',
-    'angulartics.google.tagmanager'
+    'angulartics.cordova.analytics'
 ])
-    .run(function ($ionicPlatform, $rootScope, $localStorage) {
+    .run(function ($ionicPlatform, $rootScope, $localStorage, $location) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -21,7 +21,20 @@ angular.module('nire', [
                 // org.apache.cordova.statusbar required
                 StatusBar.styleLightContent();
             }
+            if(window.analytics) {
+                window.analytics.startTrackerWithId('UA-56411801-1', 
+                    function(){console.log("analytics started")
+                    //window.analytics.trackView($location.path(), function(){console.log("track page")}, function(error){console.log("could not start analytics", error)});
+                }, 
+                    function(error){console.log("could not start analytics", error)});
+
+            }
         });
+/*
+        $rootScope.$on('$stateChangeSuccess', function(){
+            console.log("stateChangeSuccess")
+            window.analytics.trackView($location.path(), function(){console.log("track page")}, function(error){console.log("could not start analytics", error)});
+        });*/
 
         // Agrego un broadcast cada vez que se vuelve al la app y cuando se inicializa
         // para actualizar los datos de fit
