@@ -2,29 +2,42 @@ function ReviewController($scope, $state, $stateParams, $ionicNavBarDelegate, He
     var self = this;
   var review1 = {
     title: "Resumen diario - Domingo, 10 de Julio",
-    kcal: { current: 2817,
+    kcal: { current: 2517,
             target: 2100,
         },
     macros: {
         hc: {
             target: 210,
-            current: 73,
-            quality: ""
+            current: 250,
+            quality: "_",
+            chart: {}
         },
         pt: {
             target: 94,
             current: 41,
-            quality: ""
+            quality: "_",
+            chart: {}
         },
         lp: {
             target: 70,
             current: 64,
-            quality: ""
+            quality: "_",
+            chart: {}
         }
     }
   }
-  var messages = {
-    hcLP: ['Veo que que no has ingerido suficiente hidrato. Incluye los cereales como el pan, arepas, arroz y pasta. ¡Ah! y no te olvides de tomar fruta y verdura.',
+  $scope.data = {
+    review: review1
+  };
+
+  var messagesKcal = {
+    kcal: ['Te faltó consumir más calorías, ¿no olvidaste introducir algún alimento?'],
+    KCAL: ['Te has pasado en las calorías que deberías de tomar'],
+    _: ['Las calorías que has consumido en el día son las adecuadas']
+  }
+
+  var messagesMacros = {
+    hc_LP: ['Veo que que no has ingerido suficiente hidrato. Incluye los cereales como el pan, arepas, arroz y pasta. ¡Ah! y no te olvides de tomar fruta y verdura.',
         '¡Enhorabuena! Alcanzaste la cantidad de proteína recomendada.',
         '¡Cuidado con las grasas! Vigila la cantidad de aceite y evita alimentos procesados, fritos o empanizados.'
         ],
@@ -34,15 +47,15 @@ function ReviewController($scope, $state, $stateParams, $ionicNavBarDelegate, He
         'No llegaste a la cantidad recomendada de grasa. ¿Has agregado el aceite que utilizaste para cocinar o en los aderezos? Incluye alguna ración de frutos secos y/o pescado azul.'
     ],
 
-    HClp: ['Veo demasiados hidratos. Deja las bebidas azucaradas y los dulces. Cambia alguna ración de cereales como arroz, pasta, pan o arepas por frutas y verduras de temporada.  ',
+    HC_lp: ['Veo demasiados hidratos. Deja las bebidas azucaradas y los dulces. Cambia alguna ración de cereales como arroz, pasta, pan o arepas por frutas y verduras de temporada.  ',
         '¡Enhorabuena! Has tomado la cantidad de proteína adecuada.',
         '¿Sabes? Comiste menos grasa de la recomendada. Una buena fuente es el pescado azul o los frutos secos. Recuerda agregar el aceite con que cocinas en nuestro evaluador.'],
 
-    hcPT: ['Sería bueno que aumentaras tus hidratos. No te olvides de la fruta y verdura, y opta por versiones integrales de cereales como pan, arepas, arroz y pasta.',
+    hcPT_: ['Sería bueno que aumentaras tus hidratos. No te olvides de la fruta y verdura, y opta por versiones integrales de cereales como pan, arepas, arroz y pasta.',
         'Veo que te pasaste con las proteínas. Reduce alimentos de origen animal sobre todo carnes rojas o procesadas.',
         '¡Enhorabuena! Tomaste la cantidad de grasa adecuada.'],
 
-    ptLP: ['¡Enhorabuena! Conseguiste llegar al consumo de hidratos recomendado.',
+    _ptLP: ['¡Enhorabuena! Conseguiste llegar al consumo de hidratos recomendado.',
         'Para aumentar la cantidad de proteínas come alimentos de tipo legumbres, pescado o pollo.',
         '¡Cuidado con las grasas! Evita los fritos, empanizados y procesados y vigila la cantidad de aceite de tus platos.'],
 
@@ -58,18 +71,16 @@ function ReviewController($scope, $state, $stateParams, $ionicNavBarDelegate, He
         'Vigila la cantidad de proteínas. Reduce las raciones de alimentos como carnes rojas, huevo o cerdo.',
         'Te quedaste corto en grasas. Opta por un buen aceite para aliñar y cocinar, e introduce algún fruto seco o algún pescado azul. '],
 
-    PTlp: ['¡Enhorabuena! Llegaste a la cantidad de hidratos recomendada. Acuérdate de los integrales ;).',
+    _PTlp: ['¡Enhorabuena! Llegaste a la cantidad de hidratos recomendada. Acuérdate de los integrales ;).',
         'Demasiada proteína para un día. Reduce la ración de alimentos de origen animal como carnes rojas, huevo o cerdo.',
         'Poca grasa. Aliña tus platos con un aceite de calidad e introduce frutos secos o pescado azul.'],
     HCptLP: ['Demasiado hidrato en un día. Toma frutas y verduras como primera opción y reduce la cantidad de cereales como arroz, pasta o arepas. Deja los dulces para ocasiones especiales y evita las bebidas con azúcar.',
         'Te vendría bien aumentar las proteínas. Incluye alguna ración más de alimentos de origen animal como pollo o pescado.',
-        'Te pasaste con las grasas. Te vendría bien reducir la cantidad de aceite y evitar alimentos procesados, fritos o empanizados.']
-
+        'Te pasaste con las grasas. Te vendría bien reducir la cantidad de aceite y evitar alimentos procesados, fritos o empanizados.'],
+    ___: ['¡Enhorabuena!',
+        'Tu equilibrio y balance en tu alimentación es el adecuado.',
+        'Continua consumiendo las cantidades correctas de cereales, alimentos de origen animal, frutas y verduras y las grasas.']
   }
-
-  $scope.data = {
-    review: review1
-  };
 
   $scope.data.bgColors = [];
   $scope.data.currentPage = $stateParams.startpage;
@@ -80,31 +91,80 @@ function ReviewController($scope, $state, $stateParams, $ionicNavBarDelegate, He
   $ionicNavBarDelegate.title($scope.data.review.title);
 
 
-  this.updateDistribution = function(macros) {
-    var total = macros.hc.current + macros.pt.current + macros.lp.current;
-    macros.hc.percentage = 100 * macros.hc.current / total;
-    if (macros.hc.percentage < 48)
-        macros.hc.quality = "hc";
-    else if (macros.hc.percentage > 61)
-        macros.hc.quality = "HC";
-    
-    macros.pt.percentage = 100 * macros.pt.current / total;
-    if (macros.pt.percentage < 14)
-        macros.pt.quality = "pt";
-    else if (macros.pt.percentage > 21)
-        macros.pt.quality = "PT";
+  this.buildReviewInfo = function(review) {
+    var total = review.macros.hc.current + review.macros.pt.current + review.macros.lp.current;
+    review.macros.hc.percentage = 100 * review.macros.hc.current / total;
+    review.macros.hc.diff = review.macros.hc.current - review.macros.hc.target;
+    if (review.macros.hc.percentage < 48) {
+        review.macros.hc.quality = "hc";
+    }
+    else if (review.macros.hc.percentage > 61) {
+        review.macros.hc.quality = "HC";
+    }
+    self.setChartColors(review.macros.hc);
+    review.macros.pt.percentage = 100 * review.macros.pt.current / total;
+    review.macros.pt.diff = review.macros.pt.current - review.macros.pt.target;
+    if (review.macros.pt.percentage < 14) {
+        review.macros.pt.quality = "pt";
+    }
+    else if (review.macros.pt.percentage > 21) {
+        review.macros.pt.quality = "PT";
+    }
+    self.setChartColors(review.macros.pt);
+    console.log("PT", review.macros.pt);
 
-    macros.lp.percentage = 100 * macros.lp.current / total;
-    if (macros.lp.percentage < 28)
-        macros.lp.quality = "lp";
-    else if (macros.lp.percentage > 38)
-        macros.lp.quality = "LP";
+    review.macros.lp.percentage = 100 * review.macros.lp.current / total;
+    review.macros.lp.diff = review.macros.lp.current - review.macros.lp.target;
+    if (review.macros.lp.percentage < 28) {
+        review.macros.lp.quality = "lp";
+    }
+    else if (review.macros.lp.percentage > 38) {
+        review.macros.lp.quality = "LP";
+    }
+    self.setChartColors(review.macros.lp);
 
-    macros.messages = messages[macros.hc.quality+macros.pt.quality+macros.lp.quality];
-    console.log("DISTRIB: ", macros.hc.quality+macros.pt.quality+macros.lp.quality);
+    review.macros.messages = messagesMacros[review.macros.hc.quality+review.macros.pt.quality+review.macros.lp.quality];
+
+    review.kcal.diff = review.kcal.current - review.kcal.target;
+    if (review.kcal.current > review.kcal.target*1.10) {
+        review.kcal.quality = 'KCAL';
+    } else if (review.kcal.current < review.kcal.target*0.9) {
+        review.kcal.quality = 'kcal';
+    } else {
+        review.kcal.quality = '_';
+    }
+    review.kcal.messages = messagesKcal[review.kcal.quality];
   }
 
-  self.updateDistribution($scope.data.review.macros);
+  this.setChartColors = function(macro) {
+    var OK_COLOR="#7AB800";
+    var NO_COLOR="#ECF0F1";
+    var KO_COLOR="#E74C3C";
+
+    if (!macro.chart) macro.chart = {};
+
+    if (macro.current > macro.target) {
+        macro.chart.bg = OK_COLOR;
+        macro.chart.fg = KO_COLOR;
+        macro.chart.current = macro.current - macro.target;
+        macro.chart.max = macro.target;
+    }
+    if (macro.current < macro.target) {
+        macro.chart.bg = NO_COLOR;
+        macro.chart.fg = OK_COLOR;
+        macro.chart.current = macro.current;
+        macro.chart.max = macro.target;
+    }
+    if (macro.current == macro.target) {
+        macro.chart.bg = NO_COLOR;
+        macro.chart.fg = OK_COLOR;
+        macro.chart.current = macro.current;
+        macro.chart.max = macro.target;
+    }
+  }
+  self.buildReviewInfo($scope.data.review);
+  self.setChartColors($scope.data.review.kcal);
+  console.log($scope.data.review.kcal.chart);
 
 }
 

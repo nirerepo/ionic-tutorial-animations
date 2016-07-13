@@ -24,10 +24,10 @@
 						</div>
 					</div>
 					<round-progress
-					max="data.review.kcal.target"
-					current="data.review.kcal.current"
-					color="#E74C3C"
-					bgcolor="#ECF0F1"
+					max="data.review.kcal.chart.max"
+					current="data.review.kcal.chart.current"
+					color="{{data.review.kcal.chart.fg}}"
+					bgcolor="{{data.review.kcal.chart.bg}}"
 					radius="200"
 					stroke="20"
 					semi="false"
@@ -36,17 +36,16 @@
 					responsive="true"
 					duration="2500"
 					animation="easeInOutQuart"
-					animation-delay="2000" /></round-progress>
+					animation-delay="500" /></round-progress>
 				</div>
 			</div>
 			<br>
-			<span ng-show="data.review.kcal.target > data.review.kcal.current">
-			Te faltaron consumir <span class="remaining">{{data.review.kcal.target - data.review.kcal.current}}</span> calorías, <br>
-			¿te olvidaste de introducir algún alimento?
+			<div ng-repeat="msg in data.review.kcal.messages">
+			{{msg}}
+			</div>
+			<span ng-show="data.review.kcal.diff > 0">Has consumido <span class="remaining">{{data.review.kcal.diff}}</span> calorías de más. <br>
 			</span>
-			<span ng-show="data.review.kcal.target < data.review.kcal.current">
-			Te has pasado tres pueblos! Has consumido <span class="remaining">{{data.review.kcal.current - data.review.kcal.target}}</span> calorías de más. <br>
-			¿Has pensado en ponerte a dieta?
+			<span ng-show="data.review.kcal.diff < 0">Has consumido <span class="remaining">{{-1*data.review.kcal.diff}}</span> calorías de menos. <br>
 			</span>
 		</div>
 	</div>
@@ -67,10 +66,10 @@
 							</div>
 						</div>
 						<round-progress
-						max="data.review.macros.hc.target"
-						current="data.review.macros.hc.current"
-						color="#E74C3C"
-						bgcolor="#7AB800"
+						max="data.review.macros.hc.chart.max"
+						current="data.review.macros.hc.chart.current"
+						color="{{data.review.macros.hc.chart.fg}}"
+						bgcolor="{{data.review.macros.hc.chart.bg}}"
 						radius="200"
 						stroke="20"
 						semi="false"
@@ -79,26 +78,27 @@
 						responsive="true"
 						duration="2500"
 						animation="easeInOutQuart"
-						animation-delay="0" /></round-progress>
+						animation-delay="700" /></round-progress>
 					</div>
 					<h3 class="macro-title">Carbohidratos</h3>
-					<span class="macro-quantity-difference">73 gr de más</span>
+					<span ng-show="data.review.macros.hc.diff > 0" class="macro-quantity-difference">{{data.review.macros.hc.diff}} gr. de más</span>
+					<span ng-show="data.review.macros.hc.diff < 0" class="macro-quantity-difference">{{-1*data.review.macros.hc.diff}} gr. restantes</span>
 				</div>
 				<div class="col">
 					<div class="donut-chart" style="margin: 0 auto; position: relative!important;">
 						<div class="data-content">
 							<div class="current small">
-								41
+								{{data.review.macros.pt.current}}
 							</div>
 							<div class="max small">
-								de 94 gr
+								de {{data.review.macros.pt.target}} gr
 							</div>
 						</div>
 						<round-progress
-						max="94"
-						current="41"
-						color="#E74C3C"
-						bgcolor="#ECF0F1"
+						max="data.review.macros.pt.chart.max"
+						current="data.review.macros.pt.chart.current"
+						color="{{data.review.macros.pt.chart.fg}}"
+						bgcolor="{{data.review.macros.pt.chart.bg}}"
 						radius="200"
 						stroke="20"
 						semi="false"
@@ -107,26 +107,27 @@
 						responsive="true"
 						duration="2500"
 						animation="easeInOutQuart"
-						animation-delay="0" /></round-progress>
+						animation-delay="1000" /></round-progress>
 					</div>
 					<h3 class="macro-title">Proteínas</h3>
-					<span class="macro-quantity-difference">53 gr de más</span>
+					<span ng-show="data.review.macros.pt.diff > 0" class="macro-quantity-difference">{{data.review.macros.pt.diff gr. de más</span>
+					<span ng-show="data.review.macros.pt.diff < 0" class="macro-quantity-difference">{{-1*data.review.macros.pt.diff}} gr. restantes</span>
 				</div>
 				<div class="col">
 					<div class="donut-chart" style="margin: 0 auto; position: relative!important;">
 						<div class="data-content">
 							<div class="current small">
-								64
+								{{data.review.macros.lp.current}}
 							</div>
 							<div class="max small">
-								de 70 gr
+								de {{data.review.macros.lp.target}} gr
 							</div>
 						</div>
 						<round-progress
-						max="70"
-						current="64"
-						color="#7AB800"
-						bgcolor="#ECF0F1"
+						max="data.review.macros.lp.chart.max"
+						current="data.review.macros.lp.chart.current"
+						color="{{data.review.macros.lp.chart.fg}}"
+						bgcolor="{{data.review.macros.lp.chart.bg}}"
 						radius="200"
 						stroke="20"
 						semi="false"
@@ -135,10 +136,11 @@
 						responsive="true"
 						duration="2500"
 						animation="easeInOutQuart"
-						animation-delay="0" /></round-progress>
+						animation-delay="1300" /></round-progress>
 					</div>
 					<h3 class="macro-title">Grasas</h3>
-					<span class="macro-quantity-difference">6 gr restantes</span>
+					<span ng-show="data.review.macros.lp.diff > 0" class="macro-quantity-difference">{{data.review.macros.lp.diff gr. de más</span>
+					<span ng-show="data.review.macros.lp.diff < 0" class="macro-quantity-difference">{{-1*data.review.macros.lp.diff}} gr. restantes</span>
 				</div>
 			</div>
 			<div class="row">
