@@ -5,7 +5,15 @@ angular.module('angulartics.cordova.analytics', ['angulartics'])
     });
 
     $analyticsProvider.registerEventTrack(function (action, properties) {
-
+        console.log(action, properties)
+        window.analytics.trackEvent(
+            properties.eventType, 
+            action, 
+            properties.category,
+            -1,
+            function(){console.log("track event")}, 
+            function(error){console.log("could not send event", error)}
+        );
     });
 
   }])

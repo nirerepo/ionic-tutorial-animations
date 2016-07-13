@@ -117,14 +117,14 @@
 </ks-swiper-container>
 
 <div class="card add" ng-show="trackBlock(1, day.day)">
-  <div class="item item-body" nav-direction="enter" ui-sref="trackfood({mealId:1, day: day.day})">
+  <div class="item item-body" nav-direction="enter" ui-sref="trackfood({mealId:1, day: day.day})" analytics-on="click" analytics-event="addTrackNutrition" analytics-category="desayuno">
     <span class="title-icon plus-circle-icon"></span>
     <h2>Añadir desayuno</h2>
     <p>Mantén pulsado para repetir tu desayuno de ayer</p>
   </div>
 </div>
 <div class="card add" ng-show="trackBlock(2, day.day)">
-  <item class="item item-body" nav-direction="enter" ui-sref="trackfood({mealId:2, day: day.day})">
+  <item class="item item-body" nav-direction="enter" ui-sref="trackfood({mealId:2, day: day.day})" analytics-on="click" analytics-event="addTrackNutrition" analytics-category="mediamañana">
     <span class="title-icon plus-circle-icon"></span>
     <h2 class="title">Añadir mediamañana</h2>
     <p>No olvides tomar algo entre el desayuno y tu comida</p>
@@ -145,7 +145,7 @@
   </ion-item>
 </ion-list>
 </div>
-<a class="item item-divider footer item-icon-right" ui-sref="trackfood({mealId:nutritionSeccion.typeId, day: day.day})">
+<a class="item item-divider footer item-icon-right" ui-sref="trackfood({mealId:nutritionSeccion.typeId, day: day.day})" analytics-on="click" analytics-event="addTrackNutrition" analytics-category="{{nutritionSeccion.type}}">
   Añadir más...
   <i class="icon ion-plus-round"></i>
 </a>
@@ -165,34 +165,34 @@
       </ion-item>
     </ion-list>
 </div>
-<a class="item item-divider footer item-icon-right" ui-sref="trackexercise({day: day.day})">
+<a class="item item-divider footer item-icon-right" ui-sref="trackexercise({day: day.day})" analytics-on="click" analytics-event="addTrackExcercise" analytics-category="exercise">
   Añadir más...
   <i class="icon ion-plus-round"></i>
 </a>
 </div>
 <div class="card add" ng-show="!hasExercises(day.day)">
-  <div class="item item-body" ui-sref="trackexercise({day: day.day})">
+  <div class="item item-body" ui-sref="trackexercise({day: day.day})"  analytics-on="click" analytics-event="addTrackExcercise" analytics-category="exercise">
     <span class="title-icon plus-circle-icon"></span>
     <h2>Añadir ejercicio físico</h2>
     <p>Esta semana no has realizado ningún ejercicio físico, ¡Empieza hoy!</p>
   </div>
 </div>
 <div class="card add" ng-show="trackBlock(3, day.day)">
-  <div class="item item-body" nav-direction="enter" ui-sref="trackfood({mealId:3, day: day.day})">
+  <div class="item item-body" nav-direction="enter" ui-sref="trackfood({mealId:3, day: day.day})" analytics-on="click" analytics-event="addTrackNutrition" analytics-category="comida">
     <span class="title-icon plus-circle-icon"></span>
     <h2>Añadir comida</h2>
     <p>Repon tus fuerzas por la tarde</p>
   </div>
 </div>
 <div class="card add" ng-show="trackBlock(4, day.day)">
-  <div class="item item-body" nav-transition="none" nav-direction="enter" ui-sref="trackfood({mealId:4, day: day.day})">
+  <div class="item item-body" nav-transition="none" nav-direction="enter" ui-sref="trackfood({mealId:4, day: day.day})" analytics-on="click" analytics-event="addTrackNutrition" analytics-category="merienda">
     <span class="title-icon plus-circle-icon"></span>
     <h2>Añadir merienda</h2>
     <p>Repon tus fuerzas por la tarde</p>
   </div>
 </div>
 <div class="card add" ng-show="trackBlock(5, day.day)">
-  <div class="item item-body" nav-transition="none" nav-direction="enter" ui-sref="trackfood({mealId:5, day: day.day})">
+  <div class="item item-body" nav-transition="none" nav-direction="enter" ui-sref="trackfood({mealId:5, day: day.day})" analytics-on="click" analytics-event="addTrackNutrition" analytics-category="cena">
     <span class="title-icon plus-circle-icon"></span>
     <h2>Añadir cena</h2>
     <p>Cenar limpio y ligero te ayudará a no tener una digestión lenta y pesada</p>
