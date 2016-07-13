@@ -1,34 +1,56 @@
-function ReviewController($scope, $state, $stateParams, $ionicNavBarDelegate, Help) {
+function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBarDelegate, Help) {
     var self = this;
-  var review1 = {
-    title: "Resumen diario - Domingo, 10 de Julio",
-    kcal: { current: 2517,
-            target: 2100,
-        },
-    macros: {
-        hc: {
-            target: 210,
-            current: 250,
-            quality: "_",
-            chart: {}
-        },
-        pt: {
-            target: 94,
-            current: 41,
-            quality: "_",
-            chart: {}
-        },
-        lp: {
-            target: 70,
-            current: 64,
-            quality: "_",
-            chart: {}
+    var review1 = {
+        title: "Resumen diario - Domingo, 10 de Julio",
+        kcal: { current: 2517,
+                target: 2100,
+            },
+        macros: {
+            hc: {
+                quality: "_",
+                chart: {}
+            },
+            pt: {
+                quality: "_",
+                chart: {}
+            },
+            lp: {
+                quality: "_",
+                chart: {}
+            }
         }
     }
-  }
-  $scope.data = {
-    review: review1
-  };
+    $scope.data = {
+    };
+
+    $scope.$on("$ionicView.beforeEnter", function () {
+        var reviewData = DailyReview.get('20160711').then(function(body) {
+            $scope.data.review = review1;
+            $scope.data.review.kcal.current = parseInt(body.quantity);
+            $scope.data.review.macros.hc.current = parseInt(_(body.indicators).find(function(o) {
+                return o.type == 'hc';
+            }).quantity);
+            $scope.data.review.macros.lp.current = parseInt(_(body.indicators).find(function(o) {
+                return o.type == 'grasa';
+            }).quantity);
+            $scope.data.review.macros.pt.current = parseInt(_(body.indicators).find(function(o) {
+                return o.type == 'prot';
+            }).quantity);
+            var maxKcal = 2100;
+            $scope.data.review.macros.hc.target = body.macros.hc.target;
+            $scope.data.review.macros.pt.target = body.macros.pt.target;;
+            $scope.data.review.macros.lp.target = body.macros.lp.target;;
+            $scope.data.review.macros.hc.current = body.macros.hc.current;
+            $scope.data.review.macros.pt.current = body.macros.pt.current;
+            $scope.data.review.macros.lp.current = body.macros.lp.current;
+
+            $ionicNavBarDelegate.showBackButton(true);
+            $ionicNavBarDelegate.title($scope.data.review.title);
+            self.buildReviewInfo($scope.data.review);
+            self.setChartColors($scope.data.review.kcal);
+            console.log(reviewData);
+        });
+    });
 
   var messagesKcal = {
     kcal: ['Te faltó consumir más calorías, ¿no olvidaste introducir algún alimento?'],
@@ -81,15 +103,6 @@ function ReviewController($scope, $state, $stateParams, $ionicNavBarDelegate, He
         'Tu equilibrio y balance en tu alimentación es el adecuado.',
         'Continua consumiendo las cantidades correctas de cereales, alimentos de origen animal, frutas y verduras y las grasas.']
   }
-
-  $scope.data.bgColors = [];
-  $scope.data.currentPage = $stateParams.startpage;
-  console.log("Current: ", $scope.data);
-  Help.loadPages($scope, $ionicNavBarDelegate);
-  $ionicNavBarDelegate.showBackButton(true);
-
-  $ionicNavBarDelegate.title($scope.data.review.title);
-
 
   this.buildReviewInfo = function(review) {
     var total = review.macros.hc.current + review.macros.pt.current + review.macros.lp.current;
@@ -162,10 +175,6 @@ function ReviewController($scope, $state, $stateParams, $ionicNavBarDelegate, He
         macro.chart.max = macro.target;
     }
   }
-  self.buildReviewInfo($scope.data.review);
-  self.setChartColors($scope.data.review.kcal);
-  console.log($scope.data.review.kcal.chart);
-
 }
 
 angular.module('nire.controllers')
