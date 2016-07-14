@@ -36,7 +36,7 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate, $analytics){
             swiper.on('slideChangeStart', function() {
                 console.log("changeStart!");
                 console.log($analytics);
-                $analytics.eventTrack('widget_changed');
+                $analytics.eventTrack('widget_changed', {eventType: "slide", category: "challenge"});
             });
     };
 
