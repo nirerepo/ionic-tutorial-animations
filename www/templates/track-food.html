@@ -32,7 +32,17 @@
 
 <!-- FRECUENTS LIST -->
 <div class="frecuents-list" ng-show="data.plates.length == 0 && lastUsed.length > 0">
-  <div class="row">
+  <div class="item item-divider">
+      Frecuentes
+  </div>
+    <ul class="list">
+      <li class="item" ng-repeat="plate in lastUsed" ng-click="foodTracker.addFrecuentPlate(plate)" analytics-on="click" analytics-event="addPlate" analytics-category="frecuente">
+        <span class="item-title">{{plate.title}}</span><br>
+        <span class="info">1 {{plate.medida_casera? plate.medida_casera: "Ración"}} {{plate.cantidad_medida_casera? plate.cantidad_medida_casera : "100"}}gr - {{calcularCalorias(plate.calories, plate.cantidad_medida_casera)}}Kcal ({{plate.id}})</span>
+      </li>
+    </ul>
+
+<!--   <div class="row">
     <div class="col">
       <span>Frecuentes</span>
     </div>
@@ -42,8 +52,11 @@
       <span class="item-title">{{plate.title}}</span><br>
       <span class="info">1 {{plate.medida_casera? plate.medida_casera: "Ración"}} {{plate.cantidad_medida_casera? plate.cantidad_medida_casera : "100"}}gr - {{calcularCalorias(plate.calories, plate.cantidad_medida_casera)}}Kcal ({{plate.id}})</span>
     </li>
-  </ul>
+  </ul> -->
 </div>
+
+
+
   <ul class="list">
     <li class="item" ng-repeat="plate in data.plates" ng-click="foodTracker.addPlate(plate)" analytics-on="click" analytics-event="addPlate" analytics-category="nuevo">
       <span class="item-title">{{plate.fields.nombredieta[0]}}</span><br>
