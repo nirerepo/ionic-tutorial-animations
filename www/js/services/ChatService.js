@@ -99,7 +99,8 @@ function ChatService($rootScope, Connection, userStorage, $analytics) {
 
         Connection.request("notification/answer", reply, "application/json");
 
-        $analytics.eventTrack('notification_reply', {eventType: "reply", category: "notification"});
+        var category = reply.event ? reply.event + reply.value : reply.value 
+        $analytics.eventTrack('notification_reply', {eventType: "reply", category: category});
     };
 
     this.initMessages();
