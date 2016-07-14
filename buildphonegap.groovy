@@ -9,6 +9,7 @@ def extensions(platform) {
 
 def downloads = []
 def APPID = args[0].toInteger()
+def APPNAME = args[1]?:'miapp'
 
 while ('pending' in [status.android, status.ios]) {
   println "Asking for status..."
@@ -25,18 +26,18 @@ while ('pending' in [status.android, status.ios]) {
   status.each { platform, st ->
           if (st == 'complete' && !(platform in downloads)) {
               downloads << platform
-              downloadPlatform(baseURL, TOKEN, platform)
+              downloadPlatform(baseURL, TOKEN, platform, APPNAME)
           }
   }
 }
 
-def downloadPlatform(baseURL, TOKEN, platform) {
+def downloadPlatform(baseURL, TOKEN, platform, filename) {
     def slurper = new groovy.json.JsonSlurper()
     def androidURL = "${baseURL}${app.download[platform]}?auth_token=${TOKEN}"
     def androidFileURL = slurper.parseText(new URL(androidURL).text).location
     println "Downloading ${extensions(platform)} binary from (${androidFileURL})"
 
-    def file = new File("nire.${extensions(platform)}").newOutputStream()  
+    def file = new File("${filename}.${extensions(platform)}").newOutputStream()  
     file << new URL(androidFileURL).openStream()  
     file.close()
 }
