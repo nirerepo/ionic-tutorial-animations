@@ -134,7 +134,7 @@
 <div ng-repeat="nutritionSeccion in day.nutrition " class="card">
   <div class="item item-divider header">
     <div class="title">{{nutritionSeccion.type}}</div>
-    <div class="resume">{{ calcularTotalCalorias(nutritionSeccion.typeId, day.day) }} Kcal <i class="ion-ios-information-outline"></i></div>
+    <div class="resume">{{ calcularTotalCalorias(nutritionSeccion.typeId, day.day) }} Kcal <a href="#/review/{{day.day}}"><i class="ion-ios-information-outline"></i></a></div>
   </div>
   <div class="item item-body content">
     <ion-list>

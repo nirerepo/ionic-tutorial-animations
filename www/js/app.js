@@ -144,7 +144,7 @@ angular.module('nire', [
                 controller: 'HelpCtrl'
             })
             .state('review', {
-                url: '/review',
+                url: '/review/:day',
                 params: { startpage: { dynamic: true } },
                 templateUrl: 'templates/content/diet-daily-review.html',
                 controller: 'ReviewCtrl'

@@ -1,4 +1,4 @@
-function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBarDelegate, Help) {
+function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBarDelegate, Help, $ionicHistory) {
     var self = this;
     var review1 = {
         title: "Resumen diario - Domingo, 10 de Julio",
@@ -23,9 +23,14 @@ function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBa
     $scope.data = {
     };
 
+    $scope.goBack = function() {
+        $ionicHistory.goBack();
+    }
     $scope.$on("$ionicView.beforeEnter", function () {
-        var reviewData = DailyReview.get('20160711').then(function(body) {
+        var reviewData = DailyReview.get($stateParams.day).then(function(body) {
             $scope.data.review = review1;
+            var reviewDate = moment($stateParams.day, 'YYYYMMDD').format('MMM DD');
+            $scope.data.review.title = "Resumen diario - " + reviewDate;
             $scope.data.review.kcal.current = parseInt(body.quantity);
             $scope.data.review.macros.hc.current = parseInt(_(body.indicators).find(function(o) {
                 return o.type == 'hc';
