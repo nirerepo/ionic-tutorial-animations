@@ -9978,7 +9978,7 @@ select[readonly] {
   background-size: cover; }
 
 #tracker.pane {
-  background: #EDF2F5; }
+  background: linear-gradient(-180deg, #176186 0%, #369AB4 50%, #51C6D8 100%); }
 
 .list .item {
   font-family: MovistarText;
@@ -10043,10 +10043,6 @@ select[readonly] {
     .card .item h2 {
       font-family: MovistarHeadline-Regular;
       font-size: 24px;
-      color: #005C84; }
-    .card .item h2.review-title {
-      font-family: MovistarHeadline-Bold;
-      font-size: 20px;
       color: #005C84;
       margin-bottom: 10px; }
     .card .item span.remaining {
@@ -10054,6 +10050,11 @@ select[readonly] {
 
 .card .item {
   border-color: rgba(1, 52, 79, 0.1); }
+
+.item p {
+  color: #7F8C8D;
+  font-size: 16px;
+  margin-bottom: 15px; }
 
 .item.item-body.content {
   border-color: transparent; }
@@ -10600,25 +10601,6 @@ ion-slides {
   font-family: MovistarText;
   color: #005C84;
   width: 100%; }
-  .data-content .current {
-    font-size: 32px;
-    padding-bottom: 5px; }
-  .data-content .current.small {
-    font-size: 24px;
-    padding-bottom: 2px; }
-  .data-content .max {
-    font-size: 16px; }
-  .data-content .max.small {
-    font-size: 12px; }
-
-.macro-title {
-  padding-top: 5px;
-  color: #7F8C8D;
-  margin: 0 !important; }
-
-.macro-quantity-difference {
-  font-size: 14px;
-  color: #7F8C8D; }
 
 .card .progress .current,
 .card .progress .max {
@@ -10684,6 +10666,55 @@ ion-slides {
   font-family: MovistarText-Bold;
   font-size: 16px;
   color: #fff; }
+
+#nutrition-review-general img {
+  max-width: 160px; }
+
+#nutrition-review-calories .data-content {
+  top: 45%; }
+
+#nutrition-review-macros .macro {
+  margin-bottom: 5px; }
+
+#nutrition-review-macros .data-content {
+  top: 50%;
+  left: 50%;
+  bottom: auto;
+  transform: translateY(-50%) translateX(-50%);
+  position: absolute;
+  text-align: center;
+  background-position: center center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  font-family: MovistarText;
+  color: #005C84;
+  width: 100%; }
+
+#nutrition-review-macros .current {
+  font-size: 32px;
+  padding-bottom: 5px; }
+
+#nutrition-review-macros .current.small {
+  font-size: 24px;
+  padding-bottom: 2px; }
+
+#nutrition-review-macros .max {
+  font-size: 16px; }
+
+#nutrition-review-macros .max.small {
+  font-size: 12px; }
+
+#nutrition-review-macros .macro-title {
+  padding-top: 5px;
+  color: #7F8C8D;
+  margin: 0 !important; }
+
+#nutrition-review-macros .macro-quantity-difference {
+  font-size: 14px;
+  color: #7F8C8D; }
+
+#nutrition-review-macros .item p {
+  margin-bottom: 5px; }
 
 .test {
   border: 1px dashed red !important; }

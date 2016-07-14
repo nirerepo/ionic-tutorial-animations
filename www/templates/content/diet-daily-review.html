@@ -4,61 +4,66 @@
 </ion-nav-buttons>
 <ion-content class="had-header light">
 <div class="padding">
-	<div class="card">
+	<div class="card" id="nutrition-review-general">
 		<div class="item item-text-wrap centered">
+			<img src="../img/others/indicators/indicator_regular.jpg">
 			<h2 class="review-title">¡Puedes hacerlo mejor!</h2>
-			
-			Teniendo en cuenta tu ingesta de calorías y tu reparto de macronutrientes, vemos que aun tenemos algo que mejorar.
-			
+			<p>Teniendo en cuenta tu ingesta de calorías y tu reparto de macronutrientes, vemos que aun tenemos algo que mejorar.</p>
 		</div>
 	</div>
-	<div class="card light centered">
+
+	<div class="card light centered" id="nutrition-review-calories">
 		<div class="item item-text-wrap">
-			<h2>Consumo de calorías</h2>
-			<br>
-			<div class="col-50 col-offset-25">
-				<div class="donut-chart" style="margin: 0 auto;">
-					<div class="data-content">
-						<div class="current">
-							{{data.review.kcal.current}}
+
+			<h2 class="centered">Macronutrientes</h2>
+
+			<div class="row">
+				<div class="col-50 col-offset-25">
+					<div class="donut-chart" style="margin: 0 auto;">
+						<div class="data-content">
+							<div class="current">
+								{{data.review.kcal.current}}
+							</div>
+							<div class="max">
+								de {{data.review.kcal.target}} Kcal
+							</div>
 						</div>
-						<div class="max">
-							de {{data.review.kcal.target}} Kcal
-						</div>
+						<round-progress
+						max="data.review.kcal.chart.max"
+						current="data.review.kcal.chart.current"
+						color="{{data.review.kcal.chart.fg}}"
+						bgcolor="{{data.review.kcal.chart.bg}}"
+						radius="200"
+						stroke="20"
+						semi="false"
+						rounded="true"
+						clockwise="true"
+						responsive="true"
+						duration="2500"
+						animation="easeInOutQuart"
+						animation-delay="500" /></round-progress>
 					</div>
-					<round-progress
-					max="data.review.kcal.chart.max"
-					current="data.review.kcal.chart.current"
-					color="{{data.review.kcal.chart.fg}}"
-					bgcolor="{{data.review.kcal.chart.bg}}"
-					radius="200"
-					stroke="20"
-					semi="false"
-					rounded="true"
-					clockwise="true"
-					responsive="true"
-					duration="2500"
-					animation="easeInOutQuart"
-					animation-delay="500" /></round-progress>
 				</div>
 			</div>
 			<br>
-			<div ng-repeat="msg in data.review.kcal.messages">
-			{{msg}}
-			</div>
 			<span ng-show="data.review.kcal.diff > 0">Has consumido <span class="remaining">{{data.review.kcal.diff}}</span> calorías de más. <br>
 			</span>
 			<span ng-show="data.review.kcal.diff < 0">Has consumido <span class="remaining">{{-1*data.review.kcal.diff}}</span> calorías de menos. <br>
 			</span>
+			<div ng-repeat="msg in data.review.kcal.messages">
+			{{msg}}
+			</div>
+
 		</div>
 	</div>
 
-	<div class="card light">
+	<div class="card light" id="nutrition-review-macros">
 		<div class="item item-text-wrap">
+
 			<h2 class="centered">Macronutrientes</h2>
-			<br>
+
 			<div class="row centered">
-				<div class="col">
+				<div class="col macro">
 					<div class="donut-chart" style="margin: 0 auto; position: relative!important;">
 						<div class="data-content">
 							<div class="current small">
@@ -87,7 +92,7 @@
 					<span ng-show="data.review.macros.hc.diff > 0" class="macro-quantity-difference">{{data.review.macros.hc.diff}} gr. de más</span>
 					<span ng-show="data.review.macros.hc.diff < 0" class="macro-quantity-difference">{{-1*data.review.macros.hc.diff}} gr. restantes</span>
 				</div>
-				<div class="col">
+				<div class="col macro">
 					<div class="donut-chart" style="margin: 0 auto; position: relative!important;">
 						<div class="data-content">
 							<div class="current small">
@@ -116,7 +121,7 @@
 					<span ng-show="data.review.macros.pt.diff > 0" class="macro-quantity-difference">{{data.review.macros.pt.diff}} gr. de más</span>
 					<span ng-show="data.review.macros.pt.diff < 0" class="macro-quantity-difference">{{-1*data.review.macros.pt.diff}} gr. restantes</span>
 				</div>
-				<div class="col">
+				<div class="col macro">
 					<div class="donut-chart" style="margin: 0 auto; position: relative!important;">
 						<div class="data-content">
 							<div class="current small">
@@ -142,15 +147,15 @@
 						animation-delay="1300" /></round-progress>
 					</div>
 					<h3 class="macro-title">Grasas</h3>
-					<span ng-show="data.review.macros.lp.diff > 0" class="macro-quantity-difference">{{data.review.macros.lp.diff}} gr. de más</span>
-					<span ng-show="data.review.macros.lp.diff < 0" class="macro-quantity-difference">{{-1*data.review.macros.lp.diff}} gr. restantes</span>
+					<span ng-show="data.review.macros.lp.diff > 0" class="macro-quantity-difference">{{data.review.macros.lp.diff}}gr. de más</span>
+					<span ng-show="data.review.macros.lp.diff < 0" class="macro-quantity-difference">{{-1*data.review.macros.lp.diff}}gr. restantes</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<div ng-repeat="msg in data.review.macros.messages">
+					<p ng-repeat="msg in data.review.macros.messages">
 					{{msg}}
-					</div>
+					</p>
 				</div>
 			</div>
 		</div>
