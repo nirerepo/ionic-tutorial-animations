@@ -1,4 +1,4 @@
-function ChatService($rootScope, Connection, userStorage) {
+function ChatService($rootScope, Connection, userStorage, $analytics) {
     var self = this;
 
     // Registramos en el rootScope una funcion para recuperar la cantidad
@@ -98,6 +98,8 @@ function ChatService($rootScope, Connection, userStorage) {
         };
 
         Connection.request("notification/answer", reply, "application/json");
+
+        $analytics.eventTrack('notification_reply', {eventType: "reply", category: "notification"});
     };
 
     this.initMessages();
