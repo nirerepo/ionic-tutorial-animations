@@ -39,7 +39,7 @@
     </div>
   </div>
   <ul class="list">
-    <li class="item" ng-repeat="exercise in lastUsed" ng-click="exerciseModal.addFrecuentExercise(exercise)">
+    <li class="item" ng-repeat="exercise in lastUsed" ng-click="exerciseModal.addFrecuentExercise(exercise)" analytics-on="click" analytics-event="addExercise" analytics-category="frecuente">
       <span class="item-title">{{exercise.title}}</span><br>
       <span class="info">{{getExerciseType(exercise.tipo)}}&emsp;&emsp;{{exercise.exercised}}</span>
     </li>
@@ -47,7 +47,7 @@
 </div>
 
   <ul class="list">
-    <li class="item" ng-repeat="exercise in data.exercises" ng-click="exerciseModal.addExercise(exercise)">
+    <li class="item" ng-repeat="exercise in data.exercises" ng-click="exerciseModal.addExercise(exercise)" analytics-on="click" analytics-event="addExercise" analytics-category="nuevo">
       <img class="thumbnail" src="img/others/thumbnail-exercise-empty.jpg">
       <span class="item-title">{{exercise.fields.nombre[0]}}</span><br>
       <span class="info">{{getExerciseType(exercise.fields.tipo[0])}}&emsp;&emsp;{{exercise.fields.gruposmusculares[0]}}</span>

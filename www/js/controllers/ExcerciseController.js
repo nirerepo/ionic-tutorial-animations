@@ -1,4 +1,4 @@
-function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionicModal, Exercise, Timeline){
+function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionicModal, Exercise, Timeline, $analytics){
     $scope.data = {
         "exercises": [],
         "search": '',
@@ -21,13 +21,15 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
     }
 
     $scope.search = function() {
-        if ($scope.data.search.length >= 3)
+        if ($scope.data.search.length >= 3){
             Exercise.exerciseByName($scope.data.search).then(function(matches) {
                 $scope.data.exercises = _.filter(matches.data.hits.hits,
                                                     function(h) {
                                                         return h._score > 1;
                                                     });
             });
+            $analytics.eventTrack('excercise_search', { category: "exercise", eventType: "search"});
+        }
         else
             $scope.data.exercises = [];
 
