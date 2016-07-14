@@ -4,7 +4,7 @@
  * @param {ng.IQService} $q
  * @param {ng.ui.IStateService} $state
  */
-function PushService($q, $state, Connection) {
+function PushService($q, $state, Connection, $analytics) {
     this.token = "";
     var self = this;
     this.init = function() {
@@ -38,7 +38,10 @@ function PushService($q, $state, Connection) {
                 Connection.request('notification/trace', {id: data.additionalData.id, token: self.token, foreground: data.additionalData.foreground})
                     .then(function() {
                         init.push.finish()
-                    })                
+                    });
+                $analytics.eventTrack('pushRecieve', {eventType: "push", category: data.additionalData.id});
+            } else {
+                $analytics.eventTrack('pushEnter', {eventType: "push"});
             }
                 
            $state.go(data.additionalData.redirect, data.additionalData.params);
