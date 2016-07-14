@@ -16,7 +16,7 @@ function FacebookLoginDirective(Login, $state) {
     return {
         replace: true,
         transclude: true,
-        template: '<button class="button button-block button-facebook icon-left ion-social-facebook" ng-click="facebookLogin()" ng-transclude></button>',
+        template: '<button class="button button-block button-facebook icon-left ion-social-facebook" ng-click="facebookLogin()" ng-transclude analytics-on="click" analytics-event="login" analytics-category="facebook"></button>',
         link: LinkFunction
     }
 }

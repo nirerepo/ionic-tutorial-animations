@@ -7,10 +7,10 @@
 <div class="fix-to-bottom">
 	<div class="padding">
 		<nire-facebook-login>Continuar con Facebook</nire-facebook-login>
-		<button class="button button-block button-outline button-light icon-left ion-ios-email-outline" ui-sref="registro-datos">
+		<button class="button button-block button-outline button-light icon-left ion-ios-email-outline" ui-sref="registro-datos" analytics-on="click" analytics-event="register" analytics-category="email">
 			Regístrate con tu email
 		</button>
-		<button class="button button-block button-clear button-light" ui-sref="signin">
+		<button class="button button-block button-clear button-light" ui-sref="signin" analytics-on="click" analytics-event="login" analytics-category="iniciar_sesion">
 			¿Ya tienes una cuenta? <span class="strong">Iniciar sesión</span>
 		</button>
 	</div>
