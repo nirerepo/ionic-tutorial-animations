@@ -7,7 +7,8 @@ angular.module('nire', [
     'ngStorage',
     'angular-svg-round-progressbar',
     'angulartics',
-    'angulartics.cordova.analytics'
+    'angulartics.cordova.analytics',
+    'angulartics.scroll'
 ])
     .run(function ($ionicPlatform, $rootScope, $localStorage, $location) {
         $ionicPlatform.ready(function () {

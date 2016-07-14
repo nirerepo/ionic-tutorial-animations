@@ -1,4 +1,4 @@
-function TimelineController($scope, Timeline, $ionicNavBarDelegate){
+function TimelineController($scope, Timeline, $ionicNavBarDelegate, $analytics){
     var self = this;
 
     // Inicialización del slider
@@ -31,8 +31,14 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate){
         else 
             $ionicNavBarDelegate.title(moment().subtract(4 - data.slider.activeIndex, 'days').format("DD MMM"));
     });
+
     $scope.onReadySwiper = function(swiper){
             swiper.initObservers();
+            swiper.on('slideChangeStart', function() {
+                console.log("changeStart!");
+                console.log($analytics);
+                $analytics.eventTrack('widget_changed');
+            });
     };
 
     $scope.trackBlock = function(mealId, day) {
