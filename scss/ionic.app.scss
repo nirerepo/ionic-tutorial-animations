@@ -596,10 +596,24 @@ select[readonly] {
 ///////////////////
 
 .frecuents-list {
-	padding-top: 10px;
-	color: $base-font-color-soft;
-	font-family: $base-font-family;
-	font-size: $base-font-size-default;
+	color: #FFF;
+
+	.item-divider {
+    	background-color: rgba(255,255,255, 0.1);
+    	border: none;
+    	color: #FFF;
+    	font-family: $header-font-family-default;
+	}
+	.list .item {
+		color: #FFF;
+		font-size: $base-font-size-large;
+		background-color: transparent;
+		border-color: rgba(255,255,255, 0.1);
+	}
+
+	p.info, span.info {
+    	color: rgba(255,255,255, 0.75);
+	}
 }
 
 a i {
@@ -1160,6 +1174,15 @@ $num-colors: 10;
 	.data-content {
 	    top: 45%;
 	}
+
+	.current {
+		font-size: 32px;
+		padding-bottom: 5px;
+	}
+	
+	.max {
+		font-size: 16px;
+	}
 }
 
 #nutrition-review-macros {
@@ -1181,20 +1204,11 @@ $num-colors: 10;
 		color: $base-color;
 		width: 100%;
 	}
-	.current {
-		font-size: 32px;
-		padding-bottom: 5px;
-	}
 
 	.current.small {
 		font-size: 24px;
 		padding-bottom: 2px;
 	}
-
-	.max {
-		font-size: 16px;
-	}
-
 	.max.small {
 		font-size: 12px;
 	}
@@ -1204,14 +1218,16 @@ $num-colors: 10;
 		margin: 0!important;
 	}
 	.macro-quantity-difference {
-		font-size: 14px;
+		font-size: 13px;
 		color: $neutral-color;
 	}
 	.item p {
 		margin-bottom: 5px;
 	}
+}
 
-
+.bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before, .bar button.button-icon .icon:before, .bar button.button-icon:before, .bar button.button-icon.icon-left:before, .bar button.button-icon.icon-right:before {
+	font-size: 25px;
 }
 
 // TEST

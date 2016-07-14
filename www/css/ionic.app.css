@@ -10194,10 +10194,19 @@ select[readonly] {
   text-align: center; }
 
 .frecuents-list {
-  padding-top: 10px;
-  color: #999999;
-  font-family: MovistarText;
-  font-size: 16px; }
+  color: #FFF; }
+  .frecuents-list .item-divider {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #FFF;
+    font-family: MovistarHeadline-Bold; }
+  .frecuents-list .list .item {
+    color: #FFF;
+    font-size: 18px;
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.1); }
+  .frecuents-list p.info, .frecuents-list span.info {
+    color: rgba(255, 255, 255, 0.75); }
 
 a i {
   color: #fff;
@@ -10673,6 +10682,13 @@ ion-slides {
 #nutrition-review-calories .data-content {
   top: 45%; }
 
+#nutrition-review-calories .current {
+  font-size: 32px;
+  padding-bottom: 5px; }
+
+#nutrition-review-calories .max {
+  font-size: 16px; }
+
 #nutrition-review-macros .macro {
   margin-bottom: 5px; }
 
@@ -10690,16 +10706,9 @@ ion-slides {
   color: #005C84;
   width: 100%; }
 
-#nutrition-review-macros .current {
-  font-size: 32px;
-  padding-bottom: 5px; }
-
 #nutrition-review-macros .current.small {
   font-size: 24px;
   padding-bottom: 2px; }
-
-#nutrition-review-macros .max {
-  font-size: 16px; }
 
 #nutrition-review-macros .max.small {
   font-size: 12px; }
@@ -10710,11 +10719,14 @@ ion-slides {
   margin: 0 !important; }
 
 #nutrition-review-macros .macro-quantity-difference {
-  font-size: 14px;
+  font-size: 13px;
   color: #7F8C8D; }
 
 #nutrition-review-macros .item p {
   margin-bottom: 5px; }
+
+.bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before, .bar button.button-icon .icon:before, .bar button.button-icon:before, .bar button.button-icon.icon-left:before, .bar button.button-icon.icon-right:before {
+  font-size: 25px; }
 
 .test {
   border: 1px dashed red !important; }
