@@ -52,6 +52,7 @@ function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBa
             var reviewDate = moment($stateParams.day, 'YYYYMMDD').format('MMM DD');
             $scope.data.review.title = "Resumen diario - " + reviewDate;
             $scope.data.review.kcal.current = parseInt(body.quantity);
+            $scope.data.review.kcal.target = parseInt(body.targetKcal);
             $scope.data.review.macros.hc.current = parseInt(_(body.indicators).find(function(o) {
                 return o.type == 'hc';
             }).quantity);
