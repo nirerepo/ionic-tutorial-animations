@@ -19,6 +19,13 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
         $scope.data.search = '';
         $scope.data.plates = [];
     }
+
+    $scope.clearOrClose = function() {
+        if ($scope.data.search == '')
+            $scope.goBack();
+        else
+            $scope.clear();
+    }
     $scope.search = function() {
         if ($scope.data.search.length >= 3) {
             Food.plateByName($scope.data.search).then(function(matches) {

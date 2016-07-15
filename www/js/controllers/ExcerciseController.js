@@ -19,6 +19,16 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
         $scope.data.search = '';
         $scope.data.exercises = [];
     }
+    $scope.clear = function() {
+        $scope.data.search = '';
+        $scope.data.exercises = [];
+    }
+    $scope.clearOrClose = function() {
+        if ($scope.data.search == '')
+            $scope.goBack();
+        else
+            $scope.clear();
+    }
 
     $scope.search = function() {
         if ($scope.data.search.length >= 3){
