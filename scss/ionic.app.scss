@@ -1164,13 +1164,35 @@ $num-colors: 10;
 
 //// Review
 // Nutrition
+
 #nutrition-review-general {
 	h2.review-title {
 		font-family: $header-font-family-default;
 		font-size: $header-font-size-large;
 	}
-	img {
-		max-width: 160px;
+}
+
+.gauge-chart {
+	background-image: url("../img/others/indicators/gauge-chart.jpg");
+	background-size: 160px 80px;
+	background-repeat: no-repeat;
+	background-position: center top;
+	width: 100%;
+	height: 85px;
+	position: relative;
+	margin-bottom: 10px;
+
+	.needle {
+		background-color: red;
+		background: url("../img/others/indicators/needle.png");
+		background-size: cover;
+		width: 10px;
+		height: 45px;
+		position: absolute;
+		bottom: 0px;
+		margin-left: -5px;
+		display: inline-block;
+ 		transform-origin: 50% 100%;
 	}
 }
 
