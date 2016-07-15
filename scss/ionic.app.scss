@@ -1185,14 +1185,15 @@ $num-colors: 10;
 	.needle {
 		background-color: red;
 		background: url("../img/others/indicators/needle.png");
-		background-size: cover;
+		background-size: 100%;
+		background-repeat: no-repeat;
 		width: 10px;
 		height: 45px;
 		position: absolute;
 		bottom: 0px;
 		margin-left: -5px;
 		display: inline-block;
- 		transform-origin: 50% 100%;
+ 		transform-origin: 50% 80%;
 	}
 }
 
