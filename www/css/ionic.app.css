@@ -9844,7 +9844,7 @@ hr.dark {
 
 #tracker .empty h2,
 #tracker .empty p {
-  color: #999999; }
+  color: #fff; }
 
 .separator {
   display: flex; }
@@ -10676,6 +10676,10 @@ ion-slides {
   font-size: 16px;
   color: #fff; }
 
+#nutrition-review-general h2.review-title {
+  font-family: MovistarHeadline-Bold;
+  font-size: 20px; }
+
 #nutrition-review-general img {
   max-width: 160px; }
 
@@ -10723,7 +10727,7 @@ ion-slides {
   color: #7F8C8D; }
 
 #nutrition-review-macros .item p {
-  margin-bottom: 5px; }
+  margin-bottom: 10px; }
 
 .bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before, .bar button.button-icon .icon:before, .bar button.button-icon:before, .bar button.button-icon.icon-left:before, .bar button.button-icon.icon-right:before {
   font-size: 25px; }
