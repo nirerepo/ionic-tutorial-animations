@@ -9,9 +9,9 @@
 <div class="padding">
 	<div class="card" id="nutrition-review-general">
 		<div class="item item-text-wrap centered">
-			<img src="../img/others/indicators/indicator_regular.jpg">
-			<h2 class="review-title">¡Puedes hacerlo mejor!</h2>
-			<p>Teniendo en cuenta tu ingesta de calorías y tu reparto de macronutrientes, vemos que aun tenemos algo que mejorar.</p>
+			<img ng-src="{{scoreImage(data.review.summary.score)}}">
+			<h2 class="review-title">{{data.review.summary.title}}</h2>
+			<p ng-repeat="msg in data.review.summary.messages">{{msg}}</p>
 		</div>
 	</div>
 

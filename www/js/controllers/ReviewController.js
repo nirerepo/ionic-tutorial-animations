@@ -2,6 +2,12 @@ function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBa
     var self = this;
     var review1 = {
         title: "Resumen diario - Domingo, 10 de Julio",
+        summary: {
+            score: "1",
+            img: "img/others/indicators/indicator_regular.jpg",
+            title: '¡Puedes hacerlo mejor!',
+            messages: ['Teniendo en cuenta tu ingesta de calorías y tu reparto de macronutrientes, vemos que aun tenemos algo que mejorar.']
+        },
         kcal: { current: 2517,
                 target: 2100,
             },
@@ -25,6 +31,11 @@ function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBa
 
     $scope.goBack = function() {
         $ionicHistory.goBack();
+    }
+    $scope.scoreImage = function(score) {
+        var images = ['img/others/indicators/indicator_bad.jpg', 'img/others/indicators/indicator_regular.jpg', 'img/others/indicators/indicator_good.jpg'];
+        console.log('IMG:', images, score);
+        return images[score];
     }
     $scope.$on("$ionicView.beforeEnter", function () {
         var reviewData = DailyReview.get($stateParams.day).then(function(body) {
