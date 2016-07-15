@@ -20,16 +20,28 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate, $analytics){
        }).value();
     });
 
+    $scope.$on("$ionicView.enter", function() {
+        self.updateTitle();
+    });
+
+    this.updateTitle = function() {
+        if($scope.data.slider.activeIndex == Timeline.daysToFetch -1)
+            $ionicNavBarDelegate.title("Hoy");
+        else if($scope.data.slider.activeIndex == Timeline.daysToFetch -2)
+            $ionicNavBarDelegate.title("Ayer");
+        else
+            $ionicNavBarDelegate.title(moment().subtract(4 - $scope.data.slider.activeIndex, 'days').format("DD MMM"));
+    }
+    $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
+      // data.slider is the instance of Swiper
+      $scope.slider = data.slider;
+    });
     // Cuando cambia el slide actual, actualizamos el título de la ventana
     $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
         if (window.analytics)
             $analytics.eventTrack('day_slided', { category: (4 - data.slider.activeIndex) + " days", eventType: "slide"});
-        if(data.slider.activeIndex == Timeline.daysToFetch -1)
-            $ionicNavBarDelegate.title("Hoy");
-        else if(data.slider.activeIndex == Timeline.daysToFetch -2)
-            $ionicNavBarDelegate.title("Ayer");
-        else 
-            $ionicNavBarDelegate.title(moment().subtract(4 - data.slider.activeIndex, 'days').format("DD MMM"));
+        if ($scope.slider)
+            self.updateTitle();
     });
 
     $scope.onReadySwiper = function(swiper){
