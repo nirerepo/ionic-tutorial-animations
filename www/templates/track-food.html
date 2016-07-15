@@ -33,7 +33,7 @@
 <!-- FRECUENTS LIST -->
 <div class="frecuents-list" ng-show="data.plates.length == 0 && lastUsed.length > 0">
   <div class="item item-divider">
-      Frecuentes
+      Frecuentes en esta toma
   </div>
     <ul class="list">
       <li class="item" ng-repeat="plate in lastUsed" ng-click="foodTracker.addFrecuentPlate(plate)" analytics-on="click" analytics-event="addPlate" analytics-category="frecuente">
