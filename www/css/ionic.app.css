@@ -10700,7 +10700,8 @@ ion-slides {
     bottom: 0px;
     margin-left: -5px;
     display: inline-block;
-    transform-origin: 50% 80%; }
+    transform-origin: 50% 80%;
+    transform: rotate(-90deg); }
 
 #nutrition-review-calories .data-content {
   top: 45%; }
