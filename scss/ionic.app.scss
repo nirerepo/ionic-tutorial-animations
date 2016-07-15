@@ -1165,6 +1165,10 @@ $num-colors: 10;
 //// Review
 // Nutrition
 #nutrition-review-general {
+	h2.review-title {
+		font-family: $header-font-family-default;
+		font-size: $header-font-size-large;
+	}
 	img {
 		max-width: 160px;
 	}
@@ -1222,7 +1226,7 @@ $num-colors: 10;
 		color: $neutral-color;
 	}
 	.item p {
-		margin-bottom: 5px;
+		margin-bottom: 10px;
 	}
 }
 
