@@ -3270,3 +3270,170 @@ Copyright (c) 2015 Daniel Eden
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp;
 }
+
+.needleBounceOK {
+  -webkit-animation-name: needleBounceOK;
+  animation-name: needleBounceOK;
+  -webkit-animation-duration: 2.5s;
+  animation-duration: 2.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes needleBounceOK{
+  from, 10% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+  from, 30% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-transform: rotate(80deg);
+    transform: rotate(80deg);
+  }  
+  from, 60% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+  }
+  from, 80% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-transform: rotate(65deg);
+    transform: rotate(65deg);
+  }  
+  from, 100% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in;
+    -webkit-transform: rotate(60deg);
+    transform: rotate(60deg);
+  }
+
+}
+
+.needleBounceKO {
+  -webkit-animation-name: needleBounceKO;
+  animation-name: needleBounceKO;
+  -webkit-animation-duration: 2.5s;
+  animation-duration: 2.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes needleBounceKO{
+  from, 10% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+  from, 30% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-transform: rotate(80deg);
+    transform: rotate(80deg);
+  }  
+  from, 60% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-transform: rotate(-80deg);
+    transform: rotate(-80deg);
+  }
+  from, 80% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-transform: rotate(55deg);
+    transform: rotate(55deg);
+  }  
+  from, 100% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in;
+    -webkit-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+  }
+
+}
+
+.needleBounceMID {
+  -webkit-animation-name: needleBounceMID;
+  animation-name: needleBounceMID;
+  -webkit-animation-duration: 2.5s;
+  animation-duration: 2.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes needleBounceMID{
+  from, 10% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+  from, 30% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }  
+  from, 60% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+  }
+  from, 80% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-transform: rotate(60deg);
+    transform: rotate(60deg);
+  }  
+  from, 100% {
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+}
+
+@-webkit-keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInSlow {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
