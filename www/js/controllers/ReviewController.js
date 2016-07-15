@@ -4,9 +4,7 @@ function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBa
         title: "Resumen diario - Domingo, 10 de Julio",
         summary: {
             score: "1",
-            img: "img/others/indicators/indicator_regular.jpg",
-            title: '¡Puedes hacerlo mejor!',
-            messages: ['Teniendo en cuenta tu ingesta de calorías y tu reparto de macronutrientes, vemos que aun tenemos algo que mejorar.']
+            needlePosition: "MID", // OK, KO, o MID
         },
         kcal: { current: 2517,
                 target: 2100,
@@ -28,6 +26,17 @@ function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBa
     }
     $scope.data = {
     };
+
+    this.finalScore = function(review) {
+        var kcalOK = Math.abs(review.kcal.current - review.kcal.target) < (review.kcal.target/10);
+        var q = review.macros.hc.quality+review.macros.pt.quality+review.macros.lp.quality;
+        console.log("KCAL-OK", kcalOK, q);
+        if (kcalOK && q == '___')
+            return "OK";
+        else if (kcalOK || q == '__')
+            return "MID";
+        else return "KO";
+    }
 
     $scope.goBack = function() {
         $ionicHistory.goBack();
@@ -52,7 +61,6 @@ function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBa
             $scope.data.review.macros.pt.current = parseInt(_(body.indicators).find(function(o) {
                 return o.type == 'prot';
             }).quantity);
-            var maxKcal = 2100;
             $scope.data.review.macros.hc.target = body.macros.hc.target;
             $scope.data.review.macros.pt.target = body.macros.pt.target;;
             $scope.data.review.macros.lp.target = body.macros.lp.target;;
@@ -68,6 +76,21 @@ function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBa
         });
     });
 
+  var messagesGlobal = {
+    KO: {
+        title: '¡Tenemos bastante que mejorar!',
+        messages: ['Tanto las calorías que has ingerido como el equilibrio de tu dieta pueden mejorar.', 'Veamos algunos detalles...']
+    },
+    MID: {
+        title: '¡Todavía puedes hacerlo mejor!',
+        messages: ['Teniendo en cuenta tu ingesta de calorías y tu reparto de macronutrientes, vemos que aun tenemos algo que mejorar.']
+    },
+    OK: {
+        title: 'Lo estás haciendo muy bien!',
+        messages: ['Las calorías consumidas son las adecuadas, y tu dieta tiene un equilibrio bastante razonable.']
+    }
+
+  }
   var messagesKcal = {
     kcal: ['Te faltó consumir más calorías, ¿no olvidaste introducir algún alimento?'],
     KCAL: ['Te has pasado en las calorías que deberías de tomar'],
@@ -163,6 +186,11 @@ function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBa
         review.kcal.quality = '_';
     }
     review.kcal.messages = messagesKcal[review.kcal.quality];
+    var score = self.finalScore(review);
+    review.summary.needlePosition = score;
+    review.summary.title = messagesGlobal[score].title;
+    review.summary.messages = messagesGlobal[score].messages;
+    console.log(review.summary.score);
   }
 
   this.setChartColors = function(macro) {

@@ -9,17 +9,17 @@
 		<div class="item item-text-wrap centered">
 			<!-- <img ng-src="{{scoreImage(data.review.summary.score)}}"> -->
 			<div class="gauge-chart">
-				<div class="needle" style="transform: rotate(-60deg);"></div>
+				<div class="needle animated needleBounce{{data.review.summary.needlePosition}}"></div>
 			</div>
-			<h2 class="review-title">{{data.review.summary.title}}</h2>
-			<p ng-repeat="msg in data.review.summary.messages">{{msg}}</p>
+			<h2 class="animated fadeInSlow" review-title">{{data.review.summary.title}}</h2>
+			<p class="animated fadeInSlow" ng-repeat="msg in data.review.summary.messages">{{msg}}</p>
 		</div>
 	</div>
 
 	<div class="card light centered" id="nutrition-review-calories">
 		<div class="item item-text-wrap">
 
-			<h2 class="centered">Macronutrientes</h2>
+			<h2 class="centered">Calorías ingeridas</h2>
 
 			<div class="row">
 				<div class="col-50 col-offset-25">
