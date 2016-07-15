@@ -70,7 +70,6 @@ function ReviewController($scope, $state, $stateParams, DailyReview, $ionicNavBa
             $scope.data.review.macros.lp.current = body.macros.lp.current;
 
             $ionicNavBarDelegate.showBackButton(true);
-            $ionicNavBarDelegate.title($scope.data.review.title);
             self.buildReviewInfo($scope.data.review);
             self.setChartColors($scope.data.review.kcal);
             console.log(reviewData);

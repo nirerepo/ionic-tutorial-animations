@@ -3,6 +3,7 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate, $analytics){
 
     // Inicialización del slider
     $scope.data = {
+        title: '',
         sliderOptions: {
             initialSlide: Timeline.daysToFetch -1
         },
@@ -26,11 +27,11 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate, $analytics){
 
     this.updateTitle = function() {
         if($scope.data.slider.activeIndex == Timeline.daysToFetch -1)
-            $ionicNavBarDelegate.title("Hoy");
+            $scope.data.title = "Hoy";
         else if($scope.data.slider.activeIndex == Timeline.daysToFetch -2)
-            $ionicNavBarDelegate.title("Ayer");
+            $scope.data.title = "Ayer";
         else
-            $ionicNavBarDelegate.title(moment().subtract(4 - $scope.data.slider.activeIndex, 'days').format("DD MMM"));
+            $scope.data.title = moment().subtract(4 - $scope.data.slider.activeIndex, 'days').format("DD MMM");
     }
     $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
       // data.slider is the instance of Swiper
