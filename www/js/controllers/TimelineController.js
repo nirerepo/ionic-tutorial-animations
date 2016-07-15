@@ -22,7 +22,8 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate, $analytics){
 
     // Cuando cambia el slide actual, actualizamos el título de la ventana
     $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
-        $analytics.eventTrack('day_slided', { category: (4 - data.slider.activeIndex) + " days", eventType: "slide"});
+        if (window.analytics)
+            $analytics.eventTrack('day_slided', { category: (4 - data.slider.activeIndex) + " days", eventType: "slide"});
         if(data.slider.activeIndex == Timeline.daysToFetch -1)
             $ionicNavBarDelegate.title("Hoy");
         else if(data.slider.activeIndex == Timeline.daysToFetch -2)
