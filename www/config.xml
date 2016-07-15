@@ -54,13 +54,6 @@
     <icon src="resources/ios/icon/icon-small.png" gap:platform="ios" width="29" height="29"/>
     <icon src="resources/ios/icon/icon-small@2x.png" gap:platform="ios" width="58" height="58"/>
     <icon src="resources/ios/icon/icon-small@3x.png" gap:platform="ios" width="87" height="87"/>
-    <gap:splash src="resources/ios/splash/Default-568h@2x~iphone.png" gap:platform="ios" width="640" height="1136"/>
-    <gap:splash src="resources/ios/splash/Default-667h.png" gap:platform="ios" width="750" height="1334"/>
-    <gap:splash src="resources/ios/splash/Default-736h.png" gap:platform="ios" width="1242" height="2208"/>
-    <gap:splash src="resources/ios/splash/Default-Portrait@2x~ipad.png" gap:platform="ios" width="1536" height="2048"/>
-    <gap:splash src="resources/ios/splash/Default-Portrait~ipad.png" gap:platform="ios" width="768" height="1024"/>
-    <gap:splash src="resources/ios/splash/Default@2x~iphone.png" gap:platform="ios" width="640" height="960"/>
-    <gap:splash src="resources/ios/splash/Default~iphone.png" gap:platform="ios" width="320" height="480"/>
   </gap:platform>
   <gap:platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" gap:platform="android" density="ldpi"/>
@@ -69,13 +62,23 @@
     <icon src="resources/android/icon/drawable-xhdpi-icon.png" gap:platform="android" density="xhdpi"/>
     <icon src="resources/android/icon/drawable-xxhdpi-icon.png" gap:platform="android" density="xxhdpi"/>
     <icon src="resources/android/icon/drawable-xxxhdpi-icon.png" gap:platform="android" density="xxxhdpi"/>
+  </gap:platform>
+  <!-- SPLASH -->
+    <gap:splash src="splash_xxhdpi.png" />
+    <gap:splash src="resources/ios/splash/Default-568h@2x~iphone.png" gap:platform="ios" width="640" height="1136"/>
+    <gap:splash src="resources/ios/splash/Default-667h.png" gap:platform="ios" width="750" height="1334"/>
+    <gap:splash src="resources/ios/splash/Default-736h.png" gap:platform="ios" width="1242" height="2208"/>
+    <gap:splash src="resources/ios/splash/Default-Portrait@2x~ipad.png" gap:platform="ios" width="1536" height="2048"/>
+    <gap:splash src="resources/ios/splash/Default-Portrait~ipad.png" gap:platform="ios" width="768" height="1024"/>
+    <gap:splash src="resources/ios/splash/Default@2x~iphone.png" gap:platform="ios" width="640" height="960"/>
+    <gap:splash src="resources/ios/splash/Default~iphone.png" gap:platform="ios" width="320" height="480"/>    
     <gap:splash src="resources/android/splash/drawable-port-ldpi-screen.png" gap:platform="android" density="port-ldpi"/>
     <gap:splash src="resources/android/splash/drawable-port-mdpi-screen.png" gap:platform="android" density="port-mdpi"/>
     <gap:splash src="resources/android/splash/drawable-port-hdpi-screen.png" gap:platform="android" density="port-hdpi"/>
     <gap:splash src="resources/android/splash/drawable-port-xhdpi-screen.png" gap:platform="android" density="port-xhdpi"/>
     <gap:splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" gap:platform="android" density="port-xxhdpi"/>
     <gap:splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" gap:platform="android" density="port-xxxhdpi"/>
-  </gap:platform>
+
     <!-- PLUGINS -->
     <preference name="android-build-tool" value="gradle" />
     <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
