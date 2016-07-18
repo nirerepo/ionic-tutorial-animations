@@ -76,6 +76,9 @@
 							<div class="max small">
 								de {{data.review.macros.hc.target}} gr
 							</div>
+							<div class="max small">
+								{{data.review.macros.hc.percentage | number:0}}% de HC
+							</div>
 						</div>
 						<round-progress
 						max="data.review.macros.hc.chart.max"
@@ -104,6 +107,9 @@
 							</div>
 							<div class="max small">
 								de {{data.review.macros.pt.target}} gr
+							</div>
+							<div class="max small">
+								{{data.review.macros.pt.percentage | number:0}}% de Prot.
 							</div>
 						</div>
 						<round-progress
@@ -134,6 +140,10 @@
 							<div class="max small">
 								de {{data.review.macros.lp.target}} gr
 							</div>
+							<div class="max small">
+								{{data.review.macros.lp.percentage | number:0}}% de Grasas
+							</div>
+
 						</div>
 						<round-progress
 						max="data.review.macros.lp.chart.max"
