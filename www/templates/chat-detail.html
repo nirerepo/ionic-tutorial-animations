@@ -5,10 +5,12 @@
 			<div ng-repeat="m in messages track by $index">
 				<nire-message message="m"></nire-message>
 			</div>
-			<div ng-show="writing" class="bubble system loading">
+
+			<div ng-show="writing" class="bubble system loading" style="margin-bottom:100px;">
 				<ion-spinner icon="dots" class="spinner-light"></ion-spinner>
 			</div>
+
 		</div>
-		<div style="padding-bottom: 100px;">&nbsp;</div>
+		<!-- <div style="padding-bottom: 100px;">&nbsp;</div> -->
 	</ion-content>
 </ion-view>

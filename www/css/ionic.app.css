@@ -10396,9 +10396,7 @@ a.left {
   width: 100%;
   clear: both;
   padding-top: 50px;
-  text-align: right;
-  position: absolute;
-  bottom: 0px; }
+  text-align: right; }
   .text-chat-wrapper .item.bubble.user {
     width: 75%;
     float: none;
@@ -10429,7 +10427,7 @@ a.left {
   width: 100%;
   overflow: auto;
   padding-top: 50px;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
