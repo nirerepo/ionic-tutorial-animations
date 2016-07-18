@@ -25,7 +25,7 @@ angular.module('nire', [
             
         });
         if(window.analytics) {
-            window.analytics.startTrackerWithId('UA-56411801-1', 
+            window.analytics.startTrackerWithId('UA-56433592-4', 
                 function(){
                     console.log("analytics started");
                     window.analytics.setAllowIDFACollection(true);
