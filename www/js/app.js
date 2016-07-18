@@ -26,9 +26,14 @@ angular.module('nire', [
         });
         if(window.analytics) {
             window.analytics.startTrackerWithId('UA-56411801-1', 
-                function(){console.log("analytics started")
-            }, 
-                function(error){console.log("could not start analytics", error)});
+                function(){
+                    console.log("analytics started");
+                    window.analytics.setAllowIDFACollection(true);
+                    console.log("allowIDFACollection = true");
+                },
+                function(error){
+                    console.log("could not start analytics", error);
+                });
         }
 
         // Agrego un broadcast cada vez que se vuelve al la app y cuando se inicializa
