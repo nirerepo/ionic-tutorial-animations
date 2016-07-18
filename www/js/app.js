@@ -28,8 +28,12 @@ angular.module('nire', [
             window.analytics.startTrackerWithId('UA-56433592-4', 
                 function(){
                     console.log("analytics started");
-                    window.analytics.setAllowIDFACollection(true);
-                    console.log("allowIDFACollection = true");
+                    if (window.analytics.setAllowIDFACollection != null) {
+                        window.analytics.setAllowIDFACollection(true);
+                        console.log("allowIDFACollection = true");
+                    } else {
+                        console.log("allowIDFACollection = false");
+                    }
                 },
                 function(error){
                     console.log("could not start analytics", error);
