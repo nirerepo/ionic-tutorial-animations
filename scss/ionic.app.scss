@@ -844,6 +844,47 @@ a.left {
 	float: right;
 }
 
+.text-chat-wrapper {
+	display: block;
+	width: 100%;
+	clear: both;
+	padding-top: 50px;
+	text-align: right;
+    position: absolute;
+    bottom: 0px;
+
+	.item.bubble.user {
+		width: 75%;
+		float: none;
+		display: inline-block;
+		margin: 0px;
+		margin-top: 10px;
+		margin-right: 5px;
+		padding: 0px;
+		vertical-align: top;
+		box-shadow: $shadow-default;
+
+	    input {
+	    	width: 100%;
+	    }
+	}
+
+	.send-chat {
+		float: none;
+		display: inline-block;
+		vertical-align: top;
+		text-align: right;
+		height: 65px;
+
+		button {
+			border-radius: 30px;
+			width: 60px;
+			height: 60px;
+			box-shadow: $shadow-default;
+		}
+	}
+}
+
 /* OPTIONS */
 
 .options {

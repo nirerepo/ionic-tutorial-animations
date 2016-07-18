@@ -1,8 +1,18 @@
 <div class="bubble {{message.source}} animated fadeIn">
     <p>{{message.text}}</p>
 </div>
-<div class="item bubble user animated fadeIn" ng-if="!getResponse()">
-    <p><input type="text" ng-model="message.value" /><button ng-click="sendResponse()">Send</button></p>
+
+<div class="text-chat-wrapper" ng-if="!getResponse()">
+	<div class="item bubble user animated fadeIn">
+		<label class="item item-input">
+	    	<input type="text" placeholder="First Name" ng-model="message.value" />   
+	    </label> 	
+	</div>
+
+	<div class="send-chat">
+		<button class="button icon ion-reply" ng-click="sendResponse()"></button>
+		<!-- 	<button ng-click="sendResponse()">Enviar</button> -->
+	</div>
 </div>
 <div class="item bubble user animated fadeIn" ng-if="getResponse()">
     <p>{{ getResponse().message }}</p>
