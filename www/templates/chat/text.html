@@ -5,7 +5,7 @@
 <div class="text-chat-wrapper" ng-if="!getResponse()">
 	<div class="item bubble user animated fadeIn">
 		<label class="item item-input">
-	    	<input type="text" placeholder="First Name" ng-model="message.value" />   
+	    	<input type="text" placeholder="First Name" ng-model="message.value" ng-keyup="$event.keyCode == 13 && sendResponse()"/>   
 	    </label> 	
 	</div>
 

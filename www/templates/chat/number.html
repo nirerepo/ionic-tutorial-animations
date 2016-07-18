@@ -2,7 +2,7 @@
     <p>{{message.text}}</p>
 </div>
 <div class="item bubble user animated fadeIn" ng-if="!getResponse()">
-    <p><input type="number" ng-model="message.value" /><button ng-click="sendResponse()">Send</button></p>
+    <p><input type="number" ng-model="message.value" ng-keyup="$event.keyCode == 13 && sendResponseNumber()"/><button ng-click="sendResponseNumber()" >Send</button></p>
 </div>
 <div class="item bubble user animated fadeIn" ng-if="getResponse()">
     <p>{{ getResponse().message }}</p>
