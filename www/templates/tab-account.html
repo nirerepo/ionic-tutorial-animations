@@ -5,23 +5,24 @@
 </div>
 </ion-header-bar>
   <ion-content class="has-header">
-    <ion-list>
-      <ion-item>
-        Nombre: {{nombre}}
+    <ion-list class="transparent">
+      <ion-item class="margin-bottom margin-top">
+        Nombre <span class="item-note">{{nombre}}</span>
       </ion-item>
       <ion-item>
-        Fecha de nacimiento: {{fechaNacimiento}}
+        Fecha de nacimiento <span class="item-note">{{fechaNacimiento}}</span>
       </ion-item>
       <ion-item>
-        Altura: {{altura}}
+        Altura <span class="item-note">{{altura}}</span>
       </ion-item>
       <ion-item>
-        Peso: {{peso}}
+        Peso <span class="item-note">{{peso}}</span>
       </ion-item>
       <ion-item>
-        Genero: {{genero}}
+        Género <span class="item-note">{{genero}}</span>
       </ion-item>
     </ion-list>
+    <div style="height: 300px;"></div>
     <ion-list>
       <ion-toggle ng-model="settings.serverMonitor">Enable Server Monitor</ion-toggle>
     </ion-list>

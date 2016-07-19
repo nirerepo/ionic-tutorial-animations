@@ -9846,6 +9846,9 @@ hr.dark {
 #tracker .empty p {
   color: #fff; }
 
+#tracker .empty {
+  margin-top: 50px; }
+
 .separator {
   display: flex; }
 
@@ -9859,6 +9862,12 @@ hr.dark {
   display: block;
   float: left;
   margin: 0px 20px; }
+
+.margin-top {
+  margin-top: 10px !important; }
+
+.margin-bottom {
+  margin-bottom: 10px !important; }
 
 input, select {
   font-size: 18px !important;
@@ -10193,21 +10202,6 @@ select[readonly] {
   line-height: 30px;
   text-align: center; }
 
-.frecuents-list {
-  color: #FFF; }
-  .frecuents-list .item-divider {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: #FFF;
-    font-family: MovistarHeadline-Bold; }
-  .frecuents-list .list .item {
-    color: #FFF;
-    font-size: 18px;
-    background-color: transparent;
-    border-color: rgba(255, 255, 255, 0.1); }
-  .frecuents-list p.info, .frecuents-list span.info {
-    color: rgba(255, 255, 255, 0.75); }
-
 a i {
   color: #fff;
   font-size: 22px; }
@@ -10245,6 +10239,27 @@ a.left {
   margin-left: -15px;
   margin-top: -15px;
   margin-bottom: -15px; }
+
+.transparent {
+  color: #FFF; }
+  .transparent .item-divider {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #FFF;
+    font-family: MovistarHeadline-Bold; }
+  .transparent .list .item {
+    color: #FFF;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: transparent;
+    margin-bottom: 2px;
+    padding: 14px 16px; }
+  .transparent p.info, .transparent span.info {
+    color: rgba(255, 255, 255, 0.75); }
+  .transparent .item-note {
+    font-family: MovistarText-Bold;
+    font-size: 16px;
+    color: #fff; }
 
 .modal-backdrop-bg {
   background: rgba(0, 52, 79, 0.9); }

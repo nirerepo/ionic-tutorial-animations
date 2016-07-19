@@ -146,6 +146,10 @@ hr.dark {
 	color: $light;
 }
 
+#tracker .empty {
+	margin-top: 50px;
+}
+
 .separator {
 	display: flex;
 }
@@ -162,6 +166,16 @@ hr.dark {
 	float: left;
 	margin: 0px 20px;
 }
+
+.margin-top {
+	margin-top: 10px!important;
+}
+
+.margin-bottom {
+	margin-bottom: 10px!important;
+}
+
+
 
 input, select {
 	font-size: $input-font-size!important;
@@ -595,26 +609,6 @@ select[readonly] {
 // - SEARCHBAR - //
 ///////////////////
 
-.frecuents-list {
-	color: #FFF;
-
-	.item-divider {
-    	background-color: rgba(255,255,255, 0.1);
-    	border: none;
-    	color: #FFF;
-    	font-family: $header-font-family-default;
-	}
-	.list .item {
-		color: #FFF;
-		font-size: $base-font-size-large;
-		background-color: transparent;
-		border-color: rgba(255,255,255, 0.1);
-	}
-
-	p.info, span.info {
-    	color: rgba(255,255,255, 0.75);
-	}
-}
 
 a i {
     color: $light;
@@ -660,6 +654,39 @@ a.left {
     margin-left: -15px;
     margin-top: -15px;
     margin-bottom: -15px;
+}
+
+/////////////////////
+// - LIST STYLES - //
+/////////////////////
+
+.transparent {
+	color: #FFF;
+
+	.item-divider {
+    	background-color: rgba(255,255,255, 0.1);
+    	border: none;
+    	color: #FFF;
+    	font-family: $header-font-family-default;
+	}
+	.list .item {
+		color: #FFF;
+		font-size: $base-font-size-large;
+		background-color: rgba(255,255,255, 0.25);;
+		border-color: transparent;
+		margin-bottom: 2px;
+	    padding: 14px 16px;
+	}
+
+	p.info, span.info {
+    	color: rgba(255,255,255, 0.75);
+	}
+
+	.item-note {
+	font-family: $base-font-family-bold;
+	font-size: $base-font-size-default;
+	color: $light;
+	}
 }
 
 ///////////////////
