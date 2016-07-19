@@ -1,10 +1,11 @@
-function ChatService($rootScope, Connection, userStorage, $analytics) {
+function ChatService($rootScope, Connection, $timeout, userStorage, $analytics) {
     var self = this;
+    var forcewriting = false;
 
     // Registramos en el rootScope una funcion para recuperar la cantidad
     // de mensajes pendientes de leer
     $rootScope.chatBadge = function() {
-        return (self.isWritingMessage() === true) ? "!!" : "";
+        return (!self.forcewriting || self.isWritingMessage() === true) ? "!!" : "";
     };
 
     var readedMessages = [];
@@ -22,7 +23,7 @@ function ChatService($rootScope, Connection, userStorage, $analytics) {
      * Devuelve true si el sistema tiene mensajes ya recibidos para mostrar
      */
     this.isWritingMessage = function() {
-        return (receivedMessages != undefined) && (receivedMessages.length > 0);
+        return self.forcewriting || ((receivedMessages != undefined) && (receivedMessages.length > 0));
     }
     /**
      * Si hay un mensaje no leido, lo pasa a la lista de mensajes leidos y retorna
@@ -84,10 +85,18 @@ function ChatService($rootScope, Connection, userStorage, $analytics) {
         return userStorage.responses[id];
     };
 
+    this.forceWriting = function() {
+        self.forcewriting = true;
+        $timeout(function() {
+            self.forcewriting = false;
+        }, 3000);
+    };
+
     /**
      * Response una notificación.
      */
     this.replyMessage = function(reply, msgId) {
+        self.forceWriting();
         console.log("Respondiendo mensaje", msgId, reply);
         reply.notificationId = msgId;
 
