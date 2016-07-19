@@ -6,6 +6,23 @@
 </ion-header-bar>
   <ion-content class="has-header">
     <ion-list>
+      <ion-item>
+        Nombre: {{nombre}}
+      </ion-item>
+      <ion-item>
+        Fecha de nacimiento: {{fechaNacimiento}}
+      </ion-item>
+      <ion-item>
+        Altura: {{altura}}
+      </ion-item>
+      <ion-item>
+        Peso: {{peso}}
+      </ion-item>
+      <ion-item>
+        Genero: {{genero}}
+      </ion-item>
+    </ion-list>
+    <ion-list>
       <ion-toggle ng-model="settings.serverMonitor">Enable Server Monitor</ion-toggle>
     </ion-list>
     <ul>
