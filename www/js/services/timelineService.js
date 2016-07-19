@@ -16,7 +16,10 @@ function TimelineService(Connection, $filter) {
         force = ((typeof force !== 'undefined') ? force : false);
         for(var i = 0; i < self.daysToFetch; i++ ){
             var date = moment().subtract(i, 'days').format("YYYYMMDD");
-            if(force || !self.tracks[date]) {
+            if(force || !self.tracks[date]
+                || !self.tracks[date].nutrition
+                || !self.tracks[date].exercises
+                || !self.tracks[date].challenges) {
                 if (!self.tracks[date])
                     self.tracks[date] = {
                         day: date,
