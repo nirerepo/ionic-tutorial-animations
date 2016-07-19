@@ -22,23 +22,22 @@ angular.module('nire', [
                 // org.apache.cordova.statusbar required
                 StatusBar.styleLightContent();
             }
-            
+            if(window.analytics) {
+                window.analytics.startTrackerWithId('UA-56433592-4', 
+                    function(){
+                        console.log("analytics started");
+                        if (window.analytics.setAllowIDFACollection != null) {
+                            window.analytics.setAllowIDFACollection(true);
+                            console.log("allowIDFACollection = true");
+                        } else {
+                            console.log("allowIDFACollection = false");
+                        }
+                    },
+                    function(error){
+                        console.log("could not start analytics", error);
+                    });
+            }
         });
-        if(window.analytics) {
-            window.analytics.startTrackerWithId('UA-56433592-4', 
-                function(){
-                    console.log("analytics started");
-                    if (window.analytics.setAllowIDFACollection != null) {
-                        window.analytics.setAllowIDFACollection(true);
-                        console.log("allowIDFACollection = true");
-                    } else {
-                        console.log("allowIDFACollection = false");
-                    }
-                },
-                function(error){
-                    console.log("could not start analytics", error);
-                });
-        }
 
         // Agrego un broadcast cada vez que se vuelve al la app y cuando se inicializa
         // para actualizar los datos de fit
