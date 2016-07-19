@@ -27,7 +27,7 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
             $scope.clear();
     }
     $scope.search = function() {
-        if ($scope.data.search.length >= 3) {
+        if ($scope.data.search.length >= 2) {
             Food.plateByName($scope.data.search).then(function(matches) {
                 $scope.data.plates = matches.data.hits.hits;
             });
