@@ -944,6 +944,12 @@ a.left {
 	height: 40px;
 }
 
+.bubble.system p,
+.bubble.user p,
+.options .bubble.option p {
+white-space: normal;
+}
+
 /* FICHAS */
 
 .ficha-wrapper {
