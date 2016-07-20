@@ -838,38 +838,41 @@ a.left {
 	margin-bottom: 0px!important;
 }
 
-.bubble.system {
+
+.bubble.system,
+.bubble.api {
     -webkit-animation: fadeInLeft 0.75s;
     animation: fadeInLeft 0.75s;
     border-top-left-radius: 0px;
+   	float: left;
+	background-color: $bubble-background-system;
+}
+
+.bubble.api {
+	border-radius: 8px!important;
 }
 
 .bubble.user {
     border-top-right-radius: 0px;
+    background-color: $bubble-background-user;
+	float: right;
 }
 
 .bubble.system,
+.bubble.api,
 .bubble.user {
 	margin: 5px 0 5px 0;
 	border: none;
 }
 
 .bubble.system p,
+.bubble.api p,
 .bubble.user p {	
 	color: $light;
 	font-size: $bubble-font-size;
 	line-height: $bubble-line-height;
 }
 
-.bubble.system {
-	float: left;
-	background-color: $bubble-background-system;
-}
-
-.bubble.user {
-	background-color: $bubble-background-user;
-	float: right;
-}
 
 .text-chat-wrapper {
 	display: block;

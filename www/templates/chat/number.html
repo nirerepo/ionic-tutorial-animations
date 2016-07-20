@@ -2,10 +2,6 @@
     <p>{{message.text}}</p>
 </div>
 
-<!-- <div class="item bubble user animated fadeIn" ng-if="!getResponse()">
-    <p><input type="number" ng-model="message.value" /><button ng-click="sendResponse()">Send</button></p>
-</div> -->
-
 <div class="text-chat-wrapper animated fadeIn" ng-if="!getResponse()">
 	<div class="item bubble user">
 		<label class="item item-input">
@@ -15,10 +11,8 @@
 
 	<div class="send-chat">
 		<button class="button icon ion-forward" ng-click="sendResponseNumber()"></button>
-		<!-- 	<button ng-click="sendResponse()">Enviar</button> -->
 	</div>
 </div>
-
 
 <div class="item bubble user animated fadeIn" ng-if="getResponse()">
     <p>{{ getResponse().message }}</p>

@@ -10379,32 +10379,34 @@ a.left {
 .bubble p {
   margin-bottom: 0px !important; }
 
-.bubble.system {
+.bubble.system,
+.bubble.api {
   -webkit-animation: fadeInLeft 0.75s;
   animation: fadeInLeft 0.75s;
-  border-top-left-radius: 0px; }
+  border-top-left-radius: 0px;
+  float: left;
+  background-color: rgba(255, 255, 255, 0.2); }
+
+.bubble.api {
+  border-radius: 8px !important; }
 
 .bubble.user {
-  border-top-right-radius: 0px; }
+  border-top-right-radius: 0px;
+  background-color: rgba(0, 52, 79, 0.6);
+  float: right; }
 
 .bubble.system,
+.bubble.api,
 .bubble.user {
   margin: 5px 0 5px 0;
   border: none; }
 
 .bubble.system p,
+.bubble.api p,
 .bubble.user p {
   color: #fff;
   font-size: 16px;
   line-height: 20px; }
-
-.bubble.system {
-  float: left;
-  background-color: rgba(255, 255, 255, 0.2); }
-
-.bubble.user {
-  background-color: rgba(0, 52, 79, 0.6);
-  float: right; }
 
 .text-chat-wrapper {
   display: block;
