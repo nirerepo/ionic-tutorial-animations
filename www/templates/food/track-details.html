@@ -7,8 +7,8 @@
 
 <div class="row units">
 <div class="button-bar">
-  <a ng-click="data.unidades = ud" ng-repeatXXX="ud in data.unidades" class="button selected"
-  ng-classXXX="{'selected' : ud == data.unidades}">{{data.unidades || 'Ración'}}</i></a>
+  <a ng-click="foodTracker.selectUnit(ud)" ng-repeat="ud in data.measures" 
+  ng-class="{'selected' : ud == data.unidadSeleccionada}">{{ud}}</i></a>
 <!--  <a class="button">{{data.unidades || 'Ración'}}</i></a>
   <a class="button">{{data.unidades || 'Ración'}}</i></a>
   <a class="button">{{data.unidades || 'Ración'}}</i></a> -->
@@ -18,10 +18,10 @@
 <div class="row padding centered">
   <div class="col col-50 col-offset-25 padding-vertical">
   	<div class="up" ng-click="foodTracker.increaseAmount()"></div>
-  	<input ng-repeat="ud in data.measures" ng-change="foodTracker.keepOnlyNumbers()" ng-model="data.foodAmounts[ud]" type="tel" ng-show="ud == data.unidades"/>
+  	<input ng-repeat="ud in data.measures" ng-change="foodTracker.keepOnlyNumbers()" ng-model="data.foodAmounts[ud]" type="tel" ng-show="ud == data.unidadSeleccionada"/>
     <p class="info">
-      <span ng-show="data.unidades=='Gramos'">&nbsp;</span>
-      <span ng-hide="data.unidades=='Gramos'">{{data.foodAmounts['Gramos']}} gr.</span></p>
+      <span ng-show="data.unidadSeleccionada==data.selectedFood.unidad">&nbsp;</span>
+      <span ng-hide="data.unidadSeleccionada==data.selectedFood.unidad">{{data.foodAmounts[data.selectedFood.unidad]}} {{data.selectedFood.unidad}}.</span></p>
   	<div class="down" ng-click="foodTracker.decreaseAmount()"></div>
   </div>
 </div>

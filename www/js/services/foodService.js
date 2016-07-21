@@ -13,9 +13,9 @@ function FoodService($q, $http, Connection) {
         return rdo.promise;
     };
 
-    this.addPlate = function(mealId, plate, date, amount) {
-        var data = { date: date, plates: [plate], idMeal: parseInt(mealId), amount: parseInt(amount) }
-        return Connection.request("track/nutrition/add", data, "application/json");
+    this.addPlate = function(mealId, plate, date, amount, unidadSeleccionada) {
+        var data = { date: date, plate: plate, idMeal: parseInt(mealId), amount: parseInt(amount), unidadSeleccionada: unidadSeleccionada }
+        return Connection.request("track/nutrition/addPlate", data, "application/json");
     }
 
     this.getLastUsed = function(mealId) {

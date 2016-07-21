@@ -61,13 +61,14 @@ function TimelineService(Connection, $filter) {
         return self.tracks;
     }
 
-    this.addPlate = function (mealId, plateData, day, amount){
+    this.addPlate = function (mealId, plateData, day, amount, unidadSeleccionada, cantidadUnidad){
         var key = self.mealKey[mealId]
         var plate = {
             id: plateData.id, 
             title: plateData.name, 
-            userAmount: amount + " " + plateData.medida_casera,
-            gramos: (plateData.cantidad_medida_casera? plateData.cantidad_medida_casera : 100) * amount
+            userAmount: cantidadUnidad + " " + unidadSeleccionada,
+            gramos: amount,
+            medidaUnidad: plateData.unidad
         }
 
         var track = $filter('filter')(self.tracks[day].nutrition, {typeId: parseInt(mealId)}, true);
