@@ -4,7 +4,10 @@ function MessageDirective(Login, $state, Chats, HealthStore) {
     }
 
     function ControllerFunction($scope) {
-        // Aca se envian los option buttons
+        /**
+         * Metodo Response para mensjes del tipo Option
+         * No solo la interpretación de los parametors es diferente, tambien puede ejecuta un JS  
+         */
         $scope.sendResponseOption = function(opt) {
             // TODO: Este no es el lugar de esto
             if(opt.script)
@@ -14,9 +17,10 @@ function MessageDirective(Login, $state, Chats, HealthStore) {
             Chats.replyMessage(opt, $scope.message.id);
         };
 
-        // Aca se envian todas las demás cosas.
+        /**
+         * Metodo Response para casos generales, sin validacion
+         */
         $scope.sendResponse = function() {
-            console.log($scope.message.value)
             var response =  { value: $scope.message.value, event: $scope.message.event };
             Chats.replyMessage(response, $scope.message.id);
         };
@@ -25,6 +29,9 @@ function MessageDirective(Login, $state, Chats, HealthStore) {
             return Chats.getResponse($scope.message.id);
         };
 
+        /**
+         * Metodo Response para datos numéricos enteros
+         */
         $scope.sendResponseNumber = function() {
             var x;
             var value = $scope.message.value;
@@ -32,16 +39,22 @@ function MessageDirective(Login, $state, Chats, HealthStore) {
                 $scope.sendResponse();
             else
                 plugins.toast.show('Debe ingresar un numero entero', 5000, 'top');
-        }
+        };
 
+        /**
+         * Metodo Response para fechas
+         */
         $scope.sendResponseDate = function() {
             var value = $scope.message.value;
             if(value instanceof Date && value < new Date())
                 $scope.sendResponse();
             else
                 plugins.toast.show('La fecha seleccionada no es valida', 5000, 'top');
-        }
+        };
 
+        /**
+         * TODO: colocar en algun lugar bonito, aquí no queda bien.
+         */
         $scope.initHealthTracking = function(){
             console.log("pedido de inicializacion de fit :D");
             HealthStore.autorizeHealthService();
@@ -49,7 +62,7 @@ function MessageDirective(Login, $state, Chats, HealthStore) {
 
         $scope.redirect = function(page) {
             $state.go(page);
-        }
+        };
     }
 
     return {
