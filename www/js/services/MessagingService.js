@@ -56,6 +56,7 @@ function MessagingService($rootScope, userStorage) {
 
         // Adaptamos los campos que sabemos especiales.
         if(!result.type) result.type = 'message';
+        result.text = serverMessage.message;
 
         // Para mantener compatibilidad con otras conversaciones.
         // Si el mensaje tiene botones, siempre el tipo sera 'options'
