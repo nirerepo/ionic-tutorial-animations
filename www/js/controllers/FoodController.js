@@ -99,14 +99,14 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
             $scope.foodTrackModal.show();
         },
         addFrecuentPlate : function(fields) {
-            var plateData = {name: fields.title, kcal: fields.calories, id: fields.id, medida_casera: [fields.medida_casera], cantidad_medida_casera: [fields.cantidad_medida_casera], unidad: fields.unidad};
+            var plateData = {name: fields.title, kcal: fields.calories, id: fields.id, unidad: fields.unidad};
 
             $scope.data.measures = [];
             $scope.data.measuresAmount = [];
-            if(plateData.medida_casera){
-                for(var i = 0; i < plateData.medida_casera.length; i++) {
-                    $scope.data.measures.push(plateData.medida_casera[i]);
-                    $scope.data.measuresAmount[plateData.medida_casera[i]] = plateData.cantidad_medida_casera[i];
+            if(fields.medidaCasera){
+                for(var i = 0; i < fields.medidaCasera.length; i++) {
+                    $scope.data.measures.push(fields.medidaCasera[i].medida_casera);
+                    $scope.data.measuresAmount[fields.medidaCasera[i].medida_casera] = fields.medidaCasera[i].cantidad_medida_casera;
                 }
             }
             if($scope.data.measures.length == 0) {

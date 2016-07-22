@@ -38,7 +38,7 @@
     <ul class="list">
       <li class="item" ng-repeat="plate in lastUsed" ng-click="foodTracker.addFrecuentPlate(plate)" analytics-on="click" analytics-event="addPlate" analytics-category="frecuente">
         <span class="item-title">{{plate.title}}</span><br>
-        <span class="info">1 {{plate.medida_casera? plate.medida_casera: "Ración"}} {{plate.cantidad_medida_casera? plate.cantidad_medida_casera : "100"}} {{plate.unidad}} - {{calcularCalorias(plate.calories, plate.cantidad_medida_casera)}}Kcal ({{plate.id}})</span>
+        <span class="info">1 {{plate.medidaCasera? plate.medidaCasera[0].medida_casera: "Ración"}} {{plate.medidaCasera? plate.medidaCasera[0].cantidad_medida_casera : "100"}} {{plate.unidad}} - {{calcularCalorias(plate.calories, plate.cantidad_medida_casera)}}Kcal ({{plate.id}})</span>
       </li>
     </ul>
 
