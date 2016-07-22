@@ -46,8 +46,11 @@ function MessageDirective(Login, $state, Chats, HealthStore) {
          */
         $scope.sendResponseDate = function() {
             var value = $scope.message.value;
-            if(value instanceof Date && value < new Date())
+            console.log(value)
+            if(value instanceof Date && value < new Date()){
+                $scope.message.value = value.toISOString().split('T')[0]
                 $scope.sendResponse();
+            }
             else
                 plugins.toast.show('La fecha seleccionada no es valida', 5000, 'top');
         };
