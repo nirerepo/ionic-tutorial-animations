@@ -35,7 +35,7 @@ function MessagingService($rootScope, userStorage) {
         for (var attrname in reply) { 
             userStorage.responses[attrname] = reply[attrname];
         }
-    }
+    };
 
     /**
      * Obtener el id del ultimo mensaje
@@ -51,25 +51,18 @@ function MessagingService($rootScope, userStorage) {
      * @return {{id: number, source: string, type: string, text: string, event: string options: [{text: string, value: string}]}}
      */
     function adaptMessage(serverMessage) {
-        var result = {
-            id: serverMessage.id,
-            source: serverMessage.source,
-            type: 'message',
-            text: serverMessage.message,
-            event: serverMessage.event
-        };
+        // Copiamos todos los datos.
+        var result = _.assign(serverMessage);
 
-        if(serverMessage.type) {
-            result.type = serverMessage.type;
-        }
+        // Adaptamos los campos que sabemos especiales.
+        if(!result.type) result.type = 'message';
 
-        if(serverMessage.button) {
+        // Para mantener compatibilidad con otras conversaciones.
+        // Si el mensaje tiene botones, siempre el tipo sera 'options'
+        // y codificamos las opciones de una forma más utilizable para esta nueva app
+        if(result.button) {
             result.type = 'options';
             result.options = toButtonStructure(serverMessage.button);
-        }
-
-        if(serverMessage.value) {
-            result.value = serverMessage.value;
         }
 
         return result;
@@ -97,6 +90,9 @@ function MessagingService($rootScope, userStorage) {
      * @param {{id: number, source: string, message: string, button: string}} message
      */
     function splitMessage(message) {
+        // Sólo tiene sentido si el mensaje tiene efectivamente, un mensaje.
+        if(!message.message) return [message];
+
         var text = message.message.split(/-{5,}/);
 
         var result = [];

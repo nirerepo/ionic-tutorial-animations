@@ -159,4 +159,11 @@ angular.module('nire', [
     })
     .config(function ($ionicConfigProvider) {
         $ionicConfigProvider.tabs.position('bottom');
-    });
+    })
+    .config(function($sceDelegateProvider) {
+        $sceDelegateProvider.resourceUrlWhitelist([
+            'self',
+            'http://localhost:8080/nire/widgets/**'
+        ]);
+    })
+;
