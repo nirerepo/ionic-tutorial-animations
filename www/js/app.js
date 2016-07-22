@@ -37,7 +37,6 @@ angular.module('nire', [
                         console.log("could not start analytics", error);
                     });
             }
-            debugger;
         });
 
         // Agrego un broadcast cada vez que se vuelve al la app y cuando se inicializa
