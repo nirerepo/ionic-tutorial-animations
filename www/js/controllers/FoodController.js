@@ -61,7 +61,7 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
     $scope.foodTracker = {
         addPlate : function(plate) {
             var fields = plate.fields;
-            console.log(fields)
+            console.log("PLATE", fields)
             var plateData = {id: fields.id[0],
                             name: fields.nombredieta[0],
                             kcal: fields.kcal? fields.kcal[0] : 0,
@@ -75,8 +75,7 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
                             tipoitem: fields.tipoitem? fields.tipoitem[0]:null,
                             unidad: fields.unidad? fields.unidad[0]:null
                             };
-            //$scope.data.unidades = plateData.medida_casera
-            //console.log("unidades", $scope.data.unidades)
+
             $scope.data.measures = [];
             $scope.data.measuresAmount = [];
             if(fields.medida_casera){
@@ -86,7 +85,6 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
                     $scope.data.measuresAmount[fields.medida_casera[i]] = fields.cantidad_medida_casera[i];
                 }
             }
-            
             if($scope.data.measures.length == 0) {
                 $scope.data.measures.push('Racion');
                 $scope.data.measuresAmount['Racion'] = 100;
@@ -97,14 +95,28 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
             $scope.data.unidadSeleccionada = $scope.data.measures[0]
             $scope.data.foodAmounts[$scope.data.unidadSeleccionada] = 1;
             $scope.data.selectedFood = plateData;
-            
             this.updateEquivalences();
             $scope.foodTrackModal.show();
         },
-        addFrecuentPlate : function(plate) {
-            var plateData = {name: plate.title, kcal: plate.calories, id: plate.id, medida_casera: plate.medida_casera, cantidad_medida_casera: plate.cantidad_medida_casera};
-            $scope.data.unidadSeleccionada = _(plateData.medida_casera).upperFirst() || 'Ración';
-            $scope.data.measures = [$scope.data.unidadSeleccionada, 'Gramos'];
+        addFrecuentPlate : function(fields) {
+            var plateData = {name: fields.title, kcal: fields.calories, id: fields.id, medida_casera: [fields.medida_casera], cantidad_medida_casera: [fields.cantidad_medida_casera], unidad: fields.unidad};
+
+            $scope.data.measures = [];
+            $scope.data.measuresAmount = [];
+            if(plateData.medida_casera){
+                for(var i = 0; i < plateData.medida_casera.length; i++) {
+                    $scope.data.measures.push(plateData.medida_casera[i]);
+                    $scope.data.measuresAmount[plateData.medida_casera[i]] = plateData.cantidad_medida_casera[i];
+                }
+            }
+            if($scope.data.measures.length == 0) {
+                $scope.data.measures.push('Racion');
+                $scope.data.measuresAmount['Racion'] = 100;
+            }
+            
+            $scope.data.measures.push(plateData.unidad);
+            
+            $scope.data.unidadSeleccionada = $scope.data.measures[0]
             $scope.data.foodAmounts[$scope.data.unidadSeleccionada] = 1;
             $scope.data.selectedFood = plateData;
             this.updateEquivalences();
