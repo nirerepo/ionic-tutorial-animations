@@ -4,12 +4,7 @@ function WigetController($scope) {
     }
 
     $scope.template = findTemplate($scope.message.template);
-
-    $scope.data = { review: { summary: {
-        title: "hola",
-        needlePosition: "OK",
-        messages: ["hola como estas", "esperemos que funcione"]
-    } } };
+    $scope.data = $scope.message.data;
 }
 
 angular.module('nire.controllers')
