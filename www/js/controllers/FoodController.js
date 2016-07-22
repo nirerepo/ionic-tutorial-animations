@@ -66,7 +66,7 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
                             name: fields.nombredieta[0],
                             kcal: fields.kcal? fields.kcal[0] : 0,
                             cantidad: fields.cantidad? fields.cantidad[0]:null,
-                            medida_casera: [],//fields.medida_casera? fields.medida_casera[0]:null,
+                            medidaCasera: [],//fields.medida_casera? fields.medida_casera[0]:null,
                             //cantidad_medida_casera: fields.cantidad_medida_casera? fields.cantidad_medida_casera[0]:null,
                             grupo: fields.grupo? fields.grupo[0]:null,
                             grasa: fields.grasa? fields.grasa[0]:null,
@@ -76,37 +76,24 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
                             unidad: fields.unidad? fields.unidad[0]:null
                             };
 
-            $scope.data.measures = [];
-            $scope.data.measuresAmount = [];
             if(fields.medida_casera){
                 for(var i = 0; i < fields.medida_casera.length; i++) {
-                    plateData.medida_casera.push({medida_casera: fields.medida_casera[i], cantidad_medida_casera: fields.cantidad_medida_casera[i]});
-                    $scope.data.measures.push(fields.medida_casera[i]);
-                    $scope.data.measuresAmount[fields.medida_casera[i]] = fields.cantidad_medida_casera[i];
+                    plateData.medidaCasera.push({medida_casera: fields.medida_casera[i], cantidad_medida_casera: fields.cantidad_medida_casera[i]});
                 }
             }
-            if($scope.data.measures.length == 0) {
-                $scope.data.measures.push('Racion');
-                $scope.data.measuresAmount['Racion'] = 100;
-            }
-            
-            $scope.data.measures.push(plateData.unidad);
-            
-            $scope.data.unidadSeleccionada = $scope.data.measures[0]
-            $scope.data.foodAmounts[$scope.data.unidadSeleccionada] = 1;
-            $scope.data.selectedFood = plateData;
-            this.updateEquivalences();
-            $scope.foodTrackModal.show();
+            this.setView(plateData);
         },
         addFrecuentPlate : function(fields) {
-            var plateData = {name: fields.title, kcal: fields.calories, id: fields.id, unidad: fields.unidad};
-
+            var plateData = {name: fields.title, medidaCasera: fields.medidaCasera, kcal: fields.calories, id: fields.id, unidad: fields.unidad};
+            this.setView(plateData);
+        },
+        setView: function(plate) {
             $scope.data.measures = [];
             $scope.data.measuresAmount = [];
-            if(fields.medidaCasera){
-                for(var i = 0; i < fields.medidaCasera.length; i++) {
-                    $scope.data.measures.push(fields.medidaCasera[i].medida_casera);
-                    $scope.data.measuresAmount[fields.medidaCasera[i].medida_casera] = fields.medidaCasera[i].cantidad_medida_casera;
+            if(plate.medidaCasera){
+                for(var i = 0; i < plate.medidaCasera.length; i++) {
+                    $scope.data.measures.push(plate.medidaCasera[i].medida_casera);
+                    $scope.data.measuresAmount[plate.medidaCasera[i].medida_casera] = plate.medidaCasera[i].cantidad_medida_casera;
                 }
             }
             if($scope.data.measures.length == 0) {
@@ -114,11 +101,11 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
                 $scope.data.measuresAmount['Racion'] = 100;
             }
             
-            $scope.data.measures.push(plateData.unidad);
-            
-            $scope.data.unidadSeleccionada = $scope.data.measures[0]
+            $scope.data.measures.push(plate.unidad);
+
+            $scope.data.unidadSeleccionada = $scope.data.measures[0];
             $scope.data.foodAmounts[$scope.data.unidadSeleccionada] = 1;
-            $scope.data.selectedFood = plateData;
+            $scope.data.selectedFood = plate;
             this.updateEquivalences();
             $scope.foodTrackModal.show();
         },
