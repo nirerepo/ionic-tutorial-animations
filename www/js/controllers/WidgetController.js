@@ -1,6 +1,6 @@
-function WigetController($scope) {
+function WigetController($scope, serverConfig) {
     function findTemplate(template) {
-        return "http://localhost:8080/nire/widgets/" + template + ".htm";
+        return serverConfig.widgets + template + ".htm";
     }
 
     $scope.template = findTemplate($scope.message.template);

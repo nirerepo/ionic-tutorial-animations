@@ -1,9 +1,6 @@
 
-function ConnectionService($http) {
+function ConnectionService($http, serverConfig) {
     var self = this;
-
-    var URL_JSON_READER = "http://nire0.gailen.es:8080/nire/";
-    var URL_JSON_WRITER = "http://nire0.gailen.es:8080/nire/";
 
     self.currentHash = null;
     self.currentUsername = null;
@@ -36,7 +33,7 @@ function ConnectionService($http) {
         }
         return $http({
             headers: self.getHeaders(contentType),
-            url: URL_JSON_WRITER + url,
+            url: serverConfig.writer + url,
             method: data ? "POST" : "GET",
             data: data,
             cache:false

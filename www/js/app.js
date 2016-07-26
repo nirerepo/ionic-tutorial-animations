@@ -1,3 +1,5 @@
+
+
 angular.module('nire', [
     'nire.controllers',
     'ionic',
@@ -10,6 +12,17 @@ angular.module('nire', [
     'angulartics.cordova.analytics',
     'angulartics.scroll'
 ])
+    .constant("serverConfig", (function() {
+        var base = "http://nire0.gailen.es:8080/nire/";
+
+        // Cuidado de que todas las URLS terminen en "/" para que se pueda
+        // depende de eso cuando se concatenan las urls.
+        return {
+            reader: base,
+            writer: base,
+            widgets: base + "/widgets/"
+        };
+    })())
     .run(function ($ionicPlatform, $rootScope, $localStorage, $location) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -160,10 +173,10 @@ angular.module('nire', [
     .config(function ($ionicConfigProvider) {
         $ionicConfigProvider.tabs.position('bottom');
     })
-    .config(function($sceDelegateProvider) {
+    .config(function($sceDelegateProvider, serverConfig) {
         $sceDelegateProvider.resourceUrlWhitelist([
             'self',
-            'http://localhost:8080/nire/widgets/**'
+            serverConfig.widgets + '**'
         ]);
     })
 ;
