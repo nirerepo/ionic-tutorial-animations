@@ -9880,6 +9880,10 @@ input::-webkit-input-placeholder {
 .bar.bar-header {
   font-family: MovistarHeadline-Regular; }
 
+.button_fixed {
+  position: absolute;
+  bottom: 0px; }
+
 .centered {
   text-align: center; }
 
@@ -10263,16 +10267,6 @@ a.left {
 
 .modal-backdrop-bg {
   background: rgba(0, 52, 79, 0.9); }
-
-.modal {
-  top: 20%;
-  right: 10%;
-  bottom: 35%;
-  left: 10%;
-  min-height: 400px;
-  width: 80%;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-  border-radius: 4px; }
 
 .modal {
   background: transparent; }

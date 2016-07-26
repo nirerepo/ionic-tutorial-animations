@@ -191,6 +191,11 @@ input::-webkit-input-placeholder {
 	font-family: $header-font-family-alt;
 }
 
+.button_fixed{
+	position : absolute; 
+	bottom: 0px;
+}
+
 .centered {
 	text-align: center;
 }
@@ -697,16 +702,16 @@ a.left {
 	background: rgba(0,52,79,0.90);
 }
 
-.modal {
-	top: 20%;
-    right: 10%;
-    bottom: 35%;
-    left: 10%;
-    min-height: 400px;
-    width: 80%;
-	box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
-	border-radius: $radius-default;
-}
+// .modal {
+// 	top: 20%;
+//     right: 10%;
+//     bottom: 35%;
+//     left: 10%;
+//     min-height: 400px;
+//     width: 80%;
+// 	box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
+// 	border-radius: $radius-default;
+// }
 
 .modal {
 	background: transparent;
