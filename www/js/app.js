@@ -20,7 +20,7 @@ angular.module('nire', [
         return {
             reader: base,
             writer: base,
-            widgets: base + "/widgets/"
+            widgets: base + "widgets/"
         };
     })())
     .run(function ($ionicPlatform, $rootScope, $localStorage, $location) {
