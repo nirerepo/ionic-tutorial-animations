@@ -14,10 +14,6 @@
       <application android:debuggable="true" />
     </gap:config-file>    
 
-    <gap:config-file platform="android" parent="/manifest/application">
-      <activity android:launchMode="singleTask" />
-    </gap:config-file>
-
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
@@ -39,7 +35,6 @@
     <preference name="xwalkMultipleApk" value="true"/>
     <preference name="deployment-target" value="8" />
     <preference name="android-installLocation" value="auto" />
-    <preference name="AndroidLaunchMode" value="singleTask" />
 
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
@@ -50,6 +45,7 @@
     <preference name="detect-data-types" value="false" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="deployment-target" value="7.0" />
+    <preference name="AndroidLaunchMode" value="singleTask" />
 
     <icon src="resources/ios/icon/icon.png" gap:platform="ios" width="57" height="57"/>
     <icon src="resources/ios/icon/icon@2x.png" gap:platform="ios" width="114" height="114"/>
