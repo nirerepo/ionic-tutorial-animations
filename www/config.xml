@@ -34,6 +34,8 @@
     <preference name="xwalkMultipleApk" value="true"/>
     <preference name="deployment-target" value="8" />
     <preference name="android-installLocation" value="auto" />
+    <preference name="AndroidLaunchMode" value="singleTask" />
+
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>

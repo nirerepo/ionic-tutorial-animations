@@ -1,14 +1,18 @@
-
 function ConnectionService($http, serverConfig) {
     var self = this;
 
-    self.currentHash = null;
-    self.currentUsername = null;
-
     self.getHeaders = function(contentType){
+
+        console.log(
+            "Credenciales: ",
+            window.localStorage['username'],
+            window.localStorage['userhash']
+        );
+
         var deviceId = "web"
         if(typeof device != "undefined")
-            deviceId = device.uuid
+            deviceId = device.uuid;
+
         return { 
             "security-token": window.localStorage['userhash'], 
             "security-user": window.localStorage['username'],
@@ -28,17 +32,19 @@ function ConnectionService($http, serverConfig) {
 
     self.request = function (url, data, contentType) {
         if(data) {
-            if(!contentType)
-                data = self.toQueryString(data)
+            if(!contentType) {
+                data = self.toQueryString(data);
+            }
         }
+
         return $http({
             headers: self.getHeaders(contentType),
             url: serverConfig.writer + url,
             method: data ? "POST" : "GET",
             data: data,
             cache:false
-        })
-    }
+        });
+    };
 }
 
 angular.module('nire.services')
