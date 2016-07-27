@@ -1,8 +1,8 @@
-function ConnectionService($http, serverConfig) {
+function ConnectionService($http, serverConfig, $ionicPlatform, $q) {
     var self = this;
 
     self.getHeaders = function(contentType){
-        var deviceId = "web"
+        var deviceId = "web";
         if(typeof device != "undefined")
             deviceId = device.uuid;
 
@@ -30,24 +30,35 @@ function ConnectionService($http, serverConfig) {
             }
         }
 
-        var headers = self.getHeaders(contentType); 
+        var defer = $q.defer();
 
-        var result = $http({
-            headers: headers,
-            url: serverConfig.writer + url,
-            method: data ? "POST" : "GET",
-            data: data,
-            cache:false
+        // Demoramos la ejecucion efectiva del request hasta el momento
+        // en que la plataforma este inicializada. De esta manera nos aseguramos
+        // de tener siempre el id de dispositivo.
+        $ionicPlatform.ready(function() {
+            var headers = self.getHeaders(contentType); 
+
+            var logResult = function(status) {
+                return function() {
+                    console.log(status, url, headers);
+                };
+            };
+
+            var result = $http({
+                headers: headers,
+                url: serverConfig.writer + url,
+                method: data ? "POST" : "GET",
+                data: data,
+                cache:false
+            });
+
+            result.then(function(data) { logResult("Call Success"); defer.resolve(data); });
+            result.catch(function(data) { logResult("Call Error"); defer.reject(data); });
         });
 
-        var logResult = function(status) {
-            return function() {
-                console.log(status, url, headers);
-            };
-        };
 
-        result.then( logResult("success"), logResult("error") );
-        return result;
+
+        return defer.promise;
     };
 }
 
