@@ -1,3 +1,4 @@
 <div class="bubble system animated fadeIn" ng-controller="widgetController">
     <div ng-include="template"></div>
+    <p ng-if="message.data.link"><a href="{{ message.data.link.hash }}">{{ message.data.link.text }}</a></p>
 </div>
