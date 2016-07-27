@@ -2,13 +2,6 @@ function ConnectionService($http, serverConfig) {
     var self = this;
 
     self.getHeaders = function(contentType){
-
-        console.log(
-            "Credenciales: ",
-            window.localStorage['username'],
-            window.localStorage['userhash']
-        );
-
         var deviceId = "web"
         if(typeof device != "undefined")
             deviceId = device.uuid;
@@ -37,13 +30,24 @@ function ConnectionService($http, serverConfig) {
             }
         }
 
-        return $http({
-            headers: self.getHeaders(contentType),
+        var headers = self.getHeaders(contentType); 
+
+        var result = $http({
+            headers: headers,
             url: serverConfig.writer + url,
             method: data ? "POST" : "GET",
             data: data,
             cache:false
         });
+
+        var logResult = function(status) {
+            return function() {
+                console.log(status, url, headers);
+            };
+        };
+
+        result.then( logResult("success"), logResult("error") );
+        return result;
     };
 }
 
