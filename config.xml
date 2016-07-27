@@ -23,7 +23,11 @@
   <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect"/>
   <preference name="xwalkMode" value="embedded"/>
   <preference name="xwalkMultipleApk" value="true"/>
-  <preference name="AndroidLaunchMode" value="singleTask" />
+
+  <gap:config-file platform="android" parent="/manifest/application">
+    <activity android:launchMode="singleTask" />
+  </gap:config-file>
+
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>

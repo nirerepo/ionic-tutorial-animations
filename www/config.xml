@@ -13,6 +13,11 @@
     <gap:config-file platform="android" parent="/manifest">
       <application android:debuggable="true" />
     </gap:config-file>    
+
+    <gap:config-file platform="android" parent="/manifest/application">
+      <activity android:launchMode="singleTask" />
+    </gap:config-file>
+
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
