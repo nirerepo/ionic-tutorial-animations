@@ -1,4 +1,4 @@
-function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionicModal, Exercise, Timeline, $analytics){
+function ExcerciseController($scope, $ionicScrollDelegate, $state, $stateParams, $ionicHistory, $ionicModal, Exercise, Timeline, $analytics){
     $scope.data = {
         "exercises": [],
         "search": '',
@@ -18,11 +18,9 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
     $scope.clear = function() {
         $scope.data.search = '';
         $scope.data.exercises = [];
+        $ionicScrollDelegate.scrollTop();
     }
-    $scope.clear = function() {
-        $scope.data.search = '';
-        $scope.data.exercises = [];
-    }
+
     $scope.clearOrClose = function() {
         if ($scope.data.search == '')
             $scope.goBack();
@@ -37,6 +35,7 @@ function ExcerciseController($scope, $state, $stateParams, $ionicHistory, $ionic
                                                     function(h) {
                                                         return h._score > 1;
                                                     });
+                $ionicScrollDelegate.scrollTop();
             });
             $analytics.eventTrack('excercise_search', { category: "exercise", eventType: "search"});
         }

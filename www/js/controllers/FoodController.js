@@ -1,4 +1,4 @@
-function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal, Food, Timeline, $filter, $analytics) {
+function FoodController($scope, $ionicScrollDelegate, $state, $stateParams, $ionicHistory, $ionicModal, Food, Timeline, $filter, $analytics) {
     $scope.data = {
         "plates": [],
         "search": '',
@@ -18,6 +18,7 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
     $scope.clear = function() {
         $scope.data.search = '';
         $scope.data.plates = [];
+        $ionicScrollDelegate.scrollTop();
     }
 
     $scope.clearOrClose = function() {
@@ -30,6 +31,7 @@ function FoodController($scope, $state, $stateParams, $ionicHistory, $ionicModal
         if ($scope.data.search.length >= 2) {
             Food.plateByName($scope.data.search).then(function(matches) {
                 $scope.data.plates = matches.data.hits.hits;
+                $ionicScrollDelegate.scrollTop();
             });
             $analytics.eventTrack('food_search', { category: "plate", eventType: "search"});
         }
