@@ -10127,13 +10127,27 @@ select[readonly] {
 #diary .card .item-divider.header .resume {
   font-family: MovistarText;
   text-align: right; }
-
-#diary .card .item-divider.header .resume span.info {
-  vertical-align: top; }
-
-#diary .card .item-divider.header .resume i {
-  margin-left: 5px;
-  font-size: 20px; }
+  #diary .card .item-divider.header .resume .current {
+    font-family: MovistarText-Bold; }
+  #diary .card .item-divider.header .resume .goal {
+    opacity: .5; }
+  #diary .card .item-divider.header .resume .review {
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: 10px; }
+    #diary .card .item-divider.header .resume .review .icon {
+      margin: 0 auto;
+      font-size: 20px;
+      margin-top: 2px; }
+  #diary .card .item-divider.header .resume .review.low {
+    background-color: #C0392B; }
+  #diary .card .item-divider.header .resume .review.high {
+    background-color: #C0392B; }
+  #diary .card .item-divider.header .resume .review.good {
+    background-color: #7AB800; }
 
 #diary .card .item-body.content {
   margin: 0px;
@@ -10176,16 +10190,23 @@ select[readonly] {
 .card .item:last-child {
   margin-bottom: 0px; }
 
-.card a.item-divider.footer {
+.card .item-divider.footer {
   color: #fff;
   font-size: 16px;
   font-family: MovistarText-Bold;
   background-color: rgba(255, 255, 255, 0.35);
-  padding: 20px 15px;
+  padding: 15px 15px;
   border-width: 0px; }
 
-.card .item-divider.footer i {
-  font-size: 25px; }
+.card .footer .footer-action {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: MovistarText-Bold; }
+  .card .footer .footer-action i {
+    margin-right: 5px;
+    line-height: 10px;
+    font-size: 20px; }
 
 /* Swipe action items */
 .card .item-complex.item-icon-right .item-content {

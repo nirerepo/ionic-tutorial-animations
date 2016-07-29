@@ -515,15 +515,43 @@ select[readonly] {
 #diary .card .item-divider.header .resume {
 	font-family: $base-font-family;
 	text-align: right;
-}
 
-#diary .card .item-divider.header .resume span.info {
-	vertical-align: top;
-}
+	.current {
+		font-family: $base-font-family-bold;
+	}
+	
+	.goal {
+		opacity: .5;
+	}
 
-#diary .card .item-divider.header .resume i {
-	margin-left: 5px;
-	font-size: 20px;
+	.review {
+		width: 25px;
+		height: 25px;
+		border-radius: 25px;
+		display: inline-flex;
+		vertical-align: middle;
+		margin-left: 10px;
+		
+		.icon {
+			margin: 0 auto;
+			font-size: 20px;
+			margin-top: 2px;
+		}
+	}
+
+
+	.review.low {
+		background-color: #C0392B;
+	}
+
+	.review.high {
+		background-color: #C0392B;
+	}
+
+	.review.good {
+		background-color: $accent-color;
+	}
+
 }
 
 #diary .card .item-body.content {
@@ -574,17 +602,28 @@ select[readonly] {
 	margin-bottom: 0px;
 }
 
-.card a.item-divider.footer {
+.card .item-divider.footer {
 	color: $light;
 	font-size: $base-font-size-default;
 	font-family: $base-font-family-bold;
 	background-color: rgba($light, 0.35);
-	padding: 20px 15px;
+	padding: 15px 15px;
 	border-width: 0px;
 }
 
-.card .item-divider.footer i {
-	font-size: 25px;
+.card .footer .footer-action {
+	color: $light;
+	text-decoration: none;
+	font-size: $base-font-size-large;
+    // text-align: center;
+    // display: block;
+    font-family: $base-font-family-bold;
+
+	i {
+		margin-right: 5px;
+		line-height: 10px;
+		font-size: 20px;
+	}
 }
 
 /* Swipe action items */

@@ -134,6 +134,54 @@
 <div ng-repeat="nutritionSeccion in day.nutrition " class="card">
   <div class="item item-divider header">
     <div class="title">{{nutritionSeccion.type}}</div>
+    <div class="resume">
+      <span class="current">{{ calcularTotalCalorias(nutritionSeccion.typeId, day.day) }}</span>
+      <span class="goal"> / X Kcal</span>
+
+<!--       Calorías bajas -->
+      <div class="review low">
+        <i class="icon ion-arrow-down-c"></i>
+      </div>
+
+<!--       Calorías altas -->
+<!--       <div class="review high">
+        <i class="icon ion-arrow-up-c"></i>
+      </div> -->
+
+<!--       Calorías OK -->
+<!--       <div class="review good">
+        <i class="icon ion-checkmark-round"></i>
+      </div> -->
+
+    </div>
+  </div>
+  <div class="item item-body content">
+    <ion-list>
+      <ion-item class="item item-button-right item-remove-animate" ng-repeat="plato in nutritionSeccion.items | orderBy:'title'" type="item-text-wrap">
+        {{plato.title}}
+        <span ng-if="plato.quantity" class="info">{{plato.userAmount}} {{plato.gramos}}{{plato.medidaUnidad}}. - {{plato.quantity}} ({{plato.id}})</span>
+        <nire-plate-action-sheet plate="plato" meal="nutritionSeccion.type" day="day.day" />
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="item item-divider footer row">
+    <div class="col" style="text-align:left;">
+      <a class="footer-action" href="#/review/{{day.day}}" analytics-on="click" analytics-event="addTrackNutrition" analytics-category="{{nutritionSeccion.type}}">
+        <i class="icon ion-information-circled"></i> Evaluación
+      </a>
+    </div>
+    <div class="col" style="text-align:right;">
+      <a class="footer-action" ui-sref="trackfood({mealId:nutritionSeccion.typeId, day: day.day})" analytics-on="click" analytics-event="addTrackNutrition" analytics-category="{{nutritionSeccion.type}}">
+        <i class="icon ion-plus-circled"></i> Añadir más...
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- <div ng-repeat="nutritionSeccion in day.nutrition " class="card">
+  <div class="item item-divider header">
+    <div class="title">{{nutritionSeccion.type}}</div>
     <div class="resume">{{ calcularTotalCalorias(nutritionSeccion.typeId, day.day) }} Kcal <a href="#/review/{{day.day}}"><i class="ion-ios-information-outline"></i></a></div>
   </div>
   <div class="item item-body content">
@@ -149,7 +197,7 @@
   Añadir más...
   <i class="icon ion-plus-round"></i>
 </a>
-</div>
+</div> -->
 
 <div ng-show="hasExercises(day.day)" class="card">
   <div class="item item-divider header">
