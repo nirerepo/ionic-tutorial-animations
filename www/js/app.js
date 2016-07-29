@@ -134,6 +134,14 @@ angular.module('nire', [
                     }
                 }
             })
+            .state('tab.evolution', {
+                url: '/evolution',
+                views: {
+                    'tab-evolution': {
+                        templateUrl: 'templates/tab-evolution.html'
+                    }
+                }
+            })
             .state('tab.account', {
                 url: '/account',
                 views: {

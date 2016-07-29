@@ -1,0 +1,36 @@
+<ion-view hide-nav-bar="true">
+<ion-header-bar class="bar bar-header bar-dark">
+  <div class="h1 title">Evolución</div>
+  <button class="button button-icon ion-android-exit" nire-logout analytics-on="click" analytics-event="loguot" analytics-category="loguot"></button>
+</div>
+</ion-header-bar>
+  <ion-content class="has-header">
+    <ion-list class="transparent">
+      <ion-item class="margin-bottom margin-top">
+        Nombre <span class="item-note">{{nombre}}</span>
+      </ion-item>
+      <ion-item>
+        Fecha de nacimiento <span class="item-note">{{fechaNacimiento}}</span>
+      </ion-item>
+      <ion-item>
+        Altura <span class="item-note">{{altura}}</span>
+      </ion-item>
+      <ion-item>
+        Peso <span class="item-note">{{peso}}</span>
+      </ion-item>
+      <ion-item>
+        Género <span class="item-note">{{genero}}</span>
+      </ion-item>
+    </ion-list>
+    <div style="height: 300px;"></div>
+    <ion-list>
+      <ion-toggle ng-model="settings.serverMonitor">Enable Server Monitor</ion-toggle>
+    </ion-list>
+    <ul>
+      <li><button ng-click="initHealthTracking()" class="button button-full button-stable">Health Store</button></li>
+      <li><button ng-click="restartMessages()" class="button button-full button-positive">Limpiar mensajes del chat</button></li>
+      <li><button ng-click="restartConversation()"" class="button button-full button-calm">Reiniciar conversación Movistar</button></li>
+      <li><button ng-click="showHelp()"" class="button button-full button-stable">Prueba</button></li>
+    </ul>
+  </ion-content>
+</ion-view>
