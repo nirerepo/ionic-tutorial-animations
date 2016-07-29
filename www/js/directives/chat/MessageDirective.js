@@ -15,6 +15,7 @@ function MessageDirective(Login, $state, Chats, HealthStore) {
 
             opt.answer = opt.value;
             Chats.replyMessage(opt, $scope.message.id);
+            $scope.hasResponse = true;
         };
 
         /**
@@ -23,11 +24,15 @@ function MessageDirective(Login, $state, Chats, HealthStore) {
         $scope.sendResponse = function() {
             var response =  { value: $scope.message.value, event: $scope.message.event };
             Chats.replyMessage(response, $scope.message.id);
+            $scope.hasResponse = true;
+            console.log($scope.hasResponse)
         };
 
         $scope.getResponse = function() {
             return Chats.getResponse($scope.message.id);
         };
+
+        $scope.hasResponse = $scope.getResponse() != null;
 
         /**
          * Metodo Response para datos numéricos enteros

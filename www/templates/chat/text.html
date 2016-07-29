@@ -2,18 +2,20 @@
     <p>{{message.text}}</p>
 </div>
 
-<div class="text-chat-wrapper animated fadeIn" ng-if="!getResponse()">
-	<div class="item bubble user">
-		<label class="item item-input">
-	    	<input type="text" placeholder="Responder..." ng-model="message.value" ng-keyup="$event.keyCode == 13 && sendResponse()"/>   
-	    </label> 	
-	</div>
+<div nire-response="hasResponse">
+	<div class="text-chat-wrapper animated fadeIn nire-false">
+		<div class="item bubble user">
+			<label class="item item-input">
+		    	<input type="text" placeholder="Responder..." ng-model="message.value" ng-keyup="$event.keyCode == 13 && sendResponse()"/>   
+		    </label> 	
+		</div>
 
-	<div class="send-chat">
-		<button class="button icon ion-forward" ng-click="sendResponse()"></button>
-	</div>
+		<div class="send-chat">
+			<button class="button icon ion-forward" ng-click="sendResponse()"></button>
+		</div>
 
-</div>
-<div class="item bubble user animated fadeIn" ng-if="getResponse()">
-    <p>{{ getResponse().message }}</p>
+	</div>
+	<div class="item bubble user animated fadeIn nire-true">
+	    <p>{{ getResponse().message }}</p>
+	</div>
 </div>

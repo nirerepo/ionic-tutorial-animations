@@ -1,11 +1,13 @@
 <div class="bubble {{message.source}} animated fadeIn">
     <p>{{message.text}}</p>
 </div>
-<div class="item bubble user" ng-if="getResponse()">
-    <p>{{ getResponse().message }}</p>
-</div>
-<div class="options" ng-if="!getResponse()">
-    <div id="{{opt.id}}" ng-repeat="opt in message.options" class="item bubble option" ng-click="sendResponseOption(opt)">
-        <p>{{opt.text}}</p>
+<div nire-response="hasResponse">
+    <div class="item bubble user nire-true">
+        <p>{{ getResponse().message }}</p>
+    </div>
+    <div class="options nire-false">
+        <div id="{{opt.id}}" ng-repeat="opt in message.options" class="item bubble option" ng-click="sendResponseOption(opt)">
+            <p>{{opt.text}}</p>
+        </div>
     </div>
 </div>
