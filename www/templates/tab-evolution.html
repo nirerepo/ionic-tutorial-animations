@@ -1,36 +1,45 @@
 <ion-view hide-nav-bar="true">
+
 <ion-header-bar class="bar bar-header bar-dark">
   <div class="h1 title">Evolución</div>
-  <button class="button button-icon ion-android-exit" nire-logout analytics-on="click" analytics-event="loguot" analytics-category="loguot"></button>
-</div>
+  </div>
 </ion-header-bar>
+
   <ion-content class="has-header">
-    <ion-list class="transparent">
-      <ion-item class="margin-bottom margin-top">
-        Nombre <span class="item-note">{{nombre}}</span>
-      </ion-item>
-      <ion-item>
-        Fecha de nacimiento <span class="item-note">{{fechaNacimiento}}</span>
-      </ion-item>
-      <ion-item>
-        Altura <span class="item-note">{{altura}}</span>
-      </ion-item>
-      <ion-item>
-        Peso <span class="item-note">{{peso}}</span>
-      </ion-item>
-      <ion-item>
-        Género <span class="item-note">{{genero}}</span>
-      </ion-item>
+
+    <ion-list class="transparent evolution">
+        <a class="item item-icon-right high" href="#">
+          <span class="value">2652 Kcal</span>
+          <span style="right: 50px; position: absolute;">28/07/2016</span>
+          <i class="icon ion-ios-arrow-forward"></i>
+        </a>
+        <a class="item item-icon-right good" href="#">
+          <span class="value">1982 Kcal</span>
+          <span style="right: 50px; position: absolute;">27/07/2016</span>
+          <i class="icon ion-ios-arrow-forward"></i>
+        </a>
+        <a class="item item-icon-right good" href="#">
+          <span class="value">2122 Kcal</span>
+          <span style="right: 50px; position: absolute;">26/07/2016</span>
+          <i class="icon ion-ios-arrow-forward"></i>
+        </a>
+        <a class="item item-icon-right low" href="#">
+          <span class="value">860 Kcal</span>
+          <span style="right: 50px; position: absolute;">25/07/2016</span>
+          <i class="icon ion-ios-arrow-forward"></i>
+        </a>
+        <a class="item item-icon-right regular" href="#">
+          <span class="value">2008 Kcal</span>
+          <span style="right: 50px; position: absolute;">24/07/2016</span>
+          <i class="icon ion-ios-arrow-forward"></i>
+        </a>
+        <a class="item item-icon-right regular" href="#">
+          <span class="value">2265 Kcal</span>
+          <span style="right: 50px; position: absolute;">23/07/2016</span>
+          <i class="icon ion-ios-arrow-forward"></i>
+        </a>
+
     </ion-list>
-    <div style="height: 300px;"></div>
-    <ion-list>
-      <ion-toggle ng-model="settings.serverMonitor">Enable Server Monitor</ion-toggle>
-    </ion-list>
-    <ul>
-      <li><button ng-click="initHealthTracking()" class="button button-full button-stable">Health Store</button></li>
-      <li><button ng-click="restartMessages()" class="button button-full button-positive">Limpiar mensajes del chat</button></li>
-      <li><button ng-click="restartConversation()"" class="button button-full button-calm">Reiniciar conversación Movistar</button></li>
-      <li><button ng-click="showHelp()"" class="button button-full button-stable">Prueba</button></li>
-    </ul>
+
   </ion-content>
 </ion-view>

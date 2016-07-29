@@ -10816,6 +10816,15 @@ ion-slides {
 #nutrition-review-macros .item p {
   margin-bottom: 10px; }
 
+.evolution .high, .evolution .low {
+  border-left: 6px solid red !important; }
+
+.evolution .regular {
+  border-left: 6px solid #FFCD00 !important; }
+
+.evolution .good {
+  border-left: 6px solid #7AB800 !important; }
+
 .bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before, .bar button.button-icon .icon:before, .bar button.button-icon:before, .bar button.button-icon.icon-left:before, .bar button.button-icon.icon-right:before {
   font-size: 25px; }
 

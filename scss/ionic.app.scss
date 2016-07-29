@@ -539,7 +539,6 @@ select[readonly] {
 		}
 	}
 
-
 	.review.low {
 		background-color: #C0392B;
 	}
@@ -1373,6 +1372,19 @@ $num-colors: 10;
 	.item p {
 		margin-bottom: 10px;
 	}
+}
+
+.evolution{
+	.high, .low {
+		border-left: 6px solid red!important;
+	}
+	.regular {
+		border-left: 6px solid #FFCD00!important;
+	}
+	.good {
+		border-left: 6px solid $accent-color!important;
+	}
+
 }
 
 .bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before, .bar button.button-icon .icon:before, .bar button.button-icon:before, .bar button.button-icon.icon-left:before, .bar button.button-icon.icon-right:before {
