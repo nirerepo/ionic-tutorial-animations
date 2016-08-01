@@ -2,7 +2,7 @@ function FacebookLoginDirective(Login, $state) {
     this.facebookLogin = function() {
         var success = function() { 
             plugins.toast.show('Conectado mediante Facebook', 5000, 'top');
-            $state.go("tab.dash"); 
+            //$state.go("tab.dash"); 
         };
 
         var error = function() { console.log("Error al autenticar con facebook."); };

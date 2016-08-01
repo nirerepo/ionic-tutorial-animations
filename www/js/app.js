@@ -64,6 +64,10 @@ angular.module('nire', [
         // que el usuario no esta logueado, se le muestre la pantalla de login
         $httpProvider.interceptors.push('LoginInterceptor');
 
+        // Agrego un interceptor que redirecciona al chat y bloquea los botones del timeline 
+        // si el usuario no completo la conversacion de perfilado
+        $httpProvider.interceptors.push('StatusInterceptor');
+
         // Ionic uses AngularUI Router which uses the concept of states
         // Learn more here: https://github.com/angular-ui/ui-router
         // Set up the various states which the app can be in.

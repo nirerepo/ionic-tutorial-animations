@@ -6,7 +6,7 @@
  * @param {MonitorService} Monitor
  * @param {angular.IQService} $q
  */
-function LoginService(Connection, Monitor, $q, $rootScope) {
+function LoginService(Connection, Monitor, $q, $rootScope, $state) {
     this.credentials = { 
         username: window.localStorage.username, 
         password: ""
@@ -97,6 +97,13 @@ function LoginService(Connection, Monitor, $q, $rootScope) {
 
         // Emitimos un evento informando que se produjo un login
         $rootScope.$emit("login", this.currentUsername);
+
+        if(response.data.redirect == "biography") {
+            $rootScope.profileNedded = true
+            $state.go("tab.chat-detail", {chatId: 1}); 
+        }else {
+            $state.go("tab.dash"); 
+        }
 
         return result.promise;
     };
