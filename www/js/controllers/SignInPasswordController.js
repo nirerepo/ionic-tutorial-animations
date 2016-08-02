@@ -13,7 +13,7 @@ function SignInPasswordCtrl(Login, $state) {
      * Intenta loguear un usuario a la aplicación por medio de username & password.
      */
     this.signIn = function () {
-        var success = function() { $state.go("tab.dash"); };
+        var success = function() {  };
         var error = function() { this.error = true; }.bind(this);
         Login.formLogin().then(success, error);
     }.bind(this);
