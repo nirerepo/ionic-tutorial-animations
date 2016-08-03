@@ -11,7 +11,8 @@
 <ion-slide-page ng-repeat="day in data.timelineDays" class="{{day.timelineClass}}">
 
 <ion-content class="padding">
-<ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}" class="top-widget" on-ready="onReadySwiper(swiper)">
+
+<ks-swiper-container initial-slide="0" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="1" space-between="5" pagination-is-active="true" pagination-clickable="true" override-parameters="{effect: 'slide'}" class="top-widget" on-ready="onReadySwiper(swiper)" ng-if="day.challenges && day.challenges.length > 0">
 
 <ks-swiper-slide class="swiper-slide challenge-widget widget" ng-repeat="challenge in day.challenges">
 
