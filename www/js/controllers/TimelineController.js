@@ -1,4 +1,4 @@
-function TimelineController($scope, Timeline, $ionicNavBarDelegate, $analytics){
+function TimelineController($scope, Timeline, $ionicNavBarDelegate, $analytics, $ionicModal){
     var self = this;
 
     // Inicialización del slider
@@ -87,6 +87,29 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate, $analytics){
         _.find(_.find($scope.data.timelineDays, function(o) { return (o.day === date);}).challenges, function(c) { return c.type == "water"; }).current = amount;
     }
 
+    $scope.showMealreview = function(date, mealId) {
+        $scope.mealReview = {}
+        Timeline.getMealReview(date, mealId).then(function(data) {
+            console.log(data)
+            $scope.mealReview.meal = data.data.data.review.title;
+            $scope.mealReview.currentKcal = data.data.data.review.kcal.current;
+            $scope.mealReview.targetKcal = data.data.data.review.kcal.target;
+            console.log($scope.mealReview)
+            $scope.mealReviewModal.show();
+        });
+    }
+
+    $scope.closeMealReview = function() {
+        $scope.mealReviewModal.hide();
+    }
+
+    $ionicModal.fromTemplateUrl('templates/content/diet-meal-review.html', {
+        scope: $scope,
+        animation: 'slide-in-up',
+        focusFirstInput: false
+    }).then(function(modal) {
+        $scope.mealReviewModal = modal;
+    });
 }
 
 angular.module('nire.controllers')

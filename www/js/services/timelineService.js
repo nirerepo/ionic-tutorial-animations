@@ -61,6 +61,10 @@ function TimelineService(Connection, $filter) {
         return self.tracks;
     }
 
+    this.getMealReview = function(date, mealId) {
+        return Connection.request("review/meal", { date: date, mealId: mealId });
+    }
+
     this.addPlate = function (mealId, plateData, day, amount, unidadSeleccionada, cantidadUnidad){
         var key = self.mealKey[mealId]
         var plate = {

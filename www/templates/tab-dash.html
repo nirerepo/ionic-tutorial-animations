@@ -167,7 +167,7 @@
   </div>
   <div class="item item-divider footer row">
     <div class="col" style="text-align:left;">
-      <a class="footer-action" href="#/review/{{day.day}}" analytics-on="click" analytics-event="addTrackNutrition" analytics-category="{{nutritionSeccion.type}}">
+      <a class="footer-action" ng-click="showMealreview(day.day, nutritionSeccion.typeId)" href="#" analytics-on="click" analytics-event="addTrackNutrition" analytics-category="{{nutritionSeccion.type}}">
         <i class="icon ion-information-circled"></i> Evaluación
       </a>
     </div>
