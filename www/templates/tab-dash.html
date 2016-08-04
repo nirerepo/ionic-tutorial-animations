@@ -137,20 +137,20 @@
     <div class="title">{{nutritionSeccion.type}}</div>
     <div class="resume">
       <span class="current">{{ calcularTotalCalorias(nutritionSeccion.typeId, day.day) }}</span>
-      <span class="goal"> / X Kcal</span>
+      <span class="goal"> / {{nutritionSeccion.target}} Kcal</span>
 
 <!--       Calorías bajas -->
-<!--       <div class="review low">
+      <div ng-if="calcularTotalCalorias(nutritionSeccion.typeId, day.day) < nutritionSeccion.target * 0.9" class="review low">
         <i class="icon ion-arrow-down-c"></i>
-      </div> -->
+       </div>
 
 <!--       Calorías altas -->
-<!--       <div class="review high">
+      <div ng-if="calcularTotalCalorias(nutritionSeccion.typeId, day.day) > nutritionSeccion.target * 1.1" class="review high">
         <i class="icon ion-arrow-up-c"></i>
-      </div> -->
+      </div>
 
 <!--       Calorías OK -->
-      <div class="review good">
+      <div ng-if="calcularTotalCalorias(nutritionSeccion.typeId, day.day) < nutritionSeccion.target * 1.1 && calcularTotalCalorias(nutritionSeccion.typeId, day.day) > nutritionSeccion.target * 0.9" class="review good">
         <i class="icon ion-checkmark-round"></i>
       </div>
 
