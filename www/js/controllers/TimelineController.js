@@ -90,11 +90,11 @@ function TimelineController($scope, Timeline, $ionicNavBarDelegate, $analytics, 
     $scope.showMealreview = function(date, mealId) {
         $scope.mealReview = {}
         Timeline.getMealReview(date, mealId).then(function(data) {
-            console.log(data)
             $scope.mealReview.meal = data.data.data.review.title;
             $scope.mealReview.currentKcal = data.data.data.review.kcal.current;
             $scope.mealReview.targetKcal = data.data.data.review.kcal.target;
-            console.log($scope.mealReview)
+            $scope.mealReview.kcalMessage = data.data.data.review.kcal.message;
+            
             $scope.mealReviewModal.show();
         });
     }
