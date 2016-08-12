@@ -1374,6 +1374,39 @@ $num-colors: 10;
 	}
 }
 
+#meal-review {
+	.kcal-balance {
+    	padding: 25px;
+    	color: $light;
+
+    	&.low, &.high {
+    		background-color: #C0392B;
+    	}
+
+    	&.good {
+    		background-color: $accent-color;
+    	}
+
+    	h2 {
+    		color: $light;
+    	}
+	}
+	.current {
+		font-size: 36px;
+		font-family: $base-font-family-bold;
+		
+		span {
+			font-family: $base-font-family;
+		}
+	}
+	.analysis p {
+		font-size: $base-font-size-large;
+		line-height: initial;
+	}
+}
+
+
+
 .evolution{
 	.high, .low {
 		border-left: 6px solid red!important;

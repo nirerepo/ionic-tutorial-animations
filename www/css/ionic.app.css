@@ -10816,6 +10816,26 @@ ion-slides {
 #nutrition-review-macros .item p {
   margin-bottom: 10px; }
 
+#meal-review .kcal-balance {
+  padding: 25px;
+  color: #fff; }
+  #meal-review .kcal-balance.low, #meal-review .kcal-balance.high {
+    background-color: #C0392B; }
+  #meal-review .kcal-balance.good {
+    background-color: #7AB800; }
+  #meal-review .kcal-balance h2 {
+    color: #fff; }
+
+#meal-review .current {
+  font-size: 36px;
+  font-family: MovistarText-Bold; }
+  #meal-review .current span {
+    font-family: MovistarText; }
+
+#meal-review .analysis p {
+  font-size: 18px;
+  line-height: initial; }
+
 .evolution .high, .evolution .low {
   border-left: 6px solid red !important; }
 

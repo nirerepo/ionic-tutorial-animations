@@ -3,11 +3,13 @@
     <a ng-click="closeMealReview()" class="back left" ><i class="ion-close-round"></i></a>
       <h1 class="title">{{mealReview.meal}}</h1>
     </ion-header-bar>
-    <ion-content scroll="false">
-        <div>
-            {{mealReview.currentKcal}} Kcal/{{mealReview.targetKcal}} Kcal
+    <ion-content scroll="false" id="meal-review">
+        <div class="kcal-balance good centered">
+            <h2>Balance de calorías:</h2>
+            <p class="current padding">{{mealReview.currentKcal}} <span>Kcal</span><p>
+            <p>Recomendadas: {{mealReview.targetKcal}} Kcal<p>
         </div>
-        <div>
+        <div class="centered padding analysis">
             <p>{{mealReview.kcalMessage}}</p>
         </div>
     </ion-content>
